@@ -48,7 +48,7 @@ Partial Class Form1
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.TimerToolStripMenuItem, Me.BombsLeftToolStripMenuItem, Me.XYPOS_MENU})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(116, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(399, 24)
         Me.MenuStrip1.TabIndex = 3
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -63,25 +63,25 @@ Partial Class Form1
         '
         Me.GenerateBoardToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.level1, Me.level2, Me.level3})
         Me.GenerateBoardToolStripMenuItem.Name = "GenerateBoardToolStripMenuItem"
-        Me.GenerateBoardToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.GenerateBoardToolStripMenuItem.Size = New System.Drawing.Size(109, 22)
         Me.GenerateBoardToolStripMenuItem.Text = "Levels:"
         '
         'level1
         '
         Me.level1.Name = "level1"
-        Me.level1.Size = New System.Drawing.Size(152, 22)
+        Me.level1.Size = New System.Drawing.Size(80, 22)
         Me.level1.Text = "1"
         '
         'level2
         '
         Me.level2.Name = "level2"
-        Me.level2.Size = New System.Drawing.Size(152, 22)
+        Me.level2.Size = New System.Drawing.Size(80, 22)
         Me.level2.Text = "2"
         '
         'level3
         '
         Me.level3.Name = "level3"
-        Me.level3.Size = New System.Drawing.Size(152, 22)
+        Me.level3.Size = New System.Drawing.Size(80, 22)
         Me.level3.Text = "3"
         '
         'TimerToolStripMenuItem
@@ -112,16 +112,16 @@ Partial Class Form1
         Me.ImageList1.ImageStream = CType(resources.GetObject("ImageList1.ImageStream"), System.Windows.Forms.ImageListStreamer)
         Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
         Me.ImageList1.Images.SetKeyName(0, "Bad Brick Tile.png")
+        Me.ImageList1.Images.SetKeyName(1, "Bad Brick Tile - Copy.png")
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(116, 24)
+        Me.ClientSize = New System.Drawing.Size(399, 435)
         Me.Controls.Add(Me.MenuStrip1)
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "Form1"
-        Me.Text = "Mine Sweeper"
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)

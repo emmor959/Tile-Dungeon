@@ -11,6 +11,7 @@
     Dim tilesize As Integer = 24
     Dim levelindex As Integer
     Dim roomindex As Integer
+    Dim playx, playy As Integer
     Private Sub GenerateBoard(x As Integer, y As Integer, z As Integer)
         'for didgital logic array
         Dim colloms As Integer
@@ -69,7 +70,9 @@
 
             Next
         Next
-
+        playx = 2
+        playy = 5
+        m_Game(0, 0, playx, playy).setPlayer(True)
 
 
 
@@ -93,8 +96,14 @@
                     Me.Controls.Add(buttonArray(i, i2))
                 Next
             Next
-            m_buttonArray = buttonArray
 
+
+
+
+
+            buttonArray(playx, playy).BackgroundImage = ImageList1.Images(1)
+
+            m_buttonArray = buttonArray
             ''  For i = 0 To 16
             ''  For i2 = 0 To 16
             ''          m_buttonArray(i, i2).BackgroundImage = ImageList1.Images(0)
@@ -109,5 +118,26 @@
 
     End Sub
 
-
+    Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
+        If e.KeyCode = Keys.D And playx <> 16 Then
+            m_buttonArray(playx, playy).BackgroundImage = ImageList1.Images(0)
+            playx += 1
+            m_buttonArray(playx, playy).BackgroundImage = ImageList1.Images(1)
+        End If
+        If e.KeyCode = Keys.W And playy <> 0 Then
+            m_buttonArray(playx, playy).BackgroundImage = ImageList1.Images(0)
+            playy -= 1
+            m_buttonArray(playx, playy).BackgroundImage = ImageList1.Images(1)
+        End If
+        If e.KeyCode = Keys.A And playx <> 0 Then
+            m_buttonArray(playx, playy).BackgroundImage = ImageList1.Images(0)
+            playx -= 1
+            m_buttonArray(playx, playy).BackgroundImage = ImageList1.Images(1)
+        End If
+        If e.KeyCode = Keys.S And playy <> 16 Then
+            m_buttonArray(playx, playy).BackgroundImage = ImageList1.Images(0)
+            playy += 1
+            m_buttonArray(playx, playy).BackgroundImage = ImageList1.Images(1)
+        End If
+    End Sub
 End Class
