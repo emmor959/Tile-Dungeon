@@ -1,0 +1,113 @@
+﻿Public Class Form1
+
+    'x = ((x - 8) \ tilesize)       snipetts for getting exact tile spot based upon location.
+    'y = ((y - 54) \ tilesize)
+
+    '----------------------------------------------------------------------
+    Dim m_Game(3, 10, 16, 16) As Tile
+    Dim m_buttonArray(,) As Button
+    Dim m_RowSize As Integer
+    Dim m_Collumn As Integer
+    Dim tilesize As Integer = 24
+    Dim levelindex As Integer
+    Dim roomindex As Integer
+    Private Sub GenerateBoard(x As Integer, y As Integer, z As Integer)
+        'for didgital logic array
+        Dim colloms As Integer
+        Dim rows As Integer
+
+        rows = x
+        colloms = y
+
+        m_RowSize = rows
+        m_Collumn = colloms
+
+        'For i = 1 To rows
+        '  For i2 = 1 To colloms
+        '  If isABomb(bombIndex) = True Then
+        '                tmpboard(i - 1, i2 - 1) = New Tile(True, False, False, 0)
+        '                isABomb((i * i2) - 1) = False
+        ' Else
+        '                tmpboard(i - 1, i2 - 1) = New Tile(False, False, False, 0)
+        '  End If
+        '             bombIndex = bombIndex + 1
+        '  Next
+        '  Next
+
+        'Code Snippet for preface to Generating the board.
+
+        ' m_board = tmpboard
+        CompileBoard(rows - 1, colloms - 1)
+    End Sub
+    Private Sub CompileBoard(x As Integer, Y As Integer)
+
+
+
+
+    End Sub
+    Private Sub BoardChecker(x As Integer, y As Integer)
+
+        ' If m_board(x, y).CheckForBomb = True Then
+        ' m_buttonArray(x, y).BackgroundImage = ImageList1.Images(12)
+        '  End If
+        'Code for applying images to the buttons.
+    End Sub
+    Private Sub ClearBoard(X As Integer, Y As Integer)
+        For i = 0 To X
+            For i2 = 0 To Y
+                m_buttonArray(i, i2).Dispose()
+            Next
+        Next
+    End Sub
+
+    Private Sub ToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles level1.Click
+        'Room 1 (0,0)
+        For i = 1 To 16
+            For i2 = 1 To 16
+
+                m_Game(0, 0, i - 1, i2 - 1) = New Tile(False, False, 1)
+
+            Next
+        Next
+
+
+
+
+        If roomindex = 0 And levelindex = 0 Then
+            Dim buttonArray(16, 16) As Button
+            For i = 0 To 16
+                For i2 = 0 To 16
+                    buttonArray(i, i2) = New System.Windows.Forms.Button()
+                    buttonArray(i, i2).Location = New System.Drawing.Point((i * tilesize), (i2 * tilesize) + tilesize)
+                    buttonArray(i, i2).Name = (i.ToString + "_" + i2.ToString)
+                    buttonArray(i, i2).Size = New System.Drawing.Size(tilesize, tilesize)
+                    buttonArray(i, i2).TabIndex = 1
+                    buttonArray(i, i2).Text = ""
+                    buttonArray(i, i2).UseVisualStyleBackColor = True
+                    buttonArray(i, i2).BackColor = Color.Gray
+                    buttonArray(i, i2).BackgroundImage = ImageList1.Images(0)
+                    buttonArray(i, i2).FlatStyle = FlatStyle.Flat
+                    buttonArray(i, i2).BackgroundImageLayout = ImageLayout.Stretch
+                    buttonArray(i, i2).FlatAppearance.BorderSize = 0
+                    buttonArray(i, i2).Enabled = False
+                    Me.Controls.Add(buttonArray(i, i2))
+                Next
+            Next
+            m_buttonArray = buttonArray
+
+            ''  For i = 0 To 16
+            ''  For i2 = 0 To 16
+            ''          m_buttonArray(i, i2).BackgroundImage = ImageList1.Images(0)
+            ''   Next
+            ''   Next
+        End If
+    End Sub
+    Private Sub level2_Click(sender As Object, e As EventArgs) Handles level2.Click
+
+    End Sub
+    Private Sub level3_Click(sender As Object, e As EventArgs) Handles level3.Click
+
+    End Sub
+
+
+End Class
