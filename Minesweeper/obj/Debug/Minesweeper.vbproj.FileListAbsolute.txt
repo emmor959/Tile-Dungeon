@@ -25,3 +25,14 @@ C:\Users\emmor959\Desktop\New folder (3)\Minesweeper\bin\Debug\Minesweeper.exe.c
 C:\Users\emmor959\Desktop\New folder (3)\Minesweeper\obj\Debug\Minesweeper.exe
 C:\Users\emmor959\Desktop\New folder (3)\Minesweeper\obj\Debug\Minesweeper.xml
 C:\Users\emmor959\Desktop\New folder (3)\Minesweeper\obj\Debug\Minesweeper.pdb
+C:\Users\emmor959\Desktop\Tile Dungeon Game\Minesweeper\bin\Debug\Minesweeper.exe.config
+C:\Users\emmor959\Desktop\Tile Dungeon Game\Minesweeper\obj\Debug\Minesweeper.exe
+C:\Users\emmor959\Desktop\Tile Dungeon Game\Minesweeper\obj\Debug\Minesweeper.xml
+C:\Users\emmor959\Desktop\Tile Dungeon Game\Minesweeper\obj\Debug\Minesweeper.pdb
+C:\Users\emmor959\Desktop\Tile Dungeon Game\Minesweeper\bin\Debug\Minesweeper.exe
+C:\Users\emmor959\Desktop\Tile Dungeon Game\Minesweeper\bin\Debug\Minesweeper.pdb
+C:\Users\emmor959\Desktop\Tile Dungeon Game\Minesweeper\bin\Debug\Minesweeper.xml
+C:\Users\emmor959\Desktop\Tile Dungeon Game\Minesweeper\obj\Debug\Minesweeper.vbprojResolveAssemblyReference.cache
+C:\Users\emmor959\Desktop\Tile Dungeon Game\Minesweeper\obj\Debug\Minesweeper.Form1.resources
+C:\Users\emmor959\Desktop\Tile Dungeon Game\Minesweeper\obj\Debug\Minesweeper.Resources.resources
+C:\Users\emmor959\Desktop\Tile Dungeon Game\Minesweeper\obj\Debug\Minesweeper.vbproj.GenerateResource.Cache
