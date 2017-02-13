@@ -70,16 +70,18 @@
 
             Next
         Next
-        playx = 2
-        playy = 5
+
+        'SETS THE PLAYER LOCATION BASED ON TILE
+        playx = 1
+        playy = 1
         m_Game(0, 0, playx, playy).setPlayer(True)
 
 
-
+        'GENERATES THE ROOM AND DEFAULTS ALL TILES TO BASE TEXTURE
         If roomindex = 0 And levelindex = 0 Then
             Dim buttonArray(16, 16) As Button
-            For i = 0 To 16
-                For i2 = 0 To 16
+            For i = 0 To 15
+                For i2 = 0 To 15
                     buttonArray(i, i2) = New System.Windows.Forms.Button()
                     buttonArray(i, i2).Location = New System.Drawing.Point((i * tilesize), (i2 * tilesize) + tilesize)
                     buttonArray(i, i2).Name = (i.ToString + "_" + i2.ToString)
@@ -96,6 +98,52 @@
                     Me.Controls.Add(buttonArray(i, i2))
                 Next
             Next
+            'CREATES TOP WALL
+            For i = 0 To 15
+                buttonArray(i, 0).BackgroundImage = ImageList1.Images(2)
+                m_Game(0, 0, i, 0).SetIndex(2)
+            Next
+            'CREATES LEFT WALL
+            For i2 = 0 To 15
+                buttonArray(0, i2).BackgroundImage = ImageList1.Images(2)
+                m_Game(0, 0, 0, i2).SetIndex(2)
+            Next
+            'CREATES BOTTOM WALL
+            For i = 0 To 15
+                buttonArray(i, 15).BackgroundImage = ImageList1.Images(2)
+                m_Game(0, 0, i, 15).SetIndex(2)
+            Next
+            'CREATES RIGHT WALL
+            For i2 = 0 To 15
+                buttonArray(15, i2).BackgroundImage = ImageList1.Images(2)
+                m_Game(0, 0, 15, i2).SetIndex(2)
+            Next
+            'CREATES A WALL INSIDE THE ROOM
+            For i = 0 To 13
+                buttonArray(i, 2).BackgroundImage = ImageList1.Images(2)
+                m_Game(0, 0, i, 2).SetIndex(2)
+            Next
+            'CREATES A WALL INSIDE THE ROOM
+            For i = 2 To 15
+                buttonArray(i, 4).BackgroundImage = ImageList1.Images(2)
+                m_Game(0, 0, i, 4).SetIndex(2)
+            Next
+            'CREATES A WALL INSIDE THE ROOM
+            For i = 0 To 13
+                buttonArray(i, 6).BackgroundImage = ImageList1.Images(2)
+                m_Game(0, 0, i, 6).SetIndex(2)
+            Next
+            'CREATES A WALL INSIDE THE ROOM
+            For i = 2 To 15
+                buttonArray(i, 8).BackgroundImage = ImageList1.Images(2)
+                m_Game(0, 0, i, 8).SetIndex(2)
+            Next
+
+
+
+
+
+
 
 
 
@@ -104,11 +152,7 @@
             buttonArray(playx, playy).BackgroundImage = ImageList1.Images(1)
 
             m_buttonArray = buttonArray
-            ''  For i = 0 To 16
-            ''  For i2 = 0 To 16
-            ''          m_buttonArray(i, i2).BackgroundImage = ImageList1.Images(0)
-            ''   Next
-            ''   Next
+
         End If
     End Sub
     Private Sub level2_Click(sender As Object, e As EventArgs) Handles level2.Click
@@ -118,23 +162,27 @@
 
     End Sub
 
+    Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick
+
+    End Sub
+
     Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
-        If e.KeyCode = Keys.D And playx <> 16 Then
+        If e.KeyCode = Keys.D And playx <> 15 And m_Game(0, 0, playx + 1, playy).GetIndex <> 2 Then
             m_buttonArray(playx, playy).BackgroundImage = ImageList1.Images(0)
             playx += 1
             m_buttonArray(playx, playy).BackgroundImage = ImageList1.Images(1)
         End If
-        If e.KeyCode = Keys.W And playy <> 0 Then
+        If e.KeyCode = Keys.W And playy <> 0 And m_Game(0, 0, playx, playy - 1).GetIndex <> 2 Then
             m_buttonArray(playx, playy).BackgroundImage = ImageList1.Images(0)
             playy -= 1
             m_buttonArray(playx, playy).BackgroundImage = ImageList1.Images(1)
         End If
-        If e.KeyCode = Keys.A And playx <> 0 Then
+        If e.KeyCode = Keys.A And playx <> 0 And m_Game(0, 0, playx - 1, playy).GetIndex <> 2 Then
             m_buttonArray(playx, playy).BackgroundImage = ImageList1.Images(0)
             playx -= 1
             m_buttonArray(playx, playy).BackgroundImage = ImageList1.Images(1)
         End If
-        If e.KeyCode = Keys.S And playy <> 16 Then
+        If e.KeyCode = Keys.S And playy <> 15 And m_Game(0, 0, playx, playy + 1).GetIndex <> 2 Then
             m_buttonArray(playx, playy).BackgroundImage = ImageList1.Images(0)
             playy += 1
             m_buttonArray(playx, playy).BackgroundImage = ImageList1.Images(1)

@@ -48,7 +48,7 @@ Partial Class Form1
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.TimerToolStripMenuItem, Me.BombsLeftToolStripMenuItem, Me.XYPOS_MENU})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(399, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(406, 24)
         Me.MenuStrip1.TabIndex = 3
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -113,12 +113,13 @@ Partial Class Form1
         Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
         Me.ImageList1.Images.SetKeyName(0, "Bad Brick Tile.png")
         Me.ImageList1.Images.SetKeyName(1, "Bad Brick Tile - Copy.png")
+        Me.ImageList1.Images.SetKeyName(2, "Wall Brick.png")
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(399, 435)
+        Me.ClientSize = New System.Drawing.Size(406, 428)
         Me.Controls.Add(Me.MenuStrip1)
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "Form1"
