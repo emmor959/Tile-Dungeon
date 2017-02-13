@@ -138,8 +138,16 @@
                 buttonArray(i, 8).BackgroundImage = ImageList1.Images(2)
                 m_Game(0, 0, i, 8).SetIndex(2)
             Next
-
-
+            'Creates VERTICAL wall in room
+            For i2 = 8 To 13
+                buttonArray(2, i2).BackgroundImage = ImageList1.Images(2)
+                m_Game(0, 0, 2, i2).SetIndex(2)
+            Next
+            'Creates VERTICAL wall in room
+            For i2 = 10 To 15
+                buttonArray(4, i2).BackgroundImage = ImageList1.Images(2)
+                m_Game(0, 0, 4, i2).SetIndex(2)
+            Next
 
 
 
