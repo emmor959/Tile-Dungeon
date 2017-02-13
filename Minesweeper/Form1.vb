@@ -138,8 +138,16 @@
                 buttonArray(i, 8).BackgroundImage = ImageList1.Images(2)
                 m_Game(0, 0, i, 8).SetIndex(2)
             Next
-
-
+            'Creates VERTICAL wall in room
+            For i2 = 8 To 13
+                buttonArray(2, i2).BackgroundImage = ImageList1.Images(2)
+                m_Game(0, 0, 2, i2).SetIndex(2)
+            Next
+            'Creates VERTICAL wall in room
+            For i2 = 10 To 15
+                buttonArray(4, i2).BackgroundImage = ImageList1.Images(2)
+                m_Game(0, 0, 4, i2).SetIndex(2)
+            Next
 
 
 
@@ -183,6 +191,27 @@
             m_buttonArray(playx, playy).BackgroundImage = ImageList1.Images(1)
         End If
         If e.KeyCode = Keys.S And playy <> 15 And m_Game(0, 0, playx, playy + 1).GetIndex <> 2 Then
+            m_buttonArray(playx, playy).BackgroundImage = ImageList1.Images(0)
+            playy += 1
+            m_buttonArray(playx, playy).BackgroundImage = ImageList1.Images(1)
+        End If
+
+        If e.KeyCode = Keys.Right And playx <> 15 And m_Game(0, 0, playx + 1, playy).GetIndex <> 2 Then
+            m_buttonArray(playx, playy).BackgroundImage = ImageList1.Images(0)
+            playx += 1
+            m_buttonArray(playx, playy).BackgroundImage = ImageList1.Images(1)
+        End If
+        If e.KeyCode = Keys.Up And playy <> 0 And m_Game(0, 0, playx, playy - 1).GetIndex <> 2 Then
+            m_buttonArray(playx, playy).BackgroundImage = ImageList1.Images(0)
+            playy -= 1
+            m_buttonArray(playx, playy).BackgroundImage = ImageList1.Images(1)
+        End If
+        If e.KeyCode = Keys.Left And playx <> 0 And m_Game(0, 0, playx - 1, playy).GetIndex <> 2 Then
+            m_buttonArray(playx, playy).BackgroundImage = ImageList1.Images(0)
+            playx -= 1
+            m_buttonArray(playx, playy).BackgroundImage = ImageList1.Images(1)
+        End If
+        If e.KeyCode = Keys.Down And playy <> 15 And m_Game(0, 0, playx, playy + 1).GetIndex <> 2 Then
             m_buttonArray(playx, playy).BackgroundImage = ImageList1.Images(0)
             playy += 1
             m_buttonArray(playx, playy).BackgroundImage = ImageList1.Images(1)
