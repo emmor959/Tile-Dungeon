@@ -163,7 +163,7 @@
             m_Game(0, 0, 1, 14).SetIndex(3)
 
             HPPACK1.SetHealth(3)
-            buttonArray(1, 14).BackgroundImage = ImageList1.Images(3)
+            buttonArray(1, 14).BackgroundImage = ImageList1.Images(7)
 
 
             'Places Player
@@ -260,34 +260,83 @@
         'Arrow Key Player Controls
 
         If e.KeyCode = Keys.Right And Player1.GetX() <> 15 And m_Game(0, 0, Player1.GetX() + 1, Player1.GetY()).GetIndex <> 6 Then
-            If m_Game(0, 0, Player1.GetX() + 1, Player1.GetY()).CheckForEnemy = False Then
+
+            If Player1.GetImageNum <> 0 Then
                 m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(0)
-                Player1.SetX(Player1.GetX() + 1)
+                Player1.ImageNum(0)
+            Else
+                If m_Game(0, 0, Player1.GetX() + 1, Player1.GetY()).CheckForEnemy = False Then
+                    m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(4)
+                    Player1.SetX(Player1.GetX() + 1)
+                    m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(0)
+                End If
+            End If
+
+
+        End If
+        If e.KeyCode = Keys.Up And Player1.GetY() <> 0 And m_Game(0, 0, Player1.GetX(), Player1.GetY() - 1).GetIndex <> 6 Then
+
+            If Player1.GetImageNum <> 1 Then
                 m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(1)
+                Player1.ImageNum(1)
+            Else
+                If m_Game(0, 0, Player1.GetX(), Player1.GetY() - 1).CheckForEnemy = False Then
+                    m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(4)
+                    Player1.SetY(Player1.GetY() - 1)
+                    m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(1)
+                End If
+
             End If
         End If
-        If e.KeyCode = Keys.Up And Player1.GetY() <> 0 And m_Game(0, 0, Player1.GetX(), Player1.GetY() - 1).GetIndex <> 4 Then
-            If m_Game(0, 0, Player1.GetX(), Player1.GetY() - 1).CheckForEnemy = False Then
-                m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(0)
-                Player1.SetY(Player1.GetY() - 1)
-                m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(1)
+        If e.KeyCode = Keys.Left And Player1.GetX() <> 0 And m_Game(0, 0, Player1.GetX() - 1, Player1.GetY()).GetIndex <> 6 Then
+
+            If Player1.GetImageNum <> 2 Then
+                m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(2)
+                Player1.ImageNum(2)
+            Else
+                If m_Game(0, 0, Player1.GetX() - 1, Player1.GetY()).CheckForEnemy = False Then
+                    m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(4)
+                    Player1.SetX(Player1.GetX() - 1)
+                    m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(2)
+                End If
             End If
         End If
-        If e.KeyCode = Keys.Left And Player1.GetX() <> 0 And m_Game(0, 0, Player1.GetX() - 1, Player1.GetY()).GetIndex <> 4 Then
-            If m_Game(0, 0, Player1.GetX() - 1, Player1.GetY()).CheckForEnemy = False Then
-                m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(0)
-                Player1.SetX(Player1.GetX() - 1)
-                m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(1)
-            End If
-        End If
-        If e.KeyCode = Keys.Down And Player1.GetY() <> 15 And m_Game(0, 0, Player1.GetX(), Player1.GetY() + 1).GetIndex <> 4 Then
-            If m_Game(0, 0, Player1.GetX(), Player1.GetY() + 1).CheckForEnemy = False Then
-                m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(0)
-                Player1.SetY(Player1.GetY() + 1)
-                m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(1)
+        If e.KeyCode = Keys.Down And Player1.GetY() <> 15 And m_Game(0, 0, Player1.GetX(), Player1.GetY() + 1).GetIndex <> 6 Then
+            If Player1.GetImageNum <> 3 Then
+                m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(3)
+                Player1.ImageNum(3)
+            Else
+                If m_Game(0, 0, Player1.GetX(), Player1.GetY() + 1).CheckForEnemy = False Then
+                    m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(4)
+                    Player1.SetY(Player1.GetY() + 1)
+                    m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(3)
+                End If
             End If
         End If
         If e.KeyCode = Keys.Space Then
+
+            If m_Game(0, 0, Player1.GetX() + 1, Player1.GetY()).CheckForEnemy Then
+
+            End If
+            If m_Game(0, 0, Player1.GetX(), Player1.GetY() - 1).CheckForEnemy Then
+
+            End If
+            If m_Game(0, 0, Player1.GetX() - 1, Player1.GetY()).CheckForEnemy Then
+
+            End If
+            If m_Game(0, 0, Player1.GetX(), Player1.GetY() + 1).CheckForEnemy Then
+
+            End If
+
+
+
+
+
+
+
+
+
+
 
         End If
 

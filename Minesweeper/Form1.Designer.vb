@@ -111,10 +111,10 @@ Partial Class Form1
         '
         Me.ImageList1.ImageStream = CType(resources.GetObject("ImageList1.ImageStream"), System.Windows.Forms.ImageListStreamer)
         Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
-        Me.ImageList1.Images.SetKeyName(0, "Right.png")
-        Me.ImageList1.Images.SetKeyName(1, "UP.png")
-        Me.ImageList1.Images.SetKeyName(2, "Left.png")
-        Me.ImageList1.Images.SetKeyName(3, "Down.png")
+        Me.ImageList1.Images.SetKeyName(0, "M_Adult(right).png")
+        Me.ImageList1.Images.SetKeyName(1, "M_Adult(Back).png")
+        Me.ImageList1.Images.SetKeyName(2, "M_Adult(left).png")
+        Me.ImageList1.Images.SetKeyName(3, "M_Adult(Front).png")
         Me.ImageList1.Images.SetKeyName(4, "Bad Brick Tile.png")
         Me.ImageList1.Images.SetKeyName(5, "Bad Brick Tile - Copy.png")
         Me.ImageList1.Images.SetKeyName(6, "Wall Brick.png")
