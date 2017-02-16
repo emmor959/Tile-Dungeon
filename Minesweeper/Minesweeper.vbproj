@@ -87,6 +87,9 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsEnemy.vb" />
+    <Compile Include="clsPickup.vb" />
+    <Compile Include="clsPlayer.vb" />
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
