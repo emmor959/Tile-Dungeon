@@ -2,7 +2,7 @@
     Dim EnemyX As Integer
     Dim EnemyY As Integer
     Dim ImageIndex As Integer
-
+    Dim hp As Integer
     Sub New(x As Integer, y As Integer)
         EnemyX = x
         EnemyY = y
@@ -25,4 +25,10 @@
     Function GetImageNum()
         Return ImageIndex
     End Function
+    Function GetHealth()
+        Return hp
+    End Function
+    Sub SetHealth(x As Integer)
+        hp = x
+    End Sub
 End Class

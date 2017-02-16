@@ -13,7 +13,7 @@
     Dim roomindex As Integer
     Dim HPPACK1 As New clsPickup()
     Dim Player1 As clsPlayer
-    Dim Enemy1 As clsEnemy
+    Dim lvl1EnemyArray(0) As clsEnemy
     Private Sub GenerateBoard(x As Integer, y As Integer, z As Integer)
         'for didgital logic array
         Dim colloms As Integer
@@ -79,9 +79,11 @@
         m_Game(0, 0, Player1.GetX(), Player1.GetY()).setPlayer(True)
 
         'SET ENEMY LOCATIONS
-        '3,13
-        Enemy1 = New clsEnemy(3, 13)
-        m_Game(0, 0, Enemy1.GetX(), Enemy1.GetY()).setEnemy(True)
+        '3,13       
+
+        lvl1EnemyArray(0) = New clsEnemy(3, 13)
+        m_Game(0, 0, lvl1EnemyArray(0).GetX, lvl1EnemyArray(0).GetY).setEnemy(True)
+        lvl1EnemyArray(0).SetHealth(3)
 
         'GENERATES THE ROOM AND DEFAULTS ALL TILES TO BASE TEXTURE
         If roomindex = 0 And levelindex = 0 Then
@@ -172,9 +174,16 @@
 
             m_buttonArray = buttonArray
 
-            'Place Enemys
+            'Place Enemys            
 
-            m_buttonArray(Enemy1.GetX(), Enemy1.GetY()).BackgroundImage = ImageList1.Images(1)
+            For i = 0 To lvl1EnemyArray.Count - 1
+                m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(1)
+            Next
+
+
+
+
+
 
         End If
         '
@@ -196,9 +205,6 @@
 
     End Sub
 
-    Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick
-
-    End Sub
 
     Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
         'Wasd Key Character Controls
@@ -315,18 +321,72 @@
         End If
         If e.KeyCode = Keys.Space Then
 
-            If m_Game(0, 0, Player1.GetX() + 1, Player1.GetY()).CheckForEnemy Then
 
-            End If
-            If m_Game(0, 0, Player1.GetX(), Player1.GetY() - 1).CheckForEnemy Then
+            'Rough Framework for fighting, need to add array of enemys and need to add a for next statement to check against enemys like how enemy1 is checked agaisnt for here.
+            If Player1.GetImageNum = 0 Then
+                AR.Enabled = True
+                If m_Game(0, 0, Player1.GetX() + 1, Player1.GetY()).CheckForEnemy = True Then
 
-            End If
-            If m_Game(0, 0, Player1.GetX() - 1, Player1.GetY()).CheckForEnemy Then
+                    For i = 0 To lvl1EnemyArray.Count - 1
+                        If lvl1EnemyArray(i).GetX = Player1.GetX + 1 And lvl1EnemyArray(i).GetY = Player1.GetY Then
+                            lvl1EnemyArray(i).SetHealth(lvl1EnemyArray(i).GetHealth() - 1)
+                            If lvl1EnemyArray(i).GetHealth <= 0 Then
+                                m_Game(0, 0, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(False)
+                                m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(4)
+                            End If
+                        End If
+                    Next
 
-            End If
-            If m_Game(0, 0, Player1.GetX(), Player1.GetY() + 1).CheckForEnemy Then
 
+                End If
             End If
+
+            If Player1.GetImageNum = 1 Then
+                AT.Enabled = True
+                If m_Game(0, 0, Player1.GetX(), Player1.GetY() - 1).CheckForEnemy = True Then
+                    For i = 0 To lvl1EnemyArray.Count - 1
+                        If lvl1EnemyArray(i).GetX = Player1.GetX And lvl1EnemyArray(i).GetY = Player1.GetY - 1 Then
+                            lvl1EnemyArray(i).SetHealth(lvl1EnemyArray(i).GetHealth() - 1)
+                            If lvl1EnemyArray(i).GetHealth <= 0 Then
+                                m_Game(0, 0, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(False)
+                                m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(4)
+                            End If
+                        End If
+                    Next
+                End If
+            End If
+
+            If Player1.GetImageNum = 2 Then
+                AL.Enabled = True
+                If m_Game(0, 0, Player1.GetX() - 1, Player1.GetY()).CheckForEnemy = True Then
+                    For i = 0 To lvl1EnemyArray.Count - 1
+                        If lvl1EnemyArray(i).GetX = Player1.GetX - 1 And lvl1EnemyArray(i).GetY = Player1.GetY Then
+                            lvl1EnemyArray(i).SetHealth(lvl1EnemyArray(i).GetHealth() - 1)
+                            If lvl1EnemyArray(i).GetHealth <= 0 Then
+                                m_Game(0, 0, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(False)
+                                m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(4)
+                            End If
+                        End If
+                    Next
+                End If
+            End If
+
+            If Player1.GetImageNum = 3 Then
+                AD.Enabled = True
+                If m_Game(0, 0, Player1.GetX(), Player1.GetY() + 1).CheckForEnemy = True Then
+
+                    For i = 0 To lvl1EnemyArray.Count - 1
+                        If lvl1EnemyArray(i).GetX = Player1.GetX And lvl1EnemyArray(i).GetY = Player1.GetY + 1 Then
+                            lvl1EnemyArray(i).SetHealth(lvl1EnemyArray(i).GetHealth() - 1)
+                            If lvl1EnemyArray(i).GetHealth <= 0 Then
+                                m_Game(0, 0, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(False)
+                                m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(4)
+                            End If
+                        End If
+                    Next
+                End If
+            End If
+
 
 
 
@@ -343,4 +403,49 @@
 
 
     End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles AR.Tick
+
+        If Player1.GetImageNum <> 8 Then
+            m_buttonArray(Player1.GetX, Player1.GetY).BackgroundImage = ImageList1.Images(8)
+            Player1.ImageNum(8)
+        Else
+            Player1.ImageNum(0)
+            m_buttonArray(Player1.GetX, Player1.GetY).BackgroundImage = ImageList1.Images(0)
+            AR.Enabled = False
+        End If
+    End Sub
+    Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles AT.Tick
+        If Player1.GetImageNum <> 8 Then
+            m_buttonArray(Player1.GetX, Player1.GetY).BackgroundImage = ImageList1.Images(8)
+            Player1.ImageNum(8)
+        Else
+            Player1.ImageNum(1)
+            m_buttonArray(Player1.GetX, Player1.GetY).BackgroundImage = ImageList1.Images(1)
+            AT.Enabled = False
+        End If
+    End Sub
+
+    Private Sub AL_Tick(sender As Object, e As EventArgs) Handles AL.Tick
+        If Player1.GetImageNum <> 8 Then
+            m_buttonArray(Player1.GetX, Player1.GetY).BackgroundImage = ImageList1.Images(8)
+            Player1.ImageNum(8)
+        Else
+            Player1.ImageNum(2)
+            m_buttonArray(Player1.GetX, Player1.GetY).BackgroundImage = ImageList1.Images(2)
+            AL.Enabled = False
+        End If
+    End Sub
+
+    Private Sub AD_Tick(sender As Object, e As EventArgs) Handles AD.Tick
+        If Player1.GetImageNum <> 8 Then
+            m_buttonArray(Player1.GetX, Player1.GetY).BackgroundImage = ImageList1.Images(8)
+            Player1.ImageNum(8)
+        Else
+            Player1.ImageNum(3)
+            m_buttonArray(Player1.GetX, Player1.GetY).BackgroundImage = ImageList1.Images(3)
+            AD.Enabled = False
+        End If
+    End Sub
 End Class
+

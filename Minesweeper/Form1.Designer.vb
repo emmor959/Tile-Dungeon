@@ -24,7 +24,7 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
-        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.AR = New System.Windows.Forms.Timer(Me.components)
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GenerateBoardToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -34,14 +34,12 @@ Partial Class Form1
         Me.TimerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BombsLeftToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.XYPOS_MENU = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
+        Me.AT = New System.Windows.Forms.Timer(Me.components)
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
+        Me.AL = New System.Windows.Forms.Timer(Me.components)
+        Me.AD = New System.Windows.Forms.Timer(Me.components)
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'Timer1
-        '
-        Me.Timer1.Interval = 1000
         '
         'MenuStrip1
         '
@@ -102,11 +100,6 @@ Partial Class Form1
         Me.XYPOS_MENU.Size = New System.Drawing.Size(22, 20)
         Me.XYPOS_MENU.Text = " "
         '
-        'Timer2
-        '
-        Me.Timer2.Enabled = True
-        Me.Timer2.Interval = 1
-        '
         'ImageList1
         '
         Me.ImageList1.ImageStream = CType(resources.GetObject("ImageList1.ImageStream"), System.Windows.Forms.ImageListStreamer)
@@ -119,6 +112,7 @@ Partial Class Form1
         Me.ImageList1.Images.SetKeyName(5, "Bad Brick Tile - Copy.png")
         Me.ImageList1.Images.SetKeyName(6, "Wall Brick.png")
         Me.ImageList1.Images.SetKeyName(7, "Untitled.png")
+        Me.ImageList1.Images.SetKeyName(8, "Attack image placeholder.png")
         '
         'Form1
         '
@@ -135,16 +129,18 @@ Partial Class Form1
 
     End Sub
     Friend WithEvents Button2 As Button
-    Friend WithEvents Timer1 As Timer
+    Friend WithEvents AR As Timer
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents GenerateBoardToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents TimerToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents BombsLeftToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents XYPOS_MENU As ToolStripMenuItem
-    Friend WithEvents Timer2 As Timer
+    Friend WithEvents AT As Timer
     Friend WithEvents ImageList1 As ImageList
     Friend WithEvents level1 As ToolStripMenuItem
     Friend WithEvents level2 As ToolStripMenuItem
     Friend WithEvents level3 As ToolStripMenuItem
+    Friend WithEvents AL As Timer
+    Friend WithEvents AD As Timer
 End Class
