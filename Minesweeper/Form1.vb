@@ -13,7 +13,7 @@
     Dim roomindex As Integer
     Dim HPPACK1 As New clsPickup()
     Dim Player1 As clsPlayer
-    Dim lvl1EnemyArray(0) As clsEnemy
+    Dim lvl1EnemyArray(1) As clsEnemy
     Private Sub GenerateBoard(x As Integer, y As Integer, z As Integer)
         'for didgital logic array
         Dim colloms As Integer
@@ -84,7 +84,9 @@
         lvl1EnemyArray(0) = New clsEnemy(3, 13)
         m_Game(0, 0, lvl1EnemyArray(0).GetX, lvl1EnemyArray(0).GetY).setEnemy(True)
         lvl1EnemyArray(0).SetHealth(3)
-
+        lvl1EnemyArray(1) = New clsEnemy(8, 1)
+        m_Game(0, 0, lvl1EnemyArray(1).GetX, lvl1EnemyArray(1).GetY).setEnemy(True)
+        lvl1EnemyArray(1).SetHealth(3)
         'GENERATES THE ROOM AND DEFAULTS ALL TILES TO BASE TEXTURE
         If roomindex = 0 And levelindex = 0 Then
             Dim buttonArray(16, 16) As Button
@@ -445,6 +447,24 @@
             Player1.ImageNum(3)
             m_buttonArray(Player1.GetX, Player1.GetY).BackgroundImage = ImageList1.Images(3)
             AD.Enabled = False
+        End If
+    End Sub
+    Dim packstate As Integer
+    Private Sub FileToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FileToolStripMenuItem.Click
+
+        If packstate = 0 Then
+            BackPackLabel.Visible = True
+            BackpackList.Visible = True
+            BackPackPicture.Visible = True
+            BackPackTextBox.Visible = True
+            packstate = 1
+
+        ElseIf packstate = 1 Then
+            BackPackLabel.Visible = False
+            BackpackList.Visible = False
+            BackPackPicture.Visible = False
+            BackPackTextBox.Visible = False
+            packstate = 0
         End If
     End Sub
 End Class
