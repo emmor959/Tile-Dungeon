@@ -64,7 +64,9 @@
     End Sub
 
     Private Sub ToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles level1.Click
-        'Room 1 (0,0)
+
+
+
         For i = 1 To 16
             For i2 = 1 To 16
 
@@ -73,8 +75,17 @@
             Next
         Next
 
-        'SETS THE PLAYER LOCATION BASED ON TILE
+        Room1()
 
+
+
+
+
+
+
+    End Sub
+    Sub Room1()
+        'SETS THE PLAYER LOCATION BASED ON TILE
         Player1 = New clsPlayer(1, 1)
         m_Game(0, 0, Player1.GetX(), Player1.GetY()).setPlayer(True)
 
@@ -108,8 +119,6 @@
                     Me.Controls.Add(buttonArray(i, i2))
                 Next
             Next
-
-
             'GENERATE LEVEL WALLS
 
             'CREATES TOP WALL
@@ -189,15 +198,17 @@
 
         End If
         '
+        m_buttonArray(4, 1).BackgroundImage = ImageList1.Images(11)
 
 
 
 
 
-
-
-
-
+        PictureBox1.Image = ImageList1.Images(9)
+        PictureBox2.Image = ImageList1.Images(10)
+        PictureBox3.Image = ImageList1.Images(10)
+    End Sub
+    Sub Room2()
 
     End Sub
     Private Sub level2_Click(sender As Object, e As EventArgs) Handles level2.Click
@@ -449,7 +460,7 @@
             AD.Enabled = False
         End If
     End Sub
-    Dim packstate As Integer
+    Dim packstate As Integer = 1
     Private Sub FileToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FileToolStripMenuItem.Click
 
         If packstate = 0 Then

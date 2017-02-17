@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Form1
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class Form1
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
@@ -52,8 +52,6 @@ Partial Class Form1
         Me.PictureBox8 = New System.Windows.Forms.PictureBox()
         Me.PictureBox9 = New System.Windows.Forms.PictureBox()
         Me.PictureBox10 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox11 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox12 = New System.Windows.Forms.PictureBox()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.BackPackPicture, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -66,8 +64,6 @@ Partial Class Form1
         CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox10, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox11, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox12, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'AR
@@ -93,7 +89,7 @@ Partial Class Form1
         '
         Me.GenerateBoardToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.level1, Me.level2, Me.level3})
         Me.GenerateBoardToolStripMenuItem.Name = "GenerateBoardToolStripMenuItem"
-        Me.GenerateBoardToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.GenerateBoardToolStripMenuItem.Size = New System.Drawing.Size(109, 22)
         Me.GenerateBoardToolStripMenuItem.Text = "Levels:"
         '
         'level1
@@ -148,6 +144,9 @@ Partial Class Form1
         Me.ImageList1.Images.SetKeyName(6, "Wall Brick.png")
         Me.ImageList1.Images.SetKeyName(7, "Untitled.png")
         Me.ImageList1.Images.SetKeyName(8, "Attack image placeholder.png")
+        Me.ImageList1.Images.SetKeyName(9, "")
+        Me.ImageList1.Images.SetKeyName(10, "Bigger Heart.png")
+        Me.ImageList1.Images.SetKeyName(11, "64bitman.png")
         '
         'AL
         '
@@ -197,111 +196,113 @@ Partial Class Form1
         '
         'PictureBox1
         '
-        Me.PictureBox1.BackColor = System.Drawing.SystemColors.GradientActiveCaption
-        Me.PictureBox1.Location = New System.Drawing.Point(0, 405)
+        Me.PictureBox1.BackColor = System.Drawing.Color.Black
+        Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.PictureBox1.Location = New System.Drawing.Point(0, 408)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(34, 33)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox1.TabIndex = 8
         Me.PictureBox1.TabStop = False
         '
         'PictureBox2
         '
-        Me.PictureBox2.BackColor = System.Drawing.SystemColors.GradientActiveCaption
-        Me.PictureBox2.Location = New System.Drawing.Point(28, 405)
+        Me.PictureBox2.BackColor = System.Drawing.Color.Black
+        Me.PictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.PictureBox2.Location = New System.Drawing.Point(39, 408)
         Me.PictureBox2.Name = "PictureBox2"
         Me.PictureBox2.Size = New System.Drawing.Size(34, 33)
+        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox2.TabIndex = 9
         Me.PictureBox2.TabStop = False
         '
         'PictureBox3
         '
-        Me.PictureBox3.BackColor = System.Drawing.SystemColors.GradientActiveCaption
-        Me.PictureBox3.Location = New System.Drawing.Point(57, 405)
+        Me.PictureBox3.BackColor = System.Drawing.Color.Black
+        Me.PictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.PictureBox3.Location = New System.Drawing.Point(78, 408)
         Me.PictureBox3.Name = "PictureBox3"
         Me.PictureBox3.Size = New System.Drawing.Size(34, 33)
+        Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox3.TabIndex = 10
         Me.PictureBox3.TabStop = False
         '
         'PictureBox4
         '
-        Me.PictureBox4.BackColor = System.Drawing.SystemColors.GradientActiveCaption
-        Me.PictureBox4.Location = New System.Drawing.Point(89, 405)
+        Me.PictureBox4.BackColor = System.Drawing.Color.Black
+        Me.PictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.PictureBox4.Location = New System.Drawing.Point(117, 408)
         Me.PictureBox4.Name = "PictureBox4"
         Me.PictureBox4.Size = New System.Drawing.Size(34, 33)
+        Me.PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox4.TabIndex = 11
         Me.PictureBox4.TabStop = False
         '
         'PictureBox5
         '
-        Me.PictureBox5.BackColor = System.Drawing.SystemColors.GradientActiveCaption
-        Me.PictureBox5.Location = New System.Drawing.Point(121, 405)
+        Me.PictureBox5.BackColor = System.Drawing.Color.Black
+        Me.PictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.PictureBox5.Location = New System.Drawing.Point(156, 408)
         Me.PictureBox5.Name = "PictureBox5"
         Me.PictureBox5.Size = New System.Drawing.Size(34, 33)
+        Me.PictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox5.TabIndex = 12
         Me.PictureBox5.TabStop = False
         '
         'PictureBox6
         '
-        Me.PictureBox6.BackColor = System.Drawing.SystemColors.GradientActiveCaption
-        Me.PictureBox6.Location = New System.Drawing.Point(154, 405)
+        Me.PictureBox6.BackColor = System.Drawing.Color.Black
+        Me.PictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.PictureBox6.Location = New System.Drawing.Point(195, 408)
         Me.PictureBox6.Name = "PictureBox6"
         Me.PictureBox6.Size = New System.Drawing.Size(34, 33)
+        Me.PictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox6.TabIndex = 13
         Me.PictureBox6.TabStop = False
         '
         'PictureBox7
         '
-        Me.PictureBox7.BackColor = System.Drawing.SystemColors.GradientActiveCaption
-        Me.PictureBox7.Location = New System.Drawing.Point(186, 405)
+        Me.PictureBox7.BackColor = System.Drawing.Color.Black
+        Me.PictureBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.PictureBox7.Location = New System.Drawing.Point(234, 408)
         Me.PictureBox7.Name = "PictureBox7"
         Me.PictureBox7.Size = New System.Drawing.Size(34, 33)
+        Me.PictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox7.TabIndex = 14
         Me.PictureBox7.TabStop = False
         '
         'PictureBox8
         '
-        Me.PictureBox8.BackColor = System.Drawing.SystemColors.GradientActiveCaption
-        Me.PictureBox8.Location = New System.Drawing.Point(218, 405)
+        Me.PictureBox8.BackColor = System.Drawing.Color.Black
+        Me.PictureBox8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.PictureBox8.Location = New System.Drawing.Point(273, 408)
         Me.PictureBox8.Name = "PictureBox8"
         Me.PictureBox8.Size = New System.Drawing.Size(34, 33)
+        Me.PictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox8.TabIndex = 15
         Me.PictureBox8.TabStop = False
         '
         'PictureBox9
         '
-        Me.PictureBox9.BackColor = System.Drawing.SystemColors.GradientActiveCaption
-        Me.PictureBox9.Location = New System.Drawing.Point(250, 405)
+        Me.PictureBox9.BackColor = System.Drawing.Color.Black
+        Me.PictureBox9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.PictureBox9.Location = New System.Drawing.Point(312, 408)
         Me.PictureBox9.Name = "PictureBox9"
         Me.PictureBox9.Size = New System.Drawing.Size(34, 33)
+        Me.PictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox9.TabIndex = 16
         Me.PictureBox9.TabStop = False
         '
         'PictureBox10
         '
-        Me.PictureBox10.BackColor = System.Drawing.SystemColors.GradientActiveCaption
-        Me.PictureBox10.Location = New System.Drawing.Point(283, 405)
+        Me.PictureBox10.BackColor = System.Drawing.Color.Black
+        Me.PictureBox10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.PictureBox10.Location = New System.Drawing.Point(351, 408)
         Me.PictureBox10.Name = "PictureBox10"
         Me.PictureBox10.Size = New System.Drawing.Size(34, 33)
+        Me.PictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox10.TabIndex = 17
         Me.PictureBox10.TabStop = False
-        '
-        'PictureBox11
-        '
-        Me.PictureBox11.BackColor = System.Drawing.SystemColors.GradientActiveCaption
-        Me.PictureBox11.Location = New System.Drawing.Point(315, 405)
-        Me.PictureBox11.Name = "PictureBox11"
-        Me.PictureBox11.Size = New System.Drawing.Size(34, 33)
-        Me.PictureBox11.TabIndex = 18
-        Me.PictureBox11.TabStop = False
-        '
-        'PictureBox12
-        '
-        Me.PictureBox12.BackColor = System.Drawing.SystemColors.GradientActiveCaption
-        Me.PictureBox12.Location = New System.Drawing.Point(348, 405)
-        Me.PictureBox12.Name = "PictureBox12"
-        Me.PictureBox12.Size = New System.Drawing.Size(34, 33)
-        Me.PictureBox12.TabIndex = 19
-        Me.PictureBox12.TabStop = False
         '
         'Form1
         '
@@ -309,8 +310,6 @@ Partial Class Form1
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.ClientSize = New System.Drawing.Size(387, 441)
-        Me.Controls.Add(Me.PictureBox12)
-        Me.Controls.Add(Me.PictureBox11)
         Me.Controls.Add(Me.PictureBox10)
         Me.Controls.Add(Me.PictureBox9)
         Me.Controls.Add(Me.PictureBox8)
@@ -341,8 +340,6 @@ Partial Class Form1
         CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox10, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox11, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox12, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -376,6 +373,4 @@ Partial Class Form1
     Friend WithEvents PictureBox8 As PictureBox
     Friend WithEvents PictureBox9 As PictureBox
     Friend WithEvents PictureBox10 As PictureBox
-    Friend WithEvents PictureBox11 As PictureBox
-    Friend WithEvents PictureBox12 As PictureBox
 End Class
