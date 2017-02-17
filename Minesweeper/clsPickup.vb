@@ -8,10 +8,10 @@
     Public Sub SetHealth(a As Integer)
         m_ReturnHealth = a
     End Sub
-    Public Sub GetGold(a As Integer)
+    Public Sub SetGold(a As Integer)
         m_ReturnGold = a
     End Sub
-    Public Sub GetItem(b As String)
+    Public Sub SetItem(b As String)
         m_returnItem = b
     End Sub
     Public Function HP()

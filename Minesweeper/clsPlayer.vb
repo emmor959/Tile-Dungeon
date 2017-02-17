@@ -3,7 +3,7 @@
     Dim playerX As Integer
     Dim playerY As Integer
     Dim ImageIndex As Integer
-
+    Dim player_hp As Integer
     Sub New(x As Integer, y As Integer)
         playerX = x
         playerY = y
@@ -25,5 +25,11 @@
     End Sub
     Function GetImageNum()
         Return ImageIndex
+    End Function
+    Sub hp(x As Integer)
+        player_hp = x
+    End Sub
+    Function GetHP()
+        Return player_hp
     End Function
 End Class
