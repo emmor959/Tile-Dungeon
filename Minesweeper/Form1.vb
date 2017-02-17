@@ -75,7 +75,7 @@
             Next
         Next
 
-        Room1()
+        Room1(0)
 
 
 
@@ -84,11 +84,16 @@
 
 
     End Sub
-    Sub Room1()
+    Sub Room1(start As Integer)
         'SETS THE PLAYER LOCATION BASED ON TILE
-        Player1 = New clsPlayer(1, 1)
-        m_Game(0, 0, Player1.GetX(), Player1.GetY()).setPlayer(True)
-
+        If start = 0 Then
+            Player1 = New clsPlayer(1, 1)
+            m_Game(0, 0, Player1.GetX(), Player1.GetY()).setPlayer(True)
+        End If
+        If start = 1 Then
+            Player1.SetX(14)
+            Player1.SetY(14)
+        End If
         'SET ENEMY LOCATIONS
         '3,13       
 
@@ -197,18 +202,53 @@
 
 
         End If
+        m_Game(0, 0, 15, 14).SetIndex(10)
         '
-        m_buttonArray(4, 1).BackgroundImage = ImageList1.Images(11)
-
-
-
-
-
         PictureBox1.Image = ImageList1.Images(9)
-        PictureBox2.Image = ImageList1.Images(10)
-        PictureBox3.Image = ImageList1.Images(10)
+        PictureBox2.Image = ImageList1.Images(9)
+        PictureBox3.Image = ImageList1.Images(9)
     End Sub
     Sub Room2()
+        For i = 0 To 15
+            For i2 = 0 To 15
+                m_buttonArray(i, i2).Dispose()
+            Next
+        Next
+        levelindex = 0
+        Dim buttonArray(16, 16) As Button
+            For i = 0 To 15
+                For i2 = 0 To 15
+                    buttonArray(i, i2) = New System.Windows.Forms.Button()
+                    buttonArray(i, i2).Location = New System.Drawing.Point((i * tilesize), (i2 * tilesize) + tilesize)
+                    buttonArray(i, i2).Name = (i.ToString + "_" + i2.ToString)
+                    buttonArray(i, i2).Size = New System.Drawing.Size(tilesize, tilesize)
+                    buttonArray(i, i2).TabIndex = 1
+                    buttonArray(i, i2).Text = ""
+                    buttonArray(i, i2).UseVisualStyleBackColor = True
+                    buttonArray(i, i2).BackColor = Color.Gray
+                    buttonArray(i, i2).BackgroundImage = ImageList1.Images(4)
+                    buttonArray(i, i2).FlatStyle = FlatStyle.Flat
+                    buttonArray(i, i2).BackgroundImageLayout = ImageLayout.Stretch
+                    buttonArray(i, i2).FlatAppearance.BorderSize = 0
+                    buttonArray(i, i2).Enabled = False
+                    Me.Controls.Add(buttonArray(i, i2))
+                Next
+            Next
+
+            'Set Player Starting Location.
+            Player1.SetX(1)
+            Player1.SetY(1)
+
+        Player1.ImageNum(1)
+        buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(Player1.GetImageNum())
+
+
+
+
+
+
+
+        m_buttonArray = buttonArray
 
     End Sub
     Private Sub level2_Click(sender As Object, e As EventArgs) Handles level2.Click
@@ -233,7 +273,9 @@
                     m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(0)
                 End If
             End If
-
+            If m_Game(0, 0, Player1.GetX + 1, Player1.GetY).GetIndex = 10 Then
+                Room2()
+            End If
 
         End If
         If e.KeyCode = Keys.W And Player1.GetY() <> 0 And m_Game(0, 0, Player1.GetX(), Player1.GetY() - 1).GetIndex <> 6 Then
