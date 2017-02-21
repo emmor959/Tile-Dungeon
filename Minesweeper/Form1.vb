@@ -11,7 +11,7 @@
     Dim tilesize As Integer = 24
     Dim levelindex As Integer
     Dim roomindex As Integer
-    Dim HPPACK1 As New clsPickup()
+    Dim HPPACK1 As New clsPickup(1, 14)
     Dim Player1 As clsPlayer
     Dim lvl1EnemyArray(1) As clsEnemy
     Private Sub GenerateBoard(x As Integer, y As Integer, z As Integer)
@@ -72,6 +72,7 @@
 
         lvl1EnemyArray(1).SetHealth(3)
         Room1(0)
+        Timer1.Enabled = True
     End Sub
     Sub Room1(start As Integer)
         'SETS THE PLAYER LOCATION BASED ON TILE
@@ -170,7 +171,7 @@
             Next
 
             'Generate Level Pickups
-            If HPPACK1.ActiveCheck = True Then
+            If HPPACK1.ActiveCheck() = True Then
                 m_Game(0, 0, 1, 14).SetIndex(3)
                 HPPACK1.SetHealth(3)
                 buttonArray(1, 14).BackgroundImage = ImageList1.Images(7)
@@ -201,8 +202,8 @@
             m_Game(0, roomindex, 15, 14).SetIndex(10)
         '
         PictureBox1.Image = ImageList1.Images(9)
-        PictureBox2.Image = ImageList1.Images(9)
-        PictureBox3.Image = ImageList1.Images(9)
+
+
     End Sub
     Sub Room2(start As Integer)
         For i = 1 To 16
@@ -331,6 +332,10 @@
 
                 roomindex -= 1
                 CreateRoom(roomindex, 1)
+            End If
+            If m_Game(0, roomindex, Player1.GetX + 1, Player1.GetY).GetIndex = 3 Then
+
+
             End If
         ElseIf e.KeyCode = Keys.D And Player1.GetX() <> 15 Then
             m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(0)
@@ -617,6 +622,10 @@
             BackPackTextBox.Visible = False
             packstate = 0
         End If
+    End Sub
+
+    Private Sub Timer1_Tick_1(sender As Object, e As EventArgs) Handles Timer1.Tick
+        PictureBox1.Image = ImageList2.Images(Player1.GetHP)
     End Sub
 End Class
 

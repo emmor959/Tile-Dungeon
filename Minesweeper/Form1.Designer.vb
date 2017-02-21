@@ -43,6 +43,8 @@ Partial Class Form1
         Me.BackPackTextBox = New System.Windows.Forms.TextBox()
         Me.BackPackLabel = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.ImageList2 = New System.Windows.Forms.ImageList(Me.components)
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.MenuStrip1.SuspendLayout()
         CType(Me.BackPackPicture, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -124,11 +126,9 @@ Partial Class Form1
         Me.ImageList1.Images.SetKeyName(4, "Bad Brick Tile.png")
         Me.ImageList1.Images.SetKeyName(5, "Bad Brick Tile - Copy.png")
         Me.ImageList1.Images.SetKeyName(6, "Wall Brick.png")
-        Me.ImageList1.Images.SetKeyName(7, "Untitled.png")
+        Me.ImageList1.Images.SetKeyName(7, "Health_Potion.png")
         Me.ImageList1.Images.SetKeyName(8, "Attack image placeholder.png")
-        Me.ImageList1.Images.SetKeyName(9, "")
-        Me.ImageList1.Images.SetKeyName(10, "Bigger Heart.png")
-        Me.ImageList1.Images.SetKeyName(11, "64bitman.png")
+        Me.ImageList1.Images.SetKeyName(9, "wooden pole.png")
         '
         'AL
         '
@@ -187,6 +187,26 @@ Partial Class Form1
         Me.PictureBox1.TabIndex = 8
         Me.PictureBox1.TabStop = False
         '
+        'ImageList2
+        '
+        Me.ImageList2.ImageStream = CType(resources.GetObject("ImageList2.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.ImageList2.TransparentColor = System.Drawing.Color.Transparent
+        Me.ImageList2.Images.SetKeyName(0, "Heart(0%).png")
+        Me.ImageList2.Images.SetKeyName(1, "Heart(10%).png")
+        Me.ImageList2.Images.SetKeyName(2, "Heart(20%).png")
+        Me.ImageList2.Images.SetKeyName(3, "Heart(30%).png")
+        Me.ImageList2.Images.SetKeyName(4, "Heart(40%).png")
+        Me.ImageList2.Images.SetKeyName(5, "Heart(50%).png")
+        Me.ImageList2.Images.SetKeyName(6, "Heart(60%).png")
+        Me.ImageList2.Images.SetKeyName(7, "Heart(70%).png")
+        Me.ImageList2.Images.SetKeyName(8, "Heart(80%).png")
+        Me.ImageList2.Images.SetKeyName(9, "Heart(90%).png")
+        Me.ImageList2.Images.SetKeyName(10, "Heart(Full).png")
+        '
+        'Timer1
+        '
+        Me.Timer1.Interval = 10
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -229,4 +249,6 @@ Partial Class Form1
     Friend WithEvents BackPackTextBox As TextBox
     Friend WithEvents BackPackLabel As Label
     Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents ImageList2 As ImageList
+    Friend WithEvents Timer1 As Timer
 End Class
