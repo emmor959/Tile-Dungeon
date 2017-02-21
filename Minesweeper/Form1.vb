@@ -174,6 +174,10 @@
 
     End Sub
 
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
+
     Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
         If e.KeyCode = Keys.D And playx <> 15 And m_Game(0, 0, playx + 1, playy).GetIndex <> 2 Then
             m_buttonArray(playx, playy).BackgroundImage = ImageList1.Images(0)
