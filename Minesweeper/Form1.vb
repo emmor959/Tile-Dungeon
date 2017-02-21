@@ -328,7 +328,9 @@
                 roomindex -= 1
                 CreateRoom(roomindex, 1)
             End If
-
+        ElseIf e.KeyCode = Keys.D And Player1.GetX() <> 15 Then
+            m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(0)
+            Player1.ImageNum(0)
         End If
         If e.KeyCode = Keys.W And Player1.GetY() <> 0 And m_Game(0, roomindex, Player1.GetX(), Player1.GetY() - 1).GetIndex <> 6 Then
 
@@ -353,6 +355,9 @@
                 roomindex -= 1
                 CreateRoom(roomindex, 1)
             End If
+        ElseIf e.KeyCode = Keys.W And Player1.GetY() <> 0 Then
+            m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(1)
+            Player1.ImageNum(1)
         End If
         If e.KeyCode = Keys.A And Player1.GetX() <> 0 And m_Game(0, roomindex, Player1.GetX() - 1, Player1.GetY()).GetIndex <> 6 Then
 
@@ -376,6 +381,9 @@
                 roomindex -= 1
                 CreateRoom(roomindex, 1)
             End If
+        ElseIf e.KeyCode = Keys.A And Player1.GetX() <> 0 Then
+            m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(2)
+            Player1.ImageNum(2)
         End If
         If e.KeyCode = Keys.S And Player1.GetY() <> 15 And m_Game(0, roomindex, Player1.GetX(), Player1.GetY() + 1).GetIndex <> 6 Then
             If Player1.GetImageNum <> 3 Then
@@ -398,6 +406,9 @@
                 roomindex -= 1
                 CreateRoom(roomindex, 1)
             End If
+        ElseIf e.KeyCode = Keys.S And Player1.GetY() <> 15 Then
+            m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(3)
+            Player1.ImageNum(3)
         End If
 
         'Arrow Key Player Controls
@@ -415,7 +426,6 @@
                 End If
             End If
 
-
         End If
         If e.KeyCode = Keys.Up And Player1.GetY() <> 0 And m_Game(0, 0, Player1.GetX(), Player1.GetY() - 1).GetIndex <> 6 Then
 
@@ -430,6 +440,7 @@
                 End If
 
             End If
+
         End If
         If e.KeyCode = Keys.Left And Player1.GetX() <> 0 And m_Game(0, 0, Player1.GetX() - 1, Player1.GetY()).GetIndex <> 6 Then
 
@@ -443,6 +454,7 @@
                     m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(2)
                 End If
             End If
+
         End If
         If e.KeyCode = Keys.Down And Player1.GetY() <> 15 And m_Game(0, 0, Player1.GetX(), Player1.GetY() + 1).GetIndex <> 6 Then
             If Player1.GetImageNum <> 3 Then
