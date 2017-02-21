@@ -304,6 +304,10 @@
     End Sub
 
 
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
+
     Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
         'Wasd Key Character Controls
         If e.KeyCode = Keys.D And Player1.GetX() <> 15 And m_Game(0, roomindex, Player1.GetX() + 1, Player1.GetY()).GetIndex <> 6 Then
