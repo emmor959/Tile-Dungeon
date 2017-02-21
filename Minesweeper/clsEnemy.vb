@@ -31,4 +31,11 @@
     Sub SetHealth(x As Integer)
         hp = x
     End Sub
+    Function CheckDead()
+        If hp <= 0 Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
 End Class
