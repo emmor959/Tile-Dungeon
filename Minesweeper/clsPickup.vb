@@ -3,7 +3,7 @@
     Dim m_ReturnHealth As Integer
     Dim m_ReturnGold As Integer
     Dim m_returnItem As String
-    Dim m_Active As Boolean = True
+    Dim m_Active As Boolean
     Dim m_x As Integer
     Dim m_y As Integer
     Sub New(x As Integer, y As Integer)
@@ -31,6 +31,9 @@
         Return m_returnItem
         m_Active = False
     End Function
+    Public Sub SetActive(b As Boolean)
+        m_Active = b
+    End Sub
     Public Function ActiveCheck()
         Return m_Active
     End Function

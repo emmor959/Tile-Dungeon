@@ -27,6 +27,11 @@
         Return ImageIndex
     End Function
     Sub hp(x As Integer)
+
+        If x > 10 Then
+            x = 10
+        End If
+
         player_hp = x
     End Sub
     Function GetHP()
