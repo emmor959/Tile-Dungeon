@@ -14,55 +14,6 @@
     Dim HPPACK1(0) As clsPickup
     Dim Player1 As clsPlayer
     Dim lvl1EnemyArray(1) As clsEnemy
-    Private Sub GenerateBoard(x As Integer, y As Integer, z As Integer)
-        'for didgital logic array
-        Dim colloms As Integer
-        Dim rows As Integer
-
-        rows = x
-        colloms = y
-
-        m_RowSize = rows
-        m_Collumn = colloms
-
-        'For i = 1 To rows
-        '  For i2 = 1 To colloms
-        '  If isABomb(bombIndex) = True Then
-        '                tmpboard(i - 1, i2 - 1) = New Tile(True, False, False, 0)
-        '                isABomb((i * i2) - 1) = False
-        ' Else
-        '                tmpboard(i - 1, i2 - 1) = New Tile(False, False, False, 0)
-        '  End If
-        '             bombIndex = bombIndex + 1
-        '  Next
-        '  Next
-
-        'Code Snippet for preface to Generating the board.
-
-        ' m_board = tmpboard
-        CompileBoard(rows - 1, colloms - 1)
-    End Sub
-    Private Sub CompileBoard(x As Integer, Y As Integer)
-
-
-
-
-    End Sub
-    Private Sub BoardChecker(x As Integer, y As Integer)
-
-        ' If m_board(x, y).CheckForBomb = True Then
-        ' m_buttonArray(x, y).BackgroundImage = ImageList1.Images(12)
-        '  End If
-        'Code for applying images to the buttons.
-    End Sub
-    Private Sub ClearBoard(X As Integer, Y As Integer)
-        For i = 0 To X
-            For i2 = 0 To Y
-                m_buttonArray(i, i2).Dispose()
-            Next
-        Next
-    End Sub
-
     Private Sub ToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles level1.Click
         'SET ENEMY LOCATIONS
         lvl1EnemyArray(0) = New clsEnemy(3, 13)
@@ -455,60 +406,145 @@
 
         'Arrow Key Player Controls
 
-        If e.KeyCode = Keys.Right And Player1.GetX() <> 15 And m_Game(0, 0, Player1.GetX() + 1, Player1.GetY()).GetIndex <> 6 Then
+        'RIGHT MOVEMENT RIGHT MOVEMENT RIGHTMOVEMENT
+        If e.KeyCode = Keys.Right And Player1.GetX() <> 15 And m_Game(levelindex, roomindex, Player1.GetX() + 1, Player1.GetY()).GetIndex <> 6 Then
 
             If Player1.GetImageNum <> 0 Then
                 m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(0)
                 Player1.ImageNum(0)
             Else
-                If m_Game(0, 0, Player1.GetX() + 1, Player1.GetY()).CheckForEnemy = False Then
+                If m_Game(levelindex, roomindex, Player1.GetX() + 1, Player1.GetY()).CheckForEnemy = False Then
                     m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(4)
                     Player1.SetX(Player1.GetX() + 1)
                     m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(0)
                 End If
             End If
+            If m_Game(levelindex, roomindex, Player1.GetX + 1, Player1.GetY).GetIndex = 10 Then
 
+                roomindex += 1
+                CreateRoom(roomindex, 0)
+            End If
+            If m_Game(levelindex, roomindex, Player1.GetX + 1, Player1.GetY).GetIndex = 11 Then
+
+                roomindex -= 1
+                CreateRoom(roomindex, 1)
+            End If
+            If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).GetIndex = 3 Then
+                For i = 0 To HPPACK1.Count - 1
+                    If HPPACK1(i).ReturnX = Player1.GetX And HPPACK1(i).ReturnY = Player1.GetY Then
+                        Player1.hp(Player1.GetHP + HPPACK1(i).HP)
+                        HPPACK1(i).SetActive(False)
+                    End If
+                Next
+            End If
+        ElseIf e.KeyCode = Keys.D And Player1.GetX() <> 15 Then
+            m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(0)
+            Player1.ImageNum(0)
         End If
-        If e.KeyCode = Keys.Up And Player1.GetY() <> 0 And m_Game(0, 0, Player1.GetX(), Player1.GetY() - 1).GetIndex <> 6 Then
+        ' UPWARD MOVEMENT UPWARD MOVEMENT UPWARD MOVEMENT
+        If e.KeyCode = Keys.Up And Player1.GetY() <> 0 And m_Game(levelindex, roomindex, Player1.GetX(), Player1.GetY() - 1).GetIndex <> 6 Then
 
             If Player1.GetImageNum <> 1 Then
                 m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(1)
                 Player1.ImageNum(1)
             Else
-                If m_Game(0, 0, Player1.GetX(), Player1.GetY() - 1).CheckForEnemy = False Then
+                If m_Game(levelindex, roomindex, Player1.GetX(), Player1.GetY() - 1).CheckForEnemy = False Then
                     m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(4)
                     Player1.SetY(Player1.GetY() - 1)
                     m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(1)
                 End If
 
             End If
+            If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY - 1).GetIndex = 10 Then
 
+                roomindex += 1
+                CreateRoom(roomindex, 0)
+            End If
+            If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY - 1).GetIndex = 11 Then
+
+                roomindex -= 1
+                CreateRoom(roomindex, 1)
+            End If
+            If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).GetIndex = 3 Then
+                For i = 0 To HPPACK1.Count - 1
+                    If HPPACK1(i).ReturnX = Player1.GetX And HPPACK1(i).ReturnY = Player1.GetY Then
+                        Player1.hp(Player1.GetHP + HPPACK1(i).HP)
+                        HPPACK1(i).SetActive(False)
+                    End If
+                Next
+            End If
+        ElseIf e.KeyCode = Keys.W And Player1.GetY() <> 0 Then
+            m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(1)
+            Player1.ImageNum(1)
         End If
-        If e.KeyCode = Keys.Left And Player1.GetX() <> 0 And m_Game(0, 0, Player1.GetX() - 1, Player1.GetY()).GetIndex <> 6 Then
+        'LEFTWARD MOVEMENT LEFTWARD MOVEMENT LEFTWARD MOVEMENT
+        If e.KeyCode = Keys.Left And Player1.GetX() <> 0 And m_Game(levelindex, roomindex, Player1.GetX() - 1, Player1.GetY()).GetIndex <> 6 Then
 
             If Player1.GetImageNum <> 2 Then
                 m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(2)
                 Player1.ImageNum(2)
             Else
-                If m_Game(0, 0, Player1.GetX() - 1, Player1.GetY()).CheckForEnemy = False Then
+                If m_Game(levelindex, roomindex, Player1.GetX() - 1, Player1.GetY()).CheckForEnemy = False Then
                     m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(4)
                     Player1.SetX(Player1.GetX() - 1)
                     m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(2)
                 End If
             End If
+            If m_Game(levelindex, roomindex, Player1.GetX - 1, Player1.GetY).GetIndex = 10 Then
 
+                roomindex += 1
+                CreateRoom(roomindex, 0)
+            End If
+            If m_Game(levelindex, roomindex, Player1.GetX - 1, Player1.GetY).GetIndex = 11 Then
+
+                roomindex -= 1
+                CreateRoom(roomindex, 1)
+            End If
+            If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).GetIndex = 3 Then
+                For i = 0 To HPPACK1.Count - 1
+                    If HPPACK1(i).ReturnX = Player1.GetX And HPPACK1(i).ReturnY = Player1.GetY Then
+                        Player1.hp(Player1.GetHP + HPPACK1(i).HP)
+                        HPPACK1(i).SetActive(False)
+                    End If
+                Next
+            End If
+        ElseIf e.KeyCode = Keys.A And Player1.GetX() <> 0 Then
+            m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(2)
+            Player1.ImageNum(2)
         End If
-        If e.KeyCode = Keys.Down And Player1.GetY() <> 15 And m_Game(0, 0, Player1.GetX(), Player1.GetY() + 1).GetIndex <> 6 Then
+        'DOWNWARD MOVEMENT DOWNWARD MOVEMENT DOWNWARD MOVEMENT
+        If e.KeyCode = Keys.Down And Player1.GetY() <> 15 And m_Game(levelindex, roomindex, Player1.GetX(), Player1.GetY() + 1).GetIndex <> 6 Then
             If Player1.GetImageNum <> 3 Then
                 m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(3)
                 Player1.ImageNum(3)
             Else
-                If m_Game(0, 0, Player1.GetX(), Player1.GetY() + 1).CheckForEnemy = False Then
+                If m_Game(levelindex, roomindex, Player1.GetX(), Player1.GetY() + 1).CheckForEnemy = False Then
                     m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(4)
                     Player1.SetY(Player1.GetY() + 1)
                     m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(3)
                 End If
             End If
+            If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY + 1).GetIndex = 10 Then
+
+                roomindex += 1
+                CreateRoom(roomindex, 0)
+            End If
+            If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).GetIndex = 11 Then
+
+                roomindex -= 1
+                CreateRoom(roomindex, 1)
+            End If
+            If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).GetIndex = 3 Then
+                For i = 0 To HPPACK1.Count - 1
+                    If HPPACK1(i).ReturnX = Player1.GetX And HPPACK1(i).ReturnY = Player1.GetY Then
+                        Player1.hp(Player1.GetHP + HPPACK1(i).HP)
+                        HPPACK1(i).SetActive(False)
+                    End If
+                Next
+            End If
+        ElseIf e.KeyCode = Keys.S And Player1.GetY() <> 15 Then
+            m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(3)
+            Player1.ImageNum(3)
         End If
         If e.KeyCode = Keys.Space Then
 
@@ -659,6 +695,54 @@
 
     Private Sub Timer1_Tick_1(sender As Object, e As EventArgs) Handles Timer1.Tick
         PictureBox1.Image = ImageList2.Images(Player1.GetHP)
+    End Sub
+
+    Private Sub EnemyAI_Tick(sender As Object, e As EventArgs) Handles EnemyAI.Tick
+        Dim rnd As New Random
+        If levelindex = 0 Then
+
+            If roomindex = 0 Then
+                For i = 0 To lvl1EnemyArray.Count - 1
+                    Dim a As Integer
+                    a = rnd.Next(0, 1)
+                    Dim b As Integer
+                    b = rnd.Next(0, 1)
+                    If a = 0 Then
+
+                        If b = 0 Then
+                            lvl1EnemyArray(i).SetX(lvl1EnemyArray(i).GetX + 1)
+                        ElseIf b = 1 Then
+                            lvl1EnemyArray(i)
+                        End If
+
+                    ElseIf a = 1 Then
+
+                        If b = 0 Then
+                            lvl1EnemyArray(i)
+                        ElseIf b = 1 Then
+                            lvl1EnemyArray(i)
+                        End If
+
+                    End If
+
+
+
+
+
+                Next
+            End If
+
+
+        End If
+
+
+
+
+
+
+
+
+
     End Sub
 End Class
 

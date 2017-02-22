@@ -45,6 +45,7 @@ Partial Class Form1
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.ImageList2 = New System.Windows.Forms.ImageList(Me.components)
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.EnemyAI = New System.Windows.Forms.Timer(Me.components)
         Me.MenuStrip1.SuspendLayout()
         CType(Me.BackPackPicture, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -207,6 +208,9 @@ Partial Class Form1
         '
         Me.Timer1.Interval = 10
         '
+        'EnemyAI
+        '
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -251,4 +255,5 @@ Partial Class Form1
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents ImageList2 As ImageList
     Friend WithEvents Timer1 As Timer
+    Friend WithEvents EnemyAI As Timer
 End Class
