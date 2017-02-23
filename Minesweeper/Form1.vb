@@ -13,17 +13,25 @@
     Dim roomindex As Integer
     Dim HPPACK1(0) As clsPickup
     Dim Player1 As clsPlayer
-    Dim lvl1EnemyArray(1) As clsEnemy
+    Dim lvl1EnemyArray(3) As clsEnemy
+    Dim rnd As New Random
+
     Private Sub ToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles level1.Click
         'SET ENEMY LOCATIONS
         lvl1EnemyArray(0) = New clsEnemy(3, 13)
         lvl1EnemyArray(0).SetHealth(3)
         lvl1EnemyArray(1) = New clsEnemy(8, 1)
+        lvl1EnemyArray(1).SetHealth(3)
+        lvl1EnemyArray(2) = New clsEnemy(13, 13)
+        lvl1EnemyArray(2).SetHealth(3)
+        lvl1EnemyArray(3) = New clsEnemy(13, 12)
+        lvl1EnemyArray(3).SetHealth(3)
         HPPACK1(0) = New clsPickup(1, 13)
         HPPACK1(0).SetActive(True)
-        lvl1EnemyArray(1).SetHealth(3)
+
         Room1(0)
         Timer1.Enabled = True
+        EnemyAI.Enabled = True
     End Sub
     Sub Room1(start As Integer)
         'SETS THE PLAYER LOCATION BASED ON TILE
@@ -131,26 +139,26 @@
 
             'Places Player
             Player1.ImageNum(1)
-                buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(Player1.GetImageNum())
+            buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(Player1.GetImageNum())
 
-                m_buttonArray = buttonArray
+            m_buttonArray = buttonArray
 
-                'Place Enemys            
+            'Place Enemys            
 
-                For i = 0 To lvl1EnemyArray.Count - 1
-                    If lvl1EnemyArray(i).CheckDead = False Then
-                        m_Game(0, roomindex, lvl1EnemyArray(1).GetX, lvl1EnemyArray(1).GetY).setEnemy(True)
-                        m_Game(0, roomindex, lvl1EnemyArray(0).GetX, lvl1EnemyArray(0).GetY).setEnemy(True)
-                        m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(1)
-                    End If
-                Next
-
-
+            For i = 0 To lvl1EnemyArray.Count - 1
+                If lvl1EnemyArray(i).CheckDead = False Then
+                    m_Game(0, roomindex, lvl1EnemyArray(1).GetX, lvl1EnemyArray(1).GetY).setEnemy(True)
+                    m_Game(0, roomindex, lvl1EnemyArray(0).GetX, lvl1EnemyArray(0).GetY).setEnemy(True)
+                    m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(1)
+                End If
+            Next
 
 
 
 
-            End If
+
+
+        End If
         m_Game(0, roomindex, 15, 14).SetIndex(10)
         '
 
@@ -270,10 +278,12 @@
                 m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(0)
                 Player1.ImageNum(0)
             Else
+                m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(False)
                 If m_Game(levelindex, roomindex, Player1.GetX() + 1, Player1.GetY()).CheckForEnemy = False Then
                     m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(4)
                     Player1.SetX(Player1.GetX() + 1)
                     m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(0)
+                    m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(True)
                 End If
             End If
             If m_Game(levelindex, roomindex, Player1.GetX + 1, Player1.GetY).GetIndex = 10 Then
@@ -306,9 +316,11 @@
                 Player1.ImageNum(1)
             Else
                 If m_Game(levelindex, roomindex, Player1.GetX(), Player1.GetY() - 1).CheckForEnemy = False Then
+                    m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(False)
                     m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(4)
                     Player1.SetY(Player1.GetY() - 1)
                     m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(1)
+                    m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(True)
                 End If
 
             End If
@@ -342,9 +354,11 @@
                 Player1.ImageNum(2)
             Else
                 If m_Game(levelindex, roomindex, Player1.GetX() - 1, Player1.GetY()).CheckForEnemy = False Then
+                    m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(False)
                     m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(4)
                     Player1.SetX(Player1.GetX() - 1)
                     m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(2)
+                    m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(True)
                 End If
             End If
             If m_Game(levelindex, roomindex, Player1.GetX - 1, Player1.GetY).GetIndex = 10 Then
@@ -376,9 +390,11 @@
                 Player1.ImageNum(3)
             Else
                 If m_Game(levelindex, roomindex, Player1.GetX(), Player1.GetY() + 1).CheckForEnemy = False Then
+                    m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(False)
                     m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(4)
                     Player1.SetY(Player1.GetY() + 1)
                     m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(3)
+                    m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(True)
                 End If
             End If
             If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY + 1).GetIndex = 10 Then
@@ -698,37 +714,65 @@
     End Sub
 
     Private Sub EnemyAI_Tick(sender As Object, e As EventArgs) Handles EnemyAI.Tick
-        Dim rnd As New Random
+        Dim a As Integer
+        Dim b As Integer
         If levelindex = 0 Then
 
             If roomindex = 0 Then
                 For i = 0 To lvl1EnemyArray.Count - 1
-                    Dim a As Integer
-                    a = rnd.Next(0, 1)
-                    Dim b As Integer
-                    b = rnd.Next(0, 1)
-                    If a = 0 Then
 
-                        If b = 0 Then
-                            lvl1EnemyArray(i).SetX(lvl1EnemyArray(i).GetX + 1)
-                        ElseIf b = 1 Then
-                            lvl1EnemyArray(i)
+
+                    a = rnd.Next(1, 10)
+
+                    b = rnd.Next(1, 10)
+
+
+
+                    If lvl1EnemyArray(i).CheckDead = False Then
+                        If a < 5 Then
+
+                            If b < 5 Then
+                                m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(4)
+                                m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(False)
+                                If m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY + 1).GetIndex <> 6 And m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY + 1).CheckForPlayer = False Then
+                                    lvl1EnemyArray(i).SetY(lvl1EnemyArray(i).GetY + 1)
+                                End If
+                                m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(1)
+                                m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(True)
+                            ElseIf b >= 5 Then
+                                m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(4)
+                                m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(False)
+                                If m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY - 1).GetIndex <> 6 And m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY - 1).CheckForPlayer = False Then
+                                    lvl1EnemyArray(i).SetY(lvl1EnemyArray(i).GetY - 1)
+                                End If
+                                m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(True)
+                                m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(1)
+                            End If
+
+
+                        ElseIf a >= 5 Then
+
+                            If b < 5 Then
+                                m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(4)
+                                m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(False)
+                                If m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX - 1, lvl1EnemyArray(i).GetY).GetIndex <> 6 And m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX - 1, lvl1EnemyArray(i).GetY).CheckForPlayer = False Then
+                                    lvl1EnemyArray(i).SetX(lvl1EnemyArray(i).GetX - 1)
+                                End If
+                                m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(True)
+                                m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(1)
+                            ElseIf b >= 5 Then
+                                m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(4)
+                                m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(False)
+                                If m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX + 1, lvl1EnemyArray(i).GetY).GetIndex <> 6 And m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX + 1, lvl1EnemyArray(i).GetY).CheckForPlayer = False Then
+                                    lvl1EnemyArray(i).SetX(lvl1EnemyArray(i).GetX + 1)
+                                End If
+                                m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(True)
+                                m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(1)
+                            End If
+
+
                         End If
-
-                    ElseIf a = 1 Then
-
-                        If b = 0 Then
-                            lvl1EnemyArray(i)
-                        ElseIf b = 1 Then
-                            lvl1EnemyArray(i)
-                        End If
-
                     End If
-
-
-
-
-
                 Next
             End If
 

@@ -210,6 +210,7 @@ Partial Class Form1
         '
         'EnemyAI
         '
+        Me.EnemyAI.Interval = 200
         '
         'Form1
         '
