@@ -55,3 +55,15 @@ C:\Users\djber284\Desktop\Game Game\Minesweeper\obj\Debug\Minesweeper.Form1.reso
 C:\Users\djber284\Desktop\Game Game\Minesweeper\obj\Debug\Minesweeper.Resources.resources
 C:\Users\djber284\Desktop\Game Game\Minesweeper\obj\Debug\Minesweeper.vbproj.GenerateResource.Cache
 C:\Users\emmor959\Desktop\Tile Dungeon Game\Minesweeper\obj\Debug\Minesweeper.Resource1.resources
+C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\bin\Debug\Minesweeper.exe.config
+C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\obj\Debug\Minesweeper.exe
+C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\obj\Debug\Minesweeper.xml
+C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\obj\Debug\Minesweeper.pdb
+C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\bin\Debug\Minesweeper.exe
+C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\bin\Debug\Minesweeper.pdb
+C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\bin\Debug\Minesweeper.xml
+C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\obj\Debug\Minesweeper.vbprojResolveAssemblyReference.cache
+C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\obj\Debug\Minesweeper.Form1.resources
+C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\obj\Debug\Minesweeper.Resources.resources
+C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\obj\Debug\Minesweeper.Resource1.resources
+C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\obj\Debug\Minesweeper.vbproj.GenerateResource.Cache
