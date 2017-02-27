@@ -165,6 +165,13 @@
     <None Include="Resources\Rat%28Front%29.bmp" />
     <None Include="Resources\Rat%28Back%29.bmp" />
     <None Include="Resources\Health_Potion.bmp" />
+    <None Include="Resources\M_Adult%28Front%29.bmp" />
+    <None Include="Resources\M_Adult%28left%29.bmp" />
+    <None Include="Resources\M_Adult%28right%29.bmp" />
+    <None Include="Resources\M_Adult%28Back%29.bmp" />
+    <None Include="Resources\Pants%28Right%29.bmp" />
+    <None Include="Resources\Pants%28Front%29.bmp" />
+    <None Include="Resources\Pants%28Left%29.bmp" />
     <Content Include="Transparency.cs" />
   </ItemGroup>
   <ItemGroup />

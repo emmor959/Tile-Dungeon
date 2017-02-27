@@ -133,4 +133,25 @@
   <data name="Rat_Right_" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Rat(Right).bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="M_Adult_Back_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>M_Adult(Back).bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="M_Adult_Front_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>M_Adult(Front).bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="M_Adult_left_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>M_Adult(left).bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="M_Adult_right_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>M_Adult(right).bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Pants_Front_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Pants(Front).bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Pants_Left_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Pants(Left).bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Pants_Right_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Pants(Right).bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
