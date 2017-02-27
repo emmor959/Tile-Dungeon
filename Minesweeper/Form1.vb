@@ -161,18 +161,11 @@
 
             'Places Player          
 
-            Dim baseimage As Bitmap
-            baseimage = Minesweeper.My.Resources.Resource1.M_Adult_Front_
-            baseimage.MakeTransparent(Color.White)
-            Dim pants As Bitmap
-            pants = Minesweeper.My.Resources.Resource1.Pants_Front_
-            pants.MakeTransparent(Color.White)
-
-            buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage, baseimage, pants)
 
 
             'Place Enemys            
             m_buttonArray = buttonArray
+            PlayerDown()
             For i = 0 To lvl1EnemyArray.Count - 1
                 If lvl1EnemyArray(i).CheckDead = False Then
                     m_Game(0, roomindex, lvl1EnemyArray(1).GetX, lvl1EnemyArray(1).GetY).setEnemy(True)
@@ -271,14 +264,6 @@
         Player1.ImageNum(1)
 
 
-        Dim baseimage As Bitmap
-        baseimage = Minesweeper.My.Resources.Resource1.M_Adult_Front_
-        baseimage.MakeTransparent(Color.White)
-        Dim pants As Bitmap
-        pants = Minesweeper.My.Resources.Resource1.Pants_Front_
-        pants.MakeTransparent(Color.White)
-
-        buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage, baseimage, pants)
 
 
 
@@ -287,7 +272,7 @@
 
 
         m_buttonArray = buttonArray
-
+        PlayerDown()
     End Sub
     Sub CreateRoom(x As Integer, y As Integer)
 
@@ -322,24 +307,16 @@
         'Wasd Key Character Controls
         'RIGHT MOVEMENT RIGHT MOVEMENT RIGHTMOVEMENT
         If e.KeyCode = Keys.D And Player1.GetX() <> 15 And m_Game(levelindex, roomindex, Player1.GetX() + 1, Player1.GetY()).GetIndex <> 6 Then
-            Dim baseimage As Bitmap
-            baseimage = Minesweeper.My.Resources.Resource1.M_Adult_right_
-            baseimage.MakeTransparent(Color.White)
-            Dim pants As Bitmap
-            pants = Minesweeper.My.Resources.Resource1.Pants_Right_
-            pants.MakeTransparent(Color.White)
-
-
 
             If Player1.GetImageNum <> 0 Then
-                m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage, baseimage, pants)
+                PlayerRight()
                 Player1.ImageNum(0)
             Else
                 m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(False)
                 If m_Game(levelindex, roomindex, Player1.GetX() + 1, Player1.GetY()).CheckForEnemy = False Then
                     m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(4)
                     Player1.SetX(Player1.GetX() + 1)
-                    m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage, baseimage, pants)
+                    PlayerRight()
                     m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(True)
                 End If
             End If
@@ -362,35 +339,22 @@
                 Next
             End If
         ElseIf e.KeyCode = Keys.D And Player1.GetX() <> 15 Then
-            Dim baseimage As Bitmap
-            baseimage = Minesweeper.My.Resources.Resource1.M_Adult_right_
-            baseimage.MakeTransparent(Color.White)
-            Dim pants As Bitmap
-            pants = Minesweeper.My.Resources.Resource1.Pants_Right_
-            pants.MakeTransparent(Color.White)
-            m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage, baseimage, pants)
+
+            PlayerRight()
             Player1.ImageNum(0)
         End If
         ' UPWARD MOVEMENT UPWARD MOVEMENT UPWARD MOVEMENT
         If e.KeyCode = Keys.W And Player1.GetY() <> 0 And m_Game(levelindex, roomindex, Player1.GetX(), Player1.GetY() - 1).GetIndex <> 6 Then
-            Dim baseimage As Bitmap
-            baseimage = Minesweeper.My.Resources.Resource1.M_Adult_Back_
-            baseimage.MakeTransparent(Color.White)
-            Dim pants As Bitmap
-            pants = Minesweeper.My.Resources.Resource1.Pants_Front_
-            pants.MakeTransparent(Color.White)
-
 
             If Player1.GetImageNum <> 1 Then
-                m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage, baseimage, pants)
-
+                PlayerUp()
                 Player1.ImageNum(1)
             Else
                 If m_Game(levelindex, roomindex, Player1.GetX(), Player1.GetY() - 1).CheckForEnemy = False Then
                     m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(False)
                     m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(4)
                     Player1.SetY(Player1.GetY() - 1)
-                    m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage, baseimage, pants)
+                    PlayerUp()
                     m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(True)
                 End If
 
@@ -414,35 +378,22 @@
                 Next
             End If
         ElseIf e.KeyCode = Keys.W And Player1.GetY() <> 0 Then
-            Dim baseimage As Bitmap
-            baseimage = Minesweeper.My.Resources.Resource1.M_Adult_Back_
-            baseimage.MakeTransparent(Color.White)
-            Dim pants As Bitmap
-            pants = Minesweeper.My.Resources.Resource1.Pants_Front_
-            pants.MakeTransparent(Color.White)
-            m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage, baseimage, pants)
 
+            PlayerUp()
             Player1.ImageNum(1)
         End If
         'LEFTWARD MOVEMENT LEFTWARD MOVEMENT LEFTWARD MOVEMENT
         If e.KeyCode = Keys.A And Player1.GetX() <> 0 And m_Game(levelindex, roomindex, Player1.GetX() - 1, Player1.GetY()).GetIndex <> 6 Then
-            Dim baseimage As Bitmap
-            baseimage = Minesweeper.My.Resources.Resource1.M_Adult_left_
-            baseimage.MakeTransparent(Color.White)
-            Dim pants As Bitmap
-            pants = Minesweeper.My.Resources.Resource1.Pants_Left_
-            pants.MakeTransparent(Color.White)
-
 
             If Player1.GetImageNum <> 2 Then
-                m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage, baseimage, pants)
+                PlayerLeft()
                 Player1.ImageNum(2)
             Else
                 If m_Game(levelindex, roomindex, Player1.GetX() - 1, Player1.GetY()).CheckForEnemy = False Then
                     m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(False)
                     m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(4)
                     Player1.SetX(Player1.GetX() - 1)
-                    m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage, baseimage, pants)
+                    PlayerLeft()
                     m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(True)
                 End If
             End If
@@ -465,33 +416,21 @@
                 Next
             End If
         ElseIf e.KeyCode = Keys.A And Player1.GetX() <> 0 Then
-            Dim baseimage As Bitmap
-            baseimage = Minesweeper.My.Resources.Resource1.M_Adult_left_
-            baseimage.MakeTransparent(Color.White)
-            Dim pants As Bitmap
-            pants = Minesweeper.My.Resources.Resource1.Pants_Left_
-            pants.MakeTransparent(Color.White)
-            m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage, baseimage, pants)
-
+            PlayerLeft()
             Player1.ImageNum(2)
         End If
         'DOWNWARD MOVEMENT DOWNWARD MOVEMENT DOWNWARD MOVEMENT
         If e.KeyCode = Keys.S And Player1.GetY() <> 15 And m_Game(levelindex, roomindex, Player1.GetX(), Player1.GetY() + 1).GetIndex <> 6 Then
-            Dim baseimage As Bitmap
-            baseimage = Minesweeper.My.Resources.Resource1.M_Adult_Front_
-            baseimage.MakeTransparent(Color.White)
-            Dim pants As Bitmap
-            pants = Minesweeper.My.Resources.Resource1.Pants_Front_
-            pants.MakeTransparent(Color.White)
+
             If Player1.GetImageNum <> 3 Then
-                m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage, baseimage, pants)
+                PlayerDown()
                 Player1.ImageNum(3)
             Else
                 If m_Game(levelindex, roomindex, Player1.GetX(), Player1.GetY() + 1).CheckForEnemy = False Then
                     m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(False)
                     m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(4)
                     Player1.SetY(Player1.GetY() + 1)
-                    m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage, baseimage, pants)
+                    PlayerDown()
                     m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(True)
                 End If
             End If
@@ -514,40 +453,24 @@
                 Next
             End If
         ElseIf e.KeyCode = Keys.S And Player1.GetY() <> 15 Then
-            Dim baseimage As Bitmap
-            baseimage = Minesweeper.My.Resources.Resource1.M_Adult_Front_
-            baseimage.MakeTransparent(Color.White)
-            Dim pants As Bitmap
-            pants = Minesweeper.My.Resources.Resource1.Pants_Front_
-            pants.MakeTransparent(Color.White)
-            m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage, baseimage, pants)
-
+            PlayerDown()
             Player1.ImageNum(3)
         End If
 
         'Arrow Key Player Controls
 
         'RIGHT MOVEMENT RIGHT MOVEMENT RIGHTMOVEMENT
-
         If e.KeyCode = Keys.Right And Player1.GetX() <> 15 And m_Game(levelindex, roomindex, Player1.GetX() + 1, Player1.GetY()).GetIndex <> 6 Then
-            Dim baseimage As Bitmap
-            baseimage = Minesweeper.My.Resources.Resource1.M_Adult_right_
-            baseimage.MakeTransparent(Color.White)
-            Dim pants As Bitmap
-            pants = Minesweeper.My.Resources.Resource1.Pants_Right_
-            pants.MakeTransparent(Color.White)
-
-
 
             If Player1.GetImageNum <> 0 Then
-                m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage, baseimage, pants)
+                PlayerRight()
                 Player1.ImageNum(0)
             Else
                 m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(False)
                 If m_Game(levelindex, roomindex, Player1.GetX() + 1, Player1.GetY()).CheckForEnemy = False Then
                     m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(4)
                     Player1.SetX(Player1.GetX() + 1)
-                    m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage, baseimage, pants)
+                    PlayerRight()
                     m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(True)
                 End If
             End If
@@ -570,35 +493,24 @@
                 Next
             End If
         ElseIf e.KeyCode = Keys.Right And Player1.GetX() <> 15 Then
-            Dim baseimage As Bitmap
-            baseimage = Minesweeper.My.Resources.Resource1.M_Adult_right_
-            baseimage.MakeTransparent(Color.White)
-            Dim pants As Bitmap
-            pants = Minesweeper.My.Resources.Resource1.Pants_Right_
-            pants.MakeTransparent(Color.White)
-            m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage, baseimage, pants)
+
+            PlayerRight()
             Player1.ImageNum(0)
         End If
         ' UPWARD MOVEMENT UPWARD MOVEMENT UPWARD MOVEMENT
         If e.KeyCode = Keys.Up And Player1.GetY() <> 0 And m_Game(levelindex, roomindex, Player1.GetX(), Player1.GetY() - 1).GetIndex <> 6 Then
-            Dim baseimage As Bitmap
-            baseimage = Minesweeper.My.Resources.Resource1.M_Adult_Back_
-            baseimage.MakeTransparent(Color.White)
-            Dim pants As Bitmap
-            pants = Minesweeper.My.Resources.Resource1.Pants_Front_
-            pants.MakeTransparent(Color.White)
+
 
 
             If Player1.GetImageNum <> 1 Then
-                m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage, baseimage, pants)
-
+                PlayerUp()
                 Player1.ImageNum(1)
             Else
                 If m_Game(levelindex, roomindex, Player1.GetX(), Player1.GetY() - 1).CheckForEnemy = False Then
                     m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(False)
                     m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(4)
                     Player1.SetY(Player1.GetY() - 1)
-                    m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage, baseimage, pants)
+                    PlayerUp()
                     m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(True)
                 End If
 
@@ -621,36 +533,25 @@
                     End If
                 Next
             End If
-        ElseIf e.KeyCode = Keys.Up And Player1.GetY() <> 0 Then
-            Dim baseimage As Bitmap
-            baseimage = Minesweeper.My.Resources.Resource1.M_Adult_Back_
-            baseimage.MakeTransparent(Color.White)
-            Dim pants As Bitmap
-            pants = Minesweeper.My.Resources.Resource1.Pants_Front_
-            pants.MakeTransparent(Color.White)
-            m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage, baseimage, pants)
+        ElseIf e.KeyCode = Keys.up And Player1.GetY() <> 0 Then
 
+            PlayerUp()
             Player1.ImageNum(1)
         End If
         'LEFTWARD MOVEMENT LEFTWARD MOVEMENT LEFTWARD MOVEMENT
         If e.KeyCode = Keys.Left And Player1.GetX() <> 0 And m_Game(levelindex, roomindex, Player1.GetX() - 1, Player1.GetY()).GetIndex <> 6 Then
-            Dim baseimage As Bitmap
-            baseimage = Minesweeper.My.Resources.Resource1.M_Adult_left_
-            baseimage.MakeTransparent(Color.White)
-            Dim pants As Bitmap
-            pants = Minesweeper.My.Resources.Resource1.Pants_Left_
-            pants.MakeTransparent(Color.White)
+
 
 
             If Player1.GetImageNum <> 2 Then
-                m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage, baseimage, pants)
+                PlayerLeft()
                 Player1.ImageNum(2)
             Else
                 If m_Game(levelindex, roomindex, Player1.GetX() - 1, Player1.GetY()).CheckForEnemy = False Then
                     m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(False)
                     m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(4)
                     Player1.SetX(Player1.GetX() - 1)
-                    m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage, baseimage, pants)
+                    PlayerLeft()
                     m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(True)
                 End If
             End If
@@ -673,33 +574,21 @@
                 Next
             End If
         ElseIf e.KeyCode = Keys.Left And Player1.GetX() <> 0 Then
-            Dim baseimage As Bitmap
-            baseimage = Minesweeper.My.Resources.Resource1.M_Adult_left_
-            baseimage.MakeTransparent(Color.White)
-            Dim pants As Bitmap
-            pants = Minesweeper.My.Resources.Resource1.Pants_Left_
-            pants.MakeTransparent(Color.White)
-            m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage, baseimage, pants)
-
+            PlayerLeft()
             Player1.ImageNum(2)
         End If
         'DOWNWARD MOVEMENT DOWNWARD MOVEMENT DOWNWARD MOVEMENT
         If e.KeyCode = Keys.Down And Player1.GetY() <> 15 And m_Game(levelindex, roomindex, Player1.GetX(), Player1.GetY() + 1).GetIndex <> 6 Then
-            Dim baseimage As Bitmap
-            baseimage = Minesweeper.My.Resources.Resource1.M_Adult_Front_
-            baseimage.MakeTransparent(Color.White)
-            Dim pants As Bitmap
-            pants = Minesweeper.My.Resources.Resource1.Pants_Front_
-            pants.MakeTransparent(Color.White)
+
             If Player1.GetImageNum <> 3 Then
-                m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage, baseimage, pants)
+                PlayerDown()
                 Player1.ImageNum(3)
             Else
                 If m_Game(levelindex, roomindex, Player1.GetX(), Player1.GetY() + 1).CheckForEnemy = False Then
                     m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(False)
                     m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(4)
                     Player1.SetY(Player1.GetY() + 1)
-                    m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage, baseimage, pants)
+                    PlayerDown()
                     m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(True)
                 End If
             End If
@@ -722,14 +611,7 @@
                 Next
             End If
         ElseIf e.KeyCode = Keys.Down And Player1.GetY() <> 15 Then
-            Dim baseimage As Bitmap
-            baseimage = Minesweeper.My.Resources.Resource1.M_Adult_Front_
-            baseimage.MakeTransparent(Color.White)
-            Dim pants As Bitmap
-            pants = Minesweeper.My.Resources.Resource1.Pants_Front_
-            pants.MakeTransparent(Color.White)
-            m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage, baseimage, pants)
-
+            PlayerDown()
             Player1.ImageNum(3)
         End If
 
