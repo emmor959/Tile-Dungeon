@@ -156,7 +156,11 @@
             If HPPACK1(0).ActiveCheck() = True Then
                 m_Game(0, 0, HPPACK1(0).ReturnX, HPPACK1(0).ReturnY).SetIndex(3)
                 HPPACK1(0).SetHealth(3)
-                buttonArray(HPPACK1(0).ReturnX, HPPACK1(0).ReturnY).BackgroundImage = ImageList1.Images(7)
+                Dim bmp As Bitmap
+                bmp = Minesweeper.My.Resources.Resource1.Health_Potion
+                bmp.MakeTransparent(Color.White)
+                buttonArray(HPPACK1(0).ReturnX, HPPACK1(0).ReturnY).BackgroundImage = CombineImages(ImageList1.Images(4), bmp)
+
             End If
 
             'Places Player          
@@ -300,7 +304,7 @@
 
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        Me.Focus()
     End Sub
 
     Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
@@ -333,9 +337,10 @@
             End If
             If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).GetIndex = 3 Then
                 For i = 0 To HPPACK1.Count - 1
-                    If HPPACK1(i).ReturnX = Player1.GetX And HPPACK1(i).ReturnY = Player1.GetY Then
-                        Player1.hp(Player1.GetHP + HPPACK1(i).HP)
+                    If HPPACK1(i).ReturnX = Player1.GetX And HPPACK1(i).ReturnY = Player1.GetY And HPPACK1(i).ActiveCheck = True Then
+                        healthPotion += 1
                         HPPACK1(i).SetActive(False)
+                        ResetPack()
                     End If
                 Next
             End If
@@ -372,9 +377,10 @@
             End If
             If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).GetIndex = 3 Then
                 For i = 0 To HPPACK1.Count - 1
-                    If HPPACK1(i).ReturnX = Player1.GetX And HPPACK1(i).ReturnY = Player1.GetY Then
-                        Player1.hp(Player1.GetHP + HPPACK1(i).HP)
+                    If HPPACK1(i).ReturnX = Player1.GetX And HPPACK1(i).ReturnY = Player1.GetY And HPPACK1(i).ActiveCheck = True Then
+                        healthPotion += 1
                         HPPACK1(i).SetActive(False)
+                        ResetPack()
                     End If
                 Next
             End If
@@ -410,9 +416,10 @@
             End If
             If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).GetIndex = 3 Then
                 For i = 0 To HPPACK1.Count - 1
-                    If HPPACK1(i).ReturnX = Player1.GetX And HPPACK1(i).ReturnY = Player1.GetY Then
-                        Player1.hp(Player1.GetHP + HPPACK1(i).HP)
+                    If HPPACK1(i).ReturnX = Player1.GetX And HPPACK1(i).ReturnY = Player1.GetY And HPPACK1(i).ActiveCheck = True Then
+                        healthPotion += 1
                         HPPACK1(i).SetActive(False)
+                        ResetPack()
                     End If
                 Next
             End If
@@ -447,9 +454,10 @@
             End If
             If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).GetIndex = 3 Then
                 For i = 0 To HPPACK1.Count - 1
-                    If HPPACK1(i).ReturnX = Player1.GetX And HPPACK1(i).ReturnY = Player1.GetY Then
-                        Player1.hp(Player1.GetHP + HPPACK1(i).HP)
+                    If HPPACK1(i).ReturnX = Player1.GetX And HPPACK1(i).ReturnY = Player1.GetY And HPPACK1(i).ActiveCheck = True Then
+                        healthPotion += 1
                         HPPACK1(i).SetActive(False)
+                        ResetPack()
                     End If
                 Next
             End If
@@ -487,9 +495,10 @@
             End If
             If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).GetIndex = 3 Then
                 For i = 0 To HPPACK1.Count - 1
-                    If HPPACK1(i).ReturnX = Player1.GetX And HPPACK1(i).ReturnY = Player1.GetY Then
-                        Player1.hp(Player1.GetHP + HPPACK1(i).HP)
+                    If HPPACK1(i).ReturnX = Player1.GetX And HPPACK1(i).ReturnY = Player1.GetY And HPPACK1(i).ActiveCheck = True Then
+                        healthPotion += 1
                         HPPACK1(i).SetActive(False)
+                        ResetPack()
                     End If
                 Next
             End If
@@ -528,9 +537,10 @@
             End If
             If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).GetIndex = 3 Then
                 For i = 0 To HPPACK1.Count - 1
-                    If HPPACK1(i).ReturnX = Player1.GetX And HPPACK1(i).ReturnY = Player1.GetY Then
-                        Player1.hp(Player1.GetHP + HPPACK1(i).HP)
+                    If HPPACK1(i).ReturnX = Player1.GetX And HPPACK1(i).ReturnY = Player1.GetY And HPPACK1(i).ActiveCheck = True Then
+                        healthPotion += 1
                         HPPACK1(i).SetActive(False)
+                        ResetPack()
                     End If
                 Next
             End If
@@ -569,8 +579,9 @@
             If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).GetIndex = 3 Then
                 For i = 0 To HPPACK1.Count - 1
                     If HPPACK1(i).ReturnX = Player1.GetX And HPPACK1(i).ReturnY = Player1.GetY Then
-                        Player1.hp(Player1.GetHP + HPPACK1(i).HP)
+                        healthPotion += 1
                         HPPACK1(i).SetActive(False)
+                        ResetPack()
                     End If
                 Next
             End If
@@ -605,9 +616,10 @@
             End If
             If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).GetIndex = 3 Then
                 For i = 0 To HPPACK1.Count - 1
-                    If HPPACK1(i).ReturnX = Player1.GetX And HPPACK1(i).ReturnY = Player1.GetY Then
-                        Player1.hp(Player1.GetHP + HPPACK1(i).HP)
+                    If HPPACK1(i).ReturnX = Player1.GetX And HPPACK1(i).ReturnY = Player1.GetY And HPPACK1(i).ActiveCheck = True Then
+                        healthPotion += 1
                         HPPACK1(i).SetActive(False)
+                        ResetPack()
                     End If
                 Next
             End If
@@ -760,6 +772,8 @@
             BackPackPicture.Visible = False
             BackPackTextBox.Visible = False
             packstate = 0
+            Me.Focus()
+            BackPackPicture.Image = Nothing
         End If
     End Sub
 
@@ -892,5 +906,48 @@
         pants.MakeTransparent(Color.White)
         m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(ImageList1.Images(4), baseimage, pants)
     End Sub
+
+    Private Sub BackpackList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles BackpackList.SelectedIndexChanged
+        If BackpackList.SelectedIndex = 0 Then
+            Dim bmp As Bitmap
+            bmp = Minesweeper.My.Resources.Resource1.Health_Potion
+            bmp.MakeTransparent(Color.White)
+            BackPackPicture.Image = bmp
+            BackPackLabel.Text = "Health Potion"
+            BackPackTextBox.Text = "Full of a non-Viscous Red Fluid that is sweet to the taste. Restores 3 health."
+        End If
+    End Sub
+#Region "BackPackStorage"
+    Dim healthPotion As Integer
+    Dim Key As Integer
+    Dim Stone As Integer
+
+    Sub ResetPack()
+        BackpackList.Items.Clear()
+        BackpackList.Items.Add("Health Potions: " & healthPotion)
+        BackpackList.Items.Add("Key: " & Key)
+        BackpackList.Items.Add("Philiosopher Stone: " & Stone)
+    End Sub
+
+
+#End Region
+    Private Sub BackpackList_DoubleClick(sender As Object, e As EventArgs) Handles BackpackList.DoubleClick
+
+        If BackpackList.SelectedIndex = 0 And healthPotion > 0 Then
+            Player1.hp(Player1.GetHP + HPPACK1(0).HP)
+            healthPotion -= 1
+            ResetPack()
+        End If
+
+
+
+
+    End Sub
+#Region "Pop-UP Text"
+    Sub DisplayText(a As String)
+        TextBox1.Visible = True
+        TextBox1.Text = a
+    End Sub
+#End Region
 End Class
 
