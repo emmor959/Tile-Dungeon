@@ -312,8 +312,9 @@
                 PlayerRight()
                 Player1.ImageNum(0)
             Else
-                m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(False)
+
                 If m_Game(levelindex, roomindex, Player1.GetX() + 1, Player1.GetY()).CheckForEnemy = False Then
+                    m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(False)
                     m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(4)
                     Player1.SetX(Player1.GetX() + 1)
                     PlayerRight()
@@ -466,8 +467,8 @@
                 PlayerRight()
                 Player1.ImageNum(0)
             Else
-                m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(False)
                 If m_Game(levelindex, roomindex, Player1.GetX() + 1, Player1.GetY()).CheckForEnemy = False Then
+                    m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(False)
                     m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(4)
                     Player1.SetX(Player1.GetX() + 1)
                     PlayerRight()
