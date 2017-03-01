@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Imaging;
-namespace Pictures
+namespace Minesweeper
 {
     
     public class Transparency
     {
-      
+      public Transparency()
+        {
+
+        }
 
         private System.Drawing.Bitmap[,] Rat_enemy = new System.Drawing.Bitmap[4];
         private System.Drawing.Bitmap[,] Health = new System.Drawing.Bitmap[1];
@@ -36,6 +39,10 @@ namespace Pictures
             Rat_enemy[3] = Minesweeper.Properties.Resources.Rat(Right);
             Rat_enemy[4] = Minesweeper.Properties.Resources.Rat(Front);
 
+        }
+        public BitConverter Rat()
+        {
+            return Rat_enemy[1];
         }
         public void HpPotion()
         {

@@ -31,9 +31,6 @@ Partial Class Form1
         Me.level1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.level2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.level3 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.TimerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.BombsLeftToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.XYPOS_MENU = New System.Windows.Forms.ToolStripMenuItem()
         Me.AT = New System.Windows.Forms.Timer(Me.components)
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.AL = New System.Windows.Forms.Timer(Me.components)
@@ -46,6 +43,8 @@ Partial Class Form1
         Me.ImageList2 = New System.Windows.Forms.ImageList(Me.components)
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.EnemyAI = New System.Windows.Forms.Timer(Me.components)
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Text_Timer = New System.Windows.Forms.Timer(Me.components)
         Me.MenuStrip1.SuspendLayout()
         CType(Me.BackPackPicture, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -56,7 +55,7 @@ Partial Class Form1
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.TimerToolStripMenuItem, Me.BombsLeftToolStripMenuItem, Me.XYPOS_MENU})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(387, 24)
@@ -95,24 +94,6 @@ Partial Class Form1
         Me.level3.Size = New System.Drawing.Size(80, 22)
         Me.level3.Text = "3"
         '
-        'TimerToolStripMenuItem
-        '
-        Me.TimerToolStripMenuItem.Name = "TimerToolStripMenuItem"
-        Me.TimerToolStripMenuItem.Size = New System.Drawing.Size(22, 20)
-        Me.TimerToolStripMenuItem.Text = " "
-        '
-        'BombsLeftToolStripMenuItem
-        '
-        Me.BombsLeftToolStripMenuItem.Name = "BombsLeftToolStripMenuItem"
-        Me.BombsLeftToolStripMenuItem.Size = New System.Drawing.Size(22, 20)
-        Me.BombsLeftToolStripMenuItem.Text = " "
-        '
-        'XYPOS_MENU
-        '
-        Me.XYPOS_MENU.Name = "XYPOS_MENU"
-        Me.XYPOS_MENU.Size = New System.Drawing.Size(22, 20)
-        Me.XYPOS_MENU.Text = " "
-        '
         'AT
         '
         '
@@ -141,6 +122,7 @@ Partial Class Form1
         '
         Me.BackpackList.BackColor = System.Drawing.Color.LightGray
         Me.BackpackList.FormattingEnabled = True
+        Me.BackpackList.Items.AddRange(New Object() {"Health Potion", "Key", "Philosopher Stone"})
         Me.BackpackList.Location = New System.Drawing.Point(0, 27)
         Me.BackpackList.Name = "BackpackList"
         Me.BackpackList.Size = New System.Drawing.Size(178, 381)
@@ -150,9 +132,10 @@ Partial Class Form1
         'BackPackPicture
         '
         Me.BackPackPicture.BackColor = System.Drawing.Color.LightGray
-        Me.BackPackPicture.Location = New System.Drawing.Point(184, 27)
+        Me.BackPackPicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.BackPackPicture.Location = New System.Drawing.Point(184, 195)
         Me.BackPackPicture.Name = "BackPackPicture"
-        Me.BackPackPicture.Size = New System.Drawing.Size(198, 199)
+        Me.BackPackPicture.Size = New System.Drawing.Size(35, 33)
         Me.BackPackPicture.TabIndex = 5
         Me.BackPackPicture.TabStop = False
         Me.BackPackPicture.Visible = False
@@ -210,14 +193,32 @@ Partial Class Form1
         '
         'EnemyAI
         '
-        Me.EnemyAI.Interval = 200
+        Me.EnemyAI.Interval = 400
+        '
+        'TextBox1
+        '
+        Me.TextBox1.BackColor = System.Drawing.Color.Black
+        Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TextBox1.ForeColor = System.Drawing.Color.White
+        Me.TextBox1.Location = New System.Drawing.Point(40, 409)
+        Me.TextBox1.Multiline = True
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.ReadOnly = True
+        Me.TextBox1.Size = New System.Drawing.Size(342, 32)
+        Me.TextBox1.TabIndex = 9
+        Me.TextBox1.Visible = False
+        '
+        'Text_Timer
+        '
+        Me.Text_Timer.Interval = 500
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.ClientSize = New System.Drawing.Size(387, 441)
+        Me.ClientSize = New System.Drawing.Size(387, 446)
+        Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.BackPackLabel)
         Me.Controls.Add(Me.BackPackTextBox)
@@ -239,9 +240,6 @@ Partial Class Form1
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents GenerateBoardToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents TimerToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents BombsLeftToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents XYPOS_MENU As ToolStripMenuItem
     Friend WithEvents AT As Timer
     Friend WithEvents ImageList1 As ImageList
     Friend WithEvents level1 As ToolStripMenuItem
@@ -257,4 +255,6 @@ Partial Class Form1
     Friend WithEvents ImageList2 As ImageList
     Friend WithEvents Timer1 As Timer
     Friend WithEvents EnemyAI As Timer
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents Text_Timer As Timer
 End Class

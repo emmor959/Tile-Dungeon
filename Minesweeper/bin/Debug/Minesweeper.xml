@@ -43,6 +43,41 @@ Minesweeper
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:Minesweeper.My.Resources.Resource1.M_Adult_Back_">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Minesweeper.My.Resources.Resource1.M_Adult_Front_">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Minesweeper.My.Resources.Resource1.M_Adult_left_">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Minesweeper.My.Resources.Resource1.M_Adult_right_">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Minesweeper.My.Resources.Resource1.Pants_Front_">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Minesweeper.My.Resources.Resource1.Pants_Left_">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Minesweeper.My.Resources.Resource1.Pants_Right_">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:Minesweeper.My.Resources.Resource1.Rat_Back_">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
