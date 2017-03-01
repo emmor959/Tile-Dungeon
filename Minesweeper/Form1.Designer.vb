@@ -44,6 +44,7 @@ Partial Class Form1
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.EnemyAI = New System.Windows.Forms.Timer(Me.components)
         Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Text_Timer = New System.Windows.Forms.Timer(Me.components)
         Me.MenuStrip1.SuspendLayout()
         CType(Me.BackPackPicture, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -109,7 +110,18 @@ Partial Class Form1
         Me.ImageList1.Images.SetKeyName(6, "Wall Brick.png")
         Me.ImageList1.Images.SetKeyName(7, "Health_Potion.png")
         Me.ImageList1.Images.SetKeyName(8, "Attack image placeholder.png")
-        Me.ImageList1.Images.SetKeyName(9, "wooden pole.png")
+        Me.ImageList1.Images.SetKeyName(9, "Cave innter Wall.png")
+        Me.ImageList1.Images.SetKeyName(10, "Cave Outer Enterence.png")
+        Me.ImageList1.Images.SetKeyName(11, "Cave Outer Left.png")
+        Me.ImageList1.Images.SetKeyName(12, "Cave Outer upper.png")
+        Me.ImageList1.Images.SetKeyName(13, "DirtFloor.png")
+        Me.ImageList1.Images.SetKeyName(14, "GravelFloor.png")
+        Me.ImageList1.Images.SetKeyName(15, "GravelWalls.png")
+        Me.ImageList1.Images.SetKeyName(16, "wooden pole.png")
+        Me.ImageList1.Images.SetKeyName(17, "Grass(2).png")
+        Me.ImageList1.Images.SetKeyName(18, "Grass(3).png")
+        Me.ImageList1.Images.SetKeyName(19, "Grass(1).png")
+        Me.ImageList1.Images.SetKeyName(20, "GravelWalls.png")
         '
         'AL
         '
@@ -207,6 +219,10 @@ Partial Class Form1
         Me.TextBox1.TabIndex = 9
         Me.TextBox1.Visible = False
         '
+        'Text_Timer
+        '
+        Me.Text_Timer.Interval = 500
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -251,4 +267,5 @@ Partial Class Form1
     Friend WithEvents Timer1 As Timer
     Friend WithEvents EnemyAI As Timer
     Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents Text_Timer As Timer
 End Class
