@@ -110,7 +110,17 @@ Partial Class Form1
         Me.ImageList1.Images.SetKeyName(6, "Wall Brick.png")
         Me.ImageList1.Images.SetKeyName(7, "Health_Potion.png")
         Me.ImageList1.Images.SetKeyName(8, "Attack image placeholder.png")
-        Me.ImageList1.Images.SetKeyName(9, "wooden pole.png")
+        Me.ImageList1.Images.SetKeyName(9, "Cave innter Wall.png")
+        Me.ImageList1.Images.SetKeyName(10, "Cave Outer Enterence.png")
+        Me.ImageList1.Images.SetKeyName(11, "Cave Outer Left.png")
+        Me.ImageList1.Images.SetKeyName(12, "Cave Outer upper.png")
+        Me.ImageList1.Images.SetKeyName(13, "DirtFloor.png")
+        Me.ImageList1.Images.SetKeyName(14, "GravelFloor.png")
+        Me.ImageList1.Images.SetKeyName(15, "GravelWalls.png")
+        Me.ImageList1.Images.SetKeyName(16, "wooden pole.png")
+        Me.ImageList1.Images.SetKeyName(17, "Grass(2).png")
+        Me.ImageList1.Images.SetKeyName(18, "Grass(3).png")
+        Me.ImageList1.Images.SetKeyName(19, "Grass(1).png")
         '
         'AL
         '
