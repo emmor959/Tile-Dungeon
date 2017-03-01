@@ -13,7 +13,7 @@
     Dim roomindex As Integer
     Dim HPPACK1(0) As clsPickup
     Dim Player1 As clsPlayer
-    Dim lvl1EnemyArray(3) As clsEnemy
+    Dim lvl1EnemyArray(1) As clsEnemy
     Dim rnd As New Random
 
     Private Sub ToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles level1.Click
@@ -22,10 +22,10 @@
         lvl1EnemyArray(0).SetHealth(3)
         lvl1EnemyArray(1) = New clsEnemy(8, 1)
         lvl1EnemyArray(1).SetHealth(3)
-        lvl1EnemyArray(2) = New clsEnemy(13, 13)
-        lvl1EnemyArray(2).SetHealth(3)
-        lvl1EnemyArray(3) = New clsEnemy(13, 12)
-        lvl1EnemyArray(3).SetHealth(3)
+        ' lvl1EnemyArray(2) = New clsEnemy(13, 13)
+        ' lvl1EnemyArray(2).SetHealth(3)
+        ' lvl1EnemyArray(3) = New clsEnemy(13, 12)
+        ' lvl1EnemyArray(3).SetHealth(3)
         HPPACK1(0) = New clsPickup(1, 13)
         HPPACK1(0).SetActive(True)
 
