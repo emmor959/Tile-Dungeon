@@ -60,7 +60,7 @@
         For i = 1 To 16
             For i2 = 1 To 16
 
-                m_Game(0, 0, i - 1, i2 - 1) = New Tile(False, False, 1)
+                m_Game(0, roomindex, i - 1, i2 - 1) = New Tile(False, False, 1)
 
             Next
         Next
@@ -200,13 +200,13 @@
         '
 
 
-
+        DisplayText("Usew the WASD or Arrow Keys To Move!")
     End Sub
     Sub Room2(start As Integer)
         For i = 1 To 16
             For i2 = 1 To 16
 
-                m_Game(0, 1, i - 1, i2 - 1) = New Tile(False, False, 1)
+                m_Game(0, roomindex, i - 1, i2 - 1) = New Tile(False, False, 1)
 
             Next
         Next
@@ -267,7 +267,84 @@
 
         Player1.ImageNum(1)
 
+        m_Game(0, roomindex, 15, 14).SetIndex(10)
 
+
+
+
+
+
+
+        m_buttonArray = buttonArray
+        PlayerDown()
+
+    End Sub
+    Sub Room3(start As Integer)
+        For i = 1 To 16
+            For i2 = 1 To 16
+
+                m_Game(levelindex, roomindex, i - 1, i2 - 1) = New Tile(False, False, 1)
+
+            Next
+        Next
+        levelindex = 0
+        Dim buttonArray(16, 16) As Button
+        For i = 0 To 15
+            For i2 = 0 To 15
+                buttonArray(i, i2) = New System.Windows.Forms.Button()
+                buttonArray(i, i2).Location = New System.Drawing.Point((i * tilesize), (i2 * tilesize) + tilesize)
+                buttonArray(i, i2).Name = (i.ToString + "_" + i2.ToString)
+                buttonArray(i, i2).Size = New System.Drawing.Size(tilesize, tilesize)
+                buttonArray(i, i2).TabIndex = 1
+                buttonArray(i, i2).Text = ""
+                buttonArray(i, i2).UseVisualStyleBackColor = True
+                buttonArray(i, i2).BackColor = Color.Gray
+                buttonArray(i, i2).BackgroundImage = ImageList1.Images(4)
+                buttonArray(i, i2).FlatStyle = FlatStyle.Flat
+                buttonArray(i, i2).BackgroundImageLayout = ImageLayout.Stretch
+                buttonArray(i, i2).FlatAppearance.BorderSize = 0
+                buttonArray(i, i2).Enabled = False
+                Me.Controls.Add(buttonArray(i, i2))
+            Next
+        Next
+
+
+
+        'Set Player Starting Location.
+
+
+        If start = 0 Then
+            Player1.SetX(1)
+            Player1.SetY(1)
+        ElseIf start = 1 Then
+            Player1.SetX(14)
+            Player1.SetY(14)
+        End If
+        'CREATES TOP WALL
+        For i = 0 To 15
+            buttonArray(i, 0).BackgroundImage = ImageList1.Images(6)
+            m_Game(0, roomindex, i, 0).SetIndex(6)
+        Next
+        'CREATES LEFT WALL
+        For i2 = 0 To 15
+            buttonArray(0, i2).BackgroundImage = ImageList1.Images(6)
+            m_Game(0, roomindex, 0, i2).SetIndex(6)
+        Next
+        'CREATES BOTTOM WALL
+        For i = 0 To 15
+            buttonArray(i, 15).BackgroundImage = ImageList1.Images(6)
+            m_Game(0, roomindex, i, 15).SetIndex(6)
+        Next
+        'CREATES RIGHT WALL
+        For i2 = 0 To 15
+            buttonArray(15, i2).BackgroundImage = ImageList1.Images(6)
+            m_Game(0, roomindex, 15, i2).SetIndex(6)
+        Next
+        m_Game(0, roomindex, 0, 1).SetIndex(11)
+
+        Player1.ImageNum(1)
+
+        m_Game(0, roomindex, 15, 14).SetIndex(10)
 
 
 
@@ -293,6 +370,9 @@
         End If
         If x = 1 Then
             Room2(y)
+        End If
+        If x = 2 Then
+            Room3(y)
         End If
     End Sub
     Private Sub level2_Click(sender As Object, e As EventArgs) Handles level2.Click
@@ -341,6 +421,7 @@
                         healthPotion += 1
                         HPPACK1(i).SetActive(False)
                         ResetPack()
+                        DisplayText("+ 1 Health Potion")
                     End If
                 Next
             End If
@@ -381,6 +462,7 @@
                         healthPotion += 1
                         HPPACK1(i).SetActive(False)
                         ResetPack()
+                        DisplayText("+ 1 Health Potion")
                     End If
                 Next
             End If
@@ -420,6 +502,7 @@
                         healthPotion += 1
                         HPPACK1(i).SetActive(False)
                         ResetPack()
+                        DisplayText("+ 1 Health Potion")
                     End If
                 Next
             End If
@@ -458,6 +541,7 @@
                         healthPotion += 1
                         HPPACK1(i).SetActive(False)
                         ResetPack()
+                        DisplayText("+ 1 Health Potion")
                     End If
                 Next
             End If
@@ -499,6 +583,7 @@
                         healthPotion += 1
                         HPPACK1(i).SetActive(False)
                         ResetPack()
+                        DisplayText("+ 1 Health Potion")
                     End If
                 Next
             End If
@@ -541,6 +626,7 @@
                         healthPotion += 1
                         HPPACK1(i).SetActive(False)
                         ResetPack()
+                        DisplayText("+ 1 Health Potion")
                     End If
                 Next
             End If
@@ -582,6 +668,7 @@
                         healthPotion += 1
                         HPPACK1(i).SetActive(False)
                         ResetPack()
+                        DisplayText("+ 1 Health Potion")
                     End If
                 Next
             End If
@@ -620,6 +707,7 @@
                         healthPotion += 1
                         HPPACK1(i).SetActive(False)
                         ResetPack()
+                        DisplayText("+ 1 Health Potion")
                     End If
                 Next
             End If
@@ -937,6 +1025,7 @@
             Player1.hp(Player1.GetHP + HPPACK1(0).HP)
             healthPotion -= 1
             ResetPack()
+            DisplayText("3 Health Restored!")
         End If
 
 
@@ -944,9 +1033,38 @@
 
     End Sub
 #Region "Pop-UP Text"
+    Dim pop() As String
     Sub DisplayText(a As String)
         TextBox1.Visible = True
-        TextBox1.Text = a
+        Dim listofwords() As String
+        listofwords = a.Split(" ")
+        pop = listofwords
+        count = listofwords.Count
+        Text_Timer.Interval = (count * 250)
+        Text_Timer.Enabled = True
+
+    End Sub
+    Dim count As Integer
+    Dim place As Integer
+    Private Sub Text_Timer_Tick(sender As Object, e As EventArgs) Handles Text_Timer.Tick
+        TextBox1.Clear()
+
+
+        If count <> 0 Then
+
+            For place = 0 To count - 1
+                TextBox1.Text = TextBox1.Text + pop(place) + " "
+
+            Next
+
+
+            count = 0
+        Else
+            Text_Timer.Enabled = False
+            place = 0
+            TextBox1.Visible = False
+        End If
+
     End Sub
 #End Region
 End Class

@@ -44,6 +44,7 @@ Partial Class Form1
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.EnemyAI = New System.Windows.Forms.Timer(Me.components)
         Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Text_Timer = New System.Windows.Forms.Timer(Me.components)
         Me.MenuStrip1.SuspendLayout()
         CType(Me.BackPackPicture, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -207,6 +208,10 @@ Partial Class Form1
         Me.TextBox1.TabIndex = 9
         Me.TextBox1.Visible = False
         '
+        'Text_Timer
+        '
+        Me.Text_Timer.Interval = 500
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -251,4 +256,5 @@ Partial Class Form1
     Friend WithEvents Timer1 As Timer
     Friend WithEvents EnemyAI As Timer
     Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents Text_Timer As Timer
 End Class
