@@ -224,7 +224,7 @@
                 buttonArray(i, i2).Text = ""
                 buttonArray(i, i2).UseVisualStyleBackColor = True
                 buttonArray(i, i2).BackColor = Color.Gray
-                buttonArray(i, i2).BackgroundImage = ImageList1.Images(4)
+                buttonArray(i, i2).BackgroundImage = ImageList1.Images(14)
                 buttonArray(i, i2).FlatStyle = FlatStyle.Flat
                 buttonArray(i, i2).BackgroundImageLayout = ImageLayout.Stretch
                 buttonArray(i, i2).FlatAppearance.BorderSize = 0
@@ -249,22 +249,22 @@
         End If
         'CREATES TOP WALL
         For i = 0 To 15
-            buttonArray(i, 0).BackgroundImage = ImageList1.Images(6)
+            buttonArray(i, 0).BackgroundImage = ImageList1.Images(9)
             m_Game(0, roomindex, i, 0).SetIndex(6)
         Next
         'CREATES LEFT WALL
         For i2 = 0 To 15
-            buttonArray(0, i2).BackgroundImage = ImageList1.Images(6)
+            buttonArray(0, i2).BackgroundImage = ImageList1.Images(9)
             m_Game(0, roomindex, 0, i2).SetIndex(6)
         Next
         'CREATES BOTTOM WALL
         For i = 0 To 15
-            buttonArray(i, 15).BackgroundImage = ImageList1.Images(6)
+            buttonArray(i, 15).BackgroundImage = ImageList1.Images(9)
             m_Game(0, roomindex, i, 15).SetIndex(6)
         Next
         'CREATES RIGHT WALL
         For i2 = 0 To 15
-            buttonArray(15, i2).BackgroundImage = ImageList1.Images(6)
+            buttonArray(15, i2).BackgroundImage = ImageList1.Images(9)
             m_Game(0, roomindex, 15, i2).SetIndex(6)
         Next
         ' m_Game(0, roomindex, 0, 1).SetIndex(11)
@@ -276,7 +276,7 @@
         Player1.ImageNum(1)
 
         m_Game(0, roomindex, 8, 15).SetIndex(10)
-        buttonArray(8, 15).BackgroundImage = ImageList1.Images(4)
+        buttonArray(8, 15).BackgroundImage = ImageList1.Images(14)
 
 
 
@@ -363,8 +363,7 @@
         m_buttonArray = buttonArray
         For i = 0 To lvl1EnemyArray.Count - 1
             If lvl1EnemyArray(i).CheckDead = False Then
-                m_Game(0, roomindex, lvl1EnemyArray(1).GetX, lvl1EnemyArray(1).GetY).setEnemy(True)
-                m_Game(0, roomindex, lvl1EnemyArray(0).GetX, lvl1EnemyArray(0).GetY).setEnemy(True)
+                m_Game(0, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(True)
                 Dim bmp As Bitmap
                 bmp = Minesweeper.My.Resources.Resource1.Rat_Front_
                 bmp.MakeTransparent(Color.White)
@@ -742,7 +741,6 @@
             If Player1.GetImageNum = 0 Then
                 AR.Enabled = True
                 If m_Game(0, roomindex, Player1.GetX() + 1, Player1.GetY()).CheckForEnemy = True Then
-
                     For i = 0 To lvl1EnemyArray.Count - 1
                         If lvl1EnemyArray(i).GetX = Player1.GetX + 1 And lvl1EnemyArray(i).GetY = Player1.GetY Then
                             lvl1EnemyArray(i).SetHealth(lvl1EnemyArray(i).GetHealth() - 1)
@@ -752,7 +750,8 @@
                             End If
                         End If
                     Next
-
+                End If
+                If m_Game(0, roomindex, Player1.GetX() + 1, Player1.GetY()).GetIndex = 3 Then
 
                 End If
             End If
@@ -1013,7 +1012,6 @@
         pants.MakeTransparent(Color.White)
         m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(ImageList1.Images(4), baseimage, pants)
     End Sub
-
     Private Sub BackpackList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles BackpackList.SelectedIndexChanged
         If BackpackList.SelectedIndex = 0 Then
             Dim bmp As Bitmap
@@ -1028,15 +1026,12 @@
     Dim healthPotion As Integer
     Dim Key As Integer
     Dim Stone As Integer
-
     Sub ResetPack()
         BackpackList.Items.Clear()
         BackpackList.Items.Add("Health Potions: " & healthPotion)
         BackpackList.Items.Add("Key: " & Key)
         BackpackList.Items.Add("Philiosopher Stone: " & Stone)
     End Sub
-
-
 #End Region
     Private Sub BackpackList_DoubleClick(sender As Object, e As EventArgs) Handles BackpackList.DoubleClick
 
@@ -1061,7 +1056,6 @@
         count = listofwords.Count
         Text_Timer.Interval = (count * 250)
         Text_Timer.Enabled = True
-
     End Sub
     Dim count As Integer
     Dim place As Integer
