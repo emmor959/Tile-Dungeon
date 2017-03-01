@@ -249,22 +249,22 @@
         End If
         'CREATES TOP WALL
         For i = 0 To 15
-            buttonArray(i, 0).BackgroundImage = ImageList1.Images(9)
+            buttonArray(i, 0).BackgroundImage = ImageList1.Images(15)
             m_Game(0, roomindex, i, 0).SetIndex(6)
         Next
         'CREATES LEFT WALL
         For i2 = 0 To 15
-            buttonArray(0, i2).BackgroundImage = ImageList1.Images(9)
+            buttonArray(0, i2).BackgroundImage = ImageList1.Images(15)
             m_Game(0, roomindex, 0, i2).SetIndex(6)
         Next
         'CREATES BOTTOM WALL
         For i = 0 To 15
-            buttonArray(i, 15).BackgroundImage = ImageList1.Images(9)
+            buttonArray(i, 15).BackgroundImage = ImageList1.Images(15)
             m_Game(0, roomindex, i, 15).SetIndex(6)
         Next
         'CREATES RIGHT WALL
         For i2 = 0 To 15
-            buttonArray(15, i2).BackgroundImage = ImageList1.Images(9)
+            buttonArray(15, i2).BackgroundImage = ImageList1.Images(15)
             m_Game(0, roomindex, 15, i2).SetIndex(6)
         Next
         ' m_Game(0, roomindex, 0, 1).SetIndex(11)
