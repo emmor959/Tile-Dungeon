@@ -153,15 +153,7 @@
 
             'Generate Level Pickups
 
-            If HPPACK1(0).ActiveCheck() = True Then
-                m_Game(0, 0, HPPACK1(0).ReturnX, HPPACK1(0).ReturnY).SetIndex(3)
-                HPPACK1(0).SetHealth(3)
-                Dim bmp As Bitmap
-                bmp = Minesweeper.My.Resources.Resource1.Health_Potion
-                bmp.MakeTransparent(Color.White)
-                buttonArray(HPPACK1(0).ReturnX, HPPACK1(0).ReturnY).BackgroundImage = CombineImages(ImageList1.Images(4), bmp)
 
-            End If
 
             'Places Player          
 
@@ -181,7 +173,11 @@
                 End If
             Next
 
-
+            If HPPACK1(0).ActiveCheck() = True Then
+                m_Game(0, 0, HPPACK1(0).ReturnX, HPPACK1(0).ReturnY).SetIndex(3)
+                HPPACK1(0).SetHealth(3)
+                DrawHP(HPPACK1(0).ReturnX, HPPACK1(0).ReturnY)
+            End If
 
 
 
@@ -544,7 +540,7 @@
                     End If
                 Next
             End If
-        ElseIf e.KeyCode = Keys.up And Player1.GetY() <> 0 Then
+        ElseIf e.KeyCode = Keys.Up And Player1.GetY() <> 0 Then
 
             PlayerUp()
             Player1.ImageNum(1)
@@ -803,6 +799,15 @@
                                 End If
                                 m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = CombineImages(m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage, bmp)
                                 m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(True)
+                                If m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY - 1).GetIndex = 3 Then
+                                    For i2 = 0 To HPPACK1.Count - 1
+                                        If HPPACK1(i2).ReturnX = Player1.GetX And HPPACK1(i2).ReturnY = Player1.GetY And HPPACK1(i2).ActiveCheck = True Then
+                                            healthPotion += 1
+                                            HPPACK1(i2).SetActive(False)
+                                            ResetPack()
+                                        End If
+                                    Next
+                                End If
                             ElseIf b >= 5 Then
                                 Dim bmp As Bitmap
                                 bmp = Minesweeper.My.Resources.Resource1.Rat_Back_
@@ -905,6 +910,12 @@
         pants = Minesweeper.My.Resources.Resource1.Pants_Front_
         pants.MakeTransparent(Color.White)
         m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(ImageList1.Images(4), baseimage, pants)
+    End Sub
+    Sub DrawHP(x As Integer, y As Integer)
+        Dim hpmap As Bitmap
+        hpmap = Minesweeper.My.Resources.Resource1.Health_Potion
+        hpmap.MakeTransparent(Color.White)
+        m_buttonArray(x, y).BackgroundImage = CombineImages(ImageList1.Images(4), hpmap)
     End Sub
 
     Private Sub BackpackList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles BackpackList.SelectedIndexChanged
