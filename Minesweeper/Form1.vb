@@ -323,8 +323,8 @@
                 buttonArray(i, i2).Text = ""
                 buttonArray(i, i2).UseVisualStyleBackColor = True
                 buttonArray(i, i2).BackColor = Color.Gray
-                buttonArray(i, i2).BackgroundImage = ImageList1.Images(4)
-                m_Game(0, roomindex, i, i2).SetBackGround(4)
+                buttonArray(i, i2).BackgroundImage = ImageList1.Images(7)
+                m_Game(0, roomindex, i, i2).SetBackGround(7)
                 buttonArray(i, i2).FlatStyle = FlatStyle.Flat
                 buttonArray(i, i2).BackgroundImageLayout = ImageLayout.Stretch
                 buttonArray(i, i2).FlatAppearance.BorderSize = 0
@@ -347,27 +347,27 @@
         End If
         'CREATES TOP WALL
         For i = 0 To 15
-            buttonArray(i, 0).BackgroundImage = ImageList1.Images(6)
+            buttonArray(i, 0).BackgroundImage = ImageList1.Images(9)
             m_Game(0, roomindex, i, 0).SetIndex(6)
-            m_Game(0, roomindex, i, 0).SetBackGround(6)
+            m_Game(0, roomindex, i, 0).SetBackGround(9)
         Next
         'CREATES LEFT WALL
         For i2 = 0 To 15
-            buttonArray(0, i2).BackgroundImage = ImageList1.Images(6)
+            buttonArray(0, i2).BackgroundImage = ImageList1.Images(9)
             m_Game(0, roomindex, 0, i2).SetIndex(6)
-            m_Game(0, roomindex, 0, i2).SetBackGround(6)
+            m_Game(0, roomindex, 0, i2).SetBackGround(9)
         Next
         'CREATES BOTTOM WALL
         For i = 0 To 15
-            buttonArray(i, 15).BackgroundImage = ImageList1.Images(6)
+            buttonArray(i, 15).BackgroundImage = ImageList1.Images(9)
             m_Game(0, roomindex, i, 15).SetIndex(6)
-            m_Game(0, roomindex, i, 15).SetBackGround(6)
+            m_Game(0, roomindex, i, 15).SetBackGround(9)
         Next
         'CREATES RIGHT WALL
         For i2 = 0 To 15
-            buttonArray(15, i2).BackgroundImage = ImageList1.Images(6)
+            buttonArray(15, i2).BackgroundImage = ImageList1.Images(9)
             m_Game(0, roomindex, 15, i2).SetIndex(6)
-            m_Game(0, roomindex, 15, i2).SetBackGround(6)
+            m_Game(0, roomindex, 15, i2).SetBackGround(9)
         Next
 
 
@@ -375,7 +375,7 @@
 
 
 
-        buttonArray(8, 0).BackgroundImage = ImageList1.Images(4)
+        buttonArray(8, 0).BackgroundImage = ImageList1.Images(7)
 
 
 
@@ -385,7 +385,7 @@
             If lvl1EnemyArray(i).CheckDead = False Then
                 m_Game(0, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(True)
                 Dim bmp As Bitmap
-                bmp = Minesweeper.My.Resources.Resource1.Rat_Front_
+                bmp = Minesweeper.My.Resources.Resource1.Dummy1
                 bmp.MakeTransparent(Color.White)
                 m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = CombineImages(m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage, bmp)
             End If
@@ -769,13 +769,20 @@
                             lvl1EnemyArray(i).SetHealth(lvl1EnemyArray(i).GetHealth() - 1)
                             If lvl1EnemyArray(i).GetHealth <= 0 Then
                                 m_Game(0, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(False)
-                                m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(4)
+                                m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).ReturnBackGround())
                             End If
                         End If
                     Next
                 End If
                 If m_Game(0, roomindex, Player1.GetX() + 1, Player1.GetY()).GetIndex = 3 Then
-
+                    For i = 0 To HPPACK1.Count - 1
+                        If HPPACK1(i).ReturnX = Player1.GetX + 1 And HPPACK1(i).ReturnY = Player1.GetY And HPPACK1(i).ActiveCheck = True Then
+                            healthPotion += 1
+                            HPPACK1(i).SetActive(False)
+                            ResetPack()
+                            DisplayText("+ 1 Health Potion")
+                        End If
+                    Next
                 End If
             End If
 
@@ -787,14 +794,24 @@
                             lvl1EnemyArray(i).SetHealth(lvl1EnemyArray(i).GetHealth() - 1)
                             If lvl1EnemyArray(i).GetHealth <= 0 Then
                                 m_Game(0, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(False)
-                                m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(4)
+                                m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).ReturnBackGround())
                             End If
+                        End If
+                    Next
+                End If
+                If m_Game(0, roomindex, Player1.GetX(), Player1.GetY() - 1).GetIndex = 3 Then
+                    For i = 0 To HPPACK1.Count - 1
+                        If HPPACK1(i).ReturnX = Player1.GetX And HPPACK1(i).ReturnY = Player1.GetY - 1 And HPPACK1(i).ActiveCheck = True Then
+                            healthPotion += 1
+                            HPPACK1(i).SetActive(False)
+                            ResetPack()
+                            DisplayText("+ 1 Health Potion")
                         End If
                     Next
                 End If
             End If
 
-            If Player1.GetImageNum = 2 Then
+                If Player1.GetImageNum = 2 Then
                 AL.Enabled = True
                 If m_Game(0, roomindex, Player1.GetX() - 1, Player1.GetY()).CheckForEnemy = True Then
                     For i = 0 To lvl1EnemyArray.Count - 1
@@ -802,8 +819,18 @@
                             lvl1EnemyArray(i).SetHealth(lvl1EnemyArray(i).GetHealth() - 1)
                             If lvl1EnemyArray(i).GetHealth <= 0 Then
                                 m_Game(0, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(False)
-                                m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(4)
+                                m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).ReturnBackGround())
                             End If
+                        End If
+                    Next
+                End If
+                If m_Game(0, roomindex, Player1.GetX() - 1, Player1.GetY()).GetIndex = 3 Then
+                    For i = 0 To HPPACK1.Count - 1
+                        If HPPACK1(i).ReturnX = Player1.GetX - 1 And HPPACK1(i).ReturnY = Player1.GetY - 1 And HPPACK1(i).ActiveCheck = True Then
+                            healthPotion += 1
+                            HPPACK1(i).SetActive(False)
+                            ResetPack()
+                            DisplayText("+ 1 Health Potion")
                         End If
                     Next
                 End If
@@ -818,8 +845,18 @@
                             lvl1EnemyArray(i).SetHealth(lvl1EnemyArray(i).GetHealth() - 1)
                             If lvl1EnemyArray(i).GetHealth <= 0 Then
                                 m_Game(0, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(False)
-                                m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(4)
+                                m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).ReturnBackGround())
                             End If
+                        End If
+                    Next
+                End If
+                If m_Game(0, roomindex, Player1.GetX(), Player1.GetY() + 1).GetIndex = 3 Then
+                    For i = 0 To HPPACK1.Count + 1
+                        If HPPACK1(i).ReturnX = Player1.GetX And HPPACK1(i).ReturnY = Player1.GetY - 1 And HPPACK1(i).ActiveCheck = True Then
+                            healthPotion += 1
+                            HPPACK1(i).SetActive(False)
+                            ResetPack()
+                            DisplayText("+ 1 Health Potion")
                         End If
                     Next
                 End If
