@@ -487,6 +487,7 @@
                     Player1.SetX(Player1.GetX() + 1)
                     PlayerRight(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
                     m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(True)
+                    ReDraw(-1, 0)
                 End If
             End If
             If m_Game(levelindex, roomindex, Player1.GetX + 1, Player1.GetY).GetIndex = 10 Then
@@ -499,16 +500,7 @@
                 roomindex -= 1
                 CreateRoom(roomindex, 1)
             End If
-            If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).GetIndex = 3 Then
-                For i = 0 To HPPACK1.Count - 1
-                    If HPPACK1(i).ReturnX = Player1.GetX And HPPACK1(i).ReturnY = Player1.GetY And HPPACK1(i).ActiveCheck = True Then
-                        healthPotion += 1
-                        HPPACK1(i).SetActive(False)
-                        ResetPack()
-                        DisplayText("+ 1 Health Potion")
-                    End If
-                Next
-            End If
+
         ElseIf e.KeyCode = Keys.D And Player1.GetX() <> 15 Then
 
             PlayerRight(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
@@ -527,6 +519,7 @@
                     Player1.SetY(Player1.GetY() - 1)
                     PlayerUp(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
                     m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(True)
+                    ReDraw(0, 1)
                 End If
 
             End If
@@ -540,16 +533,7 @@
                 roomindex -= 1
                 CreateRoom(roomindex, 1)
             End If
-            If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).GetIndex = 3 Then
-                For i = 0 To HPPACK1.Count - 1
-                    If HPPACK1(i).ReturnX = Player1.GetX And HPPACK1(i).ReturnY = Player1.GetY And HPPACK1(i).ActiveCheck = True Then
-                        healthPotion += 1
-                        HPPACK1(i).SetActive(False)
-                        ResetPack()
-                        DisplayText("+ 1 Health Potion")
-                    End If
-                Next
-            End If
+
         ElseIf e.KeyCode = Keys.W And Player1.GetY() <> 0 Then
             PlayerUp(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
             Player1.ImageNum(1)
@@ -567,6 +551,7 @@
                     Player1.SetX(Player1.GetX() - 1)
                     PlayerLeft(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
                     m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(True)
+                    ReDraw(1, 0)
                 End If
             End If
             If m_Game(levelindex, roomindex, Player1.GetX - 1, Player1.GetY).GetIndex = 10 Then
@@ -579,16 +564,7 @@
                 roomindex -= 1
                 CreateRoom(roomindex, 1)
             End If
-            If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).GetIndex = 3 Then
-                For i = 0 To HPPACK1.Count - 1
-                    If HPPACK1(i).ReturnX = Player1.GetX And HPPACK1(i).ReturnY = Player1.GetY And HPPACK1(i).ActiveCheck = True Then
-                        healthPotion += 1
-                        HPPACK1(i).SetActive(False)
-                        ResetPack()
-                        DisplayText("+ 1 Health Potion")
-                    End If
-                Next
-            End If
+
         ElseIf e.KeyCode = Keys.A And Player1.GetX() <> 0 Then
             PlayerLeft(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
             Player1.ImageNum(2)
@@ -606,6 +582,7 @@
                     Player1.SetY(Player1.GetY() + 1)
                     PlayerDown(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
                     m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(True)
+                    ReDraw(0, -1)
                 End If
             End If
             If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY + 1).GetIndex = 10 Then
@@ -618,16 +595,7 @@
                 roomindex -= 1
                 CreateRoom(roomindex, 1)
             End If
-            If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).GetIndex = 3 Then
-                For i = 0 To HPPACK1.Count - 1
-                    If HPPACK1(i).ReturnX = Player1.GetX And HPPACK1(i).ReturnY = Player1.GetY And HPPACK1(i).ActiveCheck = True Then
-                        healthPotion += 1
-                        HPPACK1(i).SetActive(False)
-                        ResetPack()
-                        DisplayText("+ 1 Health Potion")
-                    End If
-                Next
-            End If
+
         ElseIf e.KeyCode = Keys.S And Player1.GetY() <> 15 Then
             PlayerDown(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
             Player1.ImageNum(3)
@@ -808,23 +776,7 @@
                         End If
                     Next
                 End If
-                If m_Game(0, roomindex, Player1.GetX() + 1, Player1.GetY()).GetIndex = 3 Then
-                    For i = 0 To HPPACK1.Count - 1
-                        If HPPACK1(i).ReturnX = Player1.GetX + 1 And HPPACK1(i).ReturnY = Player1.GetY And HPPACK1(i).ActiveCheck = True Then
-                            healthPotion += 1
-                            HPPACK1(i).SetActive(False)
-                            ResetPack()
-                            DisplayText("+ 1 Health Potion")
-                        End If
-                    Next
-                    For i = 0 To Chestb.Count - 1
-                        If Chestb(i).ReturnX = Player1.GetX + 1 And Chestb(i).ReturnY = Player1.GetY And Chestb(i).ActiveCheck = True Then
-                            BackpackList.Items.Add(Chestb(i).Item())
-                            DisplayText(Chestb(i).Item())
-                            playerDamage = 1
-                        End If
-                    Next
-                End If
+                PickingUp(1, 0)
             End If
             If Player1.GetImageNum = 1 Then
                 AT.Enabled = True
@@ -839,23 +791,7 @@
                         End If
                     Next
                 End If
-                If m_Game(0, roomindex, Player1.GetX(), Player1.GetY() - 1).GetIndex = 3 Then
-                    For i = 0 To HPPACK1.Count - 1
-                        If HPPACK1(i).ReturnX = Player1.GetX And HPPACK1(i).ReturnY = Player1.GetY - 1 And HPPACK1(i).ActiveCheck = True Then
-                            healthPotion += 1
-                            HPPACK1(i).SetActive(False)
-                            ResetPack()
-                            DisplayText("+ 1 Health Potion")
-                        End If
-                    Next
-                    For i = 0 To Chestb.Count - 1
-                        If Chestb(i).ReturnX = Player1.GetX And Chestb(i).ReturnY = Player1.GetY - 1 And Chestb(i).ActiveCheck = True Then
-                            BackpackList.Items.Add(Chestb(i).Item())
-                            DisplayText(Chestb(i).Item())
-                            playerDamage = 1
-                        End If
-                    Next
-                End If
+                PickingUp(0, -1)
             End If
             If Player1.GetImageNum = 2 Then
                 AL.Enabled = True
@@ -870,23 +806,7 @@
                         End If
                     Next
                 End If
-                If m_Game(0, roomindex, Player1.GetX() - 1, Player1.GetY()).GetIndex = 3 Then
-                    For i = 0 To HPPACK1.Count - 1
-                        If HPPACK1(i).ReturnX = Player1.GetX - 1 And HPPACK1(i).ReturnY = Player1.GetY - 1 And HPPACK1(i).ActiveCheck = True Then
-                            healthPotion += 1
-                            HPPACK1(i).SetActive(False)
-                            ResetPack()
-                            DisplayText("+ 1 Health Potion")
-                        End If
-                    Next
-                    For i = 0 To Chestb.Count - 1
-                        If Chestb(i).ReturnX = Player1.GetX - 1 And Chestb(i).ReturnY = Player1.GetY And Chestb(i).ActiveCheck = True Then
-                            BackpackList.Items.Add(Chestb(i).Item())
-                            DisplayText(Chestb(i).Item())
-                            playerDamage = 1
-                        End If
-                    Next
-                End If
+                PickingUp(-1, 0)
             End If
             If Player1.GetImageNum = 3 Then
                 AD.Enabled = True
@@ -902,23 +822,7 @@
                         End If
                     Next
                 End If
-                If m_Game(0, roomindex, Player1.GetX(), Player1.GetY() + 1).GetIndex = 3 Then
-                    For i = 0 To HPPACK1.Count + 1
-                        If HPPACK1(i).ReturnX = Player1.GetX And HPPACK1(i).ReturnY = Player1.GetY + 1 And HPPACK1(i).ActiveCheck = True Then
-                            healthPotion += 1
-                            HPPACK1(i).SetActive(False)
-                            ResetPack()
-                            DisplayText("+ 1 Health Potion")
-                        End If
-                    Next
-                    For i = 0 To Chestb.Count - 1
-                        If Chestb(i).ReturnX = Player1.GetX And Chestb(i).ReturnY = Player1.GetY + 1 And Chestb(i).ActiveCheck = True Then
-                            BackpackList.Items.Add(Chestb(i).Item())
-                            DisplayText(Chestb(i).Item())
-                            playerDamage = 1
-                        End If
-                    Next
-                End If
+                PickingUp(0, 1)
             End If
         End If
     End Sub
@@ -1121,7 +1025,44 @@
         Chesta.MakeTransparent(Color.White)
         m_buttonArray(x, y).BackgroundImage = CombineImages(ImageList1.Images(a), Chesta)
     End Sub
+    Sub ReDraw(x As Integer, y As Integer)
 
+        If m_Game(levelindex, roomindex, Player1.GetX + x, Player1.GetY + y).GetIndex = 3 Then
+            For i = 0 To HPPACK1.Count - 1
+                If Player1.GetX + x = HPPACK1(i).ReturnX And Player1.GetY + y = HPPACK1(i).ReturnY And HPPACK1(i).ActiveCheck Then
+                    hp(HPPACK1(i).ReturnX, HPPACK1(i).ReturnY, m_Game(levelindex, roomindex, HPPACK1(i).ReturnX, HPPACK1(i).ReturnY).ReturnBackGround)
+                End If
+            Next
+            For i = 0 To Chestb.Count - 1
+                If Player1.GetX + x = Chestb(i).ReturnX And Player1.GetY + y = Chestb(i).ReturnY And Chestb(i).ActiveCheck Then
+                    Chest(Chestb(i).ReturnX, Chestb(i).ReturnY, m_Game(levelindex, roomindex, Chestb(i).ReturnX, Chestb(i).ReturnY).ReturnBackGround)
+                End If
+            Next
+        End If
+
+    End Sub
+    Sub PickingUp(x As Integer, y As Integer)
+
+        For i = 0 To HPPACK1.Count - 1
+            If HPPACK1(i).ReturnX = Player1.GetX + x And HPPACK1(i).ReturnY = Player1.GetY + y And HPPACK1(i).ActiveCheck = True Then
+                healthPotion += 1
+                HPPACK1(i).SetActive(False)
+                ResetPack()
+                DisplayText("+ 1 Health Potion")
+            End If
+        Next
+        For i = 0 To Chestb.Count - 1
+            If Chestb(i).ReturnX = Player1.GetX + x And Chestb(i).ReturnY = Player1.GetY + y And Chestb(i).ActiveCheck = True Then
+                BackpackList.Items.Add(Chestb(i).Item())
+                DisplayText(Chestb(i).Item())
+                Chestb(i).SetActive(False)
+
+
+                'When Player Picksup a Weapon Adjust Variable for Damage as such v
+                playerDamage = 1
+            End If
+        Next
+    End Sub
     Private Sub BackpackList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles BackpackList.SelectedIndexChanged
         If BackpackList.SelectedIndex = 0 Then
             Dim bmp As Bitmap
