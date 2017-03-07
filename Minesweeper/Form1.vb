@@ -51,7 +51,7 @@
         ' lvl1EnemyArray(3) = New clsEnemy(13, 12)
         ' lvl1EnemyArray(3).SetHealth(3)
         HPPACK1(0) = New clsPickup(14, 7)
-         HPPACK1(0).SetActive(True)
+        HPPACK1(0).SetActive(True)
         Chestb(0) = New clsPickup(14, 8)
         Chestb(0).SetActive(True)
         Room1(0)
@@ -967,23 +967,30 @@
 
     End Sub
     Sub EnemyAttack(b As clsEnemy)
-        If b.GetDirection = 0 Then
+        'Check if they are a rat
+        If b.GetIndexNum = 0 Then
+            'Check which way they're looking
+            If b.GetDirection = 0 Then
+                'Attack in direction, check if attack hits Player1
+
+
+            End If
+            If b.GetDirection = 1 Then
 
 
 
-        End If
-        If b.GetDirection = 1 Then
+            End If
+            If b.GetDirection = 2 Then
 
 
 
-        End If
-        If b.GetDirection = 2 Then
+            End If
+            If b.GetDirection = 3 Then
 
 
 
-        End If
-        If b.GetDirection = 3 Then
 
+            End If
 
 
         End If
@@ -1056,8 +1063,8 @@
             End If
 
             m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(True)
-                ReDraw(-x, -y)
-            End If
+            ReDraw(-x, -y)
+        End If
     End Sub
     Sub ReDraw(x As Integer, y As Integer)
 

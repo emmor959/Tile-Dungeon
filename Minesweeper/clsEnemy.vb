@@ -1,7 +1,7 @@
 ﻿Public Class clsEnemy
     Dim EnemyX As Integer
     Dim EnemyY As Integer
-    Dim ImageIndex As Integer
+    Dim Index As Integer
     Dim hp As Integer
     Dim Direction As Integer
     Sub New(x As Integer, y As Integer)
@@ -20,11 +20,11 @@
     Sub SetY(y As Integer)
         EnemyY = y
     End Sub
-    Sub ImageNum(x As Integer)
-        ImageIndex = x
+    Sub IndexNum(x As Integer)
+        Index = x
     End Sub
-    Function GetImageNum()
-        Return ImageIndex
+    Function GetIndexNum()
+        Return Index
     End Function
     Function GetHealth()
         Return hp
