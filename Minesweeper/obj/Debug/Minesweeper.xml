@@ -38,6 +38,16 @@ Minesweeper
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
+<member name="P:Minesweeper.My.Resources.Resource1.Chest">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:Minesweeper.My.Resources.Resource1.Dummy1">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:Minesweeper.My.Resources.Resource1.Health_Potion">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.

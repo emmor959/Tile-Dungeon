@@ -172,6 +172,8 @@
     <None Include="Resources\Pants%28Right%29.bmp" />
     <None Include="Resources\Pants%28Front%29.bmp" />
     <None Include="Resources\Pants%28Left%29.bmp" />
+    <None Include="Resources\Dummy1.png" />
+    <None Include="Resources\Chest.png" />
     <Content Include="Transparency.cs" />
   </ItemGroup>
   <ItemGroup />
