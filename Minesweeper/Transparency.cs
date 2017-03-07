@@ -30,7 +30,7 @@ namespace Minesweeper
 
            }
             
-            
+          
         }
         public void clsRatEnemy()
         {
