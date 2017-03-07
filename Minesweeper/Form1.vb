@@ -1034,7 +1034,7 @@
                 End If
             Next
             For i = 0 To Chestb.Count - 1
-                If Player1.GetX + x = Chestb(i).ReturnX And Player1.GetY + y = Chestb(i).ReturnY And Chestb(i).ActiveCheck Then
+                If Player1.GetX + x = Chestb(i).ReturnX And Player1.GetY + y = Chestb(i).ReturnY Then 'And Chestb(i).ActiveCheck Then
                     Chest(Chestb(i).ReturnX, Chestb(i).ReturnY, m_Game(levelindex, roomindex, Chestb(i).ReturnX, Chestb(i).ReturnY).ReturnBackGround)
                 End If
             Next
