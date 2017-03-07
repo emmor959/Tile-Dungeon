@@ -3,6 +3,7 @@
     Dim EnemyY As Integer
     Dim ImageIndex As Integer
     Dim hp As Integer
+    Dim Direction As Integer
     Sub New(x As Integer, y As Integer)
         EnemyX = x
         EnemyY = y
@@ -37,5 +38,11 @@
         Else
             Return False
         End If
+    End Function
+    Sub SetDirection(x As Integer)
+        Direction = x
+    End Sub
+    Function GetDirection()
+        Return Direction
     End Function
 End Class
