@@ -45,6 +45,7 @@ Partial Class Form1
         Me.EnemyAI = New System.Windows.Forms.Timer(Me.components)
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Text_Timer = New System.Windows.Forms.Timer(Me.components)
+        Me.WeaponList = New System.Windows.Forms.ListBox()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.BackPackPicture, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -130,7 +131,7 @@ Partial Class Form1
         Me.BackpackList.Items.AddRange(New Object() {"Health Potion", "Key", "Philosopher Stone"})
         Me.BackpackList.Location = New System.Drawing.Point(0, 27)
         Me.BackpackList.Name = "BackpackList"
-        Me.BackpackList.Size = New System.Drawing.Size(178, 381)
+        Me.BackpackList.Size = New System.Drawing.Size(178, 212)
         Me.BackpackList.TabIndex = 4
         Me.BackpackList.Visible = False
         '
@@ -217,12 +218,23 @@ Partial Class Form1
         '
         Me.Text_Timer.Interval = 500
         '
+        'WeaponList
+        '
+        Me.WeaponList.BackColor = System.Drawing.Color.LightGray
+        Me.WeaponList.FormattingEnabled = True
+        Me.WeaponList.Location = New System.Drawing.Point(0, 236)
+        Me.WeaponList.Name = "WeaponList"
+        Me.WeaponList.Size = New System.Drawing.Size(178, 173)
+        Me.WeaponList.TabIndex = 10
+        Me.WeaponList.Visible = False
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.ClientSize = New System.Drawing.Size(387, 446)
+        Me.Controls.Add(Me.WeaponList)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.BackPackLabel)
@@ -262,4 +274,5 @@ Partial Class Form1
     Friend WithEvents EnemyAI As Timer
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Text_Timer As Timer
+    Friend WithEvents WeaponList As ListBox
 End Class

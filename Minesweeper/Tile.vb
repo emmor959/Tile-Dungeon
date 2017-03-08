@@ -1,5 +1,4 @@
 ﻿Public Class Tile
-
     Dim m_PlayerPresent As Boolean
     Dim m_EnemyPresent As Boolean
     Dim m_TileIndex As Integer
