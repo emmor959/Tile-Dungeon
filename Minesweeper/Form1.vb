@@ -477,12 +477,10 @@
         'RIGHT MOVEMENT RIGHT MOVEMENT RIGHTMOVEMENT
         If e.KeyCode = Keys.D And Player1.GetX() <> 15 And m_Game(levelindex, roomindex, Player1.GetX() + 1, Player1.GetY()).GetIndex <> 6 Then
             If m_Game(levelindex, roomindex, Player1.GetX + 1, Player1.GetY).GetIndex = 10 Then
-
                 roomindex += 1
                 CreateRoom(roomindex, 0)
             End If
             If m_Game(levelindex, roomindex, Player1.GetX + 1, Player1.GetY).GetIndex = 11 Then
-
                 roomindex -= 1
                 CreateRoom(roomindex, 1)
             End If
@@ -491,12 +489,8 @@
                 Player1.ImageNum(0)
             Else
                 MovePlayer(1, 0)
-
             End If
-
-
         ElseIf e.KeyCode = Keys.D And Player1.GetX() <> 15 Then
-
             PlayerRight(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
             Player1.ImageNum(0)
         End If
@@ -1105,16 +1099,7 @@
             End If
         Next
     End Sub
-    Private Sub BackpackList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles BackpackList.SelectedIndexChanged
-        If BackpackList.SelectedIndex = 0 Then
-            Dim bmp As Bitmap
-            bmp = Minesweeper.My.Resources.Resource1.Health_Potion
-            bmp.MakeTransparent(Color.White)
-            BackPackPicture.Image = bmp
-            BackPackLabel.Text = "Health Potion"
-            BackPackTextBox.Text = "Full of a non-Viscous Red Fluid that is sweet to the taste. Restores 3 health."
-        End If
-    End Sub
+
 #Region "BackPackStorage"
     Dim healthPotion As Integer
     Dim Key As Integer
@@ -1125,7 +1110,6 @@
         BackpackList.Items.Add("Key: " & Key)
         BackpackList.Items.Add("Philiosopher Stone: " & Stone)
     End Sub
-#End Region
     Private Sub BackpackList_DoubleClick(sender As Object, e As EventArgs) Handles BackpackList.DoubleClick
 
         If BackpackList.SelectedIndex = 0 And healthPotion > 0 Then
@@ -1139,6 +1123,21 @@
 
 
     End Sub
+    Private Sub BackpackList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles BackpackList.SelectedIndexChanged
+        If BackpackList.SelectedIndex = 0 Then
+            Dim bmp As Bitmap
+            bmp = Minesweeper.My.Resources.Resource1.Health_Potion
+            bmp.MakeTransparent(Color.White)
+            BackPackPicture.Image = bmp
+            BackPackLabel.Text = "Health Potion"
+            BackPackTextBox.Text = "Full of a non-Viscous Red Fluid that is sweet to the taste. Restores 3 health."
+        End If
+    End Sub
+    Private Sub WeaponList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles WeaponList.SelectedIndexChanged
+
+    End Sub
+#End Region
+
 #Region "Pop-UP Text"
     Dim pop() As String
     Sub DisplayText(a As String)
@@ -1172,6 +1171,10 @@
         End If
 
     End Sub
+
+
+
+
 #End Region
 End Class
 
