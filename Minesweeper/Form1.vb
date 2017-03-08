@@ -14,7 +14,8 @@
     Dim HPPACK1(0) As clsPickup
     Dim Chestb(0) As clsPickup
     Dim Player1 As clsPlayer
-    Dim lvl1EnemyArray(2) As clsEnemy
+    Dim lvl2EnemyArray(2) As clsEnemy
+    Dim lvl1EnemyArray(1) As clsEnemy
     Dim room2Enemts As clsEnemy
     Dim rnd As New Random
     Dim playerDamage As Integer = 0
@@ -42,21 +43,23 @@
     End Function
     Private Sub ToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles level1.Click
         'SET ENEMY LOCATIONS
-        lvl1EnemyArray(0) = New clsEnemy(2, 5)
+        lvl2EnemyArray(0) = New clsEnemy(2, 5)
+        lvl2EnemyArray(0).SetHealth(3)
+        lvl2EnemyArray(1) = New clsEnemy(2, 7)
+        lvl2EnemyArray(1).SetHealth(5)
+        lvl2EnemyArray(2) = New clsEnemy(2, 9)
+        lvl2EnemyArray(2).SetHealth(100)
+        lvl1EnemyArray(0) = New clsEnemy(8, 7)
         lvl1EnemyArray(0).SetHealth(3)
-        lvl1EnemyArray(1) = New clsEnemy(2, 7)
-        lvl1EnemyArray(1).SetHealth(5)
-        lvl1EnemyArray(2) = New clsEnemy(2, 9)
-        lvl1EnemyArray(2).SetHealth(100)
-        ' lvl1EnemyArray(3) = New clsEnemy(13, 12)
-        ' lvl1EnemyArray(3).SetHealth(3)
+        lvl1EnemyArray(1) = New clsEnemy(8, 9)
+        lvl1EnemyArray(1).SetHealth(3)
         HPPACK1(0) = New clsPickup(14, 7)
         HPPACK1(0).SetActive(True)
         Chestb(0) = New clsPickup(14, 8)
         Chestb(0).SetActive(True)
         Room1(0)
         Timer1.Enabled = True
-        '  EnemyAI.Enabled = True
+
     End Sub
     Sub RoomTest(start As Integer)
         'SETS THE PLAYER LOCATION BASED ON TILE
@@ -337,7 +340,7 @@
             Player1.SetX(8)
             Player1.SetY(1)
         ElseIf start = 1 Then
-            Player1.SetX(14)
+            Player1.SetX(7)
             Player1.SetY(14)
         End If
         'CREATES TOP WALL
@@ -395,13 +398,13 @@
 
 
         m_buttonArray = buttonArray
-        For i = 0 To lvl1EnemyArray.Count - 1
-            If lvl1EnemyArray(i).CheckDead = False Then
-                m_Game(0, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(True)
+        For i = 0 To lvl2EnemyArray.Count - 1
+            If lvl2EnemyArray(i).CheckDead = False Then
+                m_Game(0, roomindex, lvl2EnemyArray(i).GetX, lvl2EnemyArray(i).GetY).setEnemy(True)
                 Dim bmp As Bitmap
                 bmp = Minesweeper.My.Resources.Resource1.Dummy1
                 bmp.MakeTransparent(Color.White)
-                m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = CombineImages(m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage, bmp)
+                m_buttonArray(lvl2EnemyArray(i).GetX, lvl2EnemyArray(i).GetY).BackgroundImage = CombineImages(m_buttonArray(lvl2EnemyArray(i).GetX, lvl2EnemyArray(i).GetY).BackgroundImage, bmp)
             End If
         Next
         If HPPACK1(0).ActiveCheck() = True Then
@@ -418,13 +421,13 @@
         End If
 
         m_Game(0, roomindex, 8, 0).SetIndex(11)
-        m_Game(0, roomindex, 15, 14).SetIndex(10)
+        m_Game(0, roomindex, 7, 15).SetIndex(10)
         PlayerDown(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
         DisplayText("Press Space To Attack")
 
     End Sub
     Sub Room3(start As Integer)
-
+        EnemyAI.Enabled = True
 
         For i = 1 To 16
             For i2 = 1 To 16
@@ -455,8 +458,8 @@
             Next
         Next
         If start = 0 Then
-            Player1.SetX(1)
-            Player1.SetY(14)
+            Player1.SetX(7)
+            Player1.SetY(1)
         ElseIf start = 1 Then
             Player1.SetX(6)
             Player1.SetY(14)
@@ -489,36 +492,48 @@
             m_Game(0, roomindex, bound, i2).SetIndex(6)
             m_Game(0, roomindex, bound, i2).SetBackGround(9)
         Next
-        For i2 = 6 To 15
-            Dim bound As Integer = 4
-            buttonArray(bound, i2).BackgroundImage = ImageList1.Images(9)
-            m_Game(0, roomindex, bound, i2).SetIndex(6)
-            m_Game(0, roomindex, bound, i2).SetBackGround(9)
-        Next
-        For i = 4 To 12
-            Dim bound As Integer = 10
-            buttonArray(i, bound).BackgroundImage = ImageList1.Images(9)
-            m_Game(0, roomindex, i, bound).SetIndex(6)
-            m_Game(0, roomindex, i, bound).SetBackGround(9)
-        Next
-        For i = 7 To 15
-            Dim bound As Integer = 6
-            buttonArray(i, bound).BackgroundImage = ImageList1.Images(9)
-            m_Game(0, roomindex, i, bound).SetIndex(6)
-            m_Game(0, roomindex, i, bound).SetBackGround(9)
-        Next
-        For i = 0 To 4
-            For i2 = 0 To 3
-                Dim bound As Integer = i * 3
-                buttonArray(bound, i2).BackgroundImage = ImageList1.Images(9)
-                m_Game(0, roomindex, bound, i2).SetIndex(6)
-                m_Game(0, roomindex, bound, i2).SetBackGround(9)
-            Next
-        Next
+        '  For i2 = 6 To 15
+        '   Dim bound As Integer = 4
+        '   buttonArray(bound, i2).BackgroundImage = ImageList1.Images(9)
+        '    m_Game(0, roomindex, bound, i2).SetIndex(6)
+        '    m_Game(0, roomindex, bound, i2).SetBackGround(9)
+        '   Next
+        '   For i = 4 To 12
+        '   Dim bound As Integer = 10
+        '  buttonArray(i, bound).BackgroundImage = ImageList1.Images(9)
+        '  m_Game(0, roomindex, i, bound).SetIndex(6)
+        '  m_Game(0, roomindex, i, bound).SetBackGround(9)
+        '  Next
+        '   For i = 7 To 15
+        '  Dim bound As Integer = 6
+        '  buttonArray(i, bound).BackgroundImage = ImageList1.Images(9)
+        '  m_Game(0, roomindex, i, bound).SetIndex(6)
+        '  m_Game(0, roomindex, i, bound).SetBackGround(9)
+        '  Next
+        '   For i = 0 To 4
+        ' For i2 = 0 To 3
+        '   Dim bound As Integer = i * 3
+        '  buttonArray(bound, i2).BackgroundImage = ImageList1.Images(9)
+        '  m_Game(0, roomindex, bound, i2).SetIndex(6)
+        '  m_Game(0, roomindex, bound, i2).SetBackGround(9)
+        '  Next
+        '   Next
+
         m_buttonArray = buttonArray
+
+        For i = 0 To lvl1EnemyArray.Count - 1
+            If lvl1EnemyArray(i).CheckDead = False Then
+                m_Game(0, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(True)
+                m_Game(0, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(True)
+                Dim bmp As Bitmap
+                bmp = Minesweeper.My.Resources.Resource1.Rat_Front_
+                bmp.MakeTransparent(Color.White)
+                m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = CombineImages(m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage, bmp)
+            End If
+        Next
         PlayerDown(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
-        m_Game(0, roomindex, 0, 14).SetIndex(11)
-        m_Game(0, roomindex, 6, 15).SetIndex(10)
+        m_Game(0, roomindex, 7, 0).SetIndex(11)
+        m_Game(0, roomindex, 8, 15).SetIndex(10)
     End Sub
     Sub Room4(start As Integer)
 
@@ -979,7 +994,7 @@
         Dim a As Integer
         Dim b As Integer
         If levelindex = 0 Then
-            If roomindex = 0 Then
+            If roomindex = 2 Then
                 For i = 0 To lvl1EnemyArray.Count - 1
                     a = rnd.Next(1, 10)
                     b = rnd.Next(1, 10)
