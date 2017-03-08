@@ -30,8 +30,8 @@ namespace Minesweeper
 
            }
             
-            
-        }
+          
+        }d
         public void clsRatEnemy()
         {
             Rat_enemy[1] = Minesweeper.Properties.Resources.Rat(Back);
