@@ -69,3 +69,4 @@ C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\obj\Debug\Minesweeper.Reso
 C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\obj\Debug\Minesweeper.vbproj.GenerateResource.Cache
 C:\Users\emmor959\Desktop\New folder (3)\Minesweeper\obj\Debug\Minesweeper.Resource1.resources
 C:\Users\djber284\Desktop\Game Game\Minesweeper\obj\Debug\Minesweeper.Resource1.resources
+C:\Users\emmor959\Desktop\Tile Dungeon Game\Minesweeper\bin\Debug\Blood Stones.exe.config
