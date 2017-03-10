@@ -117,6 +117,7 @@ Partial Class Form1
         Me.ImageList1.Images.SetKeyName(12, "Grass(2).png")
         Me.ImageList1.Images.SetKeyName(13, "Grass(3).png")
         Me.ImageList1.Images.SetKeyName(14, "Grass(1).png")
+        Me.ImageList1.Images.SetKeyName(15, "Black.png")
         '
         'AL
         '

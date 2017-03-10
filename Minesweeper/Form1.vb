@@ -222,9 +222,7 @@
     Sub Room1(start As Integer)
         For i = 1 To 16
             For i2 = 1 To 16
-
                 m_Game(0, roomindex, i - 1, i2 - 1) = New Tile(False, False, 1)
-
             Next
         Next
         Dim buttonArray(16, 16) As Button
@@ -238,8 +236,8 @@
                 buttonArray(i, i2).Text = ""
                 buttonArray(i, i2).UseVisualStyleBackColor = True
                 buttonArray(i, i2).BackColor = Color.Gray
-                buttonArray(i, i2).BackgroundImage = ImageList1.Images(10)
-                m_Game(0, roomindex, i, i2).SetBackGround(10)
+                buttonArray(i, i2).BackgroundImage = ImageList1.Images(7)
+                m_Game(0, roomindex, i, i2).SetBackGround(7)
                 buttonArray(i, i2).FlatStyle = FlatStyle.Flat
                 buttonArray(i, i2).BackgroundImageLayout = ImageLayout.Stretch
                 buttonArray(i, i2).FlatAppearance.BorderSize = 0
@@ -258,46 +256,49 @@
             Player1.SetX(8)
             Player1.SetY(14)
         End If
-        'CREATES TOP WALL
-        For i = 0 To 15
-            Dim bound As Integer = 0
-            buttonArray(i, bound).BackgroundImage = ImageList1.Images(9)
-            m_Game(0, roomindex, i, bound).SetIndex(6)
-            m_Game(0, roomindex, i, bound).SetBackGround(9)
-        Next
-        'CREATES LEFT WALL
-        For i2 = 0 To 15
-            Dim bound As Integer = 0
-            buttonArray(bound, i2).BackgroundImage = ImageList1.Images(9)
-            m_Game(0, roomindex, bound, i2).SetIndex(6)
-            m_Game(0, roomindex, bound, i2).SetBackGround(9)
-        Next
-        'CREATES BOTTOM WALL
-        For i = 0 To 15
-            Dim bound As Integer = 15
-            buttonArray(i, bound).BackgroundImage = ImageList1.Images(9)
-            m_Game(0, roomindex, i, bound).SetIndex(6)
-            m_Game(0, roomindex, i, bound).SetBackGround(9)
-        Next
-        'CREATES RIGHT WALL
-        For i2 = 0 To 15
-            Dim bound As Integer = 15
-            buttonArray(bound, i2).BackgroundImage = ImageList1.Images(9)
-            m_Game(0, roomindex, bound, i2).SetIndex(6)
-            m_Game(0, roomindex, bound, i2).SetBackGround(9)
-        Next
-        ' m_Game(0, roomindex, 0, 1).SetIndex(11)
 
 
 
 
 
-        Player1.ImageNum(1)
 
-        m_Game(0, roomindex, 8, 15).SetIndex(10)
-        buttonArray(8, 15).BackgroundImage = ImageList1.Images(14)
 
         m_buttonArray = buttonArray
+        'CREATES TOP WALL
+        DrawRoomWallHori(0, 15, 0, 9)
+        'CREATES BOTTOM WALL
+        DrawRoomWallHori(0, 15, 15, 9)
+        'CREATES BLACK AREAS
+        For i = 0 To 3
+            For i2 = 0 To 15
+                m_buttonArray(i, i2).BackgroundImage = ImageList1.Images(15)
+            Next
+        Next
+        For i = 11 To 15
+            For i2 = 0 To 15
+                m_buttonArray(i, i2).BackgroundImage = ImageList1.Images(15)
+            Next
+        Next
+        'CREATES LEFT WALL
+        DrawRoomWallVert(0, 6, 4, 9)
+
+        'CREATES LEFT WALL
+        DrawRoomWallVert(6, 10, 3, 9)
+
+        'CREATES LEFT WALL
+        DrawRoomWallVert(10, 15, 4, 9)
+
+        'CREATES RIGHT WALL
+        DrawRoomWallVert(0, 7, 10, 9)
+
+        'CREATES RIGHT WALL
+        DrawRoomWallVert(7, 10, 11, 9)
+
+        'CREATES RIGHT WALL
+        DrawRoomWallVert(10, 15, 10, 9)
+        m_buttonArray(8, 15).BackgroundImage = ImageList1.Images(7)
+        m_Game(0, roomindex, 8, 15).SetIndex(10)
+        Player1.ImageNum(3)
         PlayerDown(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
         DisplayText("Use the WASD or Arrow Keys To Move!")
     End Sub
@@ -343,61 +344,66 @@
             Player1.SetX(7)
             Player1.SetY(14)
         End If
+        m_buttonArray = buttonArray
         'CREATES TOP WALL
-        For i = 0 To 15
-            Dim bound As Integer = 0
-            buttonArray(i, bound).BackgroundImage = ImageList1.Images(9)
-            m_Game(0, roomindex, i, bound).SetIndex(6)
-            m_Game(0, roomindex, i, bound).SetBackGround(9)
-        Next
+        DrawRoomWallHori(0, 15, 0, 9)
+
         'CREATES LEFT WALL
-        For i2 = 0 To 15
-            Dim bound As Integer = 0
-            buttonArray(bound, i2).BackgroundImage = ImageList1.Images(9)
-            m_Game(0, roomindex, bound, i2).SetIndex(6)
-            m_Game(0, roomindex, bound, i2).SetBackGround(9)
-        Next
+        DrawRoomWallVert(0, 15, 0, 9)
+
         'CREATES BOTTOM WALL
-        For i = 0 To 15
-            Dim bound As Integer = 15
-            buttonArray(i, bound).BackgroundImage = ImageList1.Images(9)
-            m_Game(0, roomindex, i, bound).SetIndex(6)
-            m_Game(0, roomindex, i, bound).SetBackGround(9)
-        Next
+        DrawRoomWallHori(0, 15, 15, 9)
+
         'CREATES RIGHT WALL
-        For i2 = 0 To 15
-            Dim bound As Integer = 15
-            buttonArray(bound, i2).BackgroundImage = ImageList1.Images(9)
-            m_Game(0, roomindex, bound, i2).SetIndex(6)
-            m_Game(0, roomindex, bound, i2).SetBackGround(9)
-        Next
-        For i = 0 To 4
-            Dim bound As Integer = 3
-            buttonArray(i, bound).BackgroundImage = ImageList1.Images(9)
-            m_Game(0, roomindex, i, bound).SetIndex(6)
-            m_Game(0, roomindex, i, bound).SetBackGround(9)
-        Next
-        For i = 0 To 4
-            Dim bound As Integer = 11
-            buttonArray(i, bound).BackgroundImage = ImageList1.Images(9)
-            m_Game(0, roomindex, i, bound).SetIndex(6)
-            m_Game(0, roomindex, i, bound).SetBackGround(9)
-        Next
+        DrawRoomWallVert(0, 15, 15, 9)
+
+        DrawRoomWallHori(10, 12, 2, 9)
+
+        DrawRoomWallHori(9, 9, 1, 9)
+
+        DrawRoomWallVert(0, 3, 6, 9)
+
+        DrawRoomWallHori(0, 5, 3, 9)
+
+        DrawRoomWallHori(0, 4, 11, 9)
+
 
         For i = 13 To 15
             For i2 = 0 To 4
                 Dim bound As Integer = i2 * 3
-                buttonArray(i, bound).BackgroundImage = ImageList1.Images(9)
+                m_buttonArray(i, bound).BackgroundImage = ImageList1.Images(9)
                 m_Game(0, roomindex, i, bound).SetIndex(6)
                 m_Game(0, roomindex, i, bound).SetBackGround(9)
             Next
         Next
-        buttonArray(8, 0).BackgroundImage = ImageList1.Images(7)
+        DrawRoomWallVert(12, 15, 5, 9)
+        'CREATES BLACK AREA
+        For i = 0 To 5
+            For i2 = 0 To 2
+                m_buttonArray(i, i2).BackgroundImage = ImageList1.Images(15)
+            Next
+        Next
+        For i = 0 To 4
+            For i2 = 12 To 15
+                m_buttonArray(i, i2).BackgroundImage = ImageList1.Images(15)
+            Next
+        Next
+        For i = 10 To 15
+            For i2 = 0 To 1
+                m_buttonArray(i, i2).BackgroundImage = ImageList1.Images(15)
+            Next
+        Next
+        For i = 13 To 15
+            For i2 = 2 To 2
+                m_buttonArray(i, i2).BackgroundImage = ImageList1.Images(15)
+            Next
+        Next
+        m_buttonArray(8, 0).BackgroundImage = ImageList1.Images(7)
 
 
 
 
-        m_buttonArray = buttonArray
+
         For i = 0 To lvl2EnemyArray.Count - 1
             If lvl2EnemyArray(i).CheckDead = False Then
                 m_Game(0, roomindex, lvl2EnemyArray(i).GetX, lvl2EnemyArray(i).GetY).setEnemy(True)
@@ -424,7 +430,8 @@
         m_Game(0, roomindex, 7, 15).SetIndex(10)
         PlayerDown(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
         DisplayText("Press Space To Attack")
-
+        buttonArray(8, 0).BackgroundImage = ImageList1.Images(7)
+        buttonArray(7, 15).BackgroundImage = ImageList1.Images(7)
     End Sub
     Sub Room3(start As Integer)
         EnemyAI.Enabled = True
@@ -534,6 +541,8 @@
         PlayerDown(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
         m_Game(0, roomindex, 7, 0).SetIndex(11)
         m_Game(0, roomindex, 8, 15).SetIndex(10)
+        buttonArray(8, 15).BackgroundImage = ImageList1.Images(7)
+        buttonArray(7, 0).BackgroundImage = ImageList1.Images(7)
     End Sub
     Sub Room4(start As Integer)
 
@@ -554,6 +563,22 @@
             Player1.SetX(0)
             Player1.SetY(0)
         End If
+    End Sub
+    Sub DrawRoomWallVert(x As Integer, y As Integer, bound As Integer, imageindex As Integer)
+        For i2 = x To y
+
+            m_buttonArray(bound, i2).BackgroundImage = ImageList1.Images(imageindex)
+            m_Game(0, roomindex, bound, i2).SetIndex(6)
+            m_Game(0, roomindex, bound, i2).SetBackGround(9)
+        Next
+    End Sub
+    Sub DrawRoomWallHori(x As Integer, y As Integer, bound As Integer, imageindex As Integer)
+        For i = x To y
+
+            m_buttonArray(i, bound).BackgroundImage = ImageList1.Images(imageindex)
+            m_Game(0, roomindex, i, bound).SetIndex(6)
+            m_Game(0, roomindex, i, bound).SetBackGround(9)
+        Next
     End Sub
     Sub CreateRoom(x As Integer, y As Integer)
 
