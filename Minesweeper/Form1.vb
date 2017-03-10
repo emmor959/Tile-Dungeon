@@ -174,7 +174,7 @@
                 m_Game(0, 0, HPPACK1(0).ReturnX, HPPACK1(0).ReturnY).SetIndex(3)
                 HPPACK1(0).SetHealth(3)
                 Dim bmp As Bitmap
-                bmp = Minesweeper.My.Resources.Resource1.Health_Potion
+                bmp = BloodStones.My.Resources.Resource1.Health_Potion
                 bmp.MakeTransparent(Color.White)
                 buttonArray(HPPACK1(0).ReturnX, HPPACK1(0).ReturnY).BackgroundImage = CombineImages(ImageList1.Images(4), bmp)
 
@@ -192,7 +192,7 @@
                     m_Game(0, roomindex, lvl1EnemyArray(1).GetX, lvl1EnemyArray(1).GetY).setEnemy(True)
                     m_Game(0, roomindex, lvl1EnemyArray(0).GetX, lvl1EnemyArray(0).GetY).setEnemy(True)
                     Dim bmp As Bitmap
-                    bmp = Minesweeper.My.Resources.Resource1.Rat_Front_
+                    bmp = BloodStones.My.Resources.Resource1.Rat_Front_
                     bmp.MakeTransparent(Color.White)
                     m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = CombineImages(m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage, bmp)
                 End If
@@ -402,7 +402,7 @@
             If lvl2EnemyArray(i).CheckDead = False Then
                 m_Game(0, roomindex, lvl2EnemyArray(i).GetX, lvl2EnemyArray(i).GetY).setEnemy(True)
                 Dim bmp As Bitmap
-                bmp = Minesweeper.My.Resources.Resource1.Dummy1
+                bmp = BloodStones.My.Resources.Resource1.Dummy1
                 bmp.MakeTransparent(Color.White)
                 m_buttonArray(lvl2EnemyArray(i).GetX, lvl2EnemyArray(i).GetY).BackgroundImage = CombineImages(m_buttonArray(lvl2EnemyArray(i).GetX, lvl2EnemyArray(i).GetY).BackgroundImage, bmp)
             End If
@@ -526,7 +526,7 @@
                 m_Game(0, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(True)
                 m_Game(0, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(True)
                 Dim bmp As Bitmap
-                bmp = Minesweeper.My.Resources.Resource1.Rat_Front_
+                bmp = BloodStones.My.Resources.Resource1.Rat_Front_
                 bmp.MakeTransparent(Color.White)
                 m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = CombineImages(m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage, bmp)
             End If
@@ -1018,12 +1018,14 @@
             BackpackList.Visible = True
             BackPackPicture.Visible = True
             BackPackTextBox.Visible = True
+            WeaponList.Visible = True
             packstate = 1
         ElseIf packstate = 1 Then
             BackPackLabel.Visible = False
             BackpackList.Visible = False
             BackPackPicture.Visible = False
             BackPackTextBox.Visible = False
+            WeaponList.Visible = False
             packstate = 0
             Me.Focus()
             BackPackPicture.Image = Nothing
@@ -1044,7 +1046,7 @@
                         If a < 5 Then
                             If b < 5 Then
                                 Dim bmp As Bitmap
-                                bmp = Minesweeper.My.Resources.Resource1.Rat_Front_
+                                bmp = BloodStones.My.Resources.Resource1.Rat_Front_
                                 bmp.MakeTransparent(Color.White)
                                 'Down
                                 m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).ReturnBackGround)
@@ -1057,7 +1059,7 @@
                                 lvl1EnemyArray(i).SetDirection(0)
                             ElseIf b >= 5 Then
                                 Dim bmp As Bitmap
-                                bmp = Minesweeper.My.Resources.Resource1.Rat_Back_
+                                bmp = BloodStones.My.Resources.Resource1.Rat_Back_
                                 bmp.MakeTransparent(Color.White)
                                 'UP
                                 m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).ReturnBackGround)
@@ -1074,7 +1076,7 @@
 
                             If b < 5 Then
                                 Dim bmp As Bitmap
-                                bmp = Minesweeper.My.Resources.Resource1.Rat_left_
+                                bmp = BloodStones.My.Resources.Resource1.Rat_left_
                                 bmp.MakeTransparent(Color.White)
                                 'Left
                                 m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).ReturnBackGround)
@@ -1087,7 +1089,7 @@
                                 lvl1EnemyArray(i).SetDirection(2)
                             ElseIf b >= 5 Then
                                 Dim bmp As Bitmap
-                                bmp = Minesweeper.My.Resources.Resource1.Rat_Right_
+                                bmp = BloodStones.My.Resources.Resource1.Rat_Right_
                                 bmp.MakeTransparent(Color.White)
                                 'Right
                                 m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).ReturnBackGround)
@@ -1167,49 +1169,49 @@
     End Sub
     Sub PlayerLeft(a As Integer)
         Dim baseimage As Bitmap
-        baseimage = Minesweeper.My.Resources.Resource1.M_Adult_left_
+        baseimage = BloodStones.My.Resources.Resource1.M_Adult_left_
         baseimage.MakeTransparent(Color.White)
         Dim pants As Bitmap
-        pants = Minesweeper.My.Resources.Resource1.Pants_Left_
+        pants = BloodStones.My.Resources.Resource1.Pants_Left_
         pants.MakeTransparent(Color.White)
         m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(ImageList1.Images(a), baseimage, pants)
     End Sub
     Sub PlayerRight(a As Integer)
         Dim baseimage As Bitmap
-        baseimage = Minesweeper.My.Resources.Resource1.M_Adult_right_
+        baseimage = BloodStones.My.Resources.Resource1.M_Adult_right_
         baseimage.MakeTransparent(Color.White)
         Dim pants As Bitmap
-        pants = Minesweeper.My.Resources.Resource1.Pants_Right_
+        pants = BloodStones.My.Resources.Resource1.Pants_Right_
         pants.MakeTransparent(Color.White)
         m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(ImageList1.Images(a), baseimage, pants)
     End Sub
     Sub PlayerDown(a As Integer)
         Dim baseimage As Bitmap
-        baseimage = Minesweeper.My.Resources.Resource1.M_Adult_Front_
+        baseimage = BloodStones.My.Resources.Resource1.M_Adult_Front_
         baseimage.MakeTransparent(Color.White)
         Dim pants As Bitmap
-        pants = Minesweeper.My.Resources.Resource1.Pants_Front_
+        pants = BloodStones.My.Resources.Resource1.Pants_Front_
         pants.MakeTransparent(Color.White)
         m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(ImageList1.Images(a), baseimage, pants)
     End Sub
     Sub PlayerUp(a As Integer)
         Dim baseimage As Bitmap
-        baseimage = Minesweeper.My.Resources.Resource1.M_Adult_Back_
+        baseimage = BloodStones.My.Resources.Resource1.M_Adult_Back_
         baseimage.MakeTransparent(Color.White)
         Dim pants As Bitmap
-        pants = Minesweeper.My.Resources.Resource1.Pants_Front_
+        pants = BloodStones.My.Resources.Resource1.Pants_Front_
         pants.MakeTransparent(Color.White)
         m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(ImageList1.Images(a), baseimage, pants)
     End Sub
     Sub hp(x As Integer, y As Integer, a As Integer)
         Dim Healthpotion As Bitmap
-        Healthpotion = Minesweeper.My.Resources.Resource1.Health_Potion
+        Healthpotion = BloodStones.My.Resources.Resource1.Health_Potion
         Healthpotion.MakeTransparent(Color.White)
         m_buttonArray(x, y).BackgroundImage = CombineImages(ImageList1.Images(a), Healthpotion)
     End Sub
     Sub Chest(x As Integer, y As Integer, a As Integer)
         Dim Chesta As Bitmap
-        Chesta = Minesweeper.My.Resources.Resource1.Chest
+        Chesta = BloodStones.My.Resources.Resource1.Chest
         Chesta.MakeTransparent(Color.White)
         m_buttonArray(x, y).BackgroundImage = CombineImages(ImageList1.Images(a), Chesta)
     End Sub
@@ -1278,7 +1280,7 @@
     Private Sub BackpackList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles BackpackList.SelectedIndexChanged
         If BackpackList.SelectedIndex = 0 Then
             Dim bmp As Bitmap
-            bmp = Minesweeper.My.Resources.Resource1.Health_Potion
+            bmp = BloodStones.My.Resources.Resource1.Health_Potion
             bmp.MakeTransparent(Color.White)
             BackPackPicture.Image = bmp
             BackPackLabel.Text = "Health Potion"
@@ -1294,6 +1296,7 @@
         BackpackList.Items.Add("Health Potions: " & healthPotion)
         BackpackList.Items.Add("Key: " & Key)
         BackpackList.Items.Add("Philiosopher Stone: " & Stone)
+        WeaponList.Items.Add("Rusty Sword")
     End Sub
 #End Region
     Private Sub BackpackList_DoubleClick(sender As Object, e As EventArgs) Handles BackpackList.DoubleClick
@@ -1308,6 +1311,16 @@
 
 
 
+    End Sub
+    Private Sub WeaponList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles WeaponList.SelectedIndexChanged
+        If WeaponList.SelectedIndex = 0 Then
+            Dim bmp As Bitmap
+            bmp = BloodStones.My.Resources.Resource1.sword_rest_Right_
+            bmp.MakeTransparent(Color.White)
+            BackPackPicture.Image = bmp
+            BackPackLabel.Text = "Rusty Sword"
+            BackPackTextBox.Text = "Tattered Old Weapon"
+        End If
     End Sub
 #Region "Pop-UP Text"
     Dim pop() As String
@@ -1342,6 +1355,8 @@
         End If
 
     End Sub
+
+
 #End Region
 End Class
 
