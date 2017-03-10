@@ -422,6 +422,7 @@
         If Chestb(0).ActiveCheck() = True Then
             m_Game(levelindex, roomindex, Chestb(0).ReturnX, Chestb(0).ReturnY).SetIndex(3)
             Chestb(0).SetItem("Rusty Sword")
+            Chestb(0).SetWeapon(True)
             Chest(Chestb(0).ReturnX, Chestb(0).ReturnY, m_Game(levelindex, roomindex, Chestb(0).ReturnX, Chestb(0).ReturnY).ReturnBackGround())
 
         End If
@@ -794,7 +795,6 @@
                         If Chestb(i).ReturnX = Player1.GetX And Chestb(i).ReturnY = Player1.GetY And Chestb(i).ActiveCheck = True Then
                             BackpackList.Items.Add(Chestb(i).Item())
                             DisplayText(Chestb(i).Item())
-                            playerDamage = 1
                         End If
                     Next
                 End If
@@ -1292,13 +1292,20 @@
         Next
         For i = 0 To Chestb.Count - 1
             If Chestb(i).ReturnX = Player1.GetX + x And Chestb(i).ReturnY = Player1.GetY + y And Chestb(i).ActiveCheck = True Then
-                BackpackList.Items.Add(Chestb(i).Item())
-                DisplayText(Chestb(i).Item())
-                Chestb(i).SetActive(False)
+                If Chestb(i).WeaponCheck = False Then
 
+                    BackpackList.Items.Add(Chestb(i).Item())
+                    DisplayText(Chestb(i).Item())
 
-                'When Player Picksup a Weapon Adjust Variable for Damage as such v
-                playerDamage = 1
+                Else
+                    WeaponList.Items.Add(Chestb(i).Item())
+                    DisplayText("You Got The " + Chestb(i).Item())
+                    Chestb(i).SetActive(False)
+                    If Chestb(i).Item = "RustySword" Then
+                        RustySword = True
+                    End If
+
+                End If
             End If
         Next
     End Sub
@@ -1316,12 +1323,21 @@
     Dim healthPotion As Integer
     Dim Key As Integer
     Dim Stone As Integer
+    Dim RustySword As Boolean
     Sub ResetPack()
         BackpackList.Items.Clear()
-        BackpackList.Items.Add("Health Potions: " & healthPotion)
-        BackpackList.Items.Add("Key: " & Key)
-        BackpackList.Items.Add("Philiosopher Stone: " & Stone)
-        WeaponList.Items.Add("Rusty Sword")
+        If healthPotion <> 0 Then
+            BackpackList.Items.Add("Health Potions: " & healthPotion)
+        End If
+        If Key <> 0 Then
+            BackpackList.Items.Add("Key: " & Key)
+        End If
+        If Stone <> 0 Then
+            BackpackList.Items.Add("Philiosopher Stone: " & Stone)
+        End If
+        If RustySword = True Then
+            WeaponList.Items.Add("Rusty Sword")
+        End If
     End Sub
 #End Region
     Private Sub BackpackList_DoubleClick(sender As Object, e As EventArgs) Handles BackpackList.DoubleClick
@@ -1338,13 +1354,13 @@
 
     End Sub
     Private Sub WeaponList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles WeaponList.SelectedIndexChanged
-        If WeaponList.SelectedIndex = 0 Then
+        If WeaponList.SelectedItem.ToString = "Rusty Sword" Then
             Dim bmp As Bitmap
             bmp = BloodStones.My.Resources.Resource1.sword_rest_Right_
             bmp.MakeTransparent(Color.White)
             BackPackPicture.Image = bmp
             BackPackLabel.Text = "Rusty Sword"
-            BackPackTextBox.Text = "Tattered Old Weapon"
+            BackPackTextBox.Text = "Tattered Old Weapon (1 Combat Damage)"
         End If
     End Sub
 #Region "Pop-UP Text"
@@ -1379,6 +1395,13 @@
             TextBox1.Visible = False
         End If
 
+    End Sub
+
+    Private Sub WeaponList_DoubleClick(sender As Object, e As EventArgs) Handles WeaponList.DoubleClick
+        If WeaponList.SelectedItem.ToString = "Rusty Sword" Then
+            playerDamage = 1
+            DisplayText("Rusty Sword has been equiped")
+        End If
     End Sub
 
 
