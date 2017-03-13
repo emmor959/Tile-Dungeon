@@ -129,7 +129,6 @@ Partial Class Form1
         '
         Me.BackpackList.BackColor = System.Drawing.Color.LightGray
         Me.BackpackList.FormattingEnabled = True
-        Me.BackpackList.Items.AddRange(New Object() {"Health Potion", "Key", "Philosopher Stone"})
         Me.BackpackList.Location = New System.Drawing.Point(0, 27)
         Me.BackpackList.Name = "BackpackList"
         Me.BackpackList.Size = New System.Drawing.Size(178, 212)
@@ -153,6 +152,7 @@ Partial Class Form1
         Me.BackPackTextBox.Location = New System.Drawing.Point(184, 252)
         Me.BackPackTextBox.Multiline = True
         Me.BackPackTextBox.Name = "BackPackTextBox"
+        Me.BackPackTextBox.ReadOnly = True
         Me.BackPackTextBox.Size = New System.Drawing.Size(198, 156)
         Me.BackPackTextBox.TabIndex = 6
         Me.BackPackTextBox.Visible = False
@@ -223,7 +223,7 @@ Partial Class Form1
         '
         Me.WeaponList.BackColor = System.Drawing.Color.LightGray
         Me.WeaponList.FormattingEnabled = True
-        Me.WeaponList.Location = New System.Drawing.Point(1, 236)
+        Me.WeaponList.Location = New System.Drawing.Point(0, 236)
         Me.WeaponList.Name = "WeaponList"
         Me.WeaponList.Size = New System.Drawing.Size(178, 173)
         Me.WeaponList.TabIndex = 10
