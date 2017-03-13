@@ -305,6 +305,8 @@
         'CREATES RIGHT WALL
         DrawRoomWallVert(0, 3, 13, 9)
 
+        DrawRoomWallHori(10, 13, 4, 9)
+
         m_buttonArray(8, 15).BackgroundImage = ImageList1.Images(7)
         m_Game(0, roomindex, 8, 15).SetIndex(10)
         Player1.ImageNum(3)
@@ -370,12 +372,14 @@
 
         DrawRoomWallHori(9, 9, 1, 9)
 
-        DrawRoomWallVert(0, 3, 6, 9)
+        DrawRoomWallVert(0, 5, 6, 9)
 
         DrawRoomWallHori(0, 5, 3, 9)
 
         DrawRoomWallHori(0, 4, 11, 9)
 
+        DrawRoomWallHori(7, 12, 9, 9)
+        DrawRoomWallHori(7, 10, 6, 9)
 
         For i = 13 To 15
             For i2 = 0 To 4
@@ -386,6 +390,7 @@
             Next
         Next
         DrawRoomWallVert(12, 15, 5, 9)
+
         'CREATES BLACK AREA
         For i = 0 To 5
             For i2 = 0 To 2
@@ -407,6 +412,12 @@
                 m_buttonArray(i, i2).BackgroundImage = ImageList1.Images(15)
             Next
         Next
+        For i = 10 To 15
+            For i2 = 10 To 15
+                m_buttonArray(i, i2).BackgroundImage = ImageList1.Images(15)
+            Next
+        Next
+        DrawRoomWallVert(10, 15, 10, 9)
         m_buttonArray(8, 0).BackgroundImage = ImageList1.Images(7)
 
 
