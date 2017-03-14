@@ -33,10 +33,32 @@
     Public Function CombinePlayerLayers(ByVal Tile As Image, ByVal base As Image, ByVal pants As Image) As Image
         Dim bmp As New Bitmap(Math.Max(24, 24), 24)
         Dim g As Graphics = Graphics.FromImage(bmp)
-
+        Dim colorshifter As New Bitmap(Math.Max(24, 24), 24)
+        Dim g2 As Graphics = Graphics.FromImage(colorshifter)
         g.DrawImage(Tile, 0, 0, 24, 24)
         g.DrawImage(base, 0, 0, 24, 24)
-        g.DrawImage(pants, 0, 0, 24, 24)
+
+        g2.DrawImage(pants, 0, 0, 24, 24)
+        Dim placeholder As Color
+        For i = 0 To 23
+            For i2 = 0 To 23
+                placeholder = colorshifter.GetPixel(i, i2)
+                If placeholder <> Color.White And placeholder = Color.Transparent Then
+                    colorshifter.SetPixel(i, i2, Color.Red)
+                End If
+            Next
+        Next
+
+
+
+
+
+
+        g.DrawImage(colorshifter, 0, 0, 24, 24)
+        colorshifter.Dispose()
+
+
+
         ' g.DrawImage(Tile, 0, 0, 24, 24)
         g.Dispose()
         Return bmp
