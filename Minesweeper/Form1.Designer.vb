@@ -129,7 +129,7 @@ Partial Class Form1
         '
         Me.BackpackList.BackColor = System.Drawing.Color.LightGray
         Me.BackpackList.FormattingEnabled = True
-        Me.BackpackList.Location = New System.Drawing.Point(0, 27)
+        Me.BackpackList.Location = New System.Drawing.Point(0, 24)
         Me.BackpackList.Name = "BackpackList"
         Me.BackpackList.Size = New System.Drawing.Size(178, 212)
         Me.BackpackList.TabIndex = 4
@@ -223,7 +223,7 @@ Partial Class Form1
         '
         Me.WeaponList.BackColor = System.Drawing.Color.LightGray
         Me.WeaponList.FormattingEnabled = True
-        Me.WeaponList.Location = New System.Drawing.Point(0, 236)
+        Me.WeaponList.Location = New System.Drawing.Point(0, 235)
         Me.WeaponList.Name = "WeaponList"
         Me.WeaponList.Size = New System.Drawing.Size(178, 173)
         Me.WeaponList.TabIndex = 10
