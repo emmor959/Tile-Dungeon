@@ -698,11 +698,11 @@
         PlayerDown(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
         m_Game(0, roomindex, 7, 0).SetIndex(11)
         m_Game(0, roomindex, 0, 0).SetIndex(10)
-        buttonArray(7, 0).BackgroundImage = ImageList1.Images(13)
-        buttonArray(8, 15).BackgroundImage = ImageList1.Images(13)
+        m_buttonArray(7, 0).BackgroundImage = ImageList1.Images(13)
+        m_buttonArray(8, 15).BackgroundImage = ImageList1.Images(13)
 
-
-
+        m_buttonArray(5, 5).BackgroundImage = ImageList1.Images(16)
+        m_Game(0, roomindex, 5, 5).SetBackGround(16)
 
 
 
