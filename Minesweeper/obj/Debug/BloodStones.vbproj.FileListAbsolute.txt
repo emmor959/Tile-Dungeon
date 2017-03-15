@@ -1,0 +1,13 @@
+C:\Users\djber284\Desktop\Game 2\Minesweeper\bin\Debug\Blood Stones.exe.config
+C:\Users\djber284\Desktop\Game 2\Minesweeper\bin\Debug\Blood Stones.exe
+C:\Users\djber284\Desktop\Game 2\Minesweeper\bin\Debug\Blood Stones.pdb
+C:\Users\djber284\Desktop\Game 2\Minesweeper\bin\Debug\Blood Stones.xml
+C:\Users\djber284\Desktop\Game 2\Minesweeper\obj\Debug\BloodStones.vbprojResolveAssemblyReference.cache
+C:\Users\djber284\Desktop\Game 2\Minesweeper\obj\Debug\BloodStones.Form1.resources
+C:\Users\djber284\Desktop\Game 2\Minesweeper\obj\Debug\BloodStones.Resources.resources
+C:\Users\djber284\Desktop\Game 2\Minesweeper\obj\Debug\BloodStones.Player_Hair.resources
+C:\Users\djber284\Desktop\Game 2\Minesweeper\obj\Debug\BloodStones.Resource1.resources
+C:\Users\djber284\Desktop\Game 2\Minesweeper\obj\Debug\BloodStones.vbproj.GenerateResource.Cache
+C:\Users\djber284\Desktop\Game 2\Minesweeper\obj\Debug\Blood Stones.exe
+C:\Users\djber284\Desktop\Game 2\Minesweeper\obj\Debug\Blood Stones.xml
+C:\Users\djber284\Desktop\Game 2\Minesweeper\obj\Debug\Blood Stones.pdb
