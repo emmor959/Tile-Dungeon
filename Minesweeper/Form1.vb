@@ -1058,6 +1058,7 @@
                 End If
             End If
             mousedown = True
+            MovespeedMod.Enabled = True
         End If
     End Sub
 
@@ -1557,6 +1558,18 @@
 
     Private Sub Form1_KeyUp(sender As Object, e As KeyEventArgs) Handles MyBase.KeyUp
         mousedown = False
+    End Sub
+    Dim move As Integer = 0
+    Private Sub MovespeedMod_Tick(sender As Object, e As EventArgs) Handles MovespeedMod.Tick
+
+        If move = 0 Then
+            move = 1
+        End If
+        If move = 1 Then
+            mousedown = False
+            MovespeedMod.Enabled = False
+            move = 0
+        End If
     End Sub
 
 

@@ -46,6 +46,7 @@ Partial Class Form1
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Text_Timer = New System.Windows.Forms.Timer(Me.components)
         Me.WeaponList = New System.Windows.Forms.ListBox()
+        Me.MovespeedMod = New System.Windows.Forms.Timer(Me.components)
         Me.MenuStrip1.SuspendLayout()
         CType(Me.BackPackPicture, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -230,6 +231,10 @@ Partial Class Form1
         Me.WeaponList.TabIndex = 10
         Me.WeaponList.Visible = False
         '
+        'MovespeedMod
+        '
+        Me.MovespeedMod.Interval = 200
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -277,4 +282,5 @@ Partial Class Form1
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Text_Timer As Timer
     Friend WithEvents WeaponList As ListBox
+    Friend WithEvents MovespeedMod As Timer
 End Class

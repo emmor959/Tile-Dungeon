@@ -24,3 +24,16 @@ C:\Users\emmor959\Desktop\Tile Dungeon Game\Minesweeper\obj\Debug\BloodStones.vb
 C:\Users\emmor959\Desktop\Tile Dungeon Game\Minesweeper\obj\Debug\Blood Stones.exe
 C:\Users\emmor959\Desktop\Tile Dungeon Game\Minesweeper\obj\Debug\Blood Stones.xml
 C:\Users\emmor959\Desktop\Tile Dungeon Game\Minesweeper\obj\Debug\Blood Stones.pdb
+C:\Users\emmor959\Desktop\New folder (3)\Minesweeper\bin\Debug\Blood Stones.exe.config
+C:\Users\emmor959\Desktop\New folder (3)\Minesweeper\bin\Debug\Blood Stones.exe
+C:\Users\emmor959\Desktop\New folder (3)\Minesweeper\bin\Debug\Blood Stones.pdb
+C:\Users\emmor959\Desktop\New folder (3)\Minesweeper\bin\Debug\Blood Stones.xml
+C:\Users\emmor959\Desktop\New folder (3)\Minesweeper\obj\Debug\BloodStones.vbprojResolveAssemblyReference.cache
+C:\Users\emmor959\Desktop\New folder (3)\Minesweeper\obj\Debug\BloodStones.Form1.resources
+C:\Users\emmor959\Desktop\New folder (3)\Minesweeper\obj\Debug\BloodStones.Resources.resources
+C:\Users\emmor959\Desktop\New folder (3)\Minesweeper\obj\Debug\BloodStones.Player_Hair.resources
+C:\Users\emmor959\Desktop\New folder (3)\Minesweeper\obj\Debug\BloodStones.Resource1.resources
+C:\Users\emmor959\Desktop\New folder (3)\Minesweeper\obj\Debug\BloodStones.vbproj.GenerateResource.Cache
+C:\Users\emmor959\Desktop\New folder (3)\Minesweeper\obj\Debug\Blood Stones.exe
+C:\Users\emmor959\Desktop\New folder (3)\Minesweeper\obj\Debug\Blood Stones.xml
+C:\Users\emmor959\Desktop\New folder (3)\Minesweeper\obj\Debug\Blood Stones.pdb
