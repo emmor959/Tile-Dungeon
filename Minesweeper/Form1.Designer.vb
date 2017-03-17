@@ -43,6 +43,7 @@ Partial Class Form1
         Me.Text_Timer = New System.Windows.Forms.Timer(Me.components)
         Me.WeaponList = New System.Windows.Forms.ListBox()
         Me.MovespeedMod = New System.Windows.Forms.Timer(Me.components)
+        Me.House = New System.Windows.Forms.ImageList(Me.components)
         Me.MenuStrip1.SuspendLayout()
         CType(Me.BackPackPicture, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -205,6 +206,17 @@ Partial Class Form1
         '
         Me.MovespeedMod.Interval = 200
         '
+        'House
+        '
+        Me.House.ImageStream = CType(resources.GetObject("House.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.House.TransparentColor = System.Drawing.Color.Transparent
+        Me.House.Images.SetKeyName(0, "FirstHouse(Left).png")
+        Me.House.Images.SetKeyName(1, "FirstHouse(Door).png")
+        Me.House.Images.SetKeyName(2, "FirstHouse(Right).png")
+        Me.House.Images.SetKeyName(3, "FirstHouse(Left Roof).png")
+        Me.House.Images.SetKeyName(4, "FirstHouse(MiddleRoof).png")
+        Me.House.Images.SetKeyName(5, "FirstHouse(Right Roof).png")
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -249,4 +261,5 @@ Partial Class Form1
     Friend WithEvents Text_Timer As Timer
     Friend WithEvents WeaponList As ListBox
     Friend WithEvents MovespeedMod As Timer
+    Friend WithEvents House As ImageList
 End Class

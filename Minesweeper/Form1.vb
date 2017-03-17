@@ -686,12 +686,22 @@
         m_buttonArray(7, 0).BackgroundImage = ImageList1.Images(13)
         m_buttonArray(8, 15).BackgroundImage = ImageList1.Images(13)
 
-        m_buttonArray(5, 5).BackgroundImage = ImageList1.Images(16)
-        m_Game(0, roomindex, 5, 5).SetBackGround(16)
 
 
 
 
+        m_buttonArray(4, 5).BackgroundImage = House.Images(0)
+        m_Game(0, roomindex, 5, 5).SetBackGround(6)
+        m_buttonArray(5, 5).BackgroundImage = House.Images(1)
+        m_Game(0, roomindex, 5, 5).SetBackGround(6)
+        m_buttonArray(6, 5).BackgroundImage = House.Images(2)
+        m_Game(0, roomindex, 5, 5).SetBackGround(6)
+        m_buttonArray(4, 4).BackgroundImage = House.Images(4)
+        m_Game(0, roomindex, 5, 5).SetBackGround(6)
+        m_buttonArray(5, 4).BackgroundImage = House.Images(5)
+        m_Game(0, roomindex, 5, 5).SetBackGround(6)
+        m_buttonArray(6, 4).BackgroundImage = House.Images(6)
+        m_Game(0, roomindex, 5, 5).SetBackGround(6)
 
 
 
@@ -1547,6 +1557,7 @@
             place = 0
             TextBox1.Visible = False
         End If
+        Me.Focus()
 
     End Sub
 
