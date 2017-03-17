@@ -27,10 +27,6 @@ Partial Class Form1
         Me.AR = New System.Windows.Forms.Timer(Me.components)
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.GenerateBoardToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.level1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.level2 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.level3 = New System.Windows.Forms.ToolStripMenuItem()
         Me.AT = New System.Windows.Forms.Timer(Me.components)
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.AL = New System.Windows.Forms.Timer(Me.components)
@@ -66,35 +62,9 @@ Partial Class Form1
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GenerateBoardToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(69, 20)
         Me.FileToolStripMenuItem.Text = "Backpack"
-        '
-        'GenerateBoardToolStripMenuItem
-        '
-        Me.GenerateBoardToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.level1, Me.level2, Me.level3})
-        Me.GenerateBoardToolStripMenuItem.Name = "GenerateBoardToolStripMenuItem"
-        Me.GenerateBoardToolStripMenuItem.Size = New System.Drawing.Size(109, 22)
-        Me.GenerateBoardToolStripMenuItem.Text = "Levels:"
-        '
-        'level1
-        '
-        Me.level1.Name = "level1"
-        Me.level1.Size = New System.Drawing.Size(80, 22)
-        Me.level1.Text = "1"
-        '
-        'level2
-        '
-        Me.level2.Name = "level2"
-        Me.level2.Size = New System.Drawing.Size(80, 22)
-        Me.level2.Text = "2"
-        '
-        'level3
-        '
-        Me.level3.Name = "level3"
-        Me.level3.Size = New System.Drawing.Size(80, 22)
-        Me.level3.Text = "3"
         '
         'AT
         '
@@ -263,12 +233,8 @@ Partial Class Form1
     Friend WithEvents AR As Timer
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents GenerateBoardToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AT As Timer
     Friend WithEvents ImageList1 As ImageList
-    Friend WithEvents level1 As ToolStripMenuItem
-    Friend WithEvents level2 As ToolStripMenuItem
-    Friend WithEvents level3 As ToolStripMenuItem
     Friend WithEvents AL As Timer
     Friend WithEvents AD As Timer
     Friend WithEvents BackpackList As ListBox
