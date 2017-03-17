@@ -19,6 +19,7 @@
     Dim room2Enemts As clsEnemy
     Dim rnd As New Random
     Dim playerDamage As Integer = 0
+
     Public Function CombineImages(ByVal img1 As Image, ByVal img2 As Image) As Image
         Dim bmp As New Bitmap(Math.Max(img1.Width, img2.Width), 24)
         Dim g As Graphics = Graphics.FromImage(bmp)
@@ -1340,13 +1341,17 @@
         End If
     End Sub
     Sub PlayerLeft(a As Integer)
+
         Dim baseimage As Bitmap
         baseimage = BloodStones.My.Resources.Resource1.M_Adult_left_
         baseimage.MakeTransparent(Color.White)
         Dim pants As Bitmap
+
         pants = BloodStones.My.Resources.Resource1.Pants_Left_
         pants.MakeTransparent(Color.White)
+
         m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(ImageList1.Images(a), baseimage, pants)
+
     End Sub
     Sub PlayerRight(a As Integer)
         Dim baseimage As Bitmap
