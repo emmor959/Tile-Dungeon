@@ -64,24 +64,8 @@
         g.Dispose()
         Return bmp
     End Function
-    Private Sub ToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles level1.Click
-        'SET ENEMY LOCATIONS
-        lvl2EnemyArray(0) = New clsEnemy(2, 5)
-        lvl2EnemyArray(0).SetHealth(3)
-        lvl2EnemyArray(1) = New clsEnemy(2, 7)
-        lvl2EnemyArray(1).SetHealth(5)
-        lvl2EnemyArray(2) = New clsEnemy(2, 9)
-        lvl2EnemyArray(2).SetHealth(100)
-        lvl1EnemyArray(0) = New clsEnemy(8, 7)
-        lvl1EnemyArray(0).SetHealth(3)
-        lvl1EnemyArray(1) = New clsEnemy(8, 9)
-        lvl1EnemyArray(1).SetHealth(3)
-        HPPACK1(0) = New clsPickup(14, 7)
-        HPPACK1(0).SetActive(True)
-        Chestb(0) = New clsPickup(14, 8)
-        Chestb(0).SetActive(True)
-        Room1(0)
-        Timer1.Enabled = True
+    Private Sub ToolStripMenuItem2_Click(sender As Object, e As EventArgs)
+
 
     End Sub
     Sub RoomTest(start As Integer)
@@ -756,15 +740,32 @@
         End If
 
     End Sub
-    Private Sub level2_Click(sender As Object, e As EventArgs) Handles level2.Click
+    Private Sub level2_Click(sender As Object, e As EventArgs)
 
     End Sub
-    Private Sub level3_Click(sender As Object, e As EventArgs) Handles level3.Click
+    Private Sub level3_Click(sender As Object, e As EventArgs)
 
     End Sub
 
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'SET ENEMY LOCATIONS
+        lvl2EnemyArray(0) = New clsEnemy(2, 5)
+        lvl2EnemyArray(0).SetHealth(3)
+        lvl2EnemyArray(1) = New clsEnemy(2, 7)
+        lvl2EnemyArray(1).SetHealth(5)
+        lvl2EnemyArray(2) = New clsEnemy(2, 9)
+        lvl2EnemyArray(2).SetHealth(100)
+        lvl1EnemyArray(0) = New clsEnemy(8, 7)
+        lvl1EnemyArray(0).SetHealth(3)
+        lvl1EnemyArray(1) = New clsEnemy(8, 9)
+        lvl1EnemyArray(1).SetHealth(3)
+        HPPACK1(0) = New clsPickup(14, 7)
+        HPPACK1(0).SetActive(True)
+        Chestb(0) = New clsPickup(14, 8)
+        Chestb(0).SetActive(True)
+        Room1(0)
+        Timer1.Enabled = True
         Me.Focus()
     End Sub
 
