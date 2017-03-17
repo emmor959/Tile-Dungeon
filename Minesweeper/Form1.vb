@@ -19,7 +19,7 @@
     Dim room2Enemts As clsEnemy
     Dim rnd As New Random
     Dim playerDamage As Integer = 0
-
+    Dim mousedown As Boolean = False
     Public Function CombineImages(ByVal img1 As Image, ByVal img2 As Image) As Image
         Dim bmp As New Bitmap(Math.Max(img1.Width, img2.Width), 24)
         Dim g As Graphics = Graphics.FromImage(bmp)
@@ -64,24 +64,8 @@
         g.Dispose()
         Return bmp
     End Function
-    Private Sub ToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles level1.Click
-        'SET ENEMY LOCATIONS
-        lvl2EnemyArray(0) = New clsEnemy(2, 5)
-        lvl2EnemyArray(0).SetHealth(3)
-        lvl2EnemyArray(1) = New clsEnemy(2, 7)
-        lvl2EnemyArray(1).SetHealth(5)
-        lvl2EnemyArray(2) = New clsEnemy(2, 9)
-        lvl2EnemyArray(2).SetHealth(100)
-        lvl1EnemyArray(0) = New clsEnemy(8, 7)
-        lvl1EnemyArray(0).SetHealth(3)
-        lvl1EnemyArray(1) = New clsEnemy(8, 9)
-        lvl1EnemyArray(1).SetHealth(3)
-        HPPACK1(0) = New clsPickup(14, 7)
-        HPPACK1(0).SetActive(True)
-        Chestb(0) = New clsPickup(14, 8)
-        Chestb(0).SetActive(True)
-        Room1(0)
-        Timer1.Enabled = True
+    Private Sub ToolStripMenuItem2_Click(sender As Object, e As EventArgs)
+
 
     End Sub
     Sub RoomTest(start As Integer)
@@ -699,11 +683,11 @@
         PlayerDown(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
         m_Game(0, roomindex, 7, 0).SetIndex(11)
         m_Game(0, roomindex, 0, 0).SetIndex(10)
-        buttonArray(7, 0).BackgroundImage = ImageList1.Images(13)
-        buttonArray(8, 15).BackgroundImage = ImageList1.Images(13)
+        m_buttonArray(7, 0).BackgroundImage = ImageList1.Images(13)
+        m_buttonArray(8, 15).BackgroundImage = ImageList1.Images(13)
 
-
-
+        m_buttonArray(5, 5).BackgroundImage = ImageList1.Images(16)
+        m_Game(0, roomindex, 5, 5).SetBackGround(16)
 
 
 
@@ -756,305 +740,326 @@
         End If
 
     End Sub
-    Private Sub level2_Click(sender As Object, e As EventArgs) Handles level2.Click
+    Private Sub level2_Click(sender As Object, e As EventArgs)
 
     End Sub
-    Private Sub level3_Click(sender As Object, e As EventArgs) Handles level3.Click
+    Private Sub level3_Click(sender As Object, e As EventArgs)
 
     End Sub
 
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'SET ENEMY LOCATIONS
+        lvl2EnemyArray(0) = New clsEnemy(2, 5)
+        lvl2EnemyArray(0).SetHealth(3)
+        lvl2EnemyArray(1) = New clsEnemy(2, 7)
+        lvl2EnemyArray(1).SetHealth(5)
+        lvl2EnemyArray(2) = New clsEnemy(2, 9)
+        lvl2EnemyArray(2).SetHealth(100)
+        lvl1EnemyArray(0) = New clsEnemy(8, 7)
+        lvl1EnemyArray(0).SetHealth(3)
+        lvl1EnemyArray(1) = New clsEnemy(8, 9)
+        lvl1EnemyArray(1).SetHealth(3)
+        HPPACK1(0) = New clsPickup(14, 7)
+        HPPACK1(0).SetActive(True)
+        Chestb(0) = New clsPickup(14, 8)
+        Chestb(0).SetActive(True)
+        Room1(0)
+        Timer1.Enabled = True
         Me.Focus()
     End Sub
 
     Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
         'Wasd Key Character Controls
         'RIGHT MOVEMENT RIGHT MOVEMENT RIGHTMOVEMENT
-        Try
+        If mousedown = False Then
+            Try
 
 
-            If e.KeyCode = Keys.D And Player1.GetX() <> 15 And m_Game(levelindex, roomindex, Player1.GetX() + 1, Player1.GetY()).GetIndex <> 6 Then
-                If Player1.GetImageNum <> 0 Then
+                If e.KeyCode = Keys.D And Player1.GetX() <> 15 And m_Game(levelindex, roomindex, Player1.GetX() + 1, Player1.GetY()).GetIndex <> 6 Then
+                    If Player1.GetImageNum <> 0 Then
+                        PlayerRight(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+                        Player1.ImageNum(0)
+                    Else
+                        If m_Game(levelindex, roomindex, Player1.GetX + 1, Player1.GetY).GetIndex = 10 Then
+                            roomindex += 1
+                            CreateRoom(roomindex, 0)
+                        ElseIf m_Game(levelindex, roomindex, Player1.GetX + 1, Player1.GetY).GetIndex = 11 Then
+                            roomindex -= 1
+                            CreateRoom(roomindex, 1)
+                        Else
+                            MovePlayer(1, 0)
+                        End If
+                    End If
+
+                ElseIf e.KeyCode = Keys.D And Player1.GetX() <> 15 Then
+
                     PlayerRight(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
                     Player1.ImageNum(0)
-                Else
-                    If m_Game(levelindex, roomindex, Player1.GetX + 1, Player1.GetY).GetIndex = 10 Then
-                        roomindex += 1
-                        CreateRoom(roomindex, 0)
-                    ElseIf m_Game(levelindex, roomindex, Player1.GetX + 1, Player1.GetY).GetIndex = 11 Then
-                        roomindex -= 1
-                        CreateRoom(roomindex, 1)
-                    Else
-                        MovePlayer(1, 0)
-                    End If
                 End If
-
-            ElseIf e.KeyCode = Keys.D And Player1.GetX() <> 15 Then
-
-                PlayerRight(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
-                Player1.ImageNum(0)
-            End If
-            ' UPWARD MOVEMENT UPWARD MOVEMENT UPWARD MOVEMENT
-            If e.KeyCode = Keys.W And Player1.GetY() <> 0 And m_Game(levelindex, roomindex, Player1.GetX(), Player1.GetY() - 1).GetIndex <> 6 Then
+                ' UPWARD MOVEMENT UPWARD MOVEMENT UPWARD MOVEMENT
+                If e.KeyCode = Keys.W And Player1.GetY() <> 0 And m_Game(levelindex, roomindex, Player1.GetX(), Player1.GetY() - 1).GetIndex <> 6 Then
 
 
-                If Player1.GetImageNum <> 1 Then
+                    If Player1.GetImageNum <> 1 Then
+                        PlayerUp(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+                        Player1.ImageNum(1)
+                    Else
+                        If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY - 1).GetIndex = 10 Then
+
+                            roomindex += 1
+                            CreateRoom(roomindex, 0)
+
+                        ElseIf m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY - 1).GetIndex = 11 Then
+
+                            roomindex -= 1
+                            CreateRoom(roomindex, 1)
+                        Else
+                            MovePlayer(0, -1)
+                        End If
+                    End If
+
+
+                ElseIf e.KeyCode = Keys.W And Player1.GetY() <> 0 Then
                     PlayerUp(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
                     Player1.ImageNum(1)
-                Else
-                    If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY - 1).GetIndex = 10 Then
+                End If
+                'LEFTWARD MOVEMENT LEFTWARD MOVEMENT LEFTWARD MOVEMENT
+                If e.KeyCode = Keys.A And Player1.GetX() <> 0 And m_Game(levelindex, roomindex, Player1.GetX() - 1, Player1.GetY()).GetIndex <> 6 Then
+                    If Player1.GetImageNum <> 2 Then
+                        PlayerLeft(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+                        Player1.ImageNum(2)
+                    Else
+                        If m_Game(levelindex, roomindex, Player1.GetX - 1, Player1.GetY).GetIndex = 10 Then
+                            roomindex += 1
+                            CreateRoom(roomindex, 0)
+                        ElseIf m_Game(levelindex, roomindex, Player1.GetX - 1, Player1.GetY).GetIndex = 11 Then
+                            roomindex -= 1
+                            CreateRoom(roomindex, 1)
+                        Else
+                            MovePlayer(-1, 0)
+                        End If
+                    End If
 
+                ElseIf e.KeyCode = Keys.A And Player1.GetX() <> 0 Then
+                    PlayerLeft(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+                    Player1.ImageNum(2)
+                End If
+                'DOWNWARD MOVEMENT DOWNWARD MOVEMENT DOWNWARD MOVEMENT
+                If e.KeyCode = Keys.S And Player1.GetY() <> 15 And m_Game(levelindex, roomindex, Player1.GetX(), Player1.GetY() + 1).GetIndex <> 6 Then
+
+                    If Player1.GetImageNum <> 3 Then
+                        PlayerDown(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+                        Player1.ImageNum(3)
+                    ElseIf m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY + 1).GetIndex = 10 Then
                         roomindex += 1
                         CreateRoom(roomindex, 0)
-
-                    ElseIf m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY - 1).GetIndex = 11 Then
-
+                    ElseIf m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).GetIndex = 11 Then
                         roomindex -= 1
                         CreateRoom(roomindex, 1)
                     Else
-                        MovePlayer(0, -1)
+                        MovePlayer(0, 1)
                     End If
+                ElseIf e.KeyCode = Keys.S And Player1.GetY() <> 15 Then
+                    PlayerDown(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+                    Player1.ImageNum(3)
                 End If
 
+                'Arrow Key Player Controls
 
-            ElseIf e.KeyCode = Keys.W And Player1.GetY() <> 0 Then
-                PlayerUp(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
-                Player1.ImageNum(1)
-            End If
-            'LEFTWARD MOVEMENT LEFTWARD MOVEMENT LEFTWARD MOVEMENT
-            If e.KeyCode = Keys.A And Player1.GetX() <> 0 And m_Game(levelindex, roomindex, Player1.GetX() - 1, Player1.GetY()).GetIndex <> 6 Then
-                If Player1.GetImageNum <> 2 Then
-                    PlayerLeft(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
-                    Player1.ImageNum(2)
-                Else
+                'RIGHT MOVEMENT RIGHT MOVEMENT RIGHTMOVEMENT
+                If e.KeyCode = Keys.Right And Player1.GetX() <> 15 And m_Game(levelindex, roomindex, Player1.GetX() + 1, Player1.GetY()).GetIndex <> 6 Then
+
+                    If Player1.GetImageNum <> 0 Then
+                        PlayerRight(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+                        Player1.ImageNum(0)
+                    Else
+                        If m_Game(levelindex, roomindex, Player1.GetX() + 1, Player1.GetY()).CheckForEnemy = False Then
+                            m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(False)
+                            m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+                            Player1.SetX(Player1.GetX() + 1)
+                            PlayerRight(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+                            m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(True)
+                        End If
+                    End If
+                    If m_Game(levelindex, roomindex, Player1.GetX + 1, Player1.GetY).GetIndex = 10 Then
+
+                        roomindex += 1
+                        CreateRoom(roomindex, 0)
+                    End If
+                    If m_Game(levelindex, roomindex, Player1.GetX + 1, Player1.GetY).GetIndex = 11 Then
+
+                        roomindex -= 1
+                        CreateRoom(roomindex, 1)
+                    End If
+                    If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).GetIndex = 3 Then
+                        For i = 0 To HPPACK1.Count - 1
+                            If HPPACK1(i).ReturnX = Player1.GetX And HPPACK1(i).ReturnY = Player1.GetY And HPPACK1(i).ActiveCheck = True Then
+                                healthPotion += 1
+                                HPPACK1(i).SetActive(False)
+                                ResetPack()
+                                DisplayText("+ 1 Health Potion")
+                            End If
+                        Next
+                    End If
+                ElseIf e.KeyCode = Keys.Right And Player1.GetX() <> 15 Then
+
+                    PlayerRight(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+                    Player1.ImageNum(0)
+                End If
+                ' UPWARD MOVEMENT UPWARD MOVEMENT UPWARD MOVEMENT
+                If e.KeyCode = Keys.Up And Player1.GetY() <> 0 And m_Game(levelindex, roomindex, Player1.GetX(), Player1.GetY() - 1).GetIndex <> 6 Then
+
+
+
+                    If Player1.GetImageNum <> 1 Then
+                        PlayerUp(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+                        Player1.ImageNum(1)
+                    Else
+                        If m_Game(levelindex, roomindex, Player1.GetX(), Player1.GetY() - 1).CheckForEnemy = False Then
+                            m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(False)
+                            m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+                            Player1.SetY(Player1.GetY() - 1)
+                            PlayerUp(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+                            m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(True)
+                        End If
+                    End If
+                    If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY - 1).GetIndex = 10 Then
+                        roomindex += 1
+                        CreateRoom(roomindex, 0)
+                    End If
+                    If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY - 1).GetIndex = 11 Then
+                        roomindex -= 1
+                        CreateRoom(roomindex, 1)
+                    End If
+                    If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).GetIndex = 3 Then
+                        For i = 0 To HPPACK1.Count - 1
+                            If HPPACK1(i).ReturnX = Player1.GetX And HPPACK1(i).ReturnY = Player1.GetY And HPPACK1(i).ActiveCheck = True Then
+                                healthPotion += 1
+                                HPPACK1(i).SetActive(False)
+                                ResetPack()
+                                DisplayText("+ 1 Health Potion")
+                            End If
+                        Next
+                        For i = 0 To Chestb.Count - 1
+                            If Chestb(i).ReturnX = Player1.GetX And Chestb(i).ReturnY = Player1.GetY And Chestb(i).ActiveCheck = True Then
+                                BackpackList.Items.Add(Chestb(i).Item())
+                                DisplayText(Chestb(i).Item())
+                            End If
+                        Next
+                    End If
+                ElseIf e.KeyCode = Keys.Up And Player1.GetY() <> 0 Then
+                    PlayerUp(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+                    Player1.ImageNum(1)
+                End If
+                'LEFTWARD MOVEMENT LEFTWARD MOVEMENT LEFTWARD MOVEMENT
+                If e.KeyCode = Keys.Left And Player1.GetX() <> 0 And m_Game(levelindex, roomindex, Player1.GetX() - 1, Player1.GetY()).GetIndex <> 6 Then
+                    If Player1.GetImageNum <> 2 Then
+                        PlayerLeft(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+                        Player1.ImageNum(2)
+                    Else
+                        If m_Game(levelindex, roomindex, Player1.GetX() - 1, Player1.GetY()).CheckForEnemy = False Then
+                            m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(False)
+                            m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+                            Player1.SetX(Player1.GetX() - 1)
+                            PlayerLeft(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+                            m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(True)
+                        End If
+                    End If
                     If m_Game(levelindex, roomindex, Player1.GetX - 1, Player1.GetY).GetIndex = 10 Then
                         roomindex += 1
                         CreateRoom(roomindex, 0)
-                    ElseIf m_Game(levelindex, roomindex, Player1.GetX - 1, Player1.GetY).GetIndex = 11 Then
+                    End If
+                    If m_Game(levelindex, roomindex, Player1.GetX - 1, Player1.GetY).GetIndex = 11 Then
                         roomindex -= 1
                         CreateRoom(roomindex, 1)
-                    Else
-                        MovePlayer(-1, 0)
                     End If
-                End If
-
-            ElseIf e.KeyCode = Keys.A And Player1.GetX() <> 0 Then
-                PlayerLeft(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
-                Player1.ImageNum(2)
-            End If
-            'DOWNWARD MOVEMENT DOWNWARD MOVEMENT DOWNWARD MOVEMENT
-            If e.KeyCode = Keys.S And Player1.GetY() <> 15 And m_Game(levelindex, roomindex, Player1.GetX(), Player1.GetY() + 1).GetIndex <> 6 Then
-
-                If Player1.GetImageNum <> 3 Then
-                    PlayerDown(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
-                    Player1.ImageNum(3)
-                ElseIf m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY + 1).GetIndex = 10 Then
-                    roomindex += 1
-                    CreateRoom(roomindex, 0)
-                ElseIf m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).GetIndex = 11 Then
-                    roomindex -= 1
-                    CreateRoom(roomindex, 1)
-                Else
-                    MovePlayer(0, 1)
-                End If
-            ElseIf e.KeyCode = Keys.S And Player1.GetY() <> 15 Then
-                PlayerDown(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
-                Player1.ImageNum(3)
-            End If
-
-            'Arrow Key Player Controls
-
-            'RIGHT MOVEMENT RIGHT MOVEMENT RIGHTMOVEMENT
-            If e.KeyCode = Keys.Right And Player1.GetX() <> 15 And m_Game(levelindex, roomindex, Player1.GetX() + 1, Player1.GetY()).GetIndex <> 6 Then
-
-                If Player1.GetImageNum <> 0 Then
-                    PlayerRight(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
-                    Player1.ImageNum(0)
-                Else
-                    If m_Game(levelindex, roomindex, Player1.GetX() + 1, Player1.GetY()).CheckForEnemy = False Then
-                        m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(False)
-                        m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
-                        Player1.SetX(Player1.GetX() + 1)
-                        PlayerRight(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
-                        m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(True)
+                    If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).GetIndex = 3 Then
+                        For i = 0 To HPPACK1.Count - 1
+                            If HPPACK1(i).ReturnX = Player1.GetX And HPPACK1(i).ReturnY = Player1.GetY Then
+                                healthPotion += 1
+                                HPPACK1(i).SetActive(False)
+                                ResetPack()
+                                DisplayText("+ 1 Health Potion")
+                            End If
+                        Next
                     End If
-                End If
-                If m_Game(levelindex, roomindex, Player1.GetX + 1, Player1.GetY).GetIndex = 10 Then
-
-                    roomindex += 1
-                    CreateRoom(roomindex, 0)
-                End If
-                If m_Game(levelindex, roomindex, Player1.GetX + 1, Player1.GetY).GetIndex = 11 Then
-
-                    roomindex -= 1
-                    CreateRoom(roomindex, 1)
-                End If
-                If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).GetIndex = 3 Then
-                    For i = 0 To HPPACK1.Count - 1
-                        If HPPACK1(i).ReturnX = Player1.GetX And HPPACK1(i).ReturnY = Player1.GetY And HPPACK1(i).ActiveCheck = True Then
-                            healthPotion += 1
-                            HPPACK1(i).SetActive(False)
-                            ResetPack()
-                            DisplayText("+ 1 Health Potion")
-                        End If
-                    Next
-                End If
-            ElseIf e.KeyCode = Keys.Right And Player1.GetX() <> 15 Then
-
-                PlayerRight(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
-                Player1.ImageNum(0)
-            End If
-            ' UPWARD MOVEMENT UPWARD MOVEMENT UPWARD MOVEMENT
-            If e.KeyCode = Keys.Up And Player1.GetY() <> 0 And m_Game(levelindex, roomindex, Player1.GetX(), Player1.GetY() - 1).GetIndex <> 6 Then
-
-
-
-                If Player1.GetImageNum <> 1 Then
-                    PlayerUp(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
-                    Player1.ImageNum(1)
-                Else
-                    If m_Game(levelindex, roomindex, Player1.GetX(), Player1.GetY() - 1).CheckForEnemy = False Then
-                        m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(False)
-                        m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
-                        Player1.SetY(Player1.GetY() - 1)
-                        PlayerUp(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
-                        m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(True)
-                    End If
-                End If
-                If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY - 1).GetIndex = 10 Then
-                    roomindex += 1
-                    CreateRoom(roomindex, 0)
-                End If
-                If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY - 1).GetIndex = 11 Then
-                    roomindex -= 1
-                    CreateRoom(roomindex, 1)
-                End If
-                If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).GetIndex = 3 Then
-                    For i = 0 To HPPACK1.Count - 1
-                        If HPPACK1(i).ReturnX = Player1.GetX And HPPACK1(i).ReturnY = Player1.GetY And HPPACK1(i).ActiveCheck = True Then
-                            healthPotion += 1
-                            HPPACK1(i).SetActive(False)
-                            ResetPack()
-                            DisplayText("+ 1 Health Potion")
-                        End If
-                    Next
-                    For i = 0 To Chestb.Count - 1
-                        If Chestb(i).ReturnX = Player1.GetX And Chestb(i).ReturnY = Player1.GetY And Chestb(i).ActiveCheck = True Then
-                            BackpackList.Items.Add(Chestb(i).Item())
-                            DisplayText(Chestb(i).Item())
-                        End If
-                    Next
-                End If
-            ElseIf e.KeyCode = Keys.Up And Player1.GetY() <> 0 Then
-                PlayerUp(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
-                Player1.ImageNum(1)
-            End If
-            'LEFTWARD MOVEMENT LEFTWARD MOVEMENT LEFTWARD MOVEMENT
-            If e.KeyCode = Keys.Left And Player1.GetX() <> 0 And m_Game(levelindex, roomindex, Player1.GetX() - 1, Player1.GetY()).GetIndex <> 6 Then
-                If Player1.GetImageNum <> 2 Then
+                ElseIf e.KeyCode = Keys.Left And Player1.GetX() <> 0 Then
                     PlayerLeft(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
                     Player1.ImageNum(2)
-                Else
-                    If m_Game(levelindex, roomindex, Player1.GetX() - 1, Player1.GetY()).CheckForEnemy = False Then
-                        m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(False)
-                        m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
-                        Player1.SetX(Player1.GetX() - 1)
-                        PlayerLeft(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
-                        m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(True)
-                    End If
                 End If
-                If m_Game(levelindex, roomindex, Player1.GetX - 1, Player1.GetY).GetIndex = 10 Then
-                    roomindex += 1
-                    CreateRoom(roomindex, 0)
-                End If
-                If m_Game(levelindex, roomindex, Player1.GetX - 1, Player1.GetY).GetIndex = 11 Then
-                    roomindex -= 1
-                    CreateRoom(roomindex, 1)
-                End If
-                If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).GetIndex = 3 Then
-                    For i = 0 To HPPACK1.Count - 1
-                        If HPPACK1(i).ReturnX = Player1.GetX And HPPACK1(i).ReturnY = Player1.GetY Then
-                            healthPotion += 1
-                            HPPACK1(i).SetActive(False)
-                            ResetPack()
-                            DisplayText("+ 1 Health Potion")
+                'DOWNWARD MOVEMENT DOWNWARD MOVEMENT DOWNWARD MOVEMENT
+                If e.KeyCode = Keys.Down And Player1.GetY() <> 15 And m_Game(levelindex, roomindex, Player1.GetX(), Player1.GetY() + 1).GetIndex <> 6 Then
+                    If Player1.GetImageNum <> 3 Then
+                        PlayerDown(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+                        Player1.ImageNum(3)
+                    Else
+                        If m_Game(levelindex, roomindex, Player1.GetX(), Player1.GetY() + 1).CheckForEnemy = False Then
+                            m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(False)
+                            m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+                            Player1.SetY(Player1.GetY() + 1)
+                            PlayerDown(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+                            m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(True)
                         End If
-                    Next
-                End If
-            ElseIf e.KeyCode = Keys.Left And Player1.GetX() <> 0 Then
-                PlayerLeft(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
-                Player1.ImageNum(2)
-            End If
-            'DOWNWARD MOVEMENT DOWNWARD MOVEMENT DOWNWARD MOVEMENT
-            If e.KeyCode = Keys.Down And Player1.GetY() <> 15 And m_Game(levelindex, roomindex, Player1.GetX(), Player1.GetY() + 1).GetIndex <> 6 Then
-                If Player1.GetImageNum <> 3 Then
+                    End If
+                    If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY + 1).GetIndex = 10 Then
+                        roomindex += 1
+                        CreateRoom(roomindex, 0)
+                    End If
+                    If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).GetIndex = 11 Then
+                        roomindex -= 1
+                        CreateRoom(roomindex, 1)
+                    End If
+                    If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).GetIndex = 3 Then
+                        For i = 0 To HPPACK1.Count - 1
+                            If HPPACK1(i).ReturnX = Player1.GetX And HPPACK1(i).ReturnY = Player1.GetY And HPPACK1(i).ActiveCheck = True Then
+                                healthPotion += 1
+                                HPPACK1(i).SetActive(False)
+                                ResetPack()
+                                DisplayText("+ 1 Health Potion")
+                            End If
+                        Next
+                    End If
+                ElseIf e.KeyCode = Keys.Down And Player1.GetY() <> 15 Then
                     PlayerDown(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
                     Player1.ImageNum(3)
-                Else
-                    If m_Game(levelindex, roomindex, Player1.GetX(), Player1.GetY() + 1).CheckForEnemy = False Then
-                        m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(False)
-                        m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
-                        Player1.SetY(Player1.GetY() + 1)
-                        PlayerDown(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
-                        m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(True)
-                    End If
                 End If
-                If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY + 1).GetIndex = 10 Then
-                    roomindex += 1
-                    CreateRoom(roomindex, 0)
-                End If
-                If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).GetIndex = 11 Then
-                    roomindex -= 1
-                    CreateRoom(roomindex, 1)
-                End If
-                If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).GetIndex = 3 Then
-                    For i = 0 To HPPACK1.Count - 1
-                        If HPPACK1(i).ReturnX = Player1.GetX And HPPACK1(i).ReturnY = Player1.GetY And HPPACK1(i).ActiveCheck = True Then
-                            healthPotion += 1
-                            HPPACK1(i).SetActive(False)
-                            ResetPack()
-                            DisplayText("+ 1 Health Potion")
-                        End If
-                    Next
-                End If
-            ElseIf e.KeyCode = Keys.Down And Player1.GetY() <> 15 Then
-                PlayerDown(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
-                Player1.ImageNum(3)
-            End If
-        Catch ex As Exception
+            Catch ex As Exception
 
-        End Try
-        If e.KeyCode = Keys.Space Then
-            'Rough Framework for fighting, need to add array of enemys and need to add a for next statement to check against enemys like how enemy1 is checked agaisnt for here.
-            If Player1.GetImageNum = 0 Then
-                AR.Enabled = True
-                If m_Game(0, roomindex, Player1.GetX() + 1, Player1.GetY()).CheckForEnemy = True Then
-                    PlayerAttack(1, 0)
+            End Try
+            If e.KeyCode = Keys.Space Then
+                'Rough Framework for fighting, need to add array of enemys and need to add a for next statement to check against enemys like how enemy1 is checked agaisnt for here.
+                If Player1.GetImageNum = 0 Then
+                    AR.Enabled = True
+                    If m_Game(0, roomindex, Player1.GetX() + 1, Player1.GetY()).CheckForEnemy = True Then
+                        PlayerAttack(1, 0)
+                    End If
+                    PickingUp(1, 0)
                 End If
-                PickingUp(1, 0)
-            End If
-            If Player1.GetImageNum = 1 Then
-                AT.Enabled = True
-                If m_Game(0, roomindex, Player1.GetX(), Player1.GetY() - 1).CheckForEnemy = True Then
-                    PlayerAttack(0, -1)
+                If Player1.GetImageNum = 1 Then
+                    AT.Enabled = True
+                    If m_Game(0, roomindex, Player1.GetX(), Player1.GetY() - 1).CheckForEnemy = True Then
+                        PlayerAttack(0, -1)
+                    End If
+                    PickingUp(0, -1)
                 End If
-                PickingUp(0, -1)
-            End If
-            If Player1.GetImageNum = 2 Then
-                AL.Enabled = True
-                If m_Game(0, roomindex, Player1.GetX() - 1, Player1.GetY()).CheckForEnemy = True Then
-                    PlayerAttack(-1, 0)
+                If Player1.GetImageNum = 2 Then
+                    AL.Enabled = True
+                    If m_Game(0, roomindex, Player1.GetX() - 1, Player1.GetY()).CheckForEnemy = True Then
+                        PlayerAttack(-1, 0)
+                    End If
+                    PickingUp(-1, 0)
                 End If
-                PickingUp(-1, 0)
-            End If
-            If Player1.GetImageNum = 3 Then
-                AD.Enabled = True
-                If m_Game(0, roomindex, Player1.GetX(), Player1.GetY() + 1).CheckForEnemy = True Then
-                    PlayerAttack(0, 1)
+                If Player1.GetImageNum = 3 Then
+                    AD.Enabled = True
+                    If m_Game(0, roomindex, Player1.GetX(), Player1.GetY() + 1).CheckForEnemy = True Then
+                        PlayerAttack(0, 1)
+                    End If
+                    PickingUp(0, 1)
                 End If
-                PickingUp(0, 1)
             End If
+            mousedown = True
+            MovespeedMod.Enabled = True
         End If
     End Sub
 
@@ -1341,17 +1346,13 @@
         End If
     End Sub
     Sub PlayerLeft(a As Integer)
-
         Dim baseimage As Bitmap
         baseimage = BloodStones.My.Resources.Resource1.M_Adult_left_
         baseimage.MakeTransparent(Color.White)
         Dim pants As Bitmap
-
         pants = BloodStones.My.Resources.Resource1.Pants_Left_
         pants.MakeTransparent(Color.White)
-
         m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(ImageList1.Images(a), baseimage, pants)
-
     End Sub
     Sub PlayerRight(a As Integer)
         Dim baseimage As Bitmap
@@ -1553,6 +1554,22 @@
         If WeaponList.SelectedItem.ToString = "Rusty Sword" Then
             playerDamage = 1
             DisplayText("Rusty Sword has been equiped")
+        End If
+    End Sub
+
+    Private Sub Form1_KeyUp(sender As Object, e As KeyEventArgs) Handles MyBase.KeyUp
+        mousedown = False
+    End Sub
+    Dim move As Integer = 0
+    Private Sub MovespeedMod_Tick(sender As Object, e As EventArgs) Handles MovespeedMod.Tick
+
+        If move = 0 Then
+            move = 1
+        End If
+        If move = 1 Then
+            mousedown = False
+            MovespeedMod.Enabled = False
+            move = 0
         End If
     End Sub
 

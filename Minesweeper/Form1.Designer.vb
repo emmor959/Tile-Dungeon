@@ -27,10 +27,6 @@ Partial Class Form1
         Me.AR = New System.Windows.Forms.Timer(Me.components)
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.GenerateBoardToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.level1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.level2 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.level3 = New System.Windows.Forms.ToolStripMenuItem()
         Me.AT = New System.Windows.Forms.Timer(Me.components)
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.AL = New System.Windows.Forms.Timer(Me.components)
@@ -46,6 +42,7 @@ Partial Class Form1
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Text_Timer = New System.Windows.Forms.Timer(Me.components)
         Me.WeaponList = New System.Windows.Forms.ListBox()
+        Me.MovespeedMod = New System.Windows.Forms.Timer(Me.components)
         Me.MenuStrip1.SuspendLayout()
         CType(Me.BackPackPicture, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -65,35 +62,9 @@ Partial Class Form1
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GenerateBoardToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(69, 20)
         Me.FileToolStripMenuItem.Text = "Backpack"
-        '
-        'GenerateBoardToolStripMenuItem
-        '
-        Me.GenerateBoardToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.level1, Me.level2, Me.level3})
-        Me.GenerateBoardToolStripMenuItem.Name = "GenerateBoardToolStripMenuItem"
-        Me.GenerateBoardToolStripMenuItem.Size = New System.Drawing.Size(109, 22)
-        Me.GenerateBoardToolStripMenuItem.Text = "Levels:"
-        '
-        'level1
-        '
-        Me.level1.Name = "level1"
-        Me.level1.Size = New System.Drawing.Size(80, 22)
-        Me.level1.Text = "1"
-        '
-        'level2
-        '
-        Me.level2.Name = "level2"
-        Me.level2.Size = New System.Drawing.Size(80, 22)
-        Me.level2.Text = "2"
-        '
-        'level3
-        '
-        Me.level3.Name = "level3"
-        Me.level3.Size = New System.Drawing.Size(80, 22)
-        Me.level3.Text = "3"
         '
         'AT
         '
@@ -118,6 +89,7 @@ Partial Class Form1
         Me.ImageList1.Images.SetKeyName(13, "Grass(3).png")
         Me.ImageList1.Images.SetKeyName(14, "Grass(1).png")
         Me.ImageList1.Images.SetKeyName(15, "Black.png")
+        Me.ImageList1.Images.SetKeyName(16, "House(1).png")
         '
         'AL
         '
@@ -229,6 +201,10 @@ Partial Class Form1
         Me.WeaponList.TabIndex = 10
         Me.WeaponList.Visible = False
         '
+        'MovespeedMod
+        '
+        Me.MovespeedMod.Interval = 200
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -257,12 +233,8 @@ Partial Class Form1
     Friend WithEvents AR As Timer
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents GenerateBoardToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AT As Timer
     Friend WithEvents ImageList1 As ImageList
-    Friend WithEvents level1 As ToolStripMenuItem
-    Friend WithEvents level2 As ToolStripMenuItem
-    Friend WithEvents level3 As ToolStripMenuItem
     Friend WithEvents AL As Timer
     Friend WithEvents AD As Timer
     Friend WithEvents BackpackList As ListBox
@@ -276,4 +248,5 @@ Partial Class Form1
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Text_Timer As Timer
     Friend WithEvents WeaponList As ListBox
+    Friend WithEvents MovespeedMod As Timer
 End Class
