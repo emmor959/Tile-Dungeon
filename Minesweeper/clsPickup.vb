@@ -4,6 +4,7 @@
     Dim m_ReturnGold As Integer
     Dim m_returnItem As String
     Dim m_Active As Boolean
+    Dim m_Weapon As Boolean
     Dim m_x As Integer
     Dim m_y As Integer
     Sub New(x As Integer, y As Integer)
@@ -42,5 +43,11 @@
     End Function
     Public Function ReturnY()
         Return m_y
+    End Function
+    Public Sub SetWeapon(b As Boolean)
+        m_Weapon = b
+    End Sub
+    Public Function WeaponCheck()
+        Return m_Weapon
     End Function
 End Class

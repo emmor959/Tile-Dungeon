@@ -1,9 +1,9 @@
 ﻿Public Class Tile
-
     Dim m_PlayerPresent As Boolean
     Dim m_EnemyPresent As Boolean
     Dim m_TileIndex As Integer
     Dim m_RoomIndex As Integer
+    Dim m_BackGroundIndex As Integer
     Sub New(player As Boolean, enemy As Boolean, Tile As Integer)
         m_PlayerPresent = player
         m_EnemyPresent = enemy
@@ -40,5 +40,11 @@
     End Sub
     Public Function GetRoom()
         Return m_RoomIndex
+    End Function
+    Sub SetBackGround(a As Integer)
+        m_BackGroundIndex = a
+    End Sub
+    Function ReturnBackGround()
+        Return m_BackGroundIndex
     End Function
 End Class

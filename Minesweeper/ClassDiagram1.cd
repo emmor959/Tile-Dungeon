@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Minesweeper.clsEnemy" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAQgAAAAAIAAYAACAAAAAAAAAAAAAAYAHAAigAAAA=</HashCode>
+      <FileName>clsEnemy.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Minesweeper.clsPickup" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAEAAAAAEEQAgAEBAAAAAQAoAAMAE=</HashCode>
+      <FileName>clsPickup.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Minesweeper.clsPlayer" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAYAAEAAAAAAAAAAAABAYABAAACAQQA=</HashCode>
+      <FileName>clsPlayer.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Minesweeper.Form1" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kiAtACCADLiEYIUIlDCArpACASEQSgBBlERkAEUGEAg=</HashCode>
+      <FileName>Form1.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Minesweeper.Tile" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAABUAQhAAAQQAECAAAQABAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Tile.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Minesweeper.My.MyApplication" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Minesweeper.My.MySettings" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAABEAAAAABAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Minesweeper.My.Resources.Resource1" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACgAAAAQAQAAAAAABEEAgAQgEAAAAAAAQQEAAGIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Module Name="Minesweeper.My.MySettingsProperty" Collapsed="true">
+    <Position X="0.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Module>
+  <Module Name="Minesweeper.My.Resources.Resources" Collapsed="true">
+    <Position X="2.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Module>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
