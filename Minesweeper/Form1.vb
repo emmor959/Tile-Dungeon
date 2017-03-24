@@ -697,15 +697,15 @@
         m_buttonArray = buttonArray
 
         'CREATES LEFT WALL
-        DrawRoomWallVert(0, 15, 0, 13)
+        DrawRoomWallVert(0, 15, 0, 12)
 
         'CREATES BOTTOM WALL
-        DrawRoomWallHori(0, 15, 15, 13)
+        DrawRoomWallHori(0, 15, 15, 12)
 
         'CREATES RIGHT WALL
-        DrawRoomWallVert(0, 15, 15, 13)
+        DrawRoomWallVert(0, 15, 15, 12)
 
-        DrawRoomWallHori(0, 15, 0, 13)
+        DrawRoomWallHori(0, 15, 0, 12)
         If start = 0 Then
             Player1.SetX(7)
             Player1.SetY(1)
@@ -727,8 +727,8 @@
         m_Game(0, roomindexX, roomindexY, 7, 15).SetIndex(DoorDownIndex)
         m_Game(0, roomindexX, roomindexY, 15, 8).SetIndex(DoorRightIndex)
         m_buttonArray(7, 0).BackgroundImage = ImageList1.Images(13)
-        m_buttonArray(8, 15).BackgroundImage = ImageList1.Images(13)
-
+        m_buttonArray(7, 15).BackgroundImage = ImageList1.Images(13)
+        m_buttonArray(15, 8).BackgroundImage = ImageList1.Images(13)
 
 
 
@@ -791,15 +791,15 @@
         m_buttonArray = buttonArray
 
         'CREATES LEFT WALL
-        DrawRoomWallVert(0, 15, 0, 13)
+        DrawRoomWallVert(0, 15, 0, 12)
 
         'CREATES BOTTOM WALL
-        DrawRoomWallHori(0, 15, 15, 13)
+        DrawRoomWallHori(0, 15, 15, 12)
 
         'CREATES RIGHT WALL
-        DrawRoomWallVert(0, 15, 15, 13)
+        DrawRoomWallVert(0, 15, 15, 12)
 
-        DrawRoomWallHori(0, 15, 0, 13)
+        DrawRoomWallHori(0, 15, 0, 12)
         If start = 0 Then
             Player1.SetX(7)
             Player1.SetY(1)
@@ -811,7 +811,7 @@
         m_Game(0, roomindexX, roomindexY, 7, 0).SetIndex(DoorUPIndex)
         m_Game(0, roomindexX, roomindexY, 15, 7).SetIndex(DoorRightIndex)
         m_buttonArray(7, 0).BackgroundImage = ImageList1.Images(13)
-        m_buttonArray(8, 15).BackgroundImage = ImageList1.Images(13)
+        m_buttonArray(15, 7).BackgroundImage = ImageList1.Images(13)
     End Sub
     Sub Room8(start As Integer)
 
@@ -847,15 +847,15 @@
         m_buttonArray = buttonArray
 
         'CREATES LEFT WALL
-        DrawRoomWallVert(0, 15, 0, 13)
+        DrawRoomWallVert(0, 15, 0, 12)
 
         'CREATES BOTTOM WALL
-        DrawRoomWallHori(0, 15, 15, 13)
+        DrawRoomWallHori(0, 15, 15, 12)
 
         'CREATES RIGHT WALL
-        DrawRoomWallVert(0, 15, 15, 13)
+        DrawRoomWallVert(0, 15, 15, 12)
 
-        DrawRoomWallHori(0, 15, 0, 13)
+        DrawRoomWallHori(0, 15, 0, 12)
         If start = 2 Then
             Player1.SetX(1)
             Player1.SetY(8)
@@ -866,8 +866,8 @@
         PlayerDown(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
         m_Game(0, roomindexX, roomindexY, 0, 8).SetIndex(DoorLeftIndex)
         m_Game(0, roomindexX, roomindexY, 7, 15).SetIndex(DoorDownIndex)
-        m_buttonArray(7, 0).BackgroundImage = ImageList1.Images(13)
-        m_buttonArray(8, 15).BackgroundImage = ImageList1.Images(13)
+        m_buttonArray(0, 8).BackgroundImage = ImageList1.Images(13)
+        m_buttonArray(7, 15).BackgroundImage = ImageList1.Images(13)
     End Sub
     Sub Room9(start As Integer)
 
@@ -903,29 +903,500 @@
         m_buttonArray = buttonArray
 
         'CREATES LEFT WALL
-        DrawRoomWallVert(0, 15, 0, 13)
+        DrawRoomWallVert(0, 15, 0, 12)
 
         'CREATES BOTTOM WALL
-        DrawRoomWallHori(0, 15, 15, 13)
+        DrawRoomWallHori(0, 15, 15, 12)
 
         'CREATES RIGHT WALL
-        DrawRoomWallVert(0, 15, 15, 13)
+        DrawRoomWallVert(0, 15, 15, 12)
 
-        DrawRoomWallHori(0, 15, 0, 13)
+        DrawRoomWallHori(0, 15, 0, 12)
         If start = 0 Then
             Player1.SetX(7)
             Player1.SetY(1)
         ElseIf start = 2 Then
             Player1.SetX(1)
             Player1.SetY(7)
+        ElseIf start = 3 Then
+            Player1.SetX(15)
+            Player1.SetY(8)
         End If
         PlayerDown(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
         m_Game(0, roomindexX, roomindexY, 7, 0).SetIndex(DoorUPIndex)
         m_Game(0, roomindexX, roomindexY, 0, 7).SetIndex(DoorLeftIndex)
+        m_Game(0, roomindexX, roomindexY, 15, 8).SetIndex(DoorRightIndex)
         m_buttonArray(7, 0).BackgroundImage = ImageList1.Images(13)
-        m_buttonArray(8, 15).BackgroundImage = ImageList1.Images(13)
+        m_buttonArray(0, 7).BackgroundImage = ImageList1.Images(13)
+        m_buttonArray(15, 8).BackgroundImage = ImageList1.Images(13)
     End Sub
 #End Region
+    Sub Room10(start As Integer)
+
+        For i = 1 To 16
+            For i2 = 1 To 16
+
+                m_Game(0, roomindexX, roomindexY, i - 1, i2 - 1) = New Tile(False, False, 1)
+
+            Next
+        Next
+
+        Dim buttonArray(16, 16) As Button
+        For i = 0 To 15
+            For i2 = 0 To 15
+                buttonArray(i, i2) = New System.Windows.Forms.Button()
+                buttonArray(i, i2).Location = New System.Drawing.Point((i * tilesize), (i2 * tilesize) + tilesize)
+                buttonArray(i, i2).Name = (i.ToString + "_" + i2.ToString)
+                buttonArray(i, i2).Size = New System.Drawing.Size(tilesize, tilesize)
+                buttonArray(i, i2).TabIndex = 1
+                buttonArray(i, i2).Text = ""
+                buttonArray(i, i2).UseVisualStyleBackColor = True
+                buttonArray(i, i2).BackColor = Color.Gray
+                buttonArray(i, i2).BackgroundImage = ImageList1.Images(13)
+                m_Game(0, roomindexX, roomindexY, i, i2).SetBackGround(13)
+                buttonArray(i, i2).FlatStyle = FlatStyle.Flat
+                buttonArray(i, i2).BackgroundImageLayout = ImageLayout.Stretch
+                buttonArray(i, i2).FlatAppearance.BorderSize = 0
+                buttonArray(i, i2).Enabled = False
+                Me.Controls.Add(buttonArray(i, i2))
+            Next
+        Next
+
+        m_buttonArray = buttonArray
+
+        'CREATES LEFT WALL
+        DrawRoomWallVert(0, 15, 0, 12)
+
+        'CREATES BOTTOM WALL
+        DrawRoomWallHori(0, 15, 15, 12)
+
+        'CREATES RIGHT WALL
+        DrawRoomWallVert(0, 15, 15, 12)
+
+        DrawRoomWallHori(0, 15, 0, 12)
+        If start = 2 Then
+            Player1.SetX(1)
+            Player1.SetY(8)
+        ElseIf start = 3 Then
+            Player1.SetX(15)
+            Player1.SetY(6)
+        End If
+        PlayerDown(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
+        m_Game(0, roomindexX, roomindexY, 0, 8).SetIndex(DoorUPIndex)
+        m_Game(0, roomindexX, roomindexY, 15, 6).SetIndex(DoorRightIndex)
+        m_buttonArray(0, 8).BackgroundImage = ImageList1.Images(13)
+        m_buttonArray(15, 6).BackgroundImage = ImageList1.Images(13)
+    End Sub
+    Sub Room11(start As Integer)
+
+        For i = 1 To 16
+            For i2 = 1 To 16
+
+                m_Game(0, roomindexX, roomindexY, i - 1, i2 - 1) = New Tile(False, False, 1)
+
+            Next
+        Next
+
+        Dim buttonArray(16, 16) As Button
+        For i = 0 To 15
+            For i2 = 0 To 15
+                buttonArray(i, i2) = New System.Windows.Forms.Button()
+                buttonArray(i, i2).Location = New System.Drawing.Point((i * tilesize), (i2 * tilesize) + tilesize)
+                buttonArray(i, i2).Name = (i.ToString + "_" + i2.ToString)
+                buttonArray(i, i2).Size = New System.Drawing.Size(tilesize, tilesize)
+                buttonArray(i, i2).TabIndex = 1
+                buttonArray(i, i2).Text = ""
+                buttonArray(i, i2).UseVisualStyleBackColor = True
+                buttonArray(i, i2).BackColor = Color.Gray
+                buttonArray(i, i2).BackgroundImage = ImageList1.Images(13)
+                m_Game(0, roomindexX, roomindexY, i, i2).SetBackGround(13)
+                buttonArray(i, i2).FlatStyle = FlatStyle.Flat
+                buttonArray(i, i2).BackgroundImageLayout = ImageLayout.Stretch
+                buttonArray(i, i2).FlatAppearance.BorderSize = 0
+                buttonArray(i, i2).Enabled = False
+                Me.Controls.Add(buttonArray(i, i2))
+            Next
+        Next
+
+        m_buttonArray = buttonArray
+
+        'CREATES LEFT WALL
+        DrawRoomWallVert(0, 15, 0, 12)
+
+        'CREATES BOTTOM WALL
+        DrawRoomWallHori(0, 15, 15, 12)
+
+        'CREATES RIGHT WALL
+        DrawRoomWallVert(0, 15, 15, 12)
+
+        DrawRoomWallHori(0, 15, 0, 12)
+        If start = 2 Then
+            Player1.SetX(1)
+            Player1.SetY(6)
+        ElseIf start = 3 Then
+            Player1.SetX(14)
+            Player1.SetY(8)
+        End If
+
+        m_Game(0, roomindexX, roomindexY, 0, 6).SetIndex(DoorUPIndex)
+        m_Game(0, roomindexX, roomindexY, 15, 8).SetIndex(DoorRightIndex)
+        m_buttonArray(0, 6).BackgroundImage = ImageList1.Images(13)
+        m_buttonArray(15, 8).BackgroundImage = ImageList1.Images(13)
+        PlayerDown(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
+    End Sub
+#Region "Town Two"
+    Sub Room12(start As Integer)
+
+        For i = 1 To 16
+            For i2 = 1 To 16
+
+                m_Game(0, roomindexX, roomindexY, i - 1, i2 - 1) = New Tile(False, False, 1)
+
+            Next
+        Next
+
+        Dim buttonArray(16, 16) As Button
+        For i = 0 To 15
+            For i2 = 0 To 15
+                buttonArray(i, i2) = New System.Windows.Forms.Button()
+                buttonArray(i, i2).Location = New System.Drawing.Point((i * tilesize), (i2 * tilesize) + tilesize)
+                buttonArray(i, i2).Name = (i.ToString + "_" + i2.ToString)
+                buttonArray(i, i2).Size = New System.Drawing.Size(tilesize, tilesize)
+                buttonArray(i, i2).TabIndex = 1
+                buttonArray(i, i2).Text = ""
+                buttonArray(i, i2).UseVisualStyleBackColor = True
+                buttonArray(i, i2).BackColor = Color.Gray
+                buttonArray(i, i2).BackgroundImage = ImageList1.Images(13)
+                m_Game(0, roomindexX, roomindexY, i, i2).SetBackGround(13)
+                buttonArray(i, i2).FlatStyle = FlatStyle.Flat
+                buttonArray(i, i2).BackgroundImageLayout = ImageLayout.Stretch
+                buttonArray(i, i2).FlatAppearance.BorderSize = 0
+                buttonArray(i, i2).Enabled = False
+                Me.Controls.Add(buttonArray(i, i2))
+            Next
+        Next
+
+        m_buttonArray = buttonArray
+
+        'CREATES LEFT WALL
+        DrawRoomWallVert(0, 15, 0, 12)
+
+        'CREATES BOTTOM WALL
+        DrawRoomWallHori(0, 15, 15, 12)
+
+        'CREATES RIGHT WALL
+        DrawRoomWallVert(0, 15, 15, 12)
+
+        DrawRoomWallHori(0, 15, 0, 12)
+        If start = 3 Then
+            Player1.SetX(14)
+            Player1.SetY(7)
+        ElseIf start = 2 Then
+            Player1.SetX(1)
+            Player1.SetY(8)
+        ElseIf start = 1 Then
+            Player1.SetX(6)
+            Player1.SetY(1)
+        End If
+
+        m_Game(0, roomindexX, roomindexY, 6, 0).SetIndex(DoorUPIndex)
+        m_Game(0, roomindexX, roomindexY, 15, 7).SetIndex(DoorRightIndex)
+        m_Game(0, roomindexX, roomindexY, 0, 8).SetIndex(DoorLeftIndex)
+        m_buttonArray(6, 0).BackgroundImage = ImageList1.Images(13)
+        m_buttonArray(15, 7).BackgroundImage = ImageList1.Images(13)
+        m_buttonArray(0, 8).BackgroundImage = ImageList1.Images(13)
+        PlayerDown(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
+    End Sub
+    Sub Room13(start As Integer)
+
+        For i = 1 To 16
+            For i2 = 1 To 16
+
+                m_Game(0, roomindexX, roomindexY, i - 1, i2 - 1) = New Tile(False, False, 1)
+
+            Next
+        Next
+
+        Dim buttonArray(16, 16) As Button
+        For i = 0 To 15
+            For i2 = 0 To 15
+                buttonArray(i, i2) = New System.Windows.Forms.Button()
+                buttonArray(i, i2).Location = New System.Drawing.Point((i * tilesize), (i2 * tilesize) + tilesize)
+                buttonArray(i, i2).Name = (i.ToString + "_" + i2.ToString)
+                buttonArray(i, i2).Size = New System.Drawing.Size(tilesize, tilesize)
+                buttonArray(i, i2).TabIndex = 1
+                buttonArray(i, i2).Text = ""
+                buttonArray(i, i2).UseVisualStyleBackColor = True
+                buttonArray(i, i2).BackColor = Color.Gray
+                buttonArray(i, i2).BackgroundImage = ImageList1.Images(13)
+                m_Game(0, roomindexX, roomindexY, i, i2).SetBackGround(13)
+                buttonArray(i, i2).FlatStyle = FlatStyle.Flat
+                buttonArray(i, i2).BackgroundImageLayout = ImageLayout.Stretch
+                buttonArray(i, i2).FlatAppearance.BorderSize = 0
+                buttonArray(i, i2).Enabled = False
+                Me.Controls.Add(buttonArray(i, i2))
+            Next
+        Next
+
+        m_buttonArray = buttonArray
+
+        'CREATES LEFT WALL
+        DrawRoomWallVert(0, 15, 0, 12)
+
+        'CREATES BOTTOM WALL
+        DrawRoomWallHori(0, 15, 15, 12)
+
+        'CREATES RIGHT WALL
+        DrawRoomWallVert(0, 15, 15, 12)
+
+        DrawRoomWallHori(0, 15, 0, 12)
+        If start = 1 Then
+            Player1.SetX(6)
+            Player1.SetY(14)
+        ElseIf start = 3 Then
+            Player1.SetX(14)
+            Player1.SetY(9)
+        End If
+
+        m_Game(0, roomindexX, roomindexY, 6, 15).SetIndex(DoorDownIndex)
+        m_Game(0, roomindexX, roomindexY, 15, 8).SetIndex(DoorRightIndex)
+        m_buttonArray(6, 15).BackgroundImage = ImageList1.Images(13)
+        m_buttonArray(15, 8).BackgroundImage = ImageList1.Images(13)
+        PlayerDown(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
+    End Sub
+    Sub Room14(start As Integer)
+
+        For i = 1 To 16
+            For i2 = 1 To 16
+
+                m_Game(0, roomindexX, roomindexY, i - 1, i2 - 1) = New Tile(False, False, 1)
+
+            Next
+        Next
+
+        Dim buttonArray(16, 16) As Button
+        For i = 0 To 15
+            For i2 = 0 To 15
+                buttonArray(i, i2) = New System.Windows.Forms.Button()
+                buttonArray(i, i2).Location = New System.Drawing.Point((i * tilesize), (i2 * tilesize) + tilesize)
+                buttonArray(i, i2).Name = (i.ToString + "_" + i2.ToString)
+                buttonArray(i, i2).Size = New System.Drawing.Size(tilesize, tilesize)
+                buttonArray(i, i2).TabIndex = 1
+                buttonArray(i, i2).Text = ""
+                buttonArray(i, i2).UseVisualStyleBackColor = True
+                buttonArray(i, i2).BackColor = Color.Gray
+                buttonArray(i, i2).BackgroundImage = ImageList1.Images(13)
+                m_Game(0, roomindexX, roomindexY, i, i2).SetBackGround(13)
+                buttonArray(i, i2).FlatStyle = FlatStyle.Flat
+                buttonArray(i, i2).BackgroundImageLayout = ImageLayout.Stretch
+                buttonArray(i, i2).FlatAppearance.BorderSize = 0
+                buttonArray(i, i2).Enabled = False
+                Me.Controls.Add(buttonArray(i, i2))
+            Next
+        Next
+
+        m_buttonArray = buttonArray
+
+        'CREATES LEFT WALL
+        DrawRoomWallVert(0, 15, 0, 12)
+
+        'CREATES BOTTOM WALL
+        DrawRoomWallHori(0, 15, 15, 12)
+
+        'CREATES RIGHT WALL
+        DrawRoomWallVert(0, 15, 15, 12)
+
+        DrawRoomWallHori(0, 15, 0, 12)
+        If start = 0 Then
+            Player1.SetX(6)
+            Player1.SetY(1)
+        ElseIf start = 2 Then
+            Player1.SetX(1)
+            Player1.SetY(8)
+        ElseIf start = 1 Then
+            Player1.SetX(7)
+            Player1.SetY(14)
+        End If
+        m_Game(0, roomindexX, roomindexY, 6, 0).SetIndex(DoorUPIndex)
+        m_Game(0, roomindexX, roomindexY, 7, 15).SetIndex(DoorDownIndex)
+        m_Game(0, roomindexX, roomindexY, 0, 8).SetIndex(DoorLeftIndex)
+        m_buttonArray(6, 0).BackgroundImage = ImageList1.Images(13)
+        m_buttonArray(7, 15).BackgroundImage = ImageList1.Images(13)
+        m_buttonArray(0, 8).BackgroundImage = ImageList1.Images(13)
+        PlayerDown(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
+    End Sub
+    Sub Room15(start As Integer)
+
+        For i = 1 To 16
+            For i2 = 1 To 16
+
+                m_Game(0, roomindexX, roomindexY, i - 1, i2 - 1) = New Tile(False, False, 1)
+
+            Next
+        Next
+
+        Dim buttonArray(16, 16) As Button
+        For i = 0 To 15
+            For i2 = 0 To 15
+                buttonArray(i, i2) = New System.Windows.Forms.Button()
+                buttonArray(i, i2).Location = New System.Drawing.Point((i * tilesize), (i2 * tilesize) + tilesize)
+                buttonArray(i, i2).Name = (i.ToString + "_" + i2.ToString)
+                buttonArray(i, i2).Size = New System.Drawing.Size(tilesize, tilesize)
+                buttonArray(i, i2).TabIndex = 1
+                buttonArray(i, i2).Text = ""
+                buttonArray(i, i2).UseVisualStyleBackColor = True
+                buttonArray(i, i2).BackColor = Color.Gray
+                buttonArray(i, i2).BackgroundImage = ImageList1.Images(13)
+                m_Game(0, roomindexX, roomindexY, i, i2).SetBackGround(13)
+                buttonArray(i, i2).FlatStyle = FlatStyle.Flat
+                buttonArray(i, i2).BackgroundImageLayout = ImageLayout.Stretch
+                buttonArray(i, i2).FlatAppearance.BorderSize = 0
+                buttonArray(i, i2).Enabled = False
+                Me.Controls.Add(buttonArray(i, i2))
+            Next
+        Next
+
+        m_buttonArray = buttonArray
+
+        'CREATES LEFT WALL
+        DrawRoomWallVert(0, 15, 0, 12)
+
+        'CREATES BOTTOM WALL
+        DrawRoomWallHori(0, 15, 15, 12)
+
+        'CREATES RIGHT WALL
+        DrawRoomWallVert(0, 15, 15, 12)
+
+        DrawRoomWallHori(0, 15, 0, 12)
+        If start = 3 Then
+            Player1.SetX(14)
+            Player1.SetY(8)
+        ElseIf start = 0 Then
+            Player1.SetX(7)
+            Player1.SetY(1)
+        ElseIf start = 2 Then
+            Player1.SetX(1)
+            Player1.SetY(7)
+        End If
+        m_Game(0, roomindexX, roomindexY, 0, 7).SetIndex(DoorLeftIndex)
+        m_Game(0, roomindexX, roomindexY, 7, 0).SetIndex(DoorUPIndex)
+        m_Game(0, roomindexX, roomindexY, 15, 8).SetIndex(DoorRightIndex)
+        m_buttonArray(7, 0).BackgroundImage = ImageList1.Images(13)
+        m_buttonArray(0, 7).BackgroundImage = ImageList1.Images(13)
+        m_buttonArray(15, 8).BackgroundImage = ImageList1.Images(13)
+        PlayerDown(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
+    End Sub
+#End Region
+    Sub Room16(start As Integer)
+
+        For i = 1 To 16
+            For i2 = 1 To 16
+
+                m_Game(0, roomindexX, roomindexY, i - 1, i2 - 1) = New Tile(False, False, 1)
+
+            Next
+        Next
+
+        Dim buttonArray(16, 16) As Button
+        For i = 0 To 15
+            For i2 = 0 To 15
+                buttonArray(i, i2) = New System.Windows.Forms.Button()
+                buttonArray(i, i2).Location = New System.Drawing.Point((i * tilesize), (i2 * tilesize) + tilesize)
+                buttonArray(i, i2).Name = (i.ToString + "_" + i2.ToString)
+                buttonArray(i, i2).Size = New System.Drawing.Size(tilesize, tilesize)
+                buttonArray(i, i2).TabIndex = 1
+                buttonArray(i, i2).Text = ""
+                buttonArray(i, i2).UseVisualStyleBackColor = True
+                buttonArray(i, i2).BackColor = Color.Gray
+                buttonArray(i, i2).BackgroundImage = ImageList1.Images(13)
+                m_Game(0, roomindexX, roomindexY, i, i2).SetBackGround(13)
+                buttonArray(i, i2).FlatStyle = FlatStyle.Flat
+                buttonArray(i, i2).BackgroundImageLayout = ImageLayout.Stretch
+                buttonArray(i, i2).FlatAppearance.BorderSize = 0
+                buttonArray(i, i2).Enabled = False
+                Me.Controls.Add(buttonArray(i, i2))
+            Next
+        Next
+
+        m_buttonArray = buttonArray
+
+        'CREATES LEFT WALL
+        DrawRoomWallVert(0, 15, 0, 12)
+
+        'CREATES BOTTOM WALL
+        DrawRoomWallHori(0, 15, 15, 12)
+
+        'CREATES RIGHT WALL
+        DrawRoomWallVert(0, 15, 15, 12)
+
+        DrawRoomWallHori(0, 15, 0, 12)
+        If start = 1 Then
+            Player1.SetX(6)
+            Player1.SetY(14)
+        ElseIf start = 3 Then
+            Player1.SetX(14)
+            Player1.SetY(8)
+        End If
+
+        m_Game(0, roomindexX, roomindexY, 6, 15).SetIndex(DoorDownIndex)
+        m_Game(0, roomindexX, roomindexY, 15, 8).SetIndex(DoorRightIndex)
+        m_buttonArray(6, 15).BackgroundImage = ImageList1.Images(13)
+        m_buttonArray(15, 8).BackgroundImage = ImageList1.Images(13)
+        PlayerDown(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
+    End Sub
+    Sub Room17(start As Integer)
+
+        For i = 1 To 16
+            For i2 = 1 To 16
+
+                m_Game(0, roomindexX, roomindexY, i - 1, i2 - 1) = New Tile(False, False, 1)
+
+            Next
+        Next
+
+        Dim buttonArray(16, 16) As Button
+        For i = 0 To 15
+            For i2 = 0 To 15
+                buttonArray(i, i2) = New System.Windows.Forms.Button()
+                buttonArray(i, i2).Location = New System.Drawing.Point((i * tilesize), (i2 * tilesize) + tilesize)
+                buttonArray(i, i2).Name = (i.ToString + "_" + i2.ToString)
+                buttonArray(i, i2).Size = New System.Drawing.Size(tilesize, tilesize)
+                buttonArray(i, i2).TabIndex = 1
+                buttonArray(i, i2).Text = ""
+                buttonArray(i, i2).UseVisualStyleBackColor = True
+                buttonArray(i, i2).BackColor = Color.Gray
+                buttonArray(i, i2).BackgroundImage = ImageList1.Images(13)
+                m_Game(0, roomindexX, roomindexY, i, i2).SetBackGround(13)
+                buttonArray(i, i2).FlatStyle = FlatStyle.Flat
+                buttonArray(i, i2).BackgroundImageLayout = ImageLayout.Stretch
+                buttonArray(i, i2).FlatAppearance.BorderSize = 0
+                buttonArray(i, i2).Enabled = False
+                Me.Controls.Add(buttonArray(i, i2))
+            Next
+        Next
+
+        m_buttonArray = buttonArray
+
+        'CREATES LEFT WALL
+        DrawRoomWallVert(0, 15, 0, 12)
+
+        'CREATES BOTTOM WALL
+        DrawRoomWallHori(0, 15, 15, 12)
+
+        'CREATES RIGHT WALL
+        DrawRoomWallVert(0, 15, 15, 12)
+
+        DrawRoomWallHori(0, 15, 0, 12)
+        If start = 2 Then
+            Player1.SetX(1)
+            Player1.SetY(8)
+        End If
+
+
+        m_Game(0, roomindexX, roomindexY, 0, 8).SetIndex(DoorLeftIndex)
+        m_buttonArray(0, 8).BackgroundImage = ImageList1.Images(13)
+        PlayerDown(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
+    End Sub
     Sub DrawRoomWallVert(x As Integer, y As Integer, bound As Integer, imageindex As Integer)
         For i2 = x To y
 
@@ -978,6 +1449,30 @@
         End If
         If x = 1 And y = 6 Then
             Room9(start)
+        End If
+        If x = 2 And y = 6 Then
+            Room10(start)
+        End If
+        If x = 3 And y = 6 Then
+            Room11(start)
+        End If
+        If x = 4 And y = 6 Then
+            Room12(start)
+        End If
+        If x = 4 And y = 5 Then
+            Room13(start)
+        End If
+        If x = 5 And y = 5 Then
+            Room14(start)
+        End If
+        If x = 5 And y = 6 Then
+            Room15(start)
+        End If
+        If x = 5 And y = 4 Then
+            Room16(start)
+        End If
+        If x = 6 And y = 4 Then
+            Room17(start)
         End If
     End Sub
     Private Sub level2_Click(sender As Object, e As EventArgs)
