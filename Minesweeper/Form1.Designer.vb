@@ -217,6 +217,7 @@ Partial Class Form1
         Me.House.Images.SetKeyName(3, "FirstHouse(Left Roof).png")
         Me.House.Images.SetKeyName(4, "FirstHouse(MiddleRoof).png")
         Me.House.Images.SetKeyName(5, "FirstHouse(Right Roof).png")
+        Me.House.Images.SetKeyName(6, "Roof(1).png")
         '
         'EnemyAttackRat
         '

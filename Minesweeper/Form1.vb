@@ -4,13 +4,14 @@
     'y = ((y - 54) \ tilesize)
 
     '----------------------------------------------------------------------
-    Dim m_Game(3, 10, 16, 16) As Tile
+    Dim m_Game(3, 100, 100, 16, 16) As Tile
     Dim m_buttonArray(,) As Button
     Dim m_RowSize As Integer
     Dim m_Collumn As Integer
     Dim tilesize As Integer = 24
     Dim levelindex As Integer
-    Dim roomindex As Integer
+    Dim roomindexY As Integer
+    Dim roomindexX As Integer
     Dim HPPACK1(0) As clsPickup
     Dim Chestb(0) As clsPickup
     Dim Player1 As clsPlayer
@@ -24,8 +25,11 @@
 
     Public Const WallTileIndex As Integer = 0
     Public Const FloorTileIndex As Integer = 1
-    Public Const DoorEnterIndex As Integer = 2
-    Public Const DoorExitIndex As Integer = 3
+    Public Const DoorDownIndex As Integer = 2
+    Public Const DoorUPIndex As Integer = 3
+    Public Const DoorRightIndex As Integer = 4
+    Public Const DoorLeftIndex As Integer = 5
+
 
 
 #End Region
@@ -71,7 +75,7 @@
         For i = 1 To 16
             For i2 = 1 To 16
 
-                m_Game(0, roomindex, i - 1, i2 - 1) = New Tile(False, False, 1)
+                m_Game(0, roomindexX, roomindexY, i - 1, i2 - 1) = New Tile(False, False, 1)
 
             Next
         Next
@@ -79,7 +83,7 @@
         If start = 0 Then
             Player1 = New clsPlayer(1, 1)
             Player1.hp(7)
-            m_Game(0, roomindex, Player1.GetX(), Player1.GetY()).setPlayer(True)
+            m_Game(0, roomindexX, roomindexY, Player1.GetX(), Player1.GetY()).setPlayer(True)
         End If
         If start = 1 Then
             Player1.SetX(14)
@@ -89,7 +93,7 @@
 
 
         'GENERATES THE ROOM AND DEFAULTS ALL TILES TO BASE TEXTURE
-        If roomindex = 0 And levelindex = 0 Then
+        If roomindexY = 0 And levelindex = 0 Then
             Dim buttonArray(16, 16) As Button
             For i = 0 To 15
                 For i2 = 0 To 15
@@ -102,7 +106,7 @@
                     buttonArray(i, i2).UseVisualStyleBackColor = True
                     buttonArray(i, i2).BackColor = Color.Gray
                     buttonArray(i, i2).BackgroundImage = ImageList1.Images(0)
-                    m_Game(0, roomindex, i, i2).SetBackGround(0)
+                    m_Game(0, roomindexX, roomindexY, i, i2).SetBackGround(0)
                     buttonArray(i, i2).FlatStyle = FlatStyle.Flat
                     buttonArray(i, i2).BackgroundImageLayout = ImageLayout.Stretch
                     buttonArray(i, i2).FlatAppearance.BorderSize = 0
@@ -115,68 +119,68 @@
             'CREATES TOP WALL
             For i = 0 To 15
                 buttonArray(i, 0).BackgroundImage = ImageList1.Images(2)
-                m_Game(0, roomindex, i, 0).SetIndex(WallTileIndex)
-                m_Game(0, roomindex, i, 0).SetBackGround(2)
+                m_Game(0, roomindexX, roomindexY, i, 0).SetIndex(WallTileIndex)
+                m_Game(0, roomindexX, roomindexY, i, 0).SetBackGround(2)
             Next
             'CREATES LEFT WALL
             For i2 = 0 To 15
                 buttonArray(0, i2).BackgroundImage = ImageList1.Images(2)
-                m_Game(0, roomindex, 0, i2).SetIndex(WallTileIndex)
-                m_Game(0, roomindex, 0, i2).SetBackGround(2)
+                m_Game(0, roomindexX, roomindexY, 0, i2).SetIndex(WallTileIndex)
+                m_Game(0, roomindexX, roomindexY, 0, i2).SetBackGround(2)
             Next
             'CREATES BOTTOM WALL
             For i = 0 To 15
                 buttonArray(i, 15).BackgroundImage = ImageList1.Images(2)
-                m_Game(0, roomindex, i, 15).SetIndex(WallTileIndex)
-                m_Game(0, roomindex, i, 15).SetBackGround(2)
+                m_Game(0, roomindexX, roomindexY, i, 15).SetIndex(WallTileIndex)
+                m_Game(0, roomindexX, roomindexY, i, 15).SetBackGround(2)
             Next
             'CREATES RIGHT WALL
             For i2 = 0 To 15
                 buttonArray(15, i2).BackgroundImage = ImageList1.Images(2)
-                m_Game(0, roomindex, 15, i2).SetIndex(WallTileIndex)
-                m_Game(0, roomindex, 15, i2).SetBackGround(2)
+                m_Game(0, roomindexX, roomindexY, 15, i2).SetIndex(WallTileIndex)
+                m_Game(0, roomindexX, roomindexY, 15, i2).SetBackGround(2)
             Next
             'CREATES A WALL INSIDE THE ROOM
             For i = 0 To 13
                 buttonArray(i, 2).BackgroundImage = ImageList1.Images(2)
-                m_Game(0, roomindex, i, 2).SetIndex(WallTileIndex)
-                m_Game(0, roomindex, i, 2).SetBackGround(2)
+                m_Game(0, roomindexX, roomindexY, i, 2).SetIndex(WallTileIndex)
+                m_Game(0, roomindexX, roomindexY, i, 2).SetBackGround(2)
             Next
             'CREATES A WALL INSIDE THE ROOM
             For i = 2 To 15
                 buttonArray(i, 4).BackgroundImage = ImageList1.Images(2)
-                m_Game(0, roomindex, i, 4).SetIndex(WallTileIndex)
-                m_Game(0, roomindex, i, 4).SetBackGround(2)
+                m_Game(0, roomindexX, roomindexY, i, 4).SetIndex(WallTileIndex)
+                m_Game(0, roomindexX, roomindexY, i, 4).SetBackGround(2)
             Next
             'CREATES A WALL INSIDE THE ROOM
             For i = 0 To 13
                 buttonArray(i, 6).BackgroundImage = ImageList1.Images(2)
-                m_Game(0, roomindex, i, 6).SetIndex(WallTileIndex)
-                m_Game(0, roomindex, i, 6).SetBackGround(2)
+                m_Game(0, roomindexX, roomindexY, i, 6).SetIndex(WallTileIndex)
+                m_Game(0, roomindexX, roomindexY, i, 6).SetBackGround(2)
             Next
             'CREATES A WALL INSIDE THE ROOM
             For i = 2 To 15
                 buttonArray(i, 8).BackgroundImage = ImageList1.Images(2)
-                m_Game(0, roomindex, i, 8).SetIndex(WallTileIndex)
-                m_Game(0, roomindex, i, 8).SetBackGround(2)
+                m_Game(0, roomindexX, roomindexY, i, 8).SetIndex(WallTileIndex)
+                m_Game(0, roomindexX, roomindexY, i, 8).SetBackGround(2)
             Next
             'Creates VERTICAL wall in room
             For i2 = 8 To 13
                 buttonArray(2, i2).BackgroundImage = ImageList1.Images(2)
-                m_Game(0, roomindex, 2, i2).SetIndex(WallTileIndex)
-                m_Game(0, roomindex, 2, i2).SetBackGround(2)
+                m_Game(0, roomindexX, roomindexY, 2, i2).SetIndex(WallTileIndex)
+                m_Game(0, roomindexX, roomindexY, 2, i2).SetBackGround(2)
             Next
             'Creates VERTICAL wall in room
             For i2 = 10 To 15
                 buttonArray(4, i2).BackgroundImage = ImageList1.Images(2)
-                m_Game(0, roomindex, 4, i2).SetIndex(WallTileIndex)
-                m_Game(0, roomindex, 4, i2).SetBackGround(2)
+                m_Game(0, roomindexX, roomindexY, 4, i2).SetIndex(WallTileIndex)
+                m_Game(0, roomindexX, roomindexY, 4, i2).SetBackGround(2)
             Next
 
             'Generate Level Pickups
 
             If HPPACK1(0).ActiveCheck() = True Then
-                m_Game(0, 0, HPPACK1(0).ReturnX, HPPACK1(0).ReturnY).SetIndex(3)
+                m_Game(0, 0, 0, HPPACK1(0).ReturnX, HPPACK1(0).ReturnY).SetIndex(3)
                 HPPACK1(0).SetHealth(3)
                 Dim bmp As Bitmap
                 bmp = BloodStones.My.Resources.Resource1.Health_Potion
@@ -191,11 +195,11 @@
 
             'Place Enemys            
             m_buttonArray = buttonArray
-            PlayerDown(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+            PlayerDown(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
             For i = 0 To lvl1EnemyArray.Count - 1
                 If lvl1EnemyArray(i).CheckDead = False Then
-                    m_Game(0, roomindex, lvl1EnemyArray(1).GetX, lvl1EnemyArray(1).GetY).setEnemy(True)
-                    m_Game(0, roomindex, lvl1EnemyArray(0).GetX, lvl1EnemyArray(0).GetY).setEnemy(True)
+                    m_Game(0, roomindexX, roomindexY, lvl1EnemyArray(1).GetX, lvl1EnemyArray(1).GetY).setEnemy(True)
+                    m_Game(0, roomindexX, roomindexY, lvl1EnemyArray(0).GetX, lvl1EnemyArray(0).GetY).setEnemy(True)
                     Dim bmp As Bitmap
                     bmp = BloodStones.My.Resources.Resource1.Rat_Front_
                     bmp.MakeTransparent(Color.White)
@@ -227,7 +231,7 @@
     Sub Room1(start As Integer)
         For i = 1 To 16
             For i2 = 1 To 16
-                m_Game(0, roomindex, i - 1, i2 - 1) = New Tile(False, False, 1)
+                m_Game(0, roomindexX, roomindexY, i - 1, i2 - 1) = New Tile(False, False, 1)
             Next
         Next
         Dim buttonArray(16, 16) As Button
@@ -242,7 +246,7 @@
                 buttonArray(i, i2).UseVisualStyleBackColor = True
                 buttonArray(i, i2).BackColor = Color.Gray
                 buttonArray(i, i2).BackgroundImage = ImageList1.Images(7)
-                m_Game(0, roomindex, i, i2).SetBackGround(7)
+                m_Game(0, roomindexX, roomindexY, i, i2).SetBackGround(7)
                 buttonArray(i, i2).FlatStyle = FlatStyle.Flat
                 buttonArray(i, i2).BackgroundImageLayout = ImageLayout.Stretch
                 buttonArray(i, i2).FlatAppearance.BorderSize = 0
@@ -254,7 +258,7 @@
         If start = 0 Then
             Player1 = New clsPlayer(6, 1)
             Player1.hp(7)
-            m_Game(0, roomindex, Player1.GetX(), Player1.GetY()).setPlayer(True)
+            m_Game(0, roomindexX, roomindexY, Player1.GetX(), Player1.GetY()).setPlayer(True)
         End If
         If start = 1 Then
 
@@ -313,16 +317,16 @@
         DrawRoomWallHori(10, 13, 4, 9)
 
         m_buttonArray(8, 15).BackgroundImage = ImageList1.Images(7)
-        m_Game(0, roomindex, 8, 15).SetIndex(DoorEnterIndex)
+        m_Game(0, roomindexX, roomindexY, 8, 15).SetIndex(DoorDownIndex)
         Player1.ImageNum(3)
-        PlayerDown(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+        PlayerDown(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
         DisplayText("Use the WASD or Arrow Keys To Move!")
     End Sub
     Sub Room2(start As Integer)
         For i = 1 To 16
             For i2 = 1 To 16
 
-                m_Game(0, roomindex, i - 1, i2 - 1) = New Tile(False, False, 1)
+                m_Game(0, roomindexX, roomindexY, i - 1, i2 - 1) = New Tile(False, False, 1)
 
             Next
         Next
@@ -339,7 +343,7 @@
                 buttonArray(i, i2).UseVisualStyleBackColor = True
                 buttonArray(i, i2).BackColor = Color.Gray
                 buttonArray(i, i2).BackgroundImage = ImageList1.Images(7)
-                m_Game(0, roomindex, i, i2).SetBackGround(7)
+                m_Game(0, roomindexX, roomindexY, i, i2).SetBackGround(7)
                 buttonArray(i, i2).FlatStyle = FlatStyle.Flat
                 buttonArray(i, i2).BackgroundImageLayout = ImageLayout.Stretch
                 buttonArray(i, i2).FlatAppearance.BorderSize = 0
@@ -390,8 +394,8 @@
             For i2 = 0 To 4
                 Dim bound As Integer = i2 * 3
                 m_buttonArray(i, bound).BackgroundImage = ImageList1.Images(9)
-                m_Game(0, roomindex, i, bound).SetIndex(6)
-                m_Game(0, roomindex, i, bound).SetBackGround(9)
+                m_Game(0, roomindexX, roomindexY, i, bound).SetIndex(6)
+                m_Game(0, roomindexX, roomindexY, i, bound).SetBackGround(9)
             Next
         Next
         DrawRoomWallVert(12, 15, 5, 9)
@@ -428,7 +432,7 @@
 
         For i = 0 To lvl2EnemyArray.Count - 1
             If lvl2EnemyArray(i).CheckDead = False Then
-                m_Game(0, roomindex, lvl2EnemyArray(i).GetX, lvl2EnemyArray(i).GetY).setEnemy(True)
+                m_Game(0, roomindexX, roomindexY, lvl2EnemyArray(i).GetX, lvl2EnemyArray(i).GetY).setEnemy(True)
                 Dim bmp As Bitmap
                 bmp = BloodStones.My.Resources.Resource1.Dummy1
                 bmp.MakeTransparent(Color.White)
@@ -436,22 +440,22 @@
             End If
         Next
         If HPPACK1(0).ActiveCheck() = True Then
-            m_Game(levelindex, roomindex, HPPACK1(0).ReturnX, HPPACK1(0).ReturnY).SetIndex(3)
+            m_Game(levelindex, roomindexX, roomindexY, HPPACK1(0).ReturnX, HPPACK1(0).ReturnY).SetIndex(3)
             HPPACK1(0).SetHealth(3)
-            hp(HPPACK1(0).ReturnX, HPPACK1(0).ReturnY, m_Game(levelindex, roomindex, HPPACK1(0).ReturnX, HPPACK1(0).ReturnY).ReturnBackGround())
+            hp(HPPACK1(0).ReturnX, HPPACK1(0).ReturnY, m_Game(levelindex, roomindexX, roomindexY, HPPACK1(0).ReturnX, HPPACK1(0).ReturnY).ReturnBackGround())
 
         End If
         If Chestb(0).ActiveCheck() = True Then
-            m_Game(levelindex, roomindex, Chestb(0).ReturnX, Chestb(0).ReturnY).SetIndex(3)
+            m_Game(levelindex, roomindexX, roomindexY, Chestb(0).ReturnX, Chestb(0).ReturnY).SetIndex(3)
             Chestb(0).SetItem("Rusty Sword")
             Chestb(0).SetWeapon(True)
-            Chest(Chestb(0).ReturnX, Chestb(0).ReturnY, m_Game(levelindex, roomindex, Chestb(0).ReturnX, Chestb(0).ReturnY).ReturnBackGround())
+            Chest(Chestb(0).ReturnX, Chestb(0).ReturnY, m_Game(levelindex, roomindexX, roomindexY, Chestb(0).ReturnX, Chestb(0).ReturnY).ReturnBackGround())
 
         End If
 
-        m_Game(0, roomindex, 8, 0).SetIndex(DoorExitIndex)
-        m_Game(0, roomindex, 7, 15).SetIndex(DoorEnterIndex)
-        PlayerDown(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+        m_Game(0, roomindexX, roomindexY, 8, 0).SetIndex(DoorUPIndex)
+        m_Game(0, roomindexX, roomindexY, 7, 15).SetIndex(DoorDownIndex)
+        PlayerDown(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
         DisplayText("Press Space To Attack")
         buttonArray(8, 0).BackgroundImage = ImageList1.Images(7)
         buttonArray(7, 15).BackgroundImage = ImageList1.Images(7)
@@ -462,7 +466,7 @@
         For i = 1 To 16
             For i2 = 1 To 16
 
-                m_Game(0, roomindex, i - 1, i2 - 1) = New Tile(False, False, 1)
+                m_Game(0, roomindexX, roomindexY, i - 1, i2 - 1) = New Tile(False, False, 1)
 
             Next
         Next
@@ -479,7 +483,7 @@
                 buttonArray(i, i2).UseVisualStyleBackColor = True
                 buttonArray(i, i2).BackColor = Color.Gray
                 buttonArray(i, i2).BackgroundImage = ImageList1.Images(7)
-                m_Game(0, roomindex, i, i2).SetBackGround(7)
+                m_Game(0, roomindexX, roomindexY, i, i2).SetBackGround(7)
                 buttonArray(i, i2).FlatStyle = FlatStyle.Flat
                 buttonArray(i, i2).BackgroundImageLayout = ImageLayout.Stretch
                 buttonArray(i, i2).FlatAppearance.BorderSize = 0
@@ -492,53 +496,53 @@
             Player1.SetX(7)
             Player1.SetY(1)
         ElseIf start = 1 Then
-            Player1.SetX(6)
+            Player1.SetX(8)
             Player1.SetY(14)
         End If
         'CREATES TOP WALL
         For i = 0 To 15
             Dim bound As Integer = 0
             buttonArray(i, bound).BackgroundImage = ImageList1.Images(9)
-            m_Game(0, roomindex, i, bound).SetIndex(6)
-            m_Game(0, roomindex, i, bound).SetBackGround(9)
+            m_Game(0, roomindexX, roomindexY, i, bound).SetIndex(WallTileIndex)
+            m_Game(0, roomindexX, roomindexY, i, bound).SetBackGround(9)
         Next
         'CREATES LEFT WALL
         For i2 = 0 To 15
             Dim bound As Integer = 0
             buttonArray(bound, i2).BackgroundImage = ImageList1.Images(9)
-            m_Game(0, roomindex, bound, i2).SetIndex(6)
-            m_Game(0, roomindex, bound, i2).SetBackGround(9)
+            m_Game(0, roomindexX, roomindexY, bound, i2).SetIndex(WallTileIndex)
+            m_Game(0, roomindexX, roomindexY, bound, i2).SetBackGround(9)
         Next
         'CREATES BOTTOM WALL
         For i = 0 To 15
             Dim bound As Integer = 15
             buttonArray(i, bound).BackgroundImage = ImageList1.Images(9)
-            m_Game(0, roomindex, i, bound).SetIndex(6)
-            m_Game(0, roomindex, i, bound).SetBackGround(9)
+            m_Game(0, roomindexX, roomindexY, i, bound).SetIndex(WallTileIndex)
+            m_Game(0, roomindexX, roomindexY, i, bound).SetBackGround(9)
         Next
         'CREATES RIGHT WALL
         For i2 = 0 To 15
             Dim bound As Integer = 15
             buttonArray(bound, i2).BackgroundImage = ImageList1.Images(9)
-            m_Game(0, roomindex, bound, i2).SetIndex(6)
-            m_Game(0, roomindex, bound, i2).SetBackGround(9)
+            m_Game(0, roomindexX, roomindexY, bound, i2).SetIndex(WallTileIndex)
+            m_Game(0, roomindexX, roomindexY, bound, i2).SetBackGround(9)
         Next
 
         m_buttonArray = buttonArray
 
         For i = 0 To lvl1EnemyArray.Count - 1
             If lvl1EnemyArray(i).CheckDead = False Then
-                m_Game(0, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(True)
-                m_Game(0, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(True)
+                m_Game(0, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(True)
+                m_Game(0, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(True)
                 Dim bmp As Bitmap
                 bmp = BloodStones.My.Resources.Resource1.Rat_Front_
                 bmp.MakeTransparent(Color.White)
                 m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = CombineImages(m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage, bmp)
             End If
         Next
-        PlayerDown(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
-        m_Game(0, roomindex, 7, 0).SetIndex(DoorExitIndex)
-        m_Game(0, roomindex, 8, 15).SetIndex(DoorEnterIndex)
+        PlayerDown(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
+        m_Game(0, roomindexX, roomindexY, 7, 0).SetIndex(DoorUPIndex)
+        m_Game(0, roomindexX, roomindexY, 8, 15).SetIndex(DoorDownIndex)
         buttonArray(8, 15).BackgroundImage = ImageList1.Images(7)
         buttonArray(7, 0).BackgroundImage = ImageList1.Images(7)
     End Sub
@@ -547,7 +551,7 @@
         For i = 1 To 16
             For i2 = 1 To 16
 
-                m_Game(0, roomindex, i - 1, i2 - 1) = New Tile(False, False, 1)
+                m_Game(levelindex, roomindexX, roomindexY, i - 1, i2 - 1) = New Tile(False, False, 1)
 
             Next
         Next
@@ -564,7 +568,7 @@
                 buttonArray(i, i2).UseVisualStyleBackColor = True
                 buttonArray(i, i2).BackColor = Color.Gray
                 buttonArray(i, i2).BackgroundImage = ImageList1.Images(13)
-                m_Game(0, roomindex, i, i2).SetBackGround(13)
+                m_Game(0, roomindexX, roomindexY, i, i2).SetBackGround(13)
                 buttonArray(i, i2).FlatStyle = FlatStyle.Flat
                 buttonArray(i, i2).BackgroundImageLayout = ImageLayout.Stretch
                 buttonArray(i, i2).FlatAppearance.BorderSize = 0
@@ -594,9 +598,9 @@
             Player1.SetX(7)
             Player1.SetY(14)
         End If
-        PlayerDown(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
-        m_Game(0, roomindex, 8, 0).SetIndex(DoorExitIndex)
-        m_Game(0, roomindex, 7, 15).SetIndex(DoorEnterIndex)
+        PlayerDown(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
+        m_Game(0, roomindexX, roomindexY, 8, 0).SetIndex(DoorUPIndex)
+        m_Game(0, roomindexX, roomindexY, 7, 15).SetIndex(DoorDownIndex)
         buttonArray(8, 0).BackgroundImage = ImageList1.Images(3)
         buttonArray(7, 15).BackgroundImage = ImageList1.Images(13)
     End Sub
@@ -605,7 +609,7 @@
         For i = 1 To 16
             For i2 = 1 To 16
 
-                m_Game(0, roomindex, i - 1, i2 - 1) = New Tile(False, False, 1)
+                m_Game(0, roomindexX, roomindexY, i - 1, i2 - 1) = New Tile(False, False, 1)
 
             Next
         Next
@@ -622,7 +626,66 @@
                 buttonArray(i, i2).UseVisualStyleBackColor = True
                 buttonArray(i, i2).BackColor = Color.Gray
                 buttonArray(i, i2).BackgroundImage = ImageList1.Images(13)
-                m_Game(0, roomindex, i, i2).SetBackGround(13)
+                m_Game(0, roomindexX, roomindexY, i, i2).SetBackGround(13)
+                buttonArray(i, i2).FlatStyle = FlatStyle.Flat
+                buttonArray(i, i2).BackgroundImageLayout = ImageLayout.Stretch
+                buttonArray(i, i2).FlatAppearance.BorderSize = 0
+                buttonArray(i, i2).Enabled = False
+                Me.Controls.Add(buttonArray(i, i2))
+            Next
+        Next
+
+        m_buttonArray = buttonArray
+
+        'CREATES LEFT WALL
+        DrawRoomWallVert(0, 15, 0, 12)
+
+        'CREATES BOTTOM WALL
+        DrawRoomWallHori(0, 15, 15, 12)
+
+        'CREATES RIGHT WALL
+        DrawRoomWallVert(0, 15, 15, 12)
+
+        DrawRoomWallHori(0, 15, 0, 12)
+        If start = 0 Then
+            Player1.SetX(7)
+            Player1.SetY(1)
+        ElseIf start = 1 Then
+            Player1.SetX(7)
+            Player1.SetY(14)
+        End If
+        PlayerDown(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
+        m_Game(0, roomindexX, roomindexY, 7, 0).SetIndex(DoorUPIndex)
+        m_Game(0, roomindexX, roomindexY, 7, 15).SetIndex(DoorDownIndex)
+        m_buttonArray(7, 0).BackgroundImage = ImageList1.Images(13)
+        m_buttonArray(7, 15).BackgroundImage = ImageList1.Images(13)
+
+
+    End Sub
+#Region "Town #1"
+    Sub Room6(start As Integer)
+
+        For i = 1 To 16
+            For i2 = 1 To 16
+
+                m_Game(0, roomindexX, roomindexY, i - 1, i2 - 1) = New Tile(False, False, 1)
+
+            Next
+        Next
+
+        Dim buttonArray(16, 16) As Button
+        For i = 0 To 15
+            For i2 = 0 To 15
+                buttonArray(i, i2) = New System.Windows.Forms.Button()
+                buttonArray(i, i2).Location = New System.Drawing.Point((i * tilesize), (i2 * tilesize) + tilesize)
+                buttonArray(i, i2).Name = (i.ToString + "_" + i2.ToString)
+                buttonArray(i, i2).Size = New System.Drawing.Size(tilesize, tilesize)
+                buttonArray(i, i2).TabIndex = 1
+                buttonArray(i, i2).Text = ""
+                buttonArray(i, i2).UseVisualStyleBackColor = True
+                buttonArray(i, i2).BackColor = Color.Gray
+                buttonArray(i, i2).BackgroundImage = ImageList1.Images(13)
+                m_Game(0, roomindexX, roomindexY, i, i2).SetBackGround(13)
                 buttonArray(i, i2).FlatStyle = FlatStyle.Flat
                 buttonArray(i, i2).BackgroundImageLayout = ImageLayout.Stretch
                 buttonArray(i, i2).FlatAppearance.BorderSize = 0
@@ -647,12 +710,22 @@
             Player1.SetX(7)
             Player1.SetY(1)
         ElseIf start = 1 Then
-            Player1.SetX(0)
-            Player1.SetY(0)
+            Player1.SetX(8)
+            Player1.SetY(14)
+        ElseIf start = 3 Then
+            Player1.SetX(14)
+            Player1.SetY(8)
         End If
-        PlayerDown(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
-        m_Game(0, roomindex, 7, 0).SetIndex(DoorExitIndex)
-        m_Game(0, roomindex, 0, 0).SetIndex(DoorEnterIndex)
+        PlayerDown(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
+
+
+
+
+
+
+        m_Game(0, roomindexX, roomindexY, 7, 0).SetIndex(DoorUPIndex)
+        m_Game(0, roomindexX, roomindexY, 7, 15).SetIndex(DoorDownIndex)
+        m_Game(0, roomindexX, roomindexY, 15, 8).SetIndex(DoorRightIndex)
         m_buttonArray(7, 0).BackgroundImage = ImageList1.Images(13)
         m_buttonArray(8, 15).BackgroundImage = ImageList1.Images(13)
 
@@ -660,45 +733,216 @@
 
 
 
+
         m_buttonArray(4, 5).BackgroundImage = House.Images(0)
-        m_Game(0, roomindex, 4, 5).SetBackGround(6)
+        m_Game(0, roomindexX, roomindexY, 4, 5).SetBackGround(6)
 
         m_buttonArray(5, 5).BackgroundImage = House.Images(1)
-        m_Game(0, roomindex, 5, 5).SetBackGround(6)
+        m_Game(0, roomindexX, roomindexY, 5, 5).SetBackGround(6)
 
         m_buttonArray(6, 5).BackgroundImage = House.Images(2)
-        m_Game(0, roomindex, 6, 5).SetBackGround(6)
+        m_Game(0, roomindexX, roomindexY, 6, 5).SetBackGround(6)
 
         m_buttonArray(4, 4).BackgroundImage = House.Images(3)
-        m_Game(0, roomindex, 4, 4).SetBackGround(6)
+        m_Game(0, roomindexX, roomindexY, 4, 4).SetBackGround(6)
 
         m_buttonArray(5, 4).BackgroundImage = House.Images(4)
-        m_Game(0, roomindex, 5, 4).SetBackGround(6)
+        m_Game(0, roomindexX, roomindexY, 5, 4).SetBackGround(6)
 
         m_buttonArray(6, 4).BackgroundImage = House.Images(5)
-        m_Game(0, roomindex, 6, 4).SetBackGround(6)
+        m_Game(0, roomindexX, roomindexY, 6, 4).SetBackGround(6)
+
 
 
 
 
     End Sub
+    Sub Room7(start As Integer)
+
+        For i = 1 To 16
+            For i2 = 1 To 16
+
+                m_Game(0, roomindexX, roomindexY, i - 1, i2 - 1) = New Tile(False, False, 1)
+
+            Next
+        Next
+
+        Dim buttonArray(16, 16) As Button
+        For i = 0 To 15
+            For i2 = 0 To 15
+                buttonArray(i, i2) = New System.Windows.Forms.Button()
+                buttonArray(i, i2).Location = New System.Drawing.Point((i * tilesize), (i2 * tilesize) + tilesize)
+                buttonArray(i, i2).Name = (i.ToString + "_" + i2.ToString)
+                buttonArray(i, i2).Size = New System.Drawing.Size(tilesize, tilesize)
+                buttonArray(i, i2).TabIndex = 1
+                buttonArray(i, i2).Text = ""
+                buttonArray(i, i2).UseVisualStyleBackColor = True
+                buttonArray(i, i2).BackColor = Color.Gray
+                buttonArray(i, i2).BackgroundImage = ImageList1.Images(13)
+                m_Game(0, roomindexX, roomindexY, i, i2).SetBackGround(13)
+                buttonArray(i, i2).FlatStyle = FlatStyle.Flat
+                buttonArray(i, i2).BackgroundImageLayout = ImageLayout.Stretch
+                buttonArray(i, i2).FlatAppearance.BorderSize = 0
+                buttonArray(i, i2).Enabled = False
+                Me.Controls.Add(buttonArray(i, i2))
+            Next
+        Next
+
+        m_buttonArray = buttonArray
+
+        'CREATES LEFT WALL
+        DrawRoomWallVert(0, 15, 0, 13)
+
+        'CREATES BOTTOM WALL
+        DrawRoomWallHori(0, 15, 15, 13)
+
+        'CREATES RIGHT WALL
+        DrawRoomWallVert(0, 15, 15, 13)
+
+        DrawRoomWallHori(0, 15, 0, 13)
+        If start = 0 Then
+            Player1.SetX(7)
+            Player1.SetY(1)
+        ElseIf start = 1 Then
+            Player1.SetX(8)
+            Player1.SetY(14)
+        End If
+        PlayerDown(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
+        m_Game(0, roomindexX, roomindexY, 7, 0).SetIndex(DoorUPIndex)
+        m_Game(0, roomindexX, roomindexY, 15, 7).SetIndex(DoorRightIndex)
+        m_buttonArray(7, 0).BackgroundImage = ImageList1.Images(13)
+        m_buttonArray(8, 15).BackgroundImage = ImageList1.Images(13)
+    End Sub
+    Sub Room8(start As Integer)
+
+        For i = 1 To 16
+            For i2 = 1 To 16
+
+                m_Game(0, roomindexX, roomindexY, i - 1, i2 - 1) = New Tile(False, False, 1)
+
+            Next
+        Next
+
+        Dim buttonArray(16, 16) As Button
+        For i = 0 To 15
+            For i2 = 0 To 15
+                buttonArray(i, i2) = New System.Windows.Forms.Button()
+                buttonArray(i, i2).Location = New System.Drawing.Point((i * tilesize), (i2 * tilesize) + tilesize)
+                buttonArray(i, i2).Name = (i.ToString + "_" + i2.ToString)
+                buttonArray(i, i2).Size = New System.Drawing.Size(tilesize, tilesize)
+                buttonArray(i, i2).TabIndex = 1
+                buttonArray(i, i2).Text = ""
+                buttonArray(i, i2).UseVisualStyleBackColor = True
+                buttonArray(i, i2).BackColor = Color.Gray
+                buttonArray(i, i2).BackgroundImage = ImageList1.Images(13)
+                m_Game(0, roomindexX, roomindexY, i, i2).SetBackGround(13)
+                buttonArray(i, i2).FlatStyle = FlatStyle.Flat
+                buttonArray(i, i2).BackgroundImageLayout = ImageLayout.Stretch
+                buttonArray(i, i2).FlatAppearance.BorderSize = 0
+                buttonArray(i, i2).Enabled = False
+                Me.Controls.Add(buttonArray(i, i2))
+            Next
+        Next
+
+        m_buttonArray = buttonArray
+
+        'CREATES LEFT WALL
+        DrawRoomWallVert(0, 15, 0, 13)
+
+        'CREATES BOTTOM WALL
+        DrawRoomWallHori(0, 15, 15, 13)
+
+        'CREATES RIGHT WALL
+        DrawRoomWallVert(0, 15, 15, 13)
+
+        DrawRoomWallHori(0, 15, 0, 13)
+        If start = 2 Then
+            Player1.SetX(1)
+            Player1.SetY(8)
+        ElseIf start = 1 Then
+            Player1.SetX(7)
+            Player1.SetY(14)
+        End If
+        PlayerDown(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
+        m_Game(0, roomindexX, roomindexY, 0, 8).SetIndex(DoorLeftIndex)
+        m_Game(0, roomindexX, roomindexY, 7, 15).SetIndex(DoorDownIndex)
+        m_buttonArray(7, 0).BackgroundImage = ImageList1.Images(13)
+        m_buttonArray(8, 15).BackgroundImage = ImageList1.Images(13)
+    End Sub
+    Sub Room9(start As Integer)
+
+        For i = 1 To 16
+            For i2 = 1 To 16
+
+                m_Game(0, roomindexX, roomindexY, i - 1, i2 - 1) = New Tile(False, False, 1)
+
+            Next
+        Next
+
+        Dim buttonArray(16, 16) As Button
+        For i = 0 To 15
+            For i2 = 0 To 15
+                buttonArray(i, i2) = New System.Windows.Forms.Button()
+                buttonArray(i, i2).Location = New System.Drawing.Point((i * tilesize), (i2 * tilesize) + tilesize)
+                buttonArray(i, i2).Name = (i.ToString + "_" + i2.ToString)
+                buttonArray(i, i2).Size = New System.Drawing.Size(tilesize, tilesize)
+                buttonArray(i, i2).TabIndex = 1
+                buttonArray(i, i2).Text = ""
+                buttonArray(i, i2).UseVisualStyleBackColor = True
+                buttonArray(i, i2).BackColor = Color.Gray
+                buttonArray(i, i2).BackgroundImage = ImageList1.Images(13)
+                m_Game(0, roomindexX, roomindexY, i, i2).SetBackGround(13)
+                buttonArray(i, i2).FlatStyle = FlatStyle.Flat
+                buttonArray(i, i2).BackgroundImageLayout = ImageLayout.Stretch
+                buttonArray(i, i2).FlatAppearance.BorderSize = 0
+                buttonArray(i, i2).Enabled = False
+                Me.Controls.Add(buttonArray(i, i2))
+            Next
+        Next
+
+        m_buttonArray = buttonArray
+
+        'CREATES LEFT WALL
+        DrawRoomWallVert(0, 15, 0, 13)
+
+        'CREATES BOTTOM WALL
+        DrawRoomWallHori(0, 15, 15, 13)
+
+        'CREATES RIGHT WALL
+        DrawRoomWallVert(0, 15, 15, 13)
+
+        DrawRoomWallHori(0, 15, 0, 13)
+        If start = 0 Then
+            Player1.SetX(7)
+            Player1.SetY(1)
+        ElseIf start = 2 Then
+            Player1.SetX(1)
+            Player1.SetY(7)
+        End If
+        PlayerDown(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
+        m_Game(0, roomindexX, roomindexY, 7, 0).SetIndex(DoorUPIndex)
+        m_Game(0, roomindexX, roomindexY, 0, 7).SetIndex(DoorLeftIndex)
+        m_buttonArray(7, 0).BackgroundImage = ImageList1.Images(13)
+        m_buttonArray(8, 15).BackgroundImage = ImageList1.Images(13)
+    End Sub
+#End Region
     Sub DrawRoomWallVert(x As Integer, y As Integer, bound As Integer, imageindex As Integer)
         For i2 = x To y
 
             m_buttonArray(bound, i2).BackgroundImage = ImageList1.Images(imageindex)
-            m_Game(0, roomindex, bound, i2).SetIndex(WallTileIndex)
-            m_Game(0, roomindex, bound, i2).SetBackGround(imageindex)
+            m_Game(0, roomindexX, roomindexY, bound, i2).SetIndex(WallTileIndex)
+            m_Game(0, roomindexX, roomindexY, bound, i2).SetBackGround(imageindex)
         Next
     End Sub
     Sub DrawRoomWallHori(x As Integer, y As Integer, bound As Integer, imageindex As Integer)
         For i = x To y
 
             m_buttonArray(i, bound).BackgroundImage = ImageList1.Images(imageindex)
-            m_Game(0, roomindex, i, bound).SetIndex(WallTileIndex)
-            m_Game(0, roomindex, i, bound).SetBackGround(imageindex)
+            m_Game(0, roomindexX, roomindexY, i, bound).SetIndex(WallTileIndex)
+            m_Game(0, roomindexX, roomindexY, i, bound).SetBackGround(imageindex)
         Next
     End Sub
-    Sub CreateRoom(x As Integer, y As Integer)
+    Sub CreateRoom(x As Integer, y As Integer, start As Integer)
 
         For i = 0 To 15
             For i2 = 0 To 15
@@ -708,22 +952,33 @@
             Next
         Next
 
-        If x = 0 Then
-            Room1(y)
+        If x = 0 And y = 0 Then
+            Room1(start)
         End If
-        If x = 1 Then
-            Room2(y)
+        If x = 0 And y = 1 Then
+            Room2(start)
         End If
-        If x = 2 Then
-            Room3(y)
+        If x = 0 And y = 2 Then
+            Room3(start)
         End If
-        If x = 3 Then
-            Room4(y)
+        If x = 0 And y = 3 Then
+            Room4(start)
         End If
-        If x = 4 Then
-            Room5(y)
+        If x = 0 And y = 4 Then
+            Room5(start)
         End If
-
+        If x = 0 And y = 5 Then
+            Room6(start)
+        End If
+        If x = 0 And y = 6 Then
+            Room7(start)
+        End If
+        If x = 1 And y = 5 Then
+            Room8(start)
+        End If
+        If x = 1 And y = 6 Then
+            Room9(start)
+        End If
     End Sub
     Private Sub level2_Click(sender As Object, e As EventArgs)
 
@@ -759,254 +1014,145 @@
         'RIGHT MOVEMENT RIGHT MOVEMENT RIGHTMOVEMENT
         If mousedown = False Then
             Try
-
-
-                If e.KeyCode = Keys.D And Player1.GetX() <> 15 And m_Game(levelindex, roomindex, Player1.GetX() + 1, Player1.GetY()).GetIndex <> WallTileIndex Then
+                If e.KeyCode = Keys.D And Player1.GetX() <> 15 And m_Game(levelindex, roomindexX, roomindexY, Player1.GetX() + 1, Player1.GetY()).GetIndex <> WallTileIndex Then
                     If Player1.GetImageNum <> 0 Then
-                        PlayerRight(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+                        PlayerRight(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
                         Player1.ImageNum(0)
                     Else
-                        If m_Game(levelindex, roomindex, Player1.GetX + 1, Player1.GetY).GetIndex = DoorEnterIndex Then
-                            roomindex += 1
-                            CreateRoom(roomindex, 0)
-                        ElseIf m_Game(levelindex, roomindex, Player1.GetX + 1, Player1.GetY).GetIndex = DoorExitIndex Then
-                            roomindex -= 1
-                            CreateRoom(roomindex, 1)
+                        If m_Game(levelindex, roomindexX, roomindexY, Player1.GetX + 1, Player1.GetY).GetIndex = DoorRightIndex Then
+                            roomindexX += 1
+                            CreateRoom(roomindexX, roomindexY, 2)
+
                         Else
                             MovePlayer(1, 0)
                         End If
                     End If
-
                 ElseIf e.KeyCode = Keys.D And Player1.GetX() <> 15 Then
-
-                    PlayerRight(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+                    PlayerRight(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
                     Player1.ImageNum(0)
                 End If
                 ' UPWARD MOVEMENT UPWARD MOVEMENT UPWARD MOVEMENT
-                If e.KeyCode = Keys.W And Player1.GetY() <> 0 And m_Game(levelindex, roomindex, Player1.GetX(), Player1.GetY() - 1).GetIndex <> WallTileIndex Then
-
-
+                If e.KeyCode = Keys.W And Player1.GetY() <> 0 And m_Game(levelindex, roomindexX, roomindexY, Player1.GetX(), Player1.GetY() - 1).GetIndex <> WallTileIndex Then
                     If Player1.GetImageNum <> 1 Then
-                        PlayerUp(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+                        PlayerUp(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
                         Player1.ImageNum(1)
                     Else
-                        If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY - 1).GetIndex = DoorEnterIndex Then
-
-                            roomindex += 1
-                            CreateRoom(roomindex, 0)
-
-                        ElseIf m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY - 1).GetIndex = DoorExitIndex Then
-
-                            roomindex -= 1
-                            CreateRoom(roomindex, 1)
+                        If m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY - 1).GetIndex = DoorUPIndex Then
+                            roomindexY -= 1
+                            CreateRoom(roomindexX, roomindexY, 1)
                         Else
                             MovePlayer(0, -1)
                         End If
                     End If
-
-
                 ElseIf e.KeyCode = Keys.W And Player1.GetY() <> 0 Then
-                    PlayerUp(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+                    PlayerUp(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
                     Player1.ImageNum(1)
                 End If
                 'LEFTWARD MOVEMENT LEFTWARD MOVEMENT LEFTWARD MOVEMENT
-                If e.KeyCode = Keys.A And Player1.GetX() <> 0 And m_Game(levelindex, roomindex, Player1.GetX() - 1, Player1.GetY()).GetIndex <> WallTileIndex Then
+                If e.KeyCode = Keys.A And Player1.GetX() <> 0 And m_Game(levelindex, roomindexX, roomindexY, Player1.GetX() - 1, Player1.GetY()).GetIndex <> WallTileIndex Then
                     If Player1.GetImageNum <> 2 Then
-                        PlayerLeft(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+                        PlayerLeft(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
                         Player1.ImageNum(2)
                     Else
-                        If m_Game(levelindex, roomindex, Player1.GetX - 1, Player1.GetY).GetIndex = DoorEnterIndex Then
-                            roomindex += 1
-                            CreateRoom(roomindex, 0)
-                        ElseIf m_Game(levelindex, roomindex, Player1.GetX - 1, Player1.GetY).GetIndex = DoorExitIndex Then
-                            roomindex -= 1
-                            CreateRoom(roomindex, 1)
+                        If m_Game(levelindex, roomindexX, roomindexY, Player1.GetX - 1, Player1.GetY).GetIndex = DoorLeftIndex Then
+                            roomindexX -= 1
+                            CreateRoom(roomindexX, roomindexY, 3)
                         Else
                             MovePlayer(-1, 0)
                         End If
                     End If
-
                 ElseIf e.KeyCode = Keys.A And Player1.GetX() <> 0 Then
-                    PlayerLeft(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+                    PlayerLeft(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
                     Player1.ImageNum(2)
                 End If
                 'DOWNWARD MOVEMENT DOWNWARD MOVEMENT DOWNWARD MOVEMENT
-                If e.KeyCode = Keys.S And Player1.GetY() <> 15 And m_Game(levelindex, roomindex, Player1.GetX(), Player1.GetY() + 1).GetIndex <> WallTileIndex Then
-
+                If e.KeyCode = Keys.S And Player1.GetY() <> 15 And m_Game(levelindex, roomindexX, roomindexY, Player1.GetX(), Player1.GetY() + 1).GetIndex <> WallTileIndex Then
                     If Player1.GetImageNum <> 3 Then
-                        PlayerDown(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+                        PlayerDown(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
                         Player1.ImageNum(3)
-                    ElseIf m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY + 1).GetIndex = DoorEnterIndex Then
-                        roomindex += 1
-                        CreateRoom(roomindex, 0)
-                    ElseIf m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).GetIndex = DoorExitIndex Then
-                        roomindex -= 1
-                        CreateRoom(roomindex, 1)
                     Else
-                        MovePlayer(0, 1)
+                        If m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY + 1).GetIndex = DoorDownIndex Then
+                            roomindexY += 1
+                            CreateRoom(roomindexX, roomindexY, 0)
+                        Else
+                            MovePlayer(0, 1)
+                        End If
                     End If
                 ElseIf e.KeyCode = Keys.S And Player1.GetY() <> 15 Then
-                    PlayerDown(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+                    PlayerDown(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
                     Player1.ImageNum(3)
                 End If
-
                 'Arrow Key Player Controls
 
                 'RIGHT MOVEMENT RIGHT MOVEMENT RIGHTMOVEMENT
-                If e.KeyCode = Keys.Right And Player1.GetX() <> 15 And m_Game(levelindex, roomindex, Player1.GetX() + 1, Player1.GetY()).GetIndex <> WallTileIndex Then
-
+                If e.KeyCode = Keys.Right And Player1.GetX() <> 15 And m_Game(levelindex, roomindexX, roomindexY, Player1.GetX() + 1, Player1.GetY()).GetIndex <> WallTileIndex Then
                     If Player1.GetImageNum <> 0 Then
-                        PlayerRight(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+                        PlayerRight(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
                         Player1.ImageNum(0)
                     Else
-                        If m_Game(levelindex, roomindex, Player1.GetX() + 1, Player1.GetY()).CheckForEnemy = False Then
-                            m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(False)
-                            m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
-                            Player1.SetX(Player1.GetX() + 1)
-                            PlayerRight(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
-                            m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(True)
+                        If m_Game(levelindex, roomindexX, roomindexY, Player1.GetX + 1, Player1.GetY).GetIndex = DoorDownIndex Then
+                            roomindexY += 1
+                            CreateRoom(roomindexX, roomindexY, 0)
+                        ElseIf m_Game(levelindex, roomindexX, roomindexY, Player1.GetX + 1, Player1.GetY).GetIndex = DoorUPIndex Then
+                            roomindexY -= 1
+                            CreateRoom(roomindexX, roomindexY, 1)
+                        Else
+                            MovePlayer(1, 0)
                         End If
                     End If
-                    If m_Game(levelindex, roomindex, Player1.GetX + 1, Player1.GetY).GetIndex = 10 Then
-
-                        roomindex += 1
-                        CreateRoom(roomindex, 0)
-                    End If
-                    If m_Game(levelindex, roomindex, Player1.GetX + 1, Player1.GetY).GetIndex = 11 Then
-
-                        roomindex -= 1
-                        CreateRoom(roomindex, 1)
-                    End If
-                    If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).GetIndex = 3 Then
-                        For i = 0 To HPPACK1.Count - 1
-                            If HPPACK1(i).ReturnX = Player1.GetX And HPPACK1(i).ReturnY = Player1.GetY And HPPACK1(i).ActiveCheck = True Then
-                                healthPotion += 1
-                                HPPACK1(i).SetActive(False)
-                                ResetPack()
-                                DisplayText("+ 1 Health Potion")
-                            End If
-                        Next
-                    End If
                 ElseIf e.KeyCode = Keys.Right And Player1.GetX() <> 15 Then
-
-                    PlayerRight(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+                    PlayerRight(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
                     Player1.ImageNum(0)
                 End If
                 ' UPWARD MOVEMENT UPWARD MOVEMENT UPWARD MOVEMENT
-                If e.KeyCode = Keys.Up And Player1.GetY() <> 0 And m_Game(levelindex, roomindex, Player1.GetX(), Player1.GetY() - 1).GetIndex <> 6 Then
-
-
-
+                If e.KeyCode = Keys.Up And Player1.GetY() <> 0 And m_Game(levelindex, roomindexX, roomindexY, Player1.GetX(), Player1.GetY() - 1).GetIndex <> WallTileIndex Then
                     If Player1.GetImageNum <> 1 Then
-                        PlayerUp(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+                        PlayerUp(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
                         Player1.ImageNum(1)
                     Else
-                        If m_Game(levelindex, roomindex, Player1.GetX(), Player1.GetY() - 1).CheckForEnemy = False Then
-                            m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(False)
-                            m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
-                            Player1.SetY(Player1.GetY() - 1)
-                            PlayerUp(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
-                            m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(True)
+                        If m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY - 1).GetIndex = DoorUPIndex Then
+                            roomindexY -= 1
+                            CreateRoom(roomindexX, roomindexY, 1)
+                        Else
+                            MovePlayer(0, -1)
                         End If
                     End If
-                    If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY - 1).GetIndex = 10 Then
-                        roomindex += 1
-                        CreateRoom(roomindex, 0)
-                    End If
-                    If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY - 1).GetIndex = 11 Then
-                        roomindex -= 1
-                        CreateRoom(roomindex, 1)
-                    End If
-                    If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).GetIndex = 3 Then
-                        For i = 0 To HPPACK1.Count - 1
-                            If HPPACK1(i).ReturnX = Player1.GetX And HPPACK1(i).ReturnY = Player1.GetY And HPPACK1(i).ActiveCheck = True Then
-                                healthPotion += 1
-                                HPPACK1(i).SetActive(False)
-                                ResetPack()
-                                DisplayText("+ 1 Health Potion")
-                            End If
-                        Next
-                        For i = 0 To Chestb.Count - 1
-                            If Chestb(i).ReturnX = Player1.GetX And Chestb(i).ReturnY = Player1.GetY And Chestb(i).ActiveCheck = True Then
-                                BackpackList.Items.Add(Chestb(i).Item())
-                                DisplayText(Chestb(i).Item())
-                            End If
-                        Next
-                    End If
                 ElseIf e.KeyCode = Keys.Up And Player1.GetY() <> 0 Then
-                    PlayerUp(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+                    PlayerUp(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
                     Player1.ImageNum(1)
                 End If
                 'LEFTWARD MOVEMENT LEFTWARD MOVEMENT LEFTWARD MOVEMENT
-                If e.KeyCode = Keys.Left And Player1.GetX() <> 0 And m_Game(levelindex, roomindex, Player1.GetX() - 1, Player1.GetY()).GetIndex <> 6 Then
+                If e.KeyCode = Keys.Left And Player1.GetX() <> 0 And m_Game(levelindex, roomindexX, roomindexY, Player1.GetX() - 1, Player1.GetY()).GetIndex <> WallTileIndex Then
                     If Player1.GetImageNum <> 2 Then
-                        PlayerLeft(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+                        PlayerLeft(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
                         Player1.ImageNum(2)
                     Else
-                        If m_Game(levelindex, roomindex, Player1.GetX() - 1, Player1.GetY()).CheckForEnemy = False Then
-                            m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(False)
-                            m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
-                            Player1.SetX(Player1.GetX() - 1)
-                            PlayerLeft(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
-                            m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(True)
+                        If m_Game(levelindex, roomindexX, roomindexY, Player1.GetX - 1, Player1.GetY).GetIndex = DoorLeftIndex Then
+                            roomindexX -= 1
+                            CreateRoom(roomindexX, roomindexY, 1)
+                        Else
+                            MovePlayer(-1, 0)
                         End If
                     End If
-                    If m_Game(levelindex, roomindex, Player1.GetX - 1, Player1.GetY).GetIndex = 10 Then
-                        roomindex += 1
-                        CreateRoom(roomindex, 0)
-                    End If
-                    If m_Game(levelindex, roomindex, Player1.GetX - 1, Player1.GetY).GetIndex = 11 Then
-                        roomindex -= 1
-                        CreateRoom(roomindex, 1)
-                    End If
-                    If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).GetIndex = 3 Then
-                        For i = 0 To HPPACK1.Count - 1
-                            If HPPACK1(i).ReturnX = Player1.GetX And HPPACK1(i).ReturnY = Player1.GetY Then
-                                healthPotion += 1
-                                HPPACK1(i).SetActive(False)
-                                ResetPack()
-                                DisplayText("+ 1 Health Potion")
-                            End If
-                        Next
-                    End If
                 ElseIf e.KeyCode = Keys.Left And Player1.GetX() <> 0 Then
-                    PlayerLeft(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+                    PlayerLeft(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
                     Player1.ImageNum(2)
                 End If
                 'DOWNWARD MOVEMENT DOWNWARD MOVEMENT DOWNWARD MOVEMENT
-                If e.KeyCode = Keys.Down And Player1.GetY() <> 15 And m_Game(levelindex, roomindex, Player1.GetX(), Player1.GetY() + 1).GetIndex <> 6 Then
+                If e.KeyCode = Keys.Down And Player1.GetY() <> 15 And m_Game(levelindex, roomindexX, roomindexY, Player1.GetX(), Player1.GetY() + 1).GetIndex <> WallTileIndex Then
                     If Player1.GetImageNum <> 3 Then
-                        PlayerDown(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+                        PlayerDown(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
                         Player1.ImageNum(3)
                     Else
-                        If m_Game(levelindex, roomindex, Player1.GetX(), Player1.GetY() + 1).CheckForEnemy = False Then
-                            m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(False)
-                            m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
-                            Player1.SetY(Player1.GetY() + 1)
-                            PlayerDown(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
-                            m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(True)
+                        If m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY + 1).GetIndex = DoorDownIndex Then
+                            roomindexY += 1
+                            CreateRoom(roomindexX, roomindexY, 0)
+                        Else
+                            MovePlayer(0, 1)
                         End If
                     End If
-                    If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY + 1).GetIndex = 10 Then
-                        roomindex += 1
-                        CreateRoom(roomindex, 0)
-                    End If
-                    If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).GetIndex = 11 Then
-                        roomindex -= 1
-                        CreateRoom(roomindex, 1)
-                    End If
-                    If m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).GetIndex = 3 Then
-                        For i = 0 To HPPACK1.Count - 1
-                            If HPPACK1(i).ReturnX = Player1.GetX And HPPACK1(i).ReturnY = Player1.GetY And HPPACK1(i).ActiveCheck = True Then
-                                healthPotion += 1
-                                HPPACK1(i).SetActive(False)
-                                ResetPack()
-                                DisplayText("+ 1 Health Potion")
-                            End If
-                        Next
-                    End If
                 ElseIf e.KeyCode = Keys.Down And Player1.GetY() <> 15 Then
-                    PlayerDown(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+                    PlayerDown(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
                     Player1.ImageNum(3)
                 End If
             Catch ex As Exception
@@ -1016,28 +1162,28 @@
                 'Rough Framework for fighting, need to add array of enemys and need to add a for next statement to check against enemys like how enemy1 is checked agaisnt for here.
                 If Player1.GetImageNum = 0 Then
                     AR.Enabled = True
-                    If m_Game(0, roomindex, Player1.GetX() + 1, Player1.GetY()).CheckForEnemy = True Then
+                    If m_Game(0, roomindexX, roomindexY, Player1.GetX() + 1, Player1.GetY()).CheckForEnemy = True Then
                         PlayerAttack(1, 0)
                     End If
                     PickingUp(1, 0)
                 End If
                 If Player1.GetImageNum = 1 Then
                     AT.Enabled = True
-                    If m_Game(0, roomindex, Player1.GetX(), Player1.GetY() - 1).CheckForEnemy = True Then
+                    If m_Game(0, roomindexX, roomindexY, Player1.GetX(), Player1.GetY() - 1).CheckForEnemy = True Then
                         PlayerAttack(0, -1)
                     End If
                     PickingUp(0, -1)
                 End If
                 If Player1.GetImageNum = 2 Then
                     AL.Enabled = True
-                    If m_Game(0, roomindex, Player1.GetX() - 1, Player1.GetY()).CheckForEnemy = True Then
+                    If m_Game(0, roomindexX, roomindexY, Player1.GetX() - 1, Player1.GetY()).CheckForEnemy = True Then
                         PlayerAttack(-1, 0)
                     End If
                     PickingUp(-1, 0)
                 End If
                 If Player1.GetImageNum = 3 Then
                     AD.Enabled = True
-                    If m_Game(0, roomindex, Player1.GetX(), Player1.GetY() + 1).CheckForEnemy = True Then
+                    If m_Game(0, roomindexX, roomindexY, Player1.GetX(), Player1.GetY() + 1).CheckForEnemy = True Then
                         PlayerAttack(0, 1)
                     End If
                     PickingUp(0, 1)
@@ -1055,8 +1201,8 @@
                 If lvl1EnemyArray(i).GetX = Player1.GetX + x And lvl1EnemyArray(i).GetY = Player1.GetY + Y Then
                     lvl1EnemyArray(i).SetHealth(lvl1EnemyArray(i).GetHealth() - playerDamage)
                     If lvl1EnemyArray(i).GetHealth <= 0 Then
-                        m_Game(0, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(False)
-                        m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).ReturnBackGround())
+                        m_Game(0, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(False)
+                        m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).ReturnBackGround())
                     End If
                 End If
             Next
@@ -1064,8 +1210,8 @@
                 If lvl2EnemyArray(i).GetX = Player1.GetX + x And lvl2EnemyArray(i).GetY = Player1.GetY + Y Then
                     lvl2EnemyArray(i).SetHealth(lvl2EnemyArray(i).GetHealth() - playerDamage)
                     If lvl2EnemyArray(i).GetHealth <= 0 Then
-                        m_Game(0, roomindex, lvl2EnemyArray(i).GetX, lvl2EnemyArray(i).GetY).setEnemy(False)
-                        m_buttonArray(lvl2EnemyArray(i).GetX, lvl2EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindex, lvl2EnemyArray(i).GetX, lvl2EnemyArray(i).GetY).ReturnBackGround())
+                        m_Game(0, roomindexX, roomindexY, lvl2EnemyArray(i).GetX, lvl2EnemyArray(i).GetY).setEnemy(False)
+                        m_buttonArray(lvl2EnemyArray(i).GetX, lvl2EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindexX, roomindexY, lvl2EnemyArray(i).GetX, lvl2EnemyArray(i).GetY).ReturnBackGround())
                     End If
                 End If
             Next
@@ -1075,8 +1221,8 @@
                 If lvl1EnemyArray(i).GetX = Player1.GetX + x And lvl1EnemyArray(i).GetY = Player1.GetY + Y Then
                     lvl1EnemyArray(i).SetHealth(lvl1EnemyArray(i).GetHealth() - playerDamage)
                     If lvl1EnemyArray(i).GetHealth <= 0 Then
-                        m_Game(0, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(False)
-                        m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).ReturnBackGround())
+                        m_Game(0, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(False)
+                        m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).ReturnBackGround())
                     End If
                 End If
             Next
@@ -1084,8 +1230,8 @@
                 If lvl2EnemyArray(i).GetX = Player1.GetX + x And lvl2EnemyArray(i).GetY = Player1.GetY + Y Then
                     lvl2EnemyArray(i).SetHealth(lvl2EnemyArray(i).GetHealth() - playerDamage)
                     If lvl2EnemyArray(i).GetHealth <= 0 Then
-                        m_Game(0, roomindex, lvl2EnemyArray(i).GetX, lvl2EnemyArray(i).GetY).setEnemy(False)
-                        m_buttonArray(lvl2EnemyArray(i).GetX, lvl2EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindex, lvl2EnemyArray(i).GetX, lvl2EnemyArray(i).GetY).ReturnBackGround())
+                        m_Game(0, roomindexX, roomindexY, lvl2EnemyArray(i).GetX, lvl2EnemyArray(i).GetY).setEnemy(False)
+                        m_buttonArray(lvl2EnemyArray(i).GetX, lvl2EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindexX, roomindexY, lvl2EnemyArray(i).GetX, lvl2EnemyArray(i).GetY).ReturnBackGround())
                     End If
                 End If
             Next
@@ -1095,8 +1241,8 @@
                 If lvl1EnemyArray(i).GetX = Player1.GetX + x And lvl1EnemyArray(i).GetY = Player1.GetY + Y Then
                     lvl1EnemyArray(i).SetHealth(lvl1EnemyArray(i).GetHealth() - playerDamage)
                     If lvl1EnemyArray(i).GetHealth <= 0 Then
-                        m_Game(0, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(False)
-                        m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).ReturnBackGround())
+                        m_Game(0, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(False)
+                        m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).ReturnBackGround())
                     End If
                 End If
             Next
@@ -1104,8 +1250,8 @@
                 If lvl2EnemyArray(i).GetX = Player1.GetX + x And lvl2EnemyArray(i).GetY = Player1.GetY + Y Then
                     lvl2EnemyArray(i).SetHealth(lvl2EnemyArray(i).GetHealth() - playerDamage)
                     If lvl2EnemyArray(i).GetHealth <= 0 Then
-                        m_Game(0, roomindex, lvl2EnemyArray(i).GetX, lvl2EnemyArray(i).GetY).setEnemy(False)
-                        m_buttonArray(lvl2EnemyArray(i).GetX, lvl2EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindex, lvl2EnemyArray(i).GetX, lvl2EnemyArray(i).GetY).ReturnBackGround())
+                        m_Game(0, roomindexX, roomindexY, lvl2EnemyArray(i).GetX, lvl2EnemyArray(i).GetY).setEnemy(False)
+                        m_buttonArray(lvl2EnemyArray(i).GetX, lvl2EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindexX, roomindexY, lvl2EnemyArray(i).GetX, lvl2EnemyArray(i).GetY).ReturnBackGround())
                     End If
                 End If
             Next
@@ -1115,8 +1261,8 @@
                 If lvl1EnemyArray(i).GetX = Player1.GetX + x And lvl1EnemyArray(i).GetY = Player1.GetY + Y Then
                     lvl1EnemyArray(i).SetHealth(lvl1EnemyArray(i).GetHealth() - playerDamage)
                     If lvl1EnemyArray(i).GetHealth <= 0 Then
-                        m_Game(0, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(False)
-                        m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).ReturnBackGround())
+                        m_Game(0, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(False)
+                        m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).ReturnBackGround())
                     End If
                 End If
             Next
@@ -1124,8 +1270,8 @@
                 If lvl2EnemyArray(i).GetX = Player1.GetX + x And lvl2EnemyArray(i).GetY = Player1.GetY + Y Then
                     lvl2EnemyArray(i).SetHealth(lvl2EnemyArray(i).GetHealth() - playerDamage)
                     If lvl2EnemyArray(i).GetHealth <= 0 Then
-                        m_Game(0, roomindex, lvl2EnemyArray(i).GetX, lvl2EnemyArray(i).GetY).setEnemy(False)
-                        m_buttonArray(lvl2EnemyArray(i).GetX, lvl2EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindex, lvl2EnemyArray(i).GetX, lvl2EnemyArray(i).GetY).ReturnBackGround())
+                        m_Game(0, roomindexX, roomindexY, lvl2EnemyArray(i).GetX, lvl2EnemyArray(i).GetY).setEnemy(False)
+                        m_buttonArray(lvl2EnemyArray(i).GetX, lvl2EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindexX, roomindexY, lvl2EnemyArray(i).GetX, lvl2EnemyArray(i).GetY).ReturnBackGround())
                     End If
                 End If
             Next
@@ -1136,41 +1282,41 @@
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles AR.Tick
         If Player1.GetImageNum <> 8 Then
             'do attack animation
-            m_buttonArray(Player1.GetX, Player1.GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+            m_buttonArray(Player1.GetX, Player1.GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
             Player1.ImageNum(8)
         Else
             Player1.ImageNum(0)
-            PlayerRight(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+            PlayerRight(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
             AR.Enabled = False
         End If
     End Sub
     Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles AT.Tick
         If Player1.GetImageNum <> 8 Then
-            m_buttonArray(Player1.GetX, Player1.GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+            m_buttonArray(Player1.GetX, Player1.GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
             Player1.ImageNum(8)
         Else
             Player1.ImageNum(1)
-            PlayerUp(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+            PlayerUp(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
             AT.Enabled = False
         End If
     End Sub
     Private Sub AL_Tick(sender As Object, e As EventArgs) Handles AL.Tick
         If Player1.GetImageNum <> 8 Then
-            m_buttonArray(Player1.GetX, Player1.GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+            m_buttonArray(Player1.GetX, Player1.GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
             Player1.ImageNum(8)
         Else
             Player1.ImageNum(2)
-            PlayerLeft(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+            PlayerLeft(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
             AL.Enabled = False
         End If
     End Sub
     Private Sub AD_Tick(sender As Object, e As EventArgs) Handles AD.Tick
         If Player1.GetImageNum <> 8 Then
-            m_buttonArray(Player1.GetX, Player1.GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+            m_buttonArray(Player1.GetX, Player1.GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
             Player1.ImageNum(8)
         Else
             Player1.ImageNum(3)
-            PlayerDown(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+            PlayerDown(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
             AD.Enabled = False
         End If
     End Sub
@@ -1208,10 +1354,10 @@
                         bmp = BloodStones.My.Resources.Resource1.Rat_Front_
                         bmp.MakeTransparent(Color.White)
                         'Left
-                        m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).ReturnBackGround)
+                        m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).ReturnBackGround)
 
 
-                        If m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY + 1).CheckForPlayer = True Then
+                        If m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY + 1).CheckForPlayer = True Then
                             Player1.hp(Player1.GetHP - 1)
                         End If
                     End If
@@ -1220,8 +1366,8 @@
                         bmp = BloodStones.My.Resources.Resource1.Rat_Front_
                         bmp.MakeTransparent(Color.White)
                         'Left
-                        m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).ReturnBackGround)
-                        If m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY - 1).CheckForPlayer = True Then
+                        m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).ReturnBackGround)
+                        If m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY - 1).CheckForPlayer = True Then
                             Player1.hp(Player1.GetHP - 1)
                         End If
                     End If
@@ -1230,8 +1376,8 @@
                         bmp = BloodStones.My.Resources.Resource1.Rat_Front_
                         bmp.MakeTransparent(Color.White)
                         'Left
-                        m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).ReturnBackGround)
-                        If m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX - 1, lvl1EnemyArray(i).GetY).CheckForPlayer = True Then
+                        m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).ReturnBackGround)
+                        If m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX - 1, lvl1EnemyArray(i).GetY).CheckForPlayer = True Then
                             Player1.hp(Player1.GetHP - 1)
                         End If
                     End If
@@ -1240,8 +1386,8 @@
                         bmp = BloodStones.My.Resources.Resource1.Rat_Front_
                         bmp.MakeTransparent(Color.White)
                         'Left
-                        m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).ReturnBackGround)
-                        If m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX + 1, lvl1EnemyArray(i).GetY).CheckForPlayer = True Then
+                        m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).ReturnBackGround)
+                        If m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX + 1, lvl1EnemyArray(i).GetY).CheckForPlayer = True Then
                             Player1.hp(Player1.GetHP - 1)
                         End If
                     End If
@@ -1258,7 +1404,7 @@
 
 
                 End If
-                    If lvl1EnemyArray(i).GetDirection = 1 Then
+                If lvl1EnemyArray(i).GetDirection = 1 Then
                     Dim bmp As Bitmap
                     bmp = BloodStones.My.Resources.Resource1.Rat_Back_
                     bmp.MakeTransparent(Color.White)
@@ -1279,7 +1425,7 @@
                     m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = CombineImages(m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage, bmp)
 
                 End If
-
+                lvl1EnemyArray(i).SetAttack(False)
                 EnemyAttackRat.Enabled = False
                 attackchecker = 0
             End If
@@ -1289,7 +1435,7 @@
         Dim a As Integer
         Dim b As Integer
         If levelindex = 0 Then
-            If roomindex = 2 Then
+            If roomindexY = 2 Then
                 For i = 0 To lvl1EnemyArray.Count - 1
                     a = rnd.Next(1, 10)
                     b = rnd.Next(1, 10)
@@ -1300,25 +1446,25 @@
                                 bmp = BloodStones.My.Resources.Resource1.Rat_Front_
                                 bmp.MakeTransparent(Color.White)
                                 'Down
-                                m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).ReturnBackGround)
-                                m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(False)
-                                If m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY + 1).GetIndex <> 6 And m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY + 1).CheckForPlayer = False Then
+                                m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).ReturnBackGround)
+                                m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(False)
+                                If m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY + 1).GetIndex <> 6 And m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY + 1).CheckForPlayer = False Then
                                     lvl1EnemyArray(i).SetY(lvl1EnemyArray(i).GetY + 1)
                                 End If
                                 m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = CombineImages(m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage, bmp)
-                                m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(True)
+                                m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(True)
                                 lvl1EnemyArray(i).SetDirection(0)
                             ElseIf b >= 5 Then
                                 Dim bmp As Bitmap
                                 bmp = BloodStones.My.Resources.Resource1.Rat_Back_
                                 bmp.MakeTransparent(Color.White)
                                 'UP
-                                m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).ReturnBackGround)
-                                m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(False)
-                                If m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY - 1).GetIndex <> 6 And m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY - 1).CheckForPlayer = False Then
+                                m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).ReturnBackGround)
+                                m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(False)
+                                If m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY - 1).GetIndex <> 6 And m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY - 1).CheckForPlayer = False Then
                                     lvl1EnemyArray(i).SetY(lvl1EnemyArray(i).GetY - 1)
                                 End If
-                                m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(True)
+                                m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(True)
                                 m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = CombineImages(m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage, bmp)
                                 lvl1EnemyArray(i).SetDirection(1)
                             End If
@@ -1330,12 +1476,12 @@
                                 bmp = BloodStones.My.Resources.Resource1.Rat_left_
                                 bmp.MakeTransparent(Color.White)
                                 'Left
-                                m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).ReturnBackGround)
-                                m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(False)
-                                If m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX - 1, lvl1EnemyArray(i).GetY).GetIndex <> 6 And m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX - 1, lvl1EnemyArray(i).GetY).CheckForPlayer = False Then
+                                m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).ReturnBackGround)
+                                m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(False)
+                                If m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX - 1, lvl1EnemyArray(i).GetY).GetIndex <> 6 And m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX - 1, lvl1EnemyArray(i).GetY).CheckForPlayer = False Then
                                     lvl1EnemyArray(i).SetX(lvl1EnemyArray(i).GetX - 1)
                                 End If
-                                m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(True)
+                                m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(True)
                                 m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = CombineImages(m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage, bmp)
                                 lvl1EnemyArray(i).SetDirection(2)
                             ElseIf b >= 5 Then
@@ -1343,12 +1489,12 @@
                                 bmp = BloodStones.My.Resources.Resource1.Rat_Right_
                                 bmp.MakeTransparent(Color.White)
                                 'Right
-                                m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).ReturnBackGround)
-                                m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(False)
-                                If m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX + 1, lvl1EnemyArray(i).GetY).GetIndex <> 6 And m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX + 1, lvl1EnemyArray(i).GetY).CheckForPlayer = False Then
+                                m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).ReturnBackGround)
+                                m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(False)
+                                If m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX + 1, lvl1EnemyArray(i).GetY).GetIndex <> 6 And m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX + 1, lvl1EnemyArray(i).GetY).CheckForPlayer = False Then
                                     lvl1EnemyArray(i).SetX(lvl1EnemyArray(i).GetX + 1)
                                 End If
-                                m_Game(levelindex, roomindex, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(True)
+                                m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(True)
                                 m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = CombineImages(m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage, bmp)
                                 lvl1EnemyArray(i).SetDirection(3)
                             End If
@@ -1426,37 +1572,37 @@
         m_buttonArray(x, y).BackgroundImage = CombineImages(ImageList1.Images(a), Chesta)
     End Sub
     Sub MovePlayer(x As Integer, y As Integer)
-        If m_Game(levelindex, roomindex, Player1.GetX() + x, Player1.GetY() + y).CheckForEnemy = False Then
-            m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(False)
-            m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+        If m_Game(levelindex, roomindexX, roomindexY, Player1.GetX() + x, Player1.GetY() + y).CheckForEnemy = False Then
+            m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).setPlayer(False)
+            m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
             Player1.SetX(Player1.GetX() + x)
             Player1.SetY(Player1.GetY() + y)
             If x = 1 Then
-                PlayerRight(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+                PlayerRight(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
             End If
             If y = 1 Then
-                PlayerDown(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+                PlayerDown(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
             End If
             If x = -1 Then
-                PlayerLeft(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+                PlayerLeft(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
             End If
             If y = -1 Then
-                PlayerUp(m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).ReturnBackGround())
+                PlayerUp(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
             End If
-            m_Game(levelindex, roomindex, Player1.GetX, Player1.GetY).setPlayer(True)
+            m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).setPlayer(True)
             ReDraw(-x, -y)
         End If
     End Sub
     Sub ReDraw(x As Integer, y As Integer)
-        If m_Game(levelindex, roomindex, Player1.GetX + x, Player1.GetY + y).GetIndex = 3 Then
+        If m_Game(levelindex, roomindexX, roomindexY, Player1.GetX + x, Player1.GetY + y).GetIndex = 3 Then
             For i = 0 To HPPACK1.Count - 1
                 If Player1.GetX + x = HPPACK1(i).ReturnX And Player1.GetY + y = HPPACK1(i).ReturnY And HPPACK1(i).ActiveCheck Then
-                    hp(HPPACK1(i).ReturnX, HPPACK1(i).ReturnY, m_Game(levelindex, roomindex, HPPACK1(i).ReturnX, HPPACK1(i).ReturnY).ReturnBackGround)
+                    hp(HPPACK1(i).ReturnX, HPPACK1(i).ReturnY, m_Game(levelindex, roomindexX, roomindexY, HPPACK1(i).ReturnX, HPPACK1(i).ReturnY).ReturnBackGround)
                 End If
             Next
             For i = 0 To Chestb.Count - 1
                 If Player1.GetX + x = Chestb(i).ReturnX And Player1.GetY + y = Chestb(i).ReturnY Then 'And Chestb(i).ActiveCheck Then
-                    Chest(Chestb(i).ReturnX, Chestb(i).ReturnY, m_Game(levelindex, roomindex, Chestb(i).ReturnX, Chestb(i).ReturnY).ReturnBackGround)
+                    Chest(Chestb(i).ReturnX, Chestb(i).ReturnY, m_Game(levelindex, roomindexX, roomindexY, Chestb(i).ReturnX, Chestb(i).ReturnY).ReturnBackGround)
                 End If
             Next
         End If
@@ -1468,7 +1614,7 @@
                 HPPACK1(i).SetActive(False)
                 ResetPack()
                 DisplayText("+ 1 Health Potion")
-                m_buttonArray(HPPACK1(i).ReturnX, HPPACK1(i).ReturnY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindex, HPPACK1(i).ReturnX, HPPACK1(i).ReturnY).ReturnBackGround())
+                m_buttonArray(HPPACK1(i).ReturnX, HPPACK1(i).ReturnY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindexX, roomindexY, HPPACK1(i).ReturnX, HPPACK1(i).ReturnY).ReturnBackGround())
             End If
         Next
         For i = 0 To Chestb.Count - 1
