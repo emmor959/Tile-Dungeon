@@ -44,6 +44,7 @@ Partial Class Form1
         Me.WeaponList = New System.Windows.Forms.ListBox()
         Me.MovespeedMod = New System.Windows.Forms.Timer(Me.components)
         Me.House = New System.Windows.Forms.ImageList(Me.components)
+        Me.EnemyAttackRat = New System.Windows.Forms.Timer(Me.components)
         Me.MenuStrip1.SuspendLayout()
         CType(Me.BackPackPicture, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -217,6 +218,9 @@ Partial Class Form1
         Me.House.Images.SetKeyName(4, "FirstHouse(MiddleRoof).png")
         Me.House.Images.SetKeyName(5, "FirstHouse(Right Roof).png")
         '
+        'EnemyAttackRat
+        '
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -262,4 +266,5 @@ Partial Class Form1
     Friend WithEvents WeaponList As ListBox
     Friend WithEvents MovespeedMod As Timer
     Friend WithEvents House As ImageList
+    Friend WithEvents EnemyAttackRat As Timer
 End Class
