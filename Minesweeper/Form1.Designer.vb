@@ -92,6 +92,15 @@ Partial Class Form1
         Me.ImageList1.Images.SetKeyName(14, "Grass(1).png")
         Me.ImageList1.Images.SetKeyName(15, "Black.png")
         Me.ImageList1.Images.SetKeyName(16, "House(1).png")
+        Me.ImageList1.Images.SetKeyName(17, "GravelFloorWater(Down).png")
+        Me.ImageList1.Images.SetKeyName(18, "GravelFloorWater(Left).png")
+        Me.ImageList1.Images.SetKeyName(19, "GravelFloorWater(Right).png")
+        Me.ImageList1.Images.SetKeyName(20, "GravelFloorWater(Up).png")
+        Me.ImageList1.Images.SetKeyName(21, "DarkWater(Right).png")
+        Me.ImageList1.Images.SetKeyName(22, "Dirt.png")
+        Me.ImageList1.Images.SetKeyName(23, "DirtAndGrassX.png")
+        Me.ImageList1.Images.SetKeyName(24, "DirtAndGrassY.png")
+        Me.ImageList1.Images.SetKeyName(25, "Trees.png")
         '
         'AL
         '

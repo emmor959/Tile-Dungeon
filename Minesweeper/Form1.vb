@@ -20,7 +20,7 @@
     Dim room2Enemts As clsEnemy
     Dim rnd As New Random
     Dim playerDamage As Integer = 0
-    Dim mousedown As Boolean = False
+    Dim mouseisdown As Boolean = False
 #Region "Constant Variables"
 
     Public Const WallTileIndex As Integer = 0
@@ -228,6 +228,23 @@
 
         DisplayText("Use the WASD or Arrow Keys To Move!")
     End Sub
+    Sub Tree(x, y)
+        Dim treemap As Bitmap
+        treemap = ImageList1.Images(25)
+        treemap.MakeTransparent(Color.White)
+        Dim bmp As New Bitmap(Math.Max(24, 24), 24)
+        Dim g As Graphics = Graphics.FromImage(bmp)
+        Dim tile As Image = ImageList1.Images(m_Game(levelindex, roomindexX, roomindexY, x, y).ReturnBackGround())
+        g.DrawImage(tile, 0, 0, 24, 24)
+        g.DrawImage(treemap, 0, 0, 24, 24)
+        g.Dispose()
+        m_buttonArray(x, y).BackgroundImage = bmp
+        m_Game(levelindex, roomindexX, roomindexY, x, y).SetIndex(WallTileIndex)
+    End Sub
+    Sub SetTile1(x As Integer, y As Integer, index As Integer)
+        m_buttonArray(x, y).BackgroundImage = ImageList1.Images(index)
+        m_Game(levelindex, roomindexX, roomindexY, x, y).SetBackGround(index)
+    End Sub
     Sub Room1(start As Integer)
         For i = 1 To 16
             For i2 = 1 To 16
@@ -265,14 +282,21 @@
             Player1.SetX(8)
             Player1.SetY(14)
         End If
-
-
-
-
-
-
-
         m_buttonArray = buttonArray
+
+
+        SetTile1(10, 1, 21)
+        SetTile1(10, 2, 21)
+        SetTile1(10, 3, 21)
+        SetTile1(11, 1, 21)
+        SetTile1(11, 2, 21)
+        SetTile1(11, 3, 21)
+        SetTile1(12, 1, 21)
+        SetTile1(12, 2, 21)
+        SetTile1(12, 3, 21)
+
+
+
         'CREATES TOP WALL
         DrawRoomWallHori(0, 15, 0, 9)
         'CREATES BOTTOM WALL
@@ -591,6 +615,21 @@
         DrawRoomWallVert(0, 15, 15, 11)
 
         DrawRoomWallHori(0, 15, 0, 6)
+
+        For i = 1 To 6
+            SetTile1(8, i, 24)
+        Next
+        SetTile1(7, 7, 22)
+        SetTile1(8, 7, 22)
+        For i = 8 To 15
+            SetTile1(7, i, 24)
+        Next
+        Tree(8, 9)
+        Tree(3, 4)
+        Tree(10, 13)
+        Tree(4, 8)
+        Tree(9, 4)
+        Tree(6, 5)
         If start = 0 Then
             Player1.SetX(8)
             Player1.SetY(1)
@@ -602,7 +641,7 @@
         m_Game(0, roomindexX, roomindexY, 8, 0).SetIndex(DoorUPIndex)
         m_Game(0, roomindexX, roomindexY, 7, 15).SetIndex(DoorDownIndex)
         buttonArray(8, 0).BackgroundImage = ImageList1.Images(3)
-        buttonArray(7, 15).BackgroundImage = ImageList1.Images(13)
+        '   buttonArray(7, 15).BackgroundImage = ImageList1.Images(13)
     End Sub
     Sub Room5(start As Integer)
 
@@ -2335,7 +2374,7 @@
     Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
         'Wasd Key Character Controls
         'RIGHT MOVEMENT RIGHT MOVEMENT RIGHTMOVEMENT
-        If mousedown = False Then
+        If mouseisdown = False Then
             Try
                 If e.KeyCode = Keys.D And Player1.GetX() <> 15 And m_Game(levelindex, roomindexX, roomindexY, Player1.GetX() + 1, Player1.GetY()).GetIndex <> WallTileIndex Then
                     If Player1.GetImageNum <> 0 Then
@@ -2512,7 +2551,7 @@
                     PickingUp(0, 1)
                 End If
             End If
-            mousedown = True
+            mouseisdown = True
             MovespeedMod.Enabled = True
         End If
     End Sub
@@ -3051,18 +3090,19 @@
     End Sub
 
     Private Sub Form1_KeyUp(sender As Object, e As KeyEventArgs) Handles MyBase.KeyUp
-        mousedown = False
+        mouseisdown = False
     End Sub
-    Dim move As Integer = 0
+    Dim moveing As Integer = 0
     Private Sub MovespeedMod_Tick(sender As Object, e As EventArgs) Handles MovespeedMod.Tick
 
-        If move = 0 Then
-            move = 1
-        End If
-        If move = 1 Then
-            mousedown = False
+
+        If moveing = 1 Then
+            mouseisdown = False
             MovespeedMod.Enabled = False
-            move = 0
+            moveing = 0
+        End If
+        If moveing = 0 Then
+            moveing = 1
         End If
     End Sub
     Dim attackchecker As Integer
