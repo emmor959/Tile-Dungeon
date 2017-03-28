@@ -2827,7 +2827,7 @@
                                 'Down
                                 m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).ReturnBackGround)
                                 m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(False)
-                                If m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY + 1).GetIndex <> 6 And m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY + 1).CheckForPlayer = False Then
+                                If m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY + 1).GetIndex <> WallTileIndex And m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY + 1).CheckForPlayer = False Then
                                     lvl1EnemyArray(i).SetY(lvl1EnemyArray(i).GetY + 1)
                                 End If
                                 m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = CombineImages(m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage, bmp)
@@ -2840,7 +2840,7 @@
                                 'UP
                                 m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).ReturnBackGround)
                                 m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(False)
-                                If m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY - 1).GetIndex <> 6 And m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY - 1).CheckForPlayer = False Then
+                                If m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY - 1).GetIndex <> WallTileIndex And m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY - 1).CheckForPlayer = False Then
                                     lvl1EnemyArray(i).SetY(lvl1EnemyArray(i).GetY - 1)
                                 End If
                                 m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(True)
@@ -2857,7 +2857,7 @@
                                 'Left
                                 m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).ReturnBackGround)
                                 m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(False)
-                                If m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX - 1, lvl1EnemyArray(i).GetY).GetIndex <> 6 And m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX - 1, lvl1EnemyArray(i).GetY).CheckForPlayer = False Then
+                                If m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX - 1, lvl1EnemyArray(i).GetY).GetIndex <> WallTileIndex And m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX - 1, lvl1EnemyArray(i).GetY).CheckForPlayer = False Then
                                     lvl1EnemyArray(i).SetX(lvl1EnemyArray(i).GetX - 1)
                                 End If
                                 m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(True)
@@ -2870,7 +2870,7 @@
                                 'Right
                                 m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).ReturnBackGround)
                                 m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(False)
-                                If m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX + 1, lvl1EnemyArray(i).GetY).GetIndex <> 6 And m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX + 1, lvl1EnemyArray(i).GetY).CheckForPlayer = False Then
+                                If m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX + 1, lvl1EnemyArray(i).GetY).GetIndex <> WallTileIndex And m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX + 1, lvl1EnemyArray(i).GetY).CheckForPlayer = False Then
                                     lvl1EnemyArray(i).SetX(lvl1EnemyArray(i).GetX + 1)
                                 End If
                                 m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(True)
