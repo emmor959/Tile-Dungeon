@@ -45,6 +45,7 @@ Partial Class Form1
         Me.MovespeedMod = New System.Windows.Forms.Timer(Me.components)
         Me.House = New System.Windows.Forms.ImageList(Me.components)
         Me.EnemyAttackRat = New System.Windows.Forms.Timer(Me.components)
+        Me.TemporaryWinChecker = New System.Windows.Forms.Timer(Me.components)
         Me.MenuStrip1.SuspendLayout()
         CType(Me.BackPackPicture, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -66,7 +67,7 @@ Partial Class Form1
         '
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(69, 20)
-        Me.FileToolStripMenuItem.Text = "Backpack"
+        Me.FileToolStripMenuItem.Text = "&Backpack"
         '
         'AT
         '
@@ -234,6 +235,9 @@ Partial Class Form1
         'EnemyAttackRat
         '
         '
+        'TemporaryWinChecker
+        '
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -280,4 +284,5 @@ Partial Class Form1
     Friend WithEvents MovespeedMod As Timer
     Friend WithEvents House As ImageList
     Friend WithEvents EnemyAttackRat As Timer
+    Friend WithEvents TemporaryWinChecker As Timer
 End Class

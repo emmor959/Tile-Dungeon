@@ -752,14 +752,17 @@
                 Me.Controls.Add(buttonArray(i, i2))
             Next
         Next
+        TemporaryWinChecker.Enabled = True
 
         m_buttonArray = buttonArray
 
         'CREATES RIGHT WALL
-        DrawRoomWallVert(0, 15, 15, 13)
+        DrawRoomWallVert(0, 15, 15, 12)
         'CREATES BOTTOM WALL
-        DrawRoomWallHori(0, 15, 15, 13)
+        DrawRoomWallHori(0, 15, 15, 12)
         'CREATES LEFT WALL
+
+        'Change 13 to 12 for final version
         DrawRoomWallVert(0, 15, 0, 12)
         'CREATES TOP WALL
         DrawRoomWallHori(0, 15, 0, 12)
@@ -780,13 +783,13 @@
         For i = 0 To 15
             SetTile1(7, i, 24)
         Next
-        SetTile1(7, 8, 22)
-        For i = 8 To 15
-            SetTile1(i, 8, 23)
-        Next
+        ' SetTile1(7, 8, 22)
+        ' For i = 8 To 15
+        '  SetTile1(i, 8, 23)
+        '   Next
         m_Game(0, roomindexX, roomindexY, 7, 0).SetIndex(DoorUPIndex)
-        m_Game(0, roomindexX, roomindexY, 7, 15).SetIndex(DoorDownIndex)
-        m_Game(0, roomindexX, roomindexY, 15, 8).SetIndex(DoorRightIndex)
+        '  m_Game(0, roomindexX, roomindexY, 7, 15).SetIndex(DoorDownIndex)
+        ' m_Game(0, roomindexX, roomindexY, 15, 8).SetIndex(DoorRightIndex)
         ' m_buttonArray(7, 0).BackgroundImage = ImageList1.Images(13)
         ' m_buttonArray(7, 15).BackgroundImage = ImageList1.Images(13)
         ' m_buttonArray(15, 8).BackgroundImage = ImageList1.Images(13)
@@ -3123,6 +3126,13 @@
         End If
     End Sub
     Dim attackchecker As Integer
+
+    Private Sub TemporaryWinChecker_Tick(sender As Object, e As EventArgs) Handles TemporaryWinChecker.Tick
+        If roomindexY = 5 And Player1.GetX = 7 And Player1.GetY = 14 Then
+            TemporaryWinChecker.Enabled = False
+            MessageBox.Show("YOU WIN!")
+        End If
+    End Sub
 
 
 
