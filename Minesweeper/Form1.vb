@@ -1,5 +1,6 @@
 ﻿Public Class Form1
-
+    'Code Creators: Elijah Morford and Dakota Berg 
+    'Start Date 2/10/2017
     'x = ((x - 8) \ tilesize)       snipetts for getting exact tile spot based upon location.
     'y = ((y - 54) \ tilesize)
 
@@ -2783,8 +2784,6 @@
                     bmp.MakeTransparent(Color.White)
                     m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = CombineImages(m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage, bmp)
 
-
-
                 End If
                 If lvl1EnemyArray(i).GetDirection = 1 Then
                     Dim bmp As Bitmap
@@ -2808,9 +2807,13 @@
 
                 End If
                 lvl1EnemyArray(i).SetAttack(False)
-                EnemyAttackRat.Enabled = False
+
                 attackchecker = 0
             End If
+            If lvl1EnemyArray(i).CheckDead = True Then
+                m_buttonArray(lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).ReturnBackGround)
+            End If
+            EnemyAttackRat.Enabled = False
         Next
     End Sub
     Private Sub EnemyAI_Tick(sender As Object, e As EventArgs) Handles EnemyAI.Tick
