@@ -4,6 +4,7 @@
     Dim Index As Integer
     Dim hp As Integer
     Dim Direction As Integer
+    Dim Isattacking As Boolean
     Sub New(x As Integer, y As Integer)
         EnemyX = x
         EnemyY = y
@@ -44,5 +45,11 @@
     End Sub
     Function GetDirection()
         Return Direction
+    End Function
+    Sub SetAttack(x As Boolean)
+        Isattacking = x
+    End Sub
+    Function GetAttack()
+        Return Isattacking
     End Function
 End Class

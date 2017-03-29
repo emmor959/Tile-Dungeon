@@ -43,6 +43,9 @@ Partial Class Form1
         Me.Text_Timer = New System.Windows.Forms.Timer(Me.components)
         Me.WeaponList = New System.Windows.Forms.ListBox()
         Me.MovespeedMod = New System.Windows.Forms.Timer(Me.components)
+        Me.House = New System.Windows.Forms.ImageList(Me.components)
+        Me.EnemyAttackRat = New System.Windows.Forms.Timer(Me.components)
+        Me.TemporaryWinChecker = New System.Windows.Forms.Timer(Me.components)
         Me.MenuStrip1.SuspendLayout()
         CType(Me.BackPackPicture, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -64,7 +67,7 @@ Partial Class Form1
         '
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(69, 20)
-        Me.FileToolStripMenuItem.Text = "Backpack"
+        Me.FileToolStripMenuItem.Text = "&Backpack"
         '
         'AT
         '
@@ -90,6 +93,15 @@ Partial Class Form1
         Me.ImageList1.Images.SetKeyName(14, "Grass(1).png")
         Me.ImageList1.Images.SetKeyName(15, "Black.png")
         Me.ImageList1.Images.SetKeyName(16, "House(1).png")
+        Me.ImageList1.Images.SetKeyName(17, "GravelFloorWater(Down).png")
+        Me.ImageList1.Images.SetKeyName(18, "GravelFloorWater(Left).png")
+        Me.ImageList1.Images.SetKeyName(19, "GravelFloorWater(Right).png")
+        Me.ImageList1.Images.SetKeyName(20, "GravelFloorWater(Up).png")
+        Me.ImageList1.Images.SetKeyName(21, "DarkWater(Right).png")
+        Me.ImageList1.Images.SetKeyName(22, "Dirt.png")
+        Me.ImageList1.Images.SetKeyName(23, "DirtAndGrassX.png")
+        Me.ImageList1.Images.SetKeyName(24, "DirtAndGrassY.png")
+        Me.ImageList1.Images.SetKeyName(25, "Trees.png")
         '
         'AL
         '
@@ -205,6 +217,27 @@ Partial Class Form1
         '
         Me.MovespeedMod.Interval = 200
         '
+        'House
+        '
+        Me.House.ImageStream = CType(resources.GetObject("House.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.House.TransparentColor = System.Drawing.Color.Transparent
+        Me.House.Images.SetKeyName(0, "FirstHouse(Left).png")
+        Me.House.Images.SetKeyName(1, "FirstHouse(Door).png")
+        Me.House.Images.SetKeyName(2, "FirstHouse(Right).png")
+        Me.House.Images.SetKeyName(3, "FirstHouse(Right Roof).png")
+        Me.House.Images.SetKeyName(4, "FirstHouse(MiddleRoof).png")
+        Me.House.Images.SetKeyName(5, "FirstHouse(Left Roof).png")
+        Me.House.Images.SetKeyName(6, "FirstHouse(Left Roof).png")
+        Me.House.Images.SetKeyName(7, "FirstHouse(MiddleRoof).png")
+        Me.House.Images.SetKeyName(8, "FirstHouse(Right Roof).png")
+        Me.House.Images.SetKeyName(9, "Roof(1).png")
+        '
+        'EnemyAttackRat
+        '
+        '
+        'TemporaryWinChecker
+        '
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -249,4 +282,7 @@ Partial Class Form1
     Friend WithEvents Text_Timer As Timer
     Friend WithEvents WeaponList As ListBox
     Friend WithEvents MovespeedMod As Timer
+    Friend WithEvents House As ImageList
+    Friend WithEvents EnemyAttackRat As Timer
+    Friend WithEvents TemporaryWinChecker As Timer
 End Class
