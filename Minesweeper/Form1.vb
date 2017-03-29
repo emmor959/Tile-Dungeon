@@ -1,6 +1,10 @@
 ﻿Public Class Form1
-    'Code Creators: Elijah Morford and Dakota Berg 
+
+
+    'Code Creators: Dakota Berg and Elijah Morford 
     'Start Date 2/10/2017
+
+
     'x = ((x - 8) \ tilesize)       snipetts for getting exact tile spot based upon location.
     'y = ((y - 54) \ tilesize)
 
@@ -3133,10 +3137,72 @@
     Private Sub TemporaryWinChecker_Tick(sender As Object, e As EventArgs) Handles TemporaryWinChecker.Tick
         If roomindexY = 5 And Player1.GetX = 7 And Player1.GetY = 14 Then
             TemporaryWinChecker.Enabled = False
+            TemporaryTimeCheck.Enabled = False
             MessageBox.Show("YOU WIN!")
+
+            Dim Readwinner As IO.StreamReader
+            Dim line As String
+            Dim args() As String
+            Readwinner = New IO.StreamReader("Leaderboard.Txt")
+            line = Readwinner.ReadLine
+            args = line.Split(",")
+            Readwinner.Close()
+            Dim first As Integer
+            Dim firsts As String
+            firsts = args(1)
+            Integer.TryParse(args(0), first)
+            Dim second As Integer
+            Dim seconds As String
+            seconds = args(3)
+            Integer.TryParse(args(2), second)
+            Dim third As Integer
+            Dim thirds As String
+            thirds = args(5)
+            Integer.TryParse(args(4), third)
+            Dim fourth As Integer
+            Dim fourths As String
+            fourths = args(7)
+            Integer.TryParse(args(6), fourth)
+            Dim fifth As Integer
+            Dim fifths As String
+            fifths = args(9)
+            Integer.TryParse(args(8), fifth)
+            Dim newleader As Integer
+            Dim newlead As String
+            newlead = InputBox("Enter Your Initials", "LeaderBoard", "ABC")
+
+            newleader = timer
+            Dim outline As String
+            If newleader < first Then
+                outline = (newleader.ToString + "," + newlead + "," + first.ToString + "," + firsts + "," + second.ToString + "," + seconds + "," + third.ToString + "," + thirds + "," + fourth.ToString + "," + fourths)
+                MessageBox.Show("1st: " + newleader.ToString + " " + newlead + "    2nd: " + first.ToString + " " + firsts + "    3rd: " + second.ToString + " " + seconds + "    4th " + third.ToString + " " + thirds + "    5th " + fourth.ToString + " " + fourths)
+
+            ElseIf newleader < second Then
+                outline = (first.ToString + "," + firsts + "," + newleader.ToString + "," + newlead + "," + second.ToString + "," + seconds + "," + third.ToString + "," + thirds + "," + fourth.ToString + "," + fourths)
+                MessageBox.Show("1st: " + first.ToString + " " + firsts + "    2nd: " + newleader.ToString + " " + newlead + "    3rd: " + second.ToString + " " + seconds + +vbNewLine + "    4th " + third.ToString + " " + thirds + vbNewLine + "    5th " + fourth.ToString + " " + fourths)
+            ElseIf newleader < third Then
+                outline = (first.ToString + "," + firsts + "," + second.ToString + "," + seconds + "," + newleader.ToString + "," + newlead + "," + third.ToString + "," + thirds + "," + fourth.ToString + "," + fourths)
+            ElseIf newleader < fourth Then
+                outline = (first.ToString + "," + firsts + "," + second.ToString + "," + seconds + "," + third.ToString + "," + thirds + "," + newleader.ToString + "," + newlead + "," + fourth.ToString + "," + fourths)
+            ElseIf newleader < fifth Then
+                outline = (first.ToString + "," + firsts + "," + second.ToString + "," + seconds + "," + third.ToString + "," + thirds + "," + fourth.ToString + "," + fourths + "," + newleader.ToString + "," + newlead)
+            Else
+                outline = line
+            End If
+
+            Dim writewinner As IO.StreamWriter
+            writewinner = New IO.StreamWriter("Leaderboard.Txt")
+            writewinner.Write(outline)
+            writewinner.Close()
+
+
         End If
     End Sub
-
+    Dim timer As Integer
+    Private Sub TemporaryTimeCheck_Tick(sender As Object, e As EventArgs) Handles TemporaryTimeCheck.Tick
+        timer += 1
+        ToolStripMenuItem1.Text = timer
+    End Sub
 
 
 #End Region

@@ -27,6 +27,7 @@ Partial Class Form1
         Me.AR = New System.Windows.Forms.Timer(Me.components)
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.AT = New System.Windows.Forms.Timer(Me.components)
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.AL = New System.Windows.Forms.Timer(Me.components)
@@ -46,6 +47,7 @@ Partial Class Form1
         Me.House = New System.Windows.Forms.ImageList(Me.components)
         Me.EnemyAttackRat = New System.Windows.Forms.Timer(Me.components)
         Me.TemporaryWinChecker = New System.Windows.Forms.Timer(Me.components)
+        Me.TemporaryTimeCheck = New System.Windows.Forms.Timer(Me.components)
         Me.MenuStrip1.SuspendLayout()
         CType(Me.BackPackPicture, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -56,7 +58,7 @@ Partial Class Form1
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.ToolStripMenuItem1})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(387, 24)
@@ -68,6 +70,12 @@ Partial Class Form1
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(69, 20)
         Me.FileToolStripMenuItem.Text = "&Backpack"
+        '
+        'ToolStripMenuItem1
+        '
+        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(22, 20)
+        Me.ToolStripMenuItem1.Text = " "
         '
         'AT
         '
@@ -238,6 +246,11 @@ Partial Class Form1
         'TemporaryWinChecker
         '
         '
+        'TemporaryTimeCheck
+        '
+        Me.TemporaryTimeCheck.Enabled = True
+        Me.TemporaryTimeCheck.Interval = 1000
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -285,4 +298,6 @@ Partial Class Form1
     Friend WithEvents House As ImageList
     Friend WithEvents EnemyAttackRat As Timer
     Friend WithEvents TemporaryWinChecker As Timer
+    Friend WithEvents TemporaryTimeCheck As Timer
+    Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
 End Class
