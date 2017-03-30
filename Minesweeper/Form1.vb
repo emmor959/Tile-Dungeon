@@ -3179,15 +3179,21 @@
 
             ElseIf newleader < second Then
                 outline = (first.ToString + "," + firsts + "," + newleader.ToString + "," + newlead + "," + second.ToString + "," + seconds + "," + third.ToString + "," + thirds + "," + fourth.ToString + "," + fourths)
-                MessageBox.Show("1st: " + first.ToString + " " + firsts + "    2nd: " + newleader.ToString + " " + newlead + "    3rd: " + second.ToString + " " + seconds + +vbNewLine + "    4th " + third.ToString + " " + thirds + vbNewLine + "    5th " + fourth.ToString + " " + fourths)
+                MessageBox.Show("1st: " + first.ToString + " " + firsts + "    2nd: " + newleader.ToString + " " + newlead + "    3rd: " + second.ToString + " " + seconds + "    4th " + third.ToString + " " + thirds + "    5th " + fourth.ToString + " " + fourths)
             ElseIf newleader < third Then
                 outline = (first.ToString + "," + firsts + "," + second.ToString + "," + seconds + "," + newleader.ToString + "," + newlead + "," + third.ToString + "," + thirds + "," + fourth.ToString + "," + fourths)
+                MessageBox.Show("1st: " + first.ToString + " " + firsts + "    2nd: " + second.ToString + " " + seconds + "    3rd: " + newleader.ToString + " " + newlead + "    4th " + third.ToString + " " + thirds + "    5th " + fourth.ToString + " " + fourths)
+
             ElseIf newleader < fourth Then
                 outline = (first.ToString + "," + firsts + "," + second.ToString + "," + seconds + "," + third.ToString + "," + thirds + "," + newleader.ToString + "," + newlead + "," + fourth.ToString + "," + fourths)
+                MessageBox.Show("1st: " + first.ToString + " " + firsts + "    2nd: " + second.ToString + " " + seconds + "    3rd: " + third.ToString + " " + thirds + "    4th " + newleader.ToString + " " + newlead + "    5th " + fourth.ToString + " " + fourths)
+
             ElseIf newleader < fifth Then
                 outline = (first.ToString + "," + firsts + "," + second.ToString + "," + seconds + "," + third.ToString + "," + thirds + "," + fourth.ToString + "," + fourths + "," + newleader.ToString + "," + newlead)
+                MessageBox.Show("1st: " + first.ToString + " " + firsts + "    2nd: " + second.ToString + " " + seconds + "    3rd: " + third.ToString + " " + thirds + "    4th " + fourth.ToString + " " + fourths + "    5th " + newleader.ToString + " " + newlead)
             Else
                 outline = line
+                MessageBox.Show("1st: " + first.ToString + " " + firsts + "    2nd: " + second.ToString + " " + seconds + "    3rd: " + third.ToString + " " + thirds + "    4th " + fourth.ToString + " " + fourths + "    5th " + fifth.ToString + " " + fifths)
             End If
 
             Dim writewinner As IO.StreamWriter
