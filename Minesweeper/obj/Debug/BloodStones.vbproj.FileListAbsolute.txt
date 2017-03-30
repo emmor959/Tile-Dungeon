@@ -50,3 +50,4 @@ C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\obj\Debug\BloodStones.Reso
 C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\obj\Debug\BloodStones.Player_Hair.resources
 C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\obj\Debug\BloodStones.Resource1.resources
 C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\obj\Debug\BloodStones.vbproj.GenerateResource.Cache
+C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\obj\Debug\BloodStones.Audio.resources

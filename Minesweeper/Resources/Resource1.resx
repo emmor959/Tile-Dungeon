@@ -118,49 +118,49 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Health_Potion" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Health_Potion.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Rat_Back_" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Rat(Back).bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Rat_Front_" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Rat(Front).bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Rat_left_" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Rat(left).bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Rat_Right_" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Rat(Right).bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="M_Adult_Back_" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>M_Adult(Back).bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="M_Adult_Front_" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>M_Adult(Front).bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="M_Adult_left_" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>M_Adult(left).bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="M_Adult_right_" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>M_Adult(right).bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Pants_Front_" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Pants(Front).bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Pants_Left_" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Pants(Left).bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Pants_Right_" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Pants(Right).bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Chest" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Chest.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>chest.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Dummy1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Dummy1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>dummy1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Health_Potion" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>health_potion.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="M_Adult_Back_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>m_adult(back).bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="M_Adult_Front_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>m_adult(front).bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="M_Adult_left_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>m_adult(left).bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="M_Adult_right_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>m_adult(right).bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Pants_Front_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>pants(front).bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Pants_Left_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>pants(left).bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Pants_Right_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>pants(right).bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Rat_Back_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>rat(back).bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Rat_Front_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>rat(front).bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Rat_left_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>rat(left).bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Rat_Right_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>rat(right).bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="sword_rest_Right_" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>sword rest(Right).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>sword rest(right).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

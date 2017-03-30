@@ -115,6 +115,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Resources\Audio Res\Audio.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Audio.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Hair\Player_Hair.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -136,6 +141,11 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Audio Res\Audio.resx">
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Audio.Designer.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Hair\Player_Hair.resx">
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
@@ -189,7 +199,10 @@
     <None Include="Resources\Dummy1.png" />
     <None Include="Resources\Chest.png" />
     <None Include="Resources\sword rest%28Right%29.png" />
+    <None Include="bin\Debug\Victory.m4a" />
+    <None Include="bin\Debug\Victory.wav" />
     <Content Include="favicon %282%29.ico" />
+    <None Include="Resources\Victory.mp3" />
     <Content Include="Transparency.cs" />
   </ItemGroup>
   <ItemGroup />

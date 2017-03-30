@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "BloodStones", "Minesweeper\BloodStones.vbproj", "{FE0E33E9-0704-49A2-9229-1541A27F8844}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{096F38C8-AA1F-44CF-8078-21AFEB656550}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FE0E33E9-0704-49A2-9229-1541A27F8844}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE0E33E9-0704-49A2-9229-1541A27F8844}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE0E33E9-0704-49A2-9229-1541A27F8844}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE0E33E9-0704-49A2-9229-1541A27F8844}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

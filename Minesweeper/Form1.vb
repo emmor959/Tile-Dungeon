@@ -21,7 +21,7 @@
     Dim Chestb(0) As clsPickup
     Dim Player1 As clsPlayer
     Dim lvl2EnemyArray(2) As clsEnemy
-    Dim lvl1EnemyArray(1) As clsEnemy
+    Dim lvl1EnemyArray(2) As clsEnemy
     Dim room2Enemts As clsEnemy
     Dim rnd As New Random
     Dim playerDamage As Integer = 0
@@ -499,7 +499,7 @@
         m_Game(0, roomindexX, roomindexY, 8, 0).SetIndex(DoorUPIndex)
         m_Game(0, roomindexX, roomindexY, 7, 15).SetIndex(DoorDownIndex)
         PlayerDown(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
-        DisplayText("Press Space To Attack")
+        DisplayText("Press Space To Attack, Or To Pick Up Items. Press (Alt + B) To Open The Backpack To Use Or Equip Items.")
         buttonArray(8, 0).BackgroundImage = ImageList1.Images(7)
         buttonArray(7, 15).BackgroundImage = ImageList1.Images(7)
     End Sub
@@ -570,13 +570,30 @@
             m_Game(0, roomindexX, roomindexY, bound, i2).SetIndex(WallTileIndex)
             m_Game(0, roomindexX, roomindexY, bound, i2).SetBackGround(9)
         Next
-
         m_buttonArray = buttonArray
-
+        For i = 0 To 5
+            For i2 = 0 To 15
+                m_buttonArray(i, i2).BackgroundImage = ImageList1.Images(15)
+            Next
+        Next
+        For i = 12 To 15
+            For i2 = 0 To 15
+                m_buttonArray(i, i2).BackgroundImage = ImageList1.Images(15)
+            Next
+        Next
+        DrawRoomWallVert(0, 15, 6, 9)
+        DrawRoomWallHori(6, 10, 5, 9)
+        DrawRoomWallVert(0, 3, 8, 9)
+        DrawRoomWallVert(2, 5, 10, 9)
+        DrawRoomWallVert(0, 15, 12, 9)
+        DrawRoomWallHori(8, 12, 7, 9)
+        DrawRoomWallHori(6, 10, 9, 9)
+        DrawRoomWallHori(8, 12, 11, 9)
+        DrawRoomWallHori(6, 10, 13, 9)
         For i = 0 To lvl1EnemyArray.Count - 1
             If lvl1EnemyArray(i).CheckDead = False Then
                 m_Game(0, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(True)
-                m_Game(0, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(True)
+                '  m_Game(0, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(True)
                 Dim bmp As Bitmap
                 bmp = BloodStones.My.Resources.Resource1.Rat_Front_
                 bmp.MakeTransparent(Color.White)
@@ -2383,10 +2400,12 @@
         lvl2EnemyArray(1).SetHealth(5)
         lvl2EnemyArray(2) = New clsEnemy(2, 9)
         lvl2EnemyArray(2).SetHealth(100)
-        lvl1EnemyArray(0) = New clsEnemy(8, 7)
+        lvl1EnemyArray(0) = New clsEnemy(8, 8)
         lvl1EnemyArray(0).SetHealth(3)
-        lvl1EnemyArray(1) = New clsEnemy(8, 9)
+        lvl1EnemyArray(1) = New clsEnemy(8, 10)
         lvl1EnemyArray(1).SetHealth(3)
+        lvl1EnemyArray(2) = New clsEnemy(8, 11)
+        lvl1EnemyArray(2).SetHealth(3)
         HPPACK1(0) = New clsPickup(14, 7)
         HPPACK1(0).SetActive(True)
         Chestb(0) = New clsPickup(14, 8)
@@ -2707,7 +2726,7 @@
             AD.Enabled = False
         End If
     End Sub
-    Dim packstate As Integer = 1
+    Dim packstate As Integer = 0
     Private Sub FileToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FileToolStripMenuItem.Click
         If packstate = 0 Then
             BackPackLabel.Visible = True
@@ -3136,6 +3155,7 @@
 
     Private Sub TemporaryWinChecker_Tick(sender As Object, e As EventArgs) Handles TemporaryWinChecker.Tick
         If roomindexY = 5 And Player1.GetX = 7 And Player1.GetY = 14 Then
+            '   My.Computer.Audio.Play(My.Resources.Audio.Victory,AudioPlayMode.WaitToComplete)
             TemporaryWinChecker.Enabled = False
             TemporaryTimeCheck.Enabled = False
             MessageBox.Show("YOU WIN!")
