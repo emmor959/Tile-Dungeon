@@ -110,6 +110,7 @@ Partial Class Form1
         Me.ImageList1.Images.SetKeyName(23, "DirtAndGrassX.png")
         Me.ImageList1.Images.SetKeyName(24, "DirtAndGrassY.png")
         Me.ImageList1.Images.SetKeyName(25, "Trees.png")
+        Me.ImageList1.Images.SetKeyName(26, "Murky Water.png")
         '
         'AL
         '
@@ -241,9 +242,6 @@ Partial Class Form1
         Me.House.Images.SetKeyName(9, "Roof(1).png")
         '
         'EnemyAttackRat
-        '
-        '
-        'TemporaryWinChecker
         '
         '
         'TemporaryTimeCheck

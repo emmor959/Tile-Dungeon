@@ -938,11 +938,29 @@
         For i = 0 To 6
             SetTile1(i, 8, 23)
         Next
+        HouseLayer(2, 10)
+        For i = 9 To 15
+            For i2 = 0 To 6
+                SetTile1(i, i2, 26)
+            Next
+        Next
 
+        SetTile1(9, 5, 13)
+        SetTile1(9, 6, 13)
+        SetTile1(9, 6, 13)
+        SetTile1(10, 6, 13)
+        SetTile1(11, 6, 13)
 
 
         m_Game(0, roomindexX, roomindexY, 0, 8).SetIndex(DoorLeftIndex)
         m_Game(0, roomindexX, roomindexY, 7, 15).SetIndex(DoorDownIndex)
+
+        For i = 0 To 8
+            TileLayer(i, 0, ImageList1.Images(25))
+        Next
+        For i = 7 To 15
+            TileLayer(15, i, ImageList1.Images(25))
+        Next
         ' m_buttonArray(0, 8).BackgroundImage = ImageList1.Images(13)
         '   m_buttonArray(7, 15).BackgroundImage = ImageList1.Images(13)
         PlayerDown(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
@@ -981,7 +999,7 @@
         m_buttonArray = buttonArray
 
         'CREATES LEFT WALL
-        DrawRoomWallVert(0, 15, 0, 12)
+        DrawRoomWallVert(0, 15, 0, 13)
 
         'CREATES BOTTOM WALL
         DrawRoomWallHori(0, 15, 15, 12)
@@ -989,7 +1007,7 @@
         'CREATES RIGHT WALL
         DrawRoomWallVert(0, 15, 15, 12)
 
-        DrawRoomWallHori(0, 15, 0, 12)
+        DrawRoomWallHori(0, 15, 0, 13)
         If start = 0 Then
             Player1.SetX(7)
             Player1.SetY(1)
@@ -1000,13 +1018,30 @@
             Player1.SetX(14)
             Player1.SetY(8)
         End If
+        For i = 0 To 15
+            TileLayer(15, i, ImageList1.Images(25))
+        Next
+        For i = 0 To 7
+            SetTile1(i, 7, 23)
+        Next
+        For i = 8 To 15
+            SetTile1(i, 8, 23)
+        Next
+        For i = 0 To 7
+            SetTile1(7, i, 24)
+        Next
+        SetTile1(7, 7, 22)
+        SetTile1(7, 8, 22)
+
+
+
         PlayerDown(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
         m_Game(0, roomindexX, roomindexY, 7, 0).SetIndex(DoorUPIndex)
         m_Game(0, roomindexX, roomindexY, 0, 7).SetIndex(DoorLeftIndex)
         m_Game(0, roomindexX, roomindexY, 15, 8).SetIndex(DoorRightIndex)
-        m_buttonArray(7, 0).BackgroundImage = ImageList1.Images(13)
-        m_buttonArray(0, 7).BackgroundImage = ImageList1.Images(13)
-        m_buttonArray(15, 8).BackgroundImage = ImageList1.Images(13)
+        '  m_buttonArray(7, 0).BackgroundImage = ImageList1.Images(13)
+        '  m_buttonArray(0, 7).BackgroundImage = ImageList1.Images(13)
+        '  m_buttonArray(15, 8).BackgroundImage = ImageList1.Images(13)
     End Sub
 #End Region
     Sub Room10(start As Integer)
