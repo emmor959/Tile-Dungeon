@@ -21,7 +21,7 @@
     Dim Chestb(0) As clsPickup
     Dim Player1 As clsPlayer
     Dim lvl2EnemyArray(2) As clsEnemy
-    Dim lvl1EnemyArray(2) As clsEnemy
+    Dim lvl1EnemyArray(1) As clsEnemy
     Dim room2Enemts As clsEnemy
     Dim rnd As New Random
     Dim playerDamage As Integer = 0
@@ -499,7 +499,7 @@
         m_Game(0, roomindexX, roomindexY, 8, 0).SetIndex(DoorUPIndex)
         m_Game(0, roomindexX, roomindexY, 7, 15).SetIndex(DoorDownIndex)
         PlayerDown(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
-        DisplayText("Press Space To Attack, Or To Pick Up Items. Press (Alt + B) To Open The Backpack To Use Or Equip Items.")
+        DisplayText("Press Space To Attack")
         buttonArray(8, 0).BackgroundImage = ImageList1.Images(7)
         buttonArray(7, 15).BackgroundImage = ImageList1.Images(7)
     End Sub
@@ -570,30 +570,13 @@
             m_Game(0, roomindexX, roomindexY, bound, i2).SetIndex(WallTileIndex)
             m_Game(0, roomindexX, roomindexY, bound, i2).SetBackGround(9)
         Next
+
         m_buttonArray = buttonArray
-        For i = 0 To 5
-            For i2 = 0 To 15
-                m_buttonArray(i, i2).BackgroundImage = ImageList1.Images(15)
-            Next
-        Next
-        For i = 12 To 15
-            For i2 = 0 To 15
-                m_buttonArray(i, i2).BackgroundImage = ImageList1.Images(15)
-            Next
-        Next
-        DrawRoomWallVert(0, 15, 6, 9)
-        DrawRoomWallHori(6, 10, 5, 9)
-        DrawRoomWallVert(0, 3, 8, 9)
-        DrawRoomWallVert(2, 5, 10, 9)
-        DrawRoomWallVert(0, 15, 12, 9)
-        DrawRoomWallHori(8, 12, 7, 9)
-        DrawRoomWallHori(6, 10, 9, 9)
-        DrawRoomWallHori(8, 12, 11, 9)
-        DrawRoomWallHori(6, 10, 13, 9)
+
         For i = 0 To lvl1EnemyArray.Count - 1
             If lvl1EnemyArray(i).CheckDead = False Then
                 m_Game(0, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(True)
-                '  m_Game(0, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(True)
+                m_Game(0, roomindexX, roomindexY, lvl1EnemyArray(i).GetX, lvl1EnemyArray(i).GetY).setEnemy(True)
                 Dim bmp As Bitmap
                 bmp = BloodStones.My.Resources.Resource1.Rat_Front_
                 bmp.MakeTransparent(Color.White)
@@ -779,9 +762,9 @@
         m_buttonArray = buttonArray
 
         'CREATES RIGHT WALL
-        DrawRoomWallVert(0, 15, 15, 12)
+        DrawRoomWallVert(0, 15, 15, 13)
         'CREATES BOTTOM WALL
-        DrawRoomWallHori(0, 15, 15, 12)
+        DrawRoomWallHori(0, 15, 15, 13)
         'CREATES LEFT WALL
 
         'Change 13 to 12 for final version
@@ -792,28 +775,28 @@
             Player1.SetX(7)
             Player1.SetY(1)
         ElseIf start = 1 Then
-            Player1.SetX(8)
+            Player1.SetX(7)
             Player1.SetY(14)
         ElseIf start = 3 Then
             Player1.SetX(14)
             Player1.SetY(8)
         End If
-        PlayerDown(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
+
 
 
 
         For i = 0 To 15
             SetTile1(7, i, 24)
         Next
-        ' SetTile1(7, 8, 22)
-        ' For i = 8 To 15
-        '  SetTile1(i, 8, 23)
-        '   Next
+        SetTile1(7, 8, 22)
+        For i = 8 To 15
+            SetTile1(i, 8, 23)
+        Next
         m_Game(0, roomindexX, roomindexY, 7, 0).SetIndex(DoorUPIndex)
-        '  m_Game(0, roomindexX, roomindexY, 7, 15).SetIndex(DoorDownIndex)
-        ' m_Game(0, roomindexX, roomindexY, 15, 8).SetIndex(DoorRightIndex)
+        m_Game(0, roomindexX, roomindexY, 7, 15).SetIndex(DoorDownIndex)
+        m_Game(0, roomindexX, roomindexY, 15, 8).SetIndex(DoorRightIndex)
         ' m_buttonArray(7, 0).BackgroundImage = ImageList1.Images(13)
-        ' m_buttonArray(7, 15).BackgroundImage = ImageList1.Images(13)
+        '  m_buttonArray(7, 15).BackgroundImage = ImageList1.Images(13)
         ' m_buttonArray(15, 8).BackgroundImage = ImageList1.Images(13)
 
 
@@ -825,7 +808,7 @@
 
         HouseLayer(10, 10)
 
-
+        PlayerDown(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
     End Sub
     Sub Room7(start As Integer)
 
@@ -860,28 +843,42 @@
 
         m_buttonArray = buttonArray
 
+
+        'CREATES RIGHT WALL
+        DrawRoomWallVert(0, 15, 15, 13)
+
+        DrawRoomWallHori(0, 15, 0, 13)
+
         'CREATES LEFT WALL
         DrawRoomWallVert(0, 15, 0, 12)
 
         'CREATES BOTTOM WALL
         DrawRoomWallHori(0, 15, 15, 12)
 
-        'CREATES RIGHT WALL
-        DrawRoomWallVert(0, 15, 15, 12)
 
-        DrawRoomWallHori(0, 15, 0, 12)
+        For i = 0 To 7
+            SetTile1(7, i, 24)
+        Next
+        SetTile1(7, 7, 22)
+        For i = 8 To 15
+            SetTile1(i, 7, 23)
+        Next
+
         If start = 0 Then
             Player1.SetX(7)
             Player1.SetY(1)
-        ElseIf start = 1 Then
-            Player1.SetX(8)
-            Player1.SetY(14)
+        ElseIf start = 3 Then
+            Player1.SetX(14)
+            Player1.SetY(7)
         End If
+        HouseLayer(2, 4)
+        HouseLayer(11, 4)
+        HouseLayer(2, 10)
         PlayerDown(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
         m_Game(0, roomindexX, roomindexY, 7, 0).SetIndex(DoorUPIndex)
         m_Game(0, roomindexX, roomindexY, 15, 7).SetIndex(DoorRightIndex)
-        m_buttonArray(7, 0).BackgroundImage = ImageList1.Images(13)
-        m_buttonArray(15, 7).BackgroundImage = ImageList1.Images(13)
+        '   m_buttonArray(7, 0).BackgroundImage = ImageList1.Images(13)
+        '  m_buttonArray(15, 7).BackgroundImage = ImageList1.Images(13)
     End Sub
     Sub Room8(start As Integer)
 
@@ -915,17 +912,17 @@
         Next
 
         m_buttonArray = buttonArray
-
         'CREATES LEFT WALL
-        DrawRoomWallVert(0, 15, 0, 12)
-
+        DrawRoomWallVert(0, 15, 0, 13)
         'CREATES BOTTOM WALL
-        DrawRoomWallHori(0, 15, 15, 12)
-
+        DrawRoomWallHori(0, 15, 15, 13)
         'CREATES RIGHT WALL
         DrawRoomWallVert(0, 15, 15, 12)
 
         DrawRoomWallHori(0, 15, 0, 12)
+
+
+
         If start = 2 Then
             Player1.SetX(1)
             Player1.SetY(8)
@@ -933,11 +930,40 @@
             Player1.SetX(7)
             Player1.SetY(14)
         End If
-        PlayerDown(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
+
+        For i = 8 To 15
+            SetTile1(7, i, 24)
+        Next
+        SetTile1(7, 8, 22)
+        For i = 0 To 6
+            SetTile1(i, 8, 23)
+        Next
+        HouseLayer(2, 10)
+        For i = 9 To 15
+            For i2 = 0 To 6
+                SetTile1(i, i2, 26)
+            Next
+        Next
+
+        SetTile1(9, 5, 13)
+        SetTile1(9, 6, 13)
+        SetTile1(9, 6, 13)
+        SetTile1(10, 6, 13)
+        SetTile1(11, 6, 13)
+
+
         m_Game(0, roomindexX, roomindexY, 0, 8).SetIndex(DoorLeftIndex)
         m_Game(0, roomindexX, roomindexY, 7, 15).SetIndex(DoorDownIndex)
-        m_buttonArray(0, 8).BackgroundImage = ImageList1.Images(13)
-        m_buttonArray(7, 15).BackgroundImage = ImageList1.Images(13)
+
+        For i = 0 To 8
+            TileLayer(i, 0, ImageList1.Images(25))
+        Next
+        For i = 7 To 15
+            TileLayer(15, i, ImageList1.Images(25))
+        Next
+        ' m_buttonArray(0, 8).BackgroundImage = ImageList1.Images(13)
+        '   m_buttonArray(7, 15).BackgroundImage = ImageList1.Images(13)
+        PlayerDown(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
     End Sub
     Sub Room9(start As Integer)
 
@@ -973,7 +999,7 @@
         m_buttonArray = buttonArray
 
         'CREATES LEFT WALL
-        DrawRoomWallVert(0, 15, 0, 12)
+        DrawRoomWallVert(0, 15, 0, 13)
 
         'CREATES BOTTOM WALL
         DrawRoomWallHori(0, 15, 15, 12)
@@ -981,7 +1007,7 @@
         'CREATES RIGHT WALL
         DrawRoomWallVert(0, 15, 15, 12)
 
-        DrawRoomWallHori(0, 15, 0, 12)
+        DrawRoomWallHori(0, 15, 0, 13)
         If start = 0 Then
             Player1.SetX(7)
             Player1.SetY(1)
@@ -989,16 +1015,33 @@
             Player1.SetX(1)
             Player1.SetY(7)
         ElseIf start = 3 Then
-            Player1.SetX(15)
+            Player1.SetX(14)
             Player1.SetY(8)
         End If
+        For i = 0 To 15
+            TileLayer(15, i, ImageList1.Images(25))
+        Next
+        For i = 0 To 7
+            SetTile1(i, 7, 23)
+        Next
+        For i = 8 To 15
+            SetTile1(i, 8, 23)
+        Next
+        For i = 0 To 7
+            SetTile1(7, i, 24)
+        Next
+        SetTile1(7, 7, 22)
+        SetTile1(7, 8, 22)
+
+
+
         PlayerDown(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
         m_Game(0, roomindexX, roomindexY, 7, 0).SetIndex(DoorUPIndex)
         m_Game(0, roomindexX, roomindexY, 0, 7).SetIndex(DoorLeftIndex)
         m_Game(0, roomindexX, roomindexY, 15, 8).SetIndex(DoorRightIndex)
-        m_buttonArray(7, 0).BackgroundImage = ImageList1.Images(13)
-        m_buttonArray(0, 7).BackgroundImage = ImageList1.Images(13)
-        m_buttonArray(15, 8).BackgroundImage = ImageList1.Images(13)
+        '  m_buttonArray(7, 0).BackgroundImage = ImageList1.Images(13)
+        '  m_buttonArray(0, 7).BackgroundImage = ImageList1.Images(13)
+        '  m_buttonArray(15, 8).BackgroundImage = ImageList1.Images(13)
     End Sub
 #End Region
     Sub Room10(start As Integer)
@@ -1048,11 +1091,11 @@
             Player1.SetX(1)
             Player1.SetY(8)
         ElseIf start = 3 Then
-            Player1.SetX(15)
+            Player1.SetX(14)
             Player1.SetY(6)
         End If
         PlayerDown(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
-        m_Game(0, roomindexX, roomindexY, 0, 8).SetIndex(DoorUPIndex)
+        m_Game(0, roomindexX, roomindexY, 0, 8).SetIndex(DoorLeftIndex)
         m_Game(0, roomindexX, roomindexY, 15, 6).SetIndex(DoorRightIndex)
         m_buttonArray(0, 8).BackgroundImage = ImageList1.Images(13)
         m_buttonArray(15, 6).BackgroundImage = ImageList1.Images(13)
@@ -1108,7 +1151,7 @@
             Player1.SetY(8)
         End If
 
-        m_Game(0, roomindexX, roomindexY, 0, 6).SetIndex(DoorUPIndex)
+        m_Game(0, roomindexX, roomindexY, 0, 6).SetIndex(DoorLeftIndex)
         m_Game(0, roomindexX, roomindexY, 15, 8).SetIndex(DoorRightIndex)
         m_buttonArray(0, 6).BackgroundImage = ImageList1.Images(13)
         m_buttonArray(15, 8).BackgroundImage = ImageList1.Images(13)
@@ -1164,7 +1207,7 @@
         ElseIf start = 2 Then
             Player1.SetX(1)
             Player1.SetY(8)
-        ElseIf start = 1 Then
+        ElseIf start = 0 Then
             Player1.SetX(6)
             Player1.SetY(1)
         End If
@@ -1225,7 +1268,7 @@
             Player1.SetY(14)
         ElseIf start = 3 Then
             Player1.SetX(14)
-            Player1.SetY(9)
+            Player1.SetY(8)
         End If
 
         m_Game(0, roomindexX, roomindexY, 6, 15).SetIndex(DoorDownIndex)
@@ -2400,12 +2443,10 @@
         lvl2EnemyArray(1).SetHealth(5)
         lvl2EnemyArray(2) = New clsEnemy(2, 9)
         lvl2EnemyArray(2).SetHealth(100)
-        lvl1EnemyArray(0) = New clsEnemy(8, 8)
+        lvl1EnemyArray(0) = New clsEnemy(8, 7)
         lvl1EnemyArray(0).SetHealth(3)
-        lvl1EnemyArray(1) = New clsEnemy(8, 10)
+        lvl1EnemyArray(1) = New clsEnemy(8, 9)
         lvl1EnemyArray(1).SetHealth(3)
-        lvl1EnemyArray(2) = New clsEnemy(8, 11)
-        lvl1EnemyArray(2).SetHealth(3)
         HPPACK1(0) = New clsPickup(14, 7)
         HPPACK1(0).SetActive(True)
         Chestb(0) = New clsPickup(14, 8)
@@ -2726,7 +2767,7 @@
             AD.Enabled = False
         End If
     End Sub
-    Dim packstate As Integer = 0
+    Dim packstate As Integer = 1
     Private Sub FileToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FileToolStripMenuItem.Click
         If packstate = 0 Then
             BackPackLabel.Visible = True
@@ -3152,83 +3193,6 @@
         End If
     End Sub
     Dim attackchecker As Integer
-
-    Private Sub TemporaryWinChecker_Tick(sender As Object, e As EventArgs) Handles TemporaryWinChecker.Tick
-        If roomindexY = 5 And Player1.GetX = 7 And Player1.GetY = 14 Then
-            '   My.Computer.Audio.Play(My.Resources.Audio.Victory,AudioPlayMode.WaitToComplete)
-            TemporaryWinChecker.Enabled = False
-            TemporaryTimeCheck.Enabled = False
-            MessageBox.Show("YOU WIN!")
-
-            Dim Readwinner As IO.StreamReader
-            Dim line As String
-            Dim args() As String
-            Readwinner = New IO.StreamReader("Leaderboard.Txt")
-            line = Readwinner.ReadLine
-            args = line.Split(",")
-            Readwinner.Close()
-            Dim first As Integer
-            Dim firsts As String
-            firsts = args(1)
-            Integer.TryParse(args(0), first)
-            Dim second As Integer
-            Dim seconds As String
-            seconds = args(3)
-            Integer.TryParse(args(2), second)
-            Dim third As Integer
-            Dim thirds As String
-            thirds = args(5)
-            Integer.TryParse(args(4), third)
-            Dim fourth As Integer
-            Dim fourths As String
-            fourths = args(7)
-            Integer.TryParse(args(6), fourth)
-            Dim fifth As Integer
-            Dim fifths As String
-            fifths = args(9)
-            Integer.TryParse(args(8), fifth)
-            Dim newleader As Integer
-            Dim newlead As String
-            newlead = InputBox("Enter Your Initials", "LeaderBoard", "ABC")
-
-            newleader = timer
-            Dim outline As String
-            If newleader < first Then
-                outline = (newleader.ToString + "," + newlead + "," + first.ToString + "," + firsts + "," + second.ToString + "," + seconds + "," + third.ToString + "," + thirds + "," + fourth.ToString + "," + fourths)
-                MessageBox.Show("1st: " + newleader.ToString + " " + newlead + "    2nd: " + first.ToString + " " + firsts + "    3rd: " + second.ToString + " " + seconds + "    4th " + third.ToString + " " + thirds + "    5th " + fourth.ToString + " " + fourths)
-
-            ElseIf newleader < second Then
-                outline = (first.ToString + "," + firsts + "," + newleader.ToString + "," + newlead + "," + second.ToString + "," + seconds + "," + third.ToString + "," + thirds + "," + fourth.ToString + "," + fourths)
-                MessageBox.Show("1st: " + first.ToString + " " + firsts + "    2nd: " + newleader.ToString + " " + newlead + "    3rd: " + second.ToString + " " + seconds + "    4th " + third.ToString + " " + thirds + "    5th " + fourth.ToString + " " + fourths)
-            ElseIf newleader < third Then
-                outline = (first.ToString + "," + firsts + "," + second.ToString + "," + seconds + "," + newleader.ToString + "," + newlead + "," + third.ToString + "," + thirds + "," + fourth.ToString + "," + fourths)
-                MessageBox.Show("1st: " + first.ToString + " " + firsts + "    2nd: " + second.ToString + " " + seconds + "    3rd: " + newleader.ToString + " " + newlead + "    4th " + third.ToString + " " + thirds + "    5th " + fourth.ToString + " " + fourths)
-
-            ElseIf newleader < fourth Then
-                outline = (first.ToString + "," + firsts + "," + second.ToString + "," + seconds + "," + third.ToString + "," + thirds + "," + newleader.ToString + "," + newlead + "," + fourth.ToString + "," + fourths)
-                MessageBox.Show("1st: " + first.ToString + " " + firsts + "    2nd: " + second.ToString + " " + seconds + "    3rd: " + third.ToString + " " + thirds + "    4th " + newleader.ToString + " " + newlead + "    5th " + fourth.ToString + " " + fourths)
-
-            ElseIf newleader < fifth Then
-                outline = (first.ToString + "," + firsts + "," + second.ToString + "," + seconds + "," + third.ToString + "," + thirds + "," + fourth.ToString + "," + fourths + "," + newleader.ToString + "," + newlead)
-                MessageBox.Show("1st: " + first.ToString + " " + firsts + "    2nd: " + second.ToString + " " + seconds + "    3rd: " + third.ToString + " " + thirds + "    4th " + fourth.ToString + " " + fourths + "    5th " + newleader.ToString + " " + newlead)
-            Else
-                outline = line
-                MessageBox.Show("1st: " + first.ToString + " " + firsts + "    2nd: " + second.ToString + " " + seconds + "    3rd: " + third.ToString + " " + thirds + "    4th " + fourth.ToString + " " + fourths + "    5th " + fifth.ToString + " " + fifths)
-            End If
-
-            Dim writewinner As IO.StreamWriter
-            writewinner = New IO.StreamWriter("Leaderboard.Txt")
-            writewinner.Write(outline)
-            writewinner.Close()
-
-
-        End If
-    End Sub
-    Dim timer As Integer
-    Private Sub TemporaryTimeCheck_Tick(sender As Object, e As EventArgs) Handles TemporaryTimeCheck.Tick
-        timer += 1
-        ToolStripMenuItem1.Text = timer
-    End Sub
 
 
 #End Region
