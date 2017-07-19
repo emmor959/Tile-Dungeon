@@ -206,7 +206,6 @@
     <None Include="bin\Debug\Victory.m4a" />
     <None Include="bin\Debug\Victory.wav" />
     <Content Include="favicon %282%29.ico" />
-    <None Include="Resources\Victory.mp3" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
