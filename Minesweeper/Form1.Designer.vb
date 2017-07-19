@@ -48,6 +48,7 @@ Partial Class Form1
         Me.EnemyAttackRat = New System.Windows.Forms.Timer(Me.components)
         Me.TemporaryWinChecker = New System.Windows.Forms.Timer(Me.components)
         Me.TemporaryTimeCheck = New System.Windows.Forms.Timer(Me.components)
+        Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.BackPackPicture, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -249,6 +250,10 @@ Partial Class Form1
         Me.TemporaryTimeCheck.Enabled = True
         Me.TemporaryTimeCheck.Interval = 1000
         '
+        'OpenFileDialog1
+        '
+        Me.OpenFileDialog1.FileName = "OpenFileDialog1"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -298,4 +303,5 @@ Partial Class Form1
     Friend WithEvents TemporaryWinChecker As Timer
     Friend WithEvents TemporaryTimeCheck As Timer
     Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents OpenFileDialog1 As OpenFileDialog
 End Class

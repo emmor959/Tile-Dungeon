@@ -1,0 +1,14 @@
+C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\bin\Release\Blood Stones.exe.config
+C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\bin\Release\Blood Stones.exe
+C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\bin\Release\Blood Stones.pdb
+C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\bin\Release\Blood Stones.xml
+C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\obj\Release\BloodStones.vbprojResolveAssemblyReference.cache
+C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\obj\Release\BloodStones.Form1.resources
+C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\obj\Release\BloodStones.Resources.resources
+C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\obj\Release\BloodStones.Audio.resources
+C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\obj\Release\BloodStones.Player_Hair.resources
+C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\obj\Release\BloodStones.Resource1.resources
+C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\obj\Release\BloodStones.vbproj.GenerateResource.Cache
+C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\obj\Release\Blood Stones.exe
+C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\obj\Release\Blood Stones.xml
+C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\obj\Release\Blood Stones.pdb
