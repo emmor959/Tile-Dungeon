@@ -51,3 +51,18 @@ C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\obj\Debug\BloodStones.Play
 C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\obj\Debug\BloodStones.Resource1.resources
 C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\obj\Debug\BloodStones.vbproj.GenerateResource.Cache
 C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\obj\Debug\BloodStones.Audio.resources
+C:\Users\ACS User\Source\Repos\Tile-Dungeon\Minesweeper\obj\Debug\BloodStones.vbprojResolveAssemblyReference.cache
+C:\Users\ACS User\Source\Repos\Tile-Dungeon\Minesweeper\obj\Debug\BloodStones.Form1.resources
+C:\Users\ACS User\Source\Repos\Tile-Dungeon\Minesweeper\obj\Debug\BloodStones.Resources.resources
+C:\Users\ACS User\Source\Repos\Tile-Dungeon\Minesweeper\obj\Debug\BloodStones.Audio.resources
+C:\Users\ACS User\Source\Repos\Tile-Dungeon\Minesweeper\obj\Debug\BloodStones.Player_Hair.resources
+C:\Users\ACS User\Source\Repos\Tile-Dungeon\Minesweeper\obj\Debug\BloodStones.Resource1.resources
+C:\Users\ACS User\Source\Repos\Tile-Dungeon\Minesweeper\obj\Debug\BloodStones.vbproj.GenerateResource.Cache
+C:\Users\ACS User\Source\Repos\Tile-Dungeon\Minesweeper\obj\Debug\BloodStones.vbproj.CoreCompileInputs.cache
+C:\Users\ACS User\Source\Repos\Tile-Dungeon\Minesweeper\bin\Debug\BloodStones.exe.config
+C:\Users\ACS User\Source\Repos\Tile-Dungeon\Minesweeper\bin\Debug\BloodStones.exe
+C:\Users\ACS User\Source\Repos\Tile-Dungeon\Minesweeper\bin\Debug\BloodStones.pdb
+C:\Users\ACS User\Source\Repos\Tile-Dungeon\Minesweeper\bin\Debug\BloodStones.xml
+C:\Users\ACS User\Source\Repos\Tile-Dungeon\Minesweeper\obj\Debug\BloodStones.exe
+C:\Users\ACS User\Source\Repos\Tile-Dungeon\Minesweeper\obj\Debug\BloodStones.xml
+C:\Users\ACS User\Source\Repos\Tile-Dungeon\Minesweeper\obj\Debug\BloodStones.pdb

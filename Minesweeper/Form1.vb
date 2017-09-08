@@ -7,6 +7,15 @@
     'y = ((y - 54) \ tilesize)
 
     '----------------------------------------------------------------------
+
+    Dim playername As String
+
+
+
+
+
+
+
     Dim m_Game(3, 100, 100, 16, 16) As Tile
     Dim m_buttonArray(,) As Button
     Dim m_RowSize As Integer
@@ -1233,9 +1242,12 @@
         HPPACK1(0).SetActive(True)
         Chestb(0) = New clsPickup(14, 8)
         Chestb(0).SetActive(True)
-        Room1(0)
-        Timer1.Enabled = True
-        Me.Focus()
+
+
+
+
+
+
     End Sub
 
 
@@ -1734,7 +1746,7 @@
                 Me.Controls.Add(buttonArray(i, i2))
             Next
         Next
-        TemporaryWinChecker.Enabled = True
+
 
         m_buttonArray = buttonArray
 
@@ -3272,9 +3284,34 @@
         m_buttonArray(7, 0).BackgroundImage = ImageList1.Images(13)
         PlayerDown(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
     End Sub
+
+
 #End Region
 
+#Region "Start"
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Button1.Visible = False
+        Button3.Visible = False
+        Button4.Visible = False
+        Label1.Text = "What Is Your Name?"
+        Label1.Visible = True
+        Button5.Visible = True
+        TextBox2.Visible = True
+    End Sub
 
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        playername = TextBox2.Text
+        Button5.Visible = False
+        TextBox2.Visible = False
+        Label1.Visible = False
+        Room1(0)
+        Timer1.Enabled = True
+        Me.Focus()
+    End Sub
+
+
+
+#End Region
 
 End Class
 
