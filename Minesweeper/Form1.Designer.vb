@@ -55,6 +55,7 @@ Partial Class Form1
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Button5 = New System.Windows.Forms.Button()
+        Me.Button6 = New System.Windows.Forms.Button()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.BackPackPicture, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -316,12 +317,23 @@ Partial Class Form1
         Me.Button5.UseVisualStyleBackColor = True
         Me.Button5.Visible = False
         '
+        'Button6
+        '
+        Me.Button6.Location = New System.Drawing.Point(90, 334)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(210, 23)
+        Me.Button6.TabIndex = 17
+        Me.Button6.Text = "Confirm"
+        Me.Button6.UseVisualStyleBackColor = True
+        Me.Button6.Visible = False
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.ClientSize = New System.Drawing.Size(387, 446)
+        Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.TextBox2)
         Me.Controls.Add(Me.Label1)
@@ -378,4 +390,5 @@ Partial Class Form1
     Friend WithEvents Label1 As Label
     Friend WithEvents TextBox2 As TextBox
     Friend WithEvents Button5 As Button
+    Friend WithEvents Button6 As Button
 End Class

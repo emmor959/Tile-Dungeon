@@ -3303,6 +3303,17 @@
         playername = TextBox2.Text
         Button5.Visible = False
         TextBox2.Visible = False
+        Label1.Text = "What Do You Look Like?"
+        Button6.Visible = True
+
+
+
+
+
+    End Sub
+
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+        Button6.Visible = False
         Label1.Visible = False
         Room1(0)
         Timer1.Enabled = True
