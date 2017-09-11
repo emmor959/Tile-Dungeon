@@ -647,8 +647,10 @@
         PictureBox1.Image = ImageList2.Images(Player1.GetHP)
     End Sub
 
+#Region "Player Images"
+    Dim baseimage As Bitmap
     Sub PlayerLeft(a As Integer)
-        Dim baseimage As Bitmap
+        baseimage.Dispose()
         baseimage = BloodStones.My.Resources.Resource1.M_Adult_left_
         baseimage.MakeTransparent(Color.White)
         Dim pants As Bitmap
@@ -657,7 +659,7 @@
         m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(ImageList1.Images(a), baseimage, pants)
     End Sub
     Sub PlayerRight(a As Integer)
-        Dim baseimage As Bitmap
+        baseimage.Dispose()
         baseimage = BloodStones.My.Resources.Resource1.M_Adult_right_
         baseimage.MakeTransparent(Color.White)
         Dim pants As Bitmap
@@ -666,7 +668,7 @@
         m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(ImageList1.Images(a), baseimage, pants)
     End Sub
     Sub PlayerDown(a As Integer)
-        Dim baseimage As Bitmap
+        baseimage.Dispose()
         baseimage = BloodStones.My.Resources.Resource1.M_Adult_Front_
         baseimage.MakeTransparent(Color.White)
         Dim pants As Bitmap
@@ -675,7 +677,7 @@
         m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(ImageList1.Images(a), baseimage, pants)
     End Sub
     Sub PlayerUp(a As Integer)
-        Dim baseimage As Bitmap
+        baseimage.Dispose()
         baseimage = BloodStones.My.Resources.Resource1.M_Adult_Back_
         baseimage.MakeTransparent(Color.White)
         Dim pants As Bitmap
@@ -683,6 +685,17 @@
         pants.MakeTransparent(Color.White)
         m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(ImageList1.Images(a), baseimage, pants)
     End Sub
+
+
+
+
+
+#End Region
+
+
+
+
+
 
     Sub MovePlayer(x As Integer, y As Integer)
         If m_Game(levelindex, roomindexX, roomindexY, Player1.GetX() + x, Player1.GetY() + y).CheckForEnemy = False Then
