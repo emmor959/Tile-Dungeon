@@ -42,6 +42,7 @@
     Public Const DoorRightIndex As Integer = 4
     Public Const DoorLeftIndex As Integer = 5
     Public Const PickUp As Integer = 6
+    Public Const Housetile As Integer = 0
 
 
 
@@ -148,17 +149,22 @@
 
     Sub HouseLayer(x As Integer, y As Integer)
         m_buttonArray(x, y).BackgroundImage = House.Images(3)
-        m_Game(0, roomindexX, roomindexY, x, y).SetBackGround(6)
+        m_Game(0, roomindexX, roomindexY, x, y).SetIndex(Housetile)
         m_buttonArray(x + 1, y).BackgroundImage = House.Images(4)
-        m_Game(0, roomindexX, roomindexY, x + 1, y).SetBackGround(6)
+        m_Game(0, roomindexX, roomindexY, x + 1, y).SetIndex(Housetile)
+
         m_buttonArray(x + 2, y).BackgroundImage = House.Images(5)
-        m_Game(0, roomindexX, roomindexY, x + 2, y).SetBackGround(6)
+        m_Game(0, roomindexX, roomindexY, x + 2, y).SetIndex(Housetile)
         m_buttonArray(x, y + 1).BackgroundImage = House.Images(0)
-        m_Game(0, roomindexX, roomindexY, x, y + 1).SetBackGround(6)
+        m_Game(0, roomindexX, roomindexY, x, y + 1).SetIndex(Housetile)
         m_buttonArray(x + 1, y + 1).BackgroundImage = House.Images(1)
-        m_Game(0, roomindexX, roomindexY, x + 1, y + 1).SetBackGround(6)
+        m_Game(0, roomindexX, roomindexY, x + 1, y + 1).SetIndex(Housetile)
         m_buttonArray(x + 2, y + 1).BackgroundImage = House.Images(2)
-        m_Game(0, roomindexX, roomindexY, x + 2, y + 1).SetBackGround(6)
+        m_Game(0, roomindexX, roomindexY, x + 2, y + 1).SetIndex(Housetile)
+
+
+
+
     End Sub
 
     Sub hp(x As Integer, y As Integer, a As Integer)
@@ -648,9 +654,9 @@
     End Sub
 
 #Region "Player Images"
-    Dim baseimage As Bitmap
+
     Sub PlayerLeft(a As Integer)
-        baseimage.Dispose()
+        Dim baseimage As Bitmap
         baseimage = BloodStones.My.Resources.Resource1.M_Adult_left_
         baseimage.MakeTransparent(Color.White)
         Dim pants As Bitmap
@@ -659,7 +665,7 @@
         m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(ImageList1.Images(a), baseimage, pants)
     End Sub
     Sub PlayerRight(a As Integer)
-        baseimage.Dispose()
+        Dim baseimage As Bitmap
         baseimage = BloodStones.My.Resources.Resource1.M_Adult_right_
         baseimage.MakeTransparent(Color.White)
         Dim pants As Bitmap
@@ -668,7 +674,7 @@
         m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(ImageList1.Images(a), baseimage, pants)
     End Sub
     Sub PlayerDown(a As Integer)
-        baseimage.Dispose()
+        Dim baseimage As Bitmap
         baseimage = BloodStones.My.Resources.Resource1.M_Adult_Front_
         baseimage.MakeTransparent(Color.White)
         Dim pants As Bitmap
@@ -677,7 +683,7 @@
         m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(ImageList1.Images(a), baseimage, pants)
     End Sub
     Sub PlayerUp(a As Integer)
-        baseimage.Dispose()
+        Dim baseimage As Bitmap
         baseimage = BloodStones.My.Resources.Resource1.M_Adult_Back_
         baseimage.MakeTransparent(Color.White)
         Dim pants As Bitmap
