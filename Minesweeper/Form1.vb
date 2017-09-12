@@ -43,6 +43,7 @@
     Public Const DoorLeftIndex As Integer = 5
     Public Const PickUp As Integer = 6
     Public Const Housetile As Integer = 0
+    Public Const DoorHouseIndex As Integer = 7
 
 
 
@@ -158,7 +159,7 @@
         m_buttonArray(x, y + 1).BackgroundImage = House.Images(0)
         m_Game(0, roomindexX, roomindexY, x, y + 1).SetIndex(Housetile)
         m_buttonArray(x + 1, y + 1).BackgroundImage = House.Images(1)
-        m_Game(0, roomindexX, roomindexY, x + 1, y + 1).SetIndex(Housetile)
+        m_Game(0, roomindexX, roomindexY, x + 1, y + 1).SetIndex(DoorHouseIndex)
         m_buttonArray(x + 2, y + 1).BackgroundImage = House.Images(2)
         m_Game(0, roomindexX, roomindexY, x + 2, y + 1).SetIndex(Housetile)
 
@@ -363,7 +364,10 @@
                         If m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY - 1).GetIndex = DoorUPIndex Then
                             roomindexY -= 1
                             CreateRoom(roomindexX, roomindexY, 1)
+                        ElseIf m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY - 1).GetIndex = DoorHouseIndex Then
+                            CreateHouse(1)
                         Else
+
                             MovePlayer(0, -1)
                         End If
                     End If
@@ -1244,6 +1248,24 @@
             Room30(start)
         End If
     End Sub
+    Sub CreateHouse(start As Integer)
+        For i = 0 To 15
+            For i2 = 0 To 15
+                m_buttonArray(i, i2).Dispose()
+                ' m_Game(0, roomindex, i, i2).SetIndex0)
+                '  m_Game(0, roomindex, i, i2).setEnemy(False)
+            Next
+        Next
+        If roomindexX = 0 And roomindexY = 5 Then
+            If Player1.GetX = 3 And Player1.GetY = 7 Then
+                House1(start)
+            End If
+
+        End If
+
+
+
+    End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'SET ENEMY LOCATIONS
@@ -1817,6 +1839,54 @@
         HouseLayer(10, 10)
 
         PlayerDown(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
+    End Sub
+    Sub House1(start As Integer)
+        For i = 1 To 16
+            For i2 = 1 To 16
+
+                m_Game(0, roomindexX, roomindexY, i - 1, i2 - 1) = New Tile(False, False, 1)
+
+            Next
+        Next
+
+        Dim buttonArray(16, 16) As Button
+        For i = 0 To 15
+            For i2 = 0 To 15
+                buttonArray(i, i2) = New System.Windows.Forms.Button()
+                buttonArray(i, i2).Location = New System.Drawing.Point((i * tilesize), (i2 * tilesize) + tilesize)
+                buttonArray(i, i2).Name = (i.ToString + "_" + i2.ToString)
+                buttonArray(i, i2).Size = New System.Drawing.Size(tilesize, tilesize)
+                buttonArray(i, i2).TabIndex = 1
+                buttonArray(i, i2).Text = ""
+                buttonArray(i, i2).UseVisualStyleBackColor = True
+                buttonArray(i, i2).BackColor = Color.Gray
+                buttonArray(i, i2).BackgroundImage = ImageList1.Images(13)
+                m_Game(0, roomindexX, roomindexY, i, i2).SetBackGround(13)
+                buttonArray(i, i2).FlatStyle = FlatStyle.Flat
+                buttonArray(i, i2).BackgroundImageLayout = ImageLayout.Stretch
+                buttonArray(i, i2).FlatAppearance.BorderSize = 0
+                buttonArray(i, i2).Enabled = False
+                Me.Controls.Add(buttonArray(i, i2))
+            Next
+        Next
+
+        m_buttonArray = buttonArray
+        DrawRoomWallVert(0, 15, 15, 13)
+
+        DrawRoomWallHori(0, 15, 0, 13)
+
+        'CREATES LEFT WALL
+        DrawRoomWallVert(0, 15, 0, 12)
+
+        'CREATES BOTTOM WALL
+        DrawRoomWallHori(0, 15, 15, 12)
+
+        If start = 1 Then
+            Player1.SetX(14)
+            Player1.SetY(7)
+        End If
+
+        m_Game(0, roomindexX, roomindexY, 7, 15).SetIndex(DoorHouseIndex)
     End Sub
     Sub Room7(start As Integer)
 
