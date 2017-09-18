@@ -7,7 +7,45 @@
     'y = ((y - 54) \ tilesize)
 
     '----------------------------------------------------------------------
+
+#Region "Player Properties"
     Dim playername As String
+    Dim hairindex As Integer
+    Dim Haircolor As Integer
+    Dim Shirtcolor As Integer
+    Dim PantsColor As Integer
+    Dim skintone As Integer
+
+    Dim baseimageR As Bitmap
+    Dim baseimageL As Bitmap
+    Dim baseimageU As Bitmap
+    Dim baseimageD As Bitmap
+    Dim pantsR As Bitmap
+    Dim pantsL As Bitmap
+    Dim pantsU As Bitmap
+    Dim pantsD As Bitmap
+    Dim ShirtR As Bitmap
+    Dim ShirtL As Bitmap
+    Dim ShirtU As Bitmap
+    Dim ShirtD As Bitmap
+    Dim HairR As Bitmap
+    Dim HairL As Bitmap
+    Dim HairU As Bitmap
+    Dim HairD As Bitmap
+
+
+
+
+
+
+
+
+
+
+
+
+#End Region
+
 
 
 
@@ -73,29 +111,15 @@
         Return bmp
     End Function
 
-    Public Function CombinePlayerLayers(ByVal Tile As Image, ByVal base As Image, ByVal pants As Image) As Image
+    Public Function CombinePlayerLayers(ByVal Tile As Image, ByVal base As Image, ByVal pants As Image, ByRef Shirt As Image, ByVal Hair As Image) As Image
         Dim bmp As New Bitmap(Math.Max(24, 24), 24)
         Dim g As Graphics = Graphics.FromImage(bmp)
-        Dim colorshifter As New Bitmap(Math.Max(24, 24), 24)
-        Dim g2 As Graphics = Graphics.FromImage(colorshifter)
         g.DrawImage(Tile, 0, 0, 24, 24)
         g.DrawImage(base, 0, 0, 24, 24)
-
-        g2.DrawImage(pants, 0, 0, 24, 24)
+        g.DrawImage(pants, 0, 0, 24, 24)
+        g.DrawImage(Shirt, 0, 0, 24, 24)
+        g.DrawImage(Hair, 0, 0, 24, 24)
         Dim placeholder As Color
-        For i = 0 To 23
-            For i2 = 0 To 23
-                placeholder = colorshifter.GetPixel(i, i2)
-                If placeholder <> Color.White And placeholder = Color.Transparent Then
-                    colorshifter.SetPixel(i, i2, Color.Red)
-                End If
-            Next
-        Next
-
-        g.DrawImage(colorshifter, 0, 0, 24, 24)
-        colorshifter.Dispose()
-
-        ' g.DrawImage(Tile, 0, 0, 24, 24)
         g.Dispose()
         Return bmp
     End Function
@@ -639,40 +663,17 @@
 #Region "Player Images"
 
     Sub PlayerLeft(a As Integer)
-        Dim baseimage As Bitmap
-        baseimage = BloodStones.My.Resources.Resource1.M_Adult_left_
-        baseimage.MakeTransparent(Color.White)
-        Dim pants As Bitmap
-        pants = BloodStones.My.Resources.Resource1.Pants_Left_
-        pants.MakeTransparent(Color.White)
-        m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(ImageList1.Images(a), baseimage, pants)
+
+        m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(ImageList1.Images(a), baseimageL, pantsL, ShirtL, HairL)
     End Sub
     Sub PlayerRight(a As Integer)
-        Dim baseimage As Bitmap
-        baseimage = BloodStones.My.Resources.Resource1.M_Adult_right_
-        baseimage.MakeTransparent(Color.White)
-        Dim pants As Bitmap
-        pants = BloodStones.My.Resources.Resource1.Pants_Right_
-        pants.MakeTransparent(Color.White)
-        m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(ImageList1.Images(a), baseimage, pants)
+        m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(ImageList1.Images(a), baseimageR, pantsR, ShirtR, HairR)
     End Sub
     Sub PlayerDown(a As Integer)
-        Dim baseimage As Bitmap
-        baseimage = BloodStones.My.Resources.Resource1.M_Adult_Front_
-        baseimage.MakeTransparent(Color.White)
-        Dim pants As Bitmap
-        pants = BloodStones.My.Resources.Resource1.Pants_Front_
-        pants.MakeTransparent(Color.White)
-        m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(ImageList1.Images(a), baseimage, pants)
+        m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(ImageList1.Images(a), baseimageD, pantsD, ShirtD, HairD)
     End Sub
     Sub PlayerUp(a As Integer)
-        Dim baseimage As Bitmap
-        baseimage = BloodStones.My.Resources.Resource1.M_Adult_Back_
-        baseimage.MakeTransparent(Color.White)
-        Dim pants As Bitmap
-        pants = BloodStones.My.Resources.Resource1.Pants_Front_
-        pants.MakeTransparent(Color.White)
-        m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(ImageList1.Images(a), baseimage, pants)
+        m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(ImageList1.Images(a), baseimageU, pantsU, ShirtU, HairU)
     End Sub
 
 
@@ -3486,8 +3487,18 @@
         Label14.Visible = True
         Label15.Visible = True
         Label16.Visible = True
+        PictureBox2.Visible = True
 
+        baseimageD = BloodStones.My.Resources.Resource1.M_Adult_Front_
+        baseimageD.MakeTransparent()
+        pantsD = BloodStones.My.Resources.Resource1.Pants_Front_
+        pantsD.MakeTransparent()
+        HairD = BloodStones.My.Resources.Player_Hair.BLH_Front_
+        HairD.MakeTransparent()
+        ShirtD = BloodStones.My.Resources.Player_Hair.M_Leather_shirt_Front___Back_
+        ShirtD.MakeTransparent()
 
+        PictureBox2.Image = CombinePlayerLayers(ImageList1.Images(1), baseimageD, pantsD, ShirtD, HairD)
 
 
     End Sub
@@ -3510,24 +3521,11 @@
         Label14.Visible = False
         Label15.Visible = False
         Label16.Visible = False
+        PictureBox2.Visible = False
         Room1(0)
         Timer1.Enabled = True
         Me.Focus()
     End Sub
-
-    Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
-
-    End Sub
-
-    Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Label3.Click
-
-    End Sub
-
-    Private Sub Label12_Click(sender As Object, e As EventArgs) Handles Label12.Click
-
-    End Sub
-
-
 
 #End Region
 

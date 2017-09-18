@@ -188,6 +188,13 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\M_LeatherArmor%28right%29.png" />
+    <None Include="Resources\M_LeatherArmor%28Left%29.png" />
+    <None Include="Resources\M_Leather shirt%28Front &amp; Back%29.png" />
+    <None Include="Resources\BH%28left%29.png" />
+    <None Include="Resources\BLH%28Front%29.bmp" />
+    <None Include="Resources\BLH%28Back%29.bmp" />
+    <None Include="Resources\BH%28right%29.png" />
     <None Include="Resources\Rat%28Right%29.bmp" />
     <None Include="Resources\Rat%28left%29.bmp" />
     <None Include="Resources\Rat%28Front%29.bmp" />

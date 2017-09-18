@@ -63,5 +63,75 @@ Namespace My.Resources
                 resourceCulture = value
             End Set
         End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend Shared ReadOnly Property BH_left_() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("BH_left_", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend Shared ReadOnly Property BH_right_() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("BH_right_", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend Shared ReadOnly Property BLH_Back_() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("BLH_Back_", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend Shared ReadOnly Property BLH_Front_() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("BLH_Front_", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend Shared ReadOnly Property M_Leather_shirt_Front___Back_() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("M_Leather_shirt_Front___Back_", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend Shared ReadOnly Property M_LeatherArmor_Left_() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("M_LeatherArmor_Left_", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend Shared ReadOnly Property M_LeatherArmor_right_() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("M_LeatherArmor_right_", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
     End Class
 End Namespace

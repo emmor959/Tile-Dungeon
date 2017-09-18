@@ -54,6 +54,41 @@ BloodStones
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
+<member name="P:BloodStones.My.Resources.Player_Hair.BH_left_">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BloodStones.My.Resources.Player_Hair.BH_right_">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BloodStones.My.Resources.Player_Hair.BLH_Back_">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BloodStones.My.Resources.Player_Hair.BLH_Front_">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BloodStones.My.Resources.Player_Hair.M_Leather_shirt_Front___Back_">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BloodStones.My.Resources.Player_Hair.M_LeatherArmor_Left_">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BloodStones.My.Resources.Player_Hair.M_LeatherArmor_right_">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="T:BloodStones.My.Resources.Resource1">
 <summary>
   A strongly-typed resource class, for looking up localized strings, etc.
