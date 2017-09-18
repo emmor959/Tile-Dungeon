@@ -3471,7 +3471,21 @@
         TextBox2.Visible = False
         Label1.Text = "What Do You Look Like?"
         Button6.Visible = True
-
+        Label2.Visible = True
+        Label3.Visible = True
+        Label4.Visible = True
+        Label5.Visible = True
+        Label6.Visible = True
+        Label7.Visible = True
+        Label8.Visible = True
+        Label9.Visible = True
+        Label10.Visible = True
+        Label11.Visible = True
+        Label12.Visible = True
+        Label13.Visible = True
+        Label14.Visible = True
+        Label15.Visible = True
+        Label16.Visible = True
 
 
 
@@ -3481,9 +3495,36 @@
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
         Button6.Visible = False
         Label1.Visible = False
+        Label2.Visible = False
+        Label3.Visible = False
+        Label4.Visible = False
+        Label5.Visible = False
+        Label6.Visible = False
+        Label7.Visible = False
+        Label8.Visible = False
+        Label9.Visible = False
+        Label10.Visible = False
+        Label11.Visible = False
+        Label12.Visible = False
+        Label13.Visible = False
+        Label14.Visible = False
+        Label15.Visible = False
+        Label16.Visible = False
         Room1(0)
         Timer1.Enabled = True
         Me.Focus()
+    End Sub
+
+    Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
+
+    End Sub
+
+    Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Label3.Click
+
+    End Sub
+
+    Private Sub Label12_Click(sender As Object, e As EventArgs) Handles Label12.Click
+
     End Sub
 
 
