@@ -111,19 +111,33 @@
         Return bmp
     End Function
 
-    Public Function CombinePlayerLayers(ByVal Tile As Image, ByVal base As Image, ByVal pants As Image, ByRef Shirt As Image, ByVal Hair As Image) As Image
+    Public Function CombinePlayerLayers(ByVal Tile As Image, ByVal base As Image, ByVal pants As Image, ByRef Shirt As Image, ByVal Hair As Bitmap) As Image
         Dim bmp As New Bitmap(Math.Max(24, 24), 24)
         Dim g As Graphics = Graphics.FromImage(bmp)
         g.DrawImage(Tile, 0, 0, 24, 24)
         g.DrawImage(base, 0, 0, 24, 24)
         g.DrawImage(pants, 0, 0, 24, 24)
         g.DrawImage(Shirt, 0, 0, 24, 24)
+        Hair.MakeTransparent()
+
         g.DrawImage(Hair, 0, 0, 24, 24)
         Dim placeholder As Color
         g.Dispose()
         Return bmp
     End Function
-
+    Public Function tempPlayerLayers(ByVal Tile As Image, ByVal base As Image, ByVal pants As Image, ByRef Shirt As Image, ByVal Hair As Bitmap) As Image
+        Dim bmp As New Bitmap(Math.Max(100, 100), 100)
+        Dim g As Graphics = Graphics.FromImage(bmp)
+        g.DrawImage(Tile, 0, 0, 100, 100)
+        g.DrawImage(base, 0, 0, 100, 100)
+        g.DrawImage(pants, 0, 0, 100, 100)
+        g.DrawImage(Shirt, 0, 0, 100, 100)
+        Hair.MakeTransparent()
+        g.DrawImage(Hair, 0, 0, 100, 100)
+        Dim placeholder As Color
+        g.Dispose()
+        Return bmp
+    End Function
     Sub TileLayer(x As Integer, y As Integer, maper As Bitmap)
 
         maper.MakeTransparent(Color.White)
@@ -3472,8 +3486,8 @@
         TextBox2.Visible = False
         Label1.Text = "What Do You Look Like?"
         Button6.Visible = True
-        Label2.Visible = True
-        Label3.Visible = True
+        Hair_Up.Visible = True
+        Hair_Down.Visible = True
         Label4.Visible = True
         Label5.Visible = True
         Label6.Visible = True
@@ -3494,11 +3508,11 @@
         pantsD = BloodStones.My.Resources.Resource1.Pants_Front_
         pantsD.MakeTransparent()
         HairD = BloodStones.My.Resources.Player_Hair.BLH_Front_
-        HairD.MakeTransparent()
+
         ShirtD = BloodStones.My.Resources.Player_Hair.M_Leather_shirt_Front___Back_
         ShirtD.MakeTransparent()
 
-        PictureBox2.Image = CombinePlayerLayers(ImageList1.Images(1), baseimageD, pantsD, ShirtD, HairD)
+        PictureBox2.Image = tempPlayerLayers(ImageList1.Images(1), baseimageD, pantsD, ShirtD, HairD)
 
 
     End Sub
@@ -3506,8 +3520,8 @@
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
         Button6.Visible = False
         Label1.Visible = False
-        Label2.Visible = False
-        Label3.Visible = False
+        Hair_Up.Visible = False
+        Hair_Down.Visible = False
         Label4.Visible = False
         Label5.Visible = False
         Label6.Visible = False
@@ -3525,6 +3539,34 @@
         Room1(0)
         Timer1.Enabled = True
         Me.Focus()
+    End Sub
+
+    Private Sub Hair_Up_Click(sender As Object, e As EventArgs) Handles Hair_Up.Click
+
+        Dim x As Integer
+        Dim y As Integer
+        Dim red As Byte
+        Dim green As Byte
+        Dim blue As Byte
+
+        For x = 0 To HairD.Width - 1
+            For y = 0 To HairD.Height - 1
+                red = HairD.GetPixel(x, y).R
+                green = HairD.GetPixel(x, y).G
+                blue = HairD.GetPixel(x, y).B
+                If red = 0 And blue = 0 And green = 0 Then
+                    HairD.SetPixel(x, y, Color.Blue)
+                End If
+            Next
+        Next
+        PictureBox2.Image.Dispose()
+        PictureBox2.Image = tempPlayerLayers(ImageList1.Images(1), baseimageD, pantsD, ShirtD, HairD)
+
+    End Sub
+
+    Private Sub Hair_Down_Click(sender As Object, e As EventArgs) Handles Hair_Down.Click
+        PictureBox2.Image = tempPlayerLayers(ImageList1.Images(1), baseimageD, pantsD, ShirtD, HairD)
+
     End Sub
 
 #End Region

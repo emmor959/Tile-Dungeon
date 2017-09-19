@@ -56,8 +56,8 @@ Partial Class Form1
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Hair_Up = New System.Windows.Forms.Label()
+        Me.Hair_Down = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -344,27 +344,28 @@ Partial Class Form1
         Me.Button6.UseVisualStyleBackColor = True
         Me.Button6.Visible = False
         '
-        'Label2
+        'Hair_Up
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label2.Location = New System.Drawing.Point(58, 89)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(13, 13)
-        Me.Label2.TabIndex = 18
-        Me.Label2.Text = "+"
-        Me.Label2.Visible = False
+        Me.Hair_Up.AutoSize = True
+        Me.Hair_Up.Cursor = System.Windows.Forms.Cursors.Default
+        Me.Hair_Up.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Hair_Up.Location = New System.Drawing.Point(58, 89)
+        Me.Hair_Up.Name = "Hair_Up"
+        Me.Hair_Up.Size = New System.Drawing.Size(13, 13)
+        Me.Hair_Up.TabIndex = 18
+        Me.Hair_Up.Text = "+"
+        Me.Hair_Up.Visible = False
         '
-        'Label3
+        'Hair_Down
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label3.Location = New System.Drawing.Point(77, 89)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(10, 13)
-        Me.Label3.TabIndex = 19
-        Me.Label3.Text = "-"
-        Me.Label3.Visible = False
+        Me.Hair_Down.AutoSize = True
+        Me.Hair_Down.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Hair_Down.Location = New System.Drawing.Point(77, 89)
+        Me.Hair_Down.Name = "Hair_Down"
+        Me.Hair_Down.Size = New System.Drawing.Size(10, 13)
+        Me.Hair_Down.TabIndex = 19
+        Me.Hair_Down.Text = "-"
+        Me.Hair_Down.Visible = False
         '
         'Label4
         '
@@ -511,7 +512,8 @@ Partial Class Form1
         '
         'PictureBox2
         '
-        Me.PictureBox2.Location = New System.Drawing.Point(136, 118)
+        Me.PictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.PictureBox2.Location = New System.Drawing.Point(138, 118)
         Me.PictureBox2.Name = "PictureBox2"
         Me.PictureBox2.Size = New System.Drawing.Size(100, 100)
         Me.PictureBox2.TabIndex = 33
@@ -538,8 +540,8 @@ Partial Class Form1
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.Hair_Down)
+        Me.Controls.Add(Me.Hair_Up)
         Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.TextBox2)
@@ -599,8 +601,8 @@ Partial Class Form1
     Friend WithEvents TextBox2 As TextBox
     Friend WithEvents Button5 As Button
     Friend WithEvents Button6 As Button
-    Friend WithEvents Label2 As Label
-    Friend WithEvents Label3 As Label
+    Friend WithEvents Hair_Up As Label
+    Friend WithEvents Hair_Down As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents Label6 As Label
