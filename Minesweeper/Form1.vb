@@ -1,4 +1,5 @@
-﻿Public Class Form1
+﻿Imports System.ComponentModel
+Public Class Form1
     'Code Creators: Dakota Berg and Elijah Morford 
     'Start Date 2/10/2017
 
@@ -121,20 +122,21 @@
         Hair.MakeTransparent()
 
         g.DrawImage(Hair, 0, 0, 24, 24)
-        Dim placeholder As Color
+
         g.Dispose()
         Return bmp
     End Function
     Public Function tempPlayerLayers(ByVal Tile As Image, ByVal base As Image, ByVal pants As Image, ByRef Shirt As Image, ByVal Hair As Bitmap) As Image
         Dim bmp As New Bitmap(Math.Max(100, 100), 100)
         Dim g As Graphics = Graphics.FromImage(bmp)
-        g.DrawImage(Tile, 0, 0, 100, 100)
-        g.DrawImage(base, 0, 0, 100, 100)
-        g.DrawImage(pants, 0, 0, 100, 100)
-        g.DrawImage(Shirt, 0, 0, 100, 100)
         Hair.MakeTransparent()
-        g.DrawImage(Hair, 0, 0, 100, 100)
-        Dim placeholder As Color
+        g.DrawImage(Tile, 0, 0, 100, 100)
+        g.DrawImage(baseimageD, 0, 0, 100, 100)
+        g.DrawImage(pantsD, 0, 0, 100, 100)
+        g.DrawImage(ShirtD, 0, 0, 100, 100)
+
+        g.DrawImage(HairD, 0, 0, 100, 100)
+
         g.Dispose()
         Return bmp
     End Function
@@ -419,7 +421,7 @@
                             CreateRoom(roomindexX, roomindexY, 5)
 
                         Else
-                                MovePlayer(0, 1)
+                            MovePlayer(0, 1)
                         End If
                     End If
                 ElseIf e.KeyCode = Keys.S And Player1.GetY() <> 15 Then
@@ -3512,7 +3514,7 @@
         ShirtD = BloodStones.My.Resources.Player_Hair.M_Leather_shirt_Front___Back_
         ShirtD.MakeTransparent()
 
-        PictureBox2.Image = tempPlayerLayers(ImageList1.Images(1), baseimageD, pantsD, ShirtD, HairD)
+        '  PictureBox2.Image = tempPlayerLayers(ImageList1.Images(1), baseimageD, pantsD, ShirtD, HairD)
 
 
     End Sub
@@ -3554,18 +3556,19 @@
                 red = HairD.GetPixel(x, y).R
                 green = HairD.GetPixel(x, y).G
                 blue = HairD.GetPixel(x, y).B
-                If red = 0 And blue = 0 And green = 0 Then
-                    HairD.SetPixel(x, y, Color.Blue)
+                If red < 5 Then
+                    HairD.SetPixel(x, y, Color.Teal)
                 End If
             Next
         Next
-        PictureBox2.Image.Dispose()
+
+        '    PictureBox2.Image.Dispose()
         PictureBox2.Image = tempPlayerLayers(ImageList1.Images(1), baseimageD, pantsD, ShirtD, HairD)
 
     End Sub
 
     Private Sub Hair_Down_Click(sender As Object, e As EventArgs) Handles Hair_Down.Click
-        PictureBox2.Image = tempPlayerLayers(ImageList1.Images(1), baseimageD, pantsD, ShirtD, HairD)
+        '  PictureBox2.Image = tempPlayerLayers(ImageList1.Images(1), baseimageD, pantsD, ShirtD, HairD)
 
     End Sub
 
