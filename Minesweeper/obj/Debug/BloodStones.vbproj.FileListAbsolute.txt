@@ -37,13 +37,6 @@ C:\Users\emmor959\Desktop\New folder (3)\Minesweeper\obj\Debug\BloodStones.vbpro
 C:\Users\emmor959\Desktop\New folder (3)\Minesweeper\obj\Debug\Blood Stones.exe
 C:\Users\emmor959\Desktop\New folder (3)\Minesweeper\obj\Debug\Blood Stones.xml
 C:\Users\emmor959\Desktop\New folder (3)\Minesweeper\obj\Debug\Blood Stones.pdb
-C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\bin\Debug\Blood Stones.exe.config
-C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\obj\Debug\Blood Stones.exe
-C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\obj\Debug\Blood Stones.xml
-C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\obj\Debug\Blood Stones.pdb
-C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\bin\Debug\Blood Stones.exe
-C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\bin\Debug\Blood Stones.pdb
-C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\bin\Debug\Blood Stones.xml
 C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\obj\Debug\BloodStones.vbprojResolveAssemblyReference.cache
 C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\obj\Debug\BloodStones.Form1.resources
 C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\obj\Debug\BloodStones.Resources.resources
@@ -66,3 +59,10 @@ C:\Users\ACS User\Source\Repos\Tile-Dungeon\Minesweeper\bin\Debug\BloodStones.xm
 C:\Users\ACS User\Source\Repos\Tile-Dungeon\Minesweeper\obj\Debug\BloodStones.exe
 C:\Users\ACS User\Source\Repos\Tile-Dungeon\Minesweeper\obj\Debug\BloodStones.xml
 C:\Users\ACS User\Source\Repos\Tile-Dungeon\Minesweeper\obj\Debug\BloodStones.pdb
+C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\bin\Debug\BloodStones.exe.config
+C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\obj\Debug\BloodStones.exe
+C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\obj\Debug\BloodStones.xml
+C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\obj\Debug\BloodStones.pdb
+C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\bin\Debug\BloodStones.exe
+C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\bin\Debug\BloodStones.pdb
+C:\Users\elijah\Desktop\Tile Dungeon Game\Minesweeper\bin\Debug\BloodStones.xml

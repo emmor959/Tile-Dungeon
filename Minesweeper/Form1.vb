@@ -677,7 +677,6 @@
 #Region "Player Images"
 
     Sub PlayerLeft(a As Integer)
-
         m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(ImageList1.Images(a), baseimageL, pantsL, ShirtL, HairL)
     End Sub
     Sub PlayerRight(a As Integer)
@@ -3513,6 +3512,33 @@
         ShirtD.MakeTransparent()
 
         PictureBox2.Image = tempPlayerLayers(ImageList1.Images(1), baseimageD, pantsD, ShirtD, HairD)
+
+        baseimageL = BloodStones.My.Resources.Resource1.M_Adult_left_
+        baseimageR = BloodStones.My.Resources.Resource1.M_Adult_right_
+        baseimageU = BloodStones.My.Resources.Resource1.M_Adult_Back_
+        pantsL = BloodStones.My.Resources.Resource1.Pants_Left_
+        pantsR = BloodStones.My.Resources.Resource1.Pants_Right_
+        pantsU = BloodStones.My.Resources.Resource1.Pants_Front_
+        HairL = BloodStones.My.Resources.Player_Hair.BH_left_
+        HairR = BloodStones.My.Resources.Player_Hair.BH_right_
+        HairU = BloodStones.My.Resources.Player_Hair.BLH_Back_
+        ShirtL = BloodStones.My.Resources.Player_Hair.M_LeatherArmor_Left_
+        ShirtR = BloodStones.My.Resources.Player_Hair.M_LeatherArmor_right_
+        ShirtU = BloodStones.My.Resources.Player_Hair.M_Leather_shirt_Front___Back_
+        baseimageL.MakeTransparent()
+        baseimageR.MakeTransparent()
+        baseimageU.MakeTransparent()
+        pantsL.MakeTransparent()
+        pantsR.MakeTransparent()
+        pantsU.MakeTransparent()
+        HairL.MakeTransparent()
+        HairR.MakeTransparent()
+        HairU.MakeTransparent()
+        ShirtL.MakeTransparent()
+        ShirtR.MakeTransparent()
+        ShirtU.MakeTransparent()
+
+
 
 
     End Sub
