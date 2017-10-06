@@ -679,6 +679,7 @@ Public Class Form1
 #Region "Player Images"
 
     Sub PlayerLeft(a As Integer)
+
         m_buttonArray(Player1.GetX(), Player1.GetY()).BackgroundImage = CombinePlayerLayers(ImageList1.Images(a), baseimageL, pantsL, ShirtL, HairL)
     End Sub
     Sub PlayerRight(a As Integer)
@@ -3506,41 +3507,32 @@ Public Class Form1
 
         baseimageD = BloodStones.My.Resources.Resource1.M_Adult_Front_
         baseimageD.MakeTransparent()
+        baseimageU = BloodStones.My.Resources.Resource1.M_Adult_Back_
+        baseimageU.MakeTransparent()
+        baseimageL = BloodStones.My.Resources.Resource1.M_Adult_left_
+        baseimageL.MakeTransparent()
+        baseimageR = BloodStones.My.Resources.Resource1.M_Adult_right_
+        baseimageR.MakeTransparent()
+
         pantsD = BloodStones.My.Resources.Resource1.Pants_Front_
         pantsD.MakeTransparent()
-        HairD = BloodStones.My.Resources.Player_Hair.BLH_Front_
+        pantsU = BloodStones.My.Resources.Resource1.Pants_Front_
+        pantsU.MakeTransparent()
+        pantsL = BloodStones.My.Resources.Resource1.Pants_Left_
+        pantsL.MakeTransparent()
+        pantsR = BloodStones.My.Resources.Resource1.Pants_Right_
+        pantsR.MakeTransparent()
+
 
         ShirtD = BloodStones.My.Resources.Player_Hair.M_Leather_shirt_Front___Back_
         ShirtD.MakeTransparent()
-
-        '  PictureBox2.Image = tempPlayerLayers(ImageList1.Images(1), baseimageD, pantsD, ShirtD, HairD)
-
-        baseimageL = BloodStones.My.Resources.Resource1.M_Adult_left_
-        baseimageR = BloodStones.My.Resources.Resource1.M_Adult_right_
-        baseimageU = BloodStones.My.Resources.Resource1.M_Adult_Back_
-        pantsL = BloodStones.My.Resources.Resource1.Pants_Left_
-        pantsR = BloodStones.My.Resources.Resource1.Pants_Right_
-        pantsU = BloodStones.My.Resources.Resource1.Pants_Front_
-        HairL = BloodStones.My.Resources.Player_Hair.BH_left_
-        HairR = BloodStones.My.Resources.Player_Hair.BH_right_
-        HairU = BloodStones.My.Resources.Player_Hair.BLH_Back_
-        ShirtL = BloodStones.My.Resources.Player_Hair.M_LeatherArmor_Left_
-        ShirtR = BloodStones.My.Resources.Player_Hair.M_LeatherArmor_right_
         ShirtU = BloodStones.My.Resources.Player_Hair.M_Leather_shirt_Front___Back_
-        baseimageL.MakeTransparent()
-        baseimageR.MakeTransparent()
-        baseimageU.MakeTransparent()
-        pantsL.MakeTransparent()
-        pantsR.MakeTransparent()
-        pantsU.MakeTransparent()
-        HairL.MakeTransparent()
-        HairR.MakeTransparent()
-        HairU.MakeTransparent()
-        ShirtL.MakeTransparent()
-        ShirtR.MakeTransparent()
         ShirtU.MakeTransparent()
-
-
+        ShirtL = BloodStones.My.Resources.Player_Hair.M_LeatherArmor_Left_
+        ShirtL.MakeTransparent()
+        ShirtR = BloodStones.My.Resources.Player_Hair.M_LeatherArmor_right_
+        ShirtR.MakeTransparent()
+        '  PictureBox2.Image = tempPlayerLayers(ImageList1.Images(1), baseimageD, pantsD, ShirtD, HairD)
 
 
     End Sub
@@ -3571,11 +3563,73 @@ Public Class Form1
 
     Private Sub Hair_Up_Click(sender As Object, e As EventArgs) Handles Hair_Up.Click
 
+        If hairindex <> 16 Then
+            hairindex += 1
+        Else
+            hairindex = 0
+        End If
+        HairChange()
+    End Sub
+
+    Private Sub Hair_Down_Click(sender As Object, e As EventArgs) Handles Hair_Down.Click
+        '  PictureBox2.Image = tempPlayerLayers(ImageList1.Images(1), baseimageD, pantsD, ShirtD, HairD)
+        If hairindex <> 0 Then
+            hairindex -= 1
+        Else
+            hairindex = 16
+        End If
+        HairChange()
+    End Sub
+    Sub HairChange()
+
+        HairD = BloodStones.My.Resources.Player_Hair.BLH_Front_
+        HairR = BloodStones.My.Resources.Player_Hair.BH_right_
+        HairL = BloodStones.My.Resources.Player_Hair.BH_left_
+        HairU = BloodStones.My.Resources.Player_Hair.BLH_Back_
+
+
+        Dim Haircolor As Color
+
         Dim x As Integer
         Dim y As Integer
         Dim red As Byte
         Dim green As Byte
         Dim blue As Byte
+        If hairindex = 0 Then
+            Haircolor = Color.Black
+        ElseIf hairindex = 1 Then
+            Haircolor = Color.SandyBrown
+        ElseIf hairindex = 2 Then
+            Haircolor = Color.Brown
+        ElseIf hairindex = 3 Then
+            Haircolor = Color.RosyBrown
+        ElseIf hairindex = 4 Then
+            Haircolor = Color.Yellow
+        ElseIf hairindex = 5 Then
+            Haircolor = Color.Gray
+        ElseIf hairindex = 6 Then
+            Haircolor = Color.Gainsboro
+        ElseIf hairindex = 7 Then
+            Haircolor = Color.HotPink
+        ElseIf hairindex = 8 Then
+            Haircolor = Color.DarkBlue
+        ElseIf hairindex = 9 Then
+            Haircolor = Color.Teal
+        ElseIf hairindex = 10 Then
+            Haircolor = Color.Red
+        ElseIf hairindex = 11 Then
+            Haircolor = Color.GreenYellow
+        ElseIf hairindex = 12 Then
+            Haircolor = Color.LawnGreen
+        ElseIf hairindex = 13 Then
+            Haircolor = Color.Purple
+        ElseIf hairindex = 14 Then
+            Haircolor = Color.Chocolate
+        ElseIf hairindex = 15 Then
+            Haircolor = Color.Coral
+        ElseIf hairindex = 16 Then
+            Haircolor = Color.Cornsilk
+        End If
 
         For x = 0 To HairD.Width - 1
             For y = 0 To HairD.Height - 1
@@ -3583,21 +3637,49 @@ Public Class Form1
                 green = HairD.GetPixel(x, y).G
                 blue = HairD.GetPixel(x, y).B
                 If red < 5 Then
-                    HairD.SetPixel(x, y, Color.Teal)
+                    HairD.SetPixel(x, y, Haircolor)
                 End If
             Next
         Next
+        For x = 0 To HairL.Width - 1
+            For y = 0 To HairL.Height - 1
+                red = HairL.GetPixel(x, y).R
+                green = HairL.GetPixel(x, y).G
+                blue = HairL.GetPixel(x, y).B
+                If red < 5 Then
+                    HairL.SetPixel(x, y, Haircolor)
+                End If
+            Next
+        Next
+        For x = 0 To HairR.Width - 1
+            For y = 0 To HairR.Height - 1
+                red = HairR.GetPixel(x, y).R
+                green = HairR.GetPixel(x, y).G
+                blue = HairR.GetPixel(x, y).B
+                If red < 5 Then
+                    HairR.SetPixel(x, y, Haircolor)
+                End If
+            Next
+        Next
+        For x = 0 To HairU.Width - 1
+            For y = 0 To HairU.Height - 1
+                red = HairU.GetPixel(x, y).R
+                green = HairU.GetPixel(x, y).G
+                blue = HairU.GetPixel(x, y).B
+                If red < 5 Then
+                    HairU.SetPixel(x, y, Haircolor)
+                End If
+            Next
+        Next
+
+
+
+
 
         '    PictureBox2.Image.Dispose()
         PictureBox2.Image = tempPlayerLayers(ImageList1.Images(1), baseimageD, pantsD, ShirtD, HairD)
 
     End Sub
-
-    Private Sub Hair_Down_Click(sender As Object, e As EventArgs) Handles Hair_Down.Click
-        '  PictureBox2.Image = tempPlayerLayers(ImageList1.Images(1), baseimageD, pantsD, ShirtD, HairD)
-
-    End Sub
-
 #End Region
 
 End Class
