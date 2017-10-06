@@ -3523,14 +3523,14 @@ Public Class Form1
         pantsR = BloodStones.My.Resources.Resource1.Pants_Right_
         pantsR.MakeTransparent()
 
-
         ShirtD = BloodStones.My.Resources.Player_Hair.M_Leather_shirt_Front___Back_
-        ShirtD.MakeTransparent()
         ShirtU = BloodStones.My.Resources.Player_Hair.M_Leather_shirt_Front___Back_
-        ShirtU.MakeTransparent()
         ShirtL = BloodStones.My.Resources.Player_Hair.M_LeatherArmor_Left_
-        ShirtL.MakeTransparent()
         ShirtR = BloodStones.My.Resources.Player_Hair.M_LeatherArmor_right_
+
+        ShirtD.MakeTransparent()
+        ShirtU.MakeTransparent()
+        ShirtL.MakeTransparent()
         ShirtR.MakeTransparent()
         '  PictureBox2.Image = tempPlayerLayers(ImageList1.Images(1), baseimageD, pantsD, ShirtD, HairD)
 
@@ -3581,7 +3581,6 @@ Public Class Form1
         HairChange()
     End Sub
     Sub HairChange()
-
         HairD = BloodStones.My.Resources.Player_Hair.BLH_Front_
         HairR = BloodStones.My.Resources.Player_Hair.BH_right_
         HairL = BloodStones.My.Resources.Player_Hair.BH_left_
@@ -3671,14 +3670,112 @@ Public Class Form1
                 End If
             Next
         Next
-
-
-
-
-
         '    PictureBox2.Image.Dispose()
         PictureBox2.Image = tempPlayerLayers(ImageList1.Images(1), baseimageD, pantsD, ShirtD, HairD)
+    End Sub
+    Dim ShirtIndex As Integer
+    Sub ChangeShirt()
+        ShirtD = BloodStones.My.Resources.Player_Hair.M_Leather_shirt_Front___Back_
+        ShirtU = BloodStones.My.Resources.Player_Hair.M_Leather_shirt_Front___Back_
+        ShirtL = BloodStones.My.Resources.Player_Hair.M_LeatherArmor_Left_
+        ShirtR = BloodStones.My.Resources.Player_Hair.M_LeatherArmor_right_
 
+        Dim Shirtcolor As Color
+
+        If ShirtIndex = 0 Then
+            Shirtcolor = Color.Black
+        ElseIf ShirtIndex = 1 Then
+            Shirtcolor = Color.Blue
+        ElseIf ShirtIndex = 2 Then
+            Shirtcolor = Color.Red
+        ElseIf ShirtIndex = 3 Then
+            Shirtcolor = Color.Pink
+        ElseIf ShirtIndex = 4 Then
+            Shirtcolor = Color.Green
+        ElseIf ShirtIndex = 5 Then
+            Shirtcolor = Color.Yellow
+        End If
+
+
+
+
+
+
+        Dim x As Integer
+        Dim y As Integer
+        Dim red As Byte
+        Dim green As Byte
+        Dim blue As Byte
+        For x = 0 To ShirtD.Width - 1
+            For y = 0 To ShirtD.Height - 1
+                red = ShirtD.GetPixel(x, y).R
+                green = ShirtD.GetPixel(x, y).G
+                blue = ShirtD.GetPixel(x, y).B
+                If red < 5 Then
+                    ShirtD.SetPixel(x, y, Shirtcolor)
+                End If
+            Next
+        Next
+        For x = 0 To ShirtU.Width - 1
+            For y = 0 To ShirtU.Height - 1
+                red = ShirtU.GetPixel(x, y).R
+                green = ShirtU.GetPixel(x, y).G
+                blue = ShirtU.GetPixel(x, y).B
+                If red < 5 Then
+                    ShirtU.SetPixel(x, y, Shirtcolor)
+                End If
+            Next
+        Next
+        For x = 0 To ShirtL.Width - 1
+            For y = 0 To ShirtL.Height - 1
+                red = ShirtL.GetPixel(x, y).R
+                green = ShirtL.GetPixel(x, y).G
+                blue = ShirtL.GetPixel(x, y).B
+                If red < 5 Then
+                    ShirtL.SetPixel(x, y, Shirtcolor)
+                End If
+            Next
+        Next
+        For x = 0 To ShirtR.Width - 1
+            For y = 0 To ShirtR.Height - 1
+                red = ShirtR.GetPixel(x, y).R
+                green = ShirtR.GetPixel(x, y).G
+                blue = ShirtR.GetPixel(x, y).B
+                If red < 5 Then
+                    ShirtR.SetPixel(x, y, Shirtcolor)
+                End If
+            Next
+        Next
+
+
+
+
+
+        ShirtD.MakeTransparent()
+        ShirtU.MakeTransparent()
+        ShirtL.MakeTransparent()
+        ShirtR.MakeTransparent()
+
+        PictureBox2.Image = tempPlayerLayers(ImageList1.Images(1), baseimageD, pantsD, ShirtD, HairD)
+
+    End Sub
+
+    Private Sub Label5_Click(sender As Object, e As EventArgs) Handles Label5.Click
+        If ShirtIndex <> 5 Then
+            ShirtIndex += 1
+        Else
+            ShirtIndex = 0
+        End If
+        ChangeShirt()
+    End Sub
+
+    Private Sub Label4_Click(sender As Object, e As EventArgs) Handles Label4.Click
+        If ShirtIndex <> 0 Then
+            ShirtIndex -= 1
+        Else
+            ShirtIndex = 5
+        End If
+        ChangeShirt()
     End Sub
 #End Region
 
