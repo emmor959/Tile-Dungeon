@@ -33,10 +33,8 @@ Partial Class Form1
         Me.AL = New System.Windows.Forms.Timer(Me.components)
         Me.AD = New System.Windows.Forms.Timer(Me.components)
         Me.BackpackList = New System.Windows.Forms.ListBox()
-        Me.BackPackPicture = New System.Windows.Forms.PictureBox()
         Me.BackPackTextBox = New System.Windows.Forms.TextBox()
         Me.BackPackLabel = New System.Windows.Forms.Label()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.ImageList2 = New System.Windows.Forms.ImageList(Me.components)
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.EnemyAI = New System.Windows.Forms.Timer(Me.components)
@@ -72,10 +70,12 @@ Partial Class Form1
         Me.Label15 = New System.Windows.Forms.Label()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.BackPackPicture = New System.Windows.Forms.PictureBox()
         Me.MenuStrip1.SuspendLayout()
-        CType(Me.BackPackPicture, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BackPackPicture, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'AR
@@ -153,17 +153,6 @@ Partial Class Form1
         Me.BackpackList.TabIndex = 4
         Me.BackpackList.Visible = False
         '
-        'BackPackPicture
-        '
-        Me.BackPackPicture.BackColor = System.Drawing.Color.LightGray
-        Me.BackPackPicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.BackPackPicture.Location = New System.Drawing.Point(184, 195)
-        Me.BackPackPicture.Name = "BackPackPicture"
-        Me.BackPackPicture.Size = New System.Drawing.Size(35, 33)
-        Me.BackPackPicture.TabIndex = 5
-        Me.BackPackPicture.TabStop = False
-        Me.BackPackPicture.Visible = False
-        '
         'BackPackTextBox
         '
         Me.BackPackTextBox.BackColor = System.Drawing.Color.LightGray
@@ -184,17 +173,6 @@ Partial Class Form1
         Me.BackPackLabel.Size = New System.Drawing.Size(0, 13)
         Me.BackPackLabel.TabIndex = 7
         Me.BackPackLabel.Visible = False
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.BackColor = System.Drawing.Color.Black
-        Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.PictureBox1.Location = New System.Drawing.Point(0, 408)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(34, 33)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 8
-        Me.PictureBox1.TabStop = False
         '
         'ImageList2
         '
@@ -520,6 +498,28 @@ Partial Class Form1
         Me.PictureBox2.TabStop = False
         Me.PictureBox2.Visible = False
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.BackColor = System.Drawing.Color.Black
+        Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.PictureBox1.Location = New System.Drawing.Point(0, 408)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(34, 33)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 8
+        Me.PictureBox1.TabStop = False
+        '
+        'BackPackPicture
+        '
+        Me.BackPackPicture.BackColor = System.Drawing.Color.LightGray
+        Me.BackPackPicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.BackPackPicture.Location = New System.Drawing.Point(184, 195)
+        Me.BackPackPicture.Name = "BackPackPicture"
+        Me.BackPackPicture.Size = New System.Drawing.Size(35, 33)
+        Me.BackPackPicture.TabIndex = 5
+        Me.BackPackPicture.TabStop = False
+        Me.BackPackPicture.Visible = False
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -561,9 +561,9 @@ Partial Class Form1
         Me.Name = "Form1"
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
-        CType(Me.BackPackPicture, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BackPackPicture, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

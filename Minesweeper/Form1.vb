@@ -3515,13 +3515,14 @@ Public Class Form1
         baseimageR.MakeTransparent()
 
         pantsD = BloodStones.My.Resources.Resource1.Pants_Front_
-        pantsD.MakeTransparent()
         pantsU = BloodStones.My.Resources.Resource1.Pants_Front_
-        pantsU.MakeTransparent()
         pantsL = BloodStones.My.Resources.Resource1.Pants_Left_
-        pantsL.MakeTransparent()
         pantsR = BloodStones.My.Resources.Resource1.Pants_Right_
+
+        pantsL.MakeTransparent()
+        pantsU.MakeTransparent()
         pantsR.MakeTransparent()
+        pantsD.MakeTransparent()
 
         ShirtD = BloodStones.My.Resources.Player_Hair.M_Leather_shirt_Front___Back_
         ShirtU = BloodStones.My.Resources.Player_Hair.M_Leather_shirt_Front___Back_
@@ -3777,6 +3778,106 @@ Public Class Form1
         End If
         ChangeShirt()
     End Sub
+    Dim pantsindex As Integer
+    Sub ChangePants()
+        pantsD = BloodStones.My.Resources.Resource1.Pants_Front_
+        pantsU = BloodStones.My.Resources.Resource1.Pants_Front_
+        pantsL = BloodStones.My.Resources.Resource1.Pants_Left_
+        pantsR = BloodStones.My.Resources.Resource1.Pants_Right_
+
+        Dim pantscolor As Color
+
+        If pantsindex = 0 Then
+            pantscolor = Color.Blue
+        ElseIf pantsindex = 1 Then
+            pantscolor = Color.Black
+        ElseIf pantsindex = 2 Then
+            pantscolor = Color.Brown
+        ElseIf pantsindex = 3 Then
+            pantscolor = Color.DarkBlue
+        ElseIf pantsindex = 4 Then
+            pantscolor = Color.Purple
+        ElseIf pantsindex = 5 Then
+            pantscolor = Color.Beige
+        ElseIf pantsindex = 6 Then
+            pantscolor = Color.Red
+        End If
+
+        Dim x As Integer
+        Dim y As Integer
+        Dim red As Byte
+        Dim green As Byte
+        Dim blue As Byte
+        For x = 0 To pantsD.Width - 1
+            For y = 0 To pantsD.Height - 1
+                red = pantsD.GetPixel(x, y).R
+                green = pantsD.GetPixel(x, y).G
+                blue = pantsD.GetPixel(x, y).B
+                If red < 5 Then
+                    pantsD.SetPixel(x, y, pantscolor)
+                End If
+            Next
+        Next
+        For x = 0 To pantsU.Width - 1
+            For y = 0 To pantsU.Height - 1
+                red = pantsU.GetPixel(x, y).R
+                green = pantsU.GetPixel(x, y).G
+                blue = pantsU.GetPixel(x, y).B
+                If red < 5 Then
+                    pantsU.SetPixel(x, y, pantscolor)
+                End If
+            Next
+        Next
+        For x = 0 To pantsL.Width - 1
+            For y = 0 To pantsL.Height - 1
+                red = pantsL.GetPixel(x, y).R
+                green = pantsL.GetPixel(x, y).G
+                blue = pantsL.GetPixel(x, y).B
+                If red < 5 Then
+                    pantsL.SetPixel(x, y, pantscolor)
+                End If
+            Next
+        Next
+        For x = 0 To pantsR.Width - 1
+            For y = 0 To pantsR.Height - 1
+                red = pantsR.GetPixel(x, y).R
+                green = pantsR.GetPixel(x, y).G
+                blue = pantsR.GetPixel(x, y).B
+                If red < 5 Then
+                    pantsR.SetPixel(x, y, pantscolor)
+                End If
+            Next
+        Next
+
+
+        pantsL.MakeTransparent()
+        pantsU.MakeTransparent()
+        pantsR.MakeTransparent()
+        pantsD.MakeTransparent()
+
+        PictureBox2.Image = tempPlayerLayers(ImageList1.Images(1), baseimageD, pantsD, ShirtD, HairD)
+
+    End Sub
+
+    Private Sub Label7_Click(sender As Object, e As EventArgs) Handles Label7.Click
+
+        If pantsindex <> 6 Then
+            pantsindex += 1
+        Else
+            pantsindex = 0
+        End If
+        ChangePants()
+    End Sub
+
+    Private Sub Label6_Click(sender As Object, e As EventArgs) Handles Label6.Click
+        If pantsindex <> 0 Then
+            pantsindex -= 1
+        Else
+            pantsindex = 6
+        End If
+        ChangePants()
+    End Sub
+
 #End Region
 
 End Class
