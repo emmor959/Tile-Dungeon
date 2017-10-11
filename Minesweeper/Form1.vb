@@ -34,7 +34,7 @@ Public Class Form1
     Dim HairU As Bitmap
     Dim HairD As Bitmap
 
-
+    Dim currentWeapon As Integer
 
 
 
@@ -628,7 +628,16 @@ Public Class Form1
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles AR.Tick
         If Player1.GetImageNum <> 8 Then
             'do attack animation
-            m_buttonArray(Player1.GetX, Player1.GetY).BackgroundImage = ImageList1.Images(m_Game(levelindex, roomindexX, roomindexY, Player1.GetX, Player1.GetY).ReturnBackGround())
+
+            If currentWeapon = 0 Then
+                m_buttonArray(Player1.GetX + 1, Player1.GetY).BackgroundImage = m_buttonArray(Player1.GetX + 1, Player1.GetY).BackgroundImage
+
+            ElseIf currentWeapon = 1 Then
+
+            End If
+
+
+
             Player1.ImageNum(8)
         Else
             Player1.ImageNum(0)
