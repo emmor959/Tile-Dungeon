@@ -3887,6 +3887,101 @@ Public Class Form1
         ChangePants()
     End Sub
 
+    Private Sub Label9_Click(sender As Object, e As EventArgs) Handles Label9.Click
+        If Toneindex <> 5 Then
+            Toneindex += 1
+        Else
+            Toneindex = 0
+        End If
+        ChangeTone()
+    End Sub
+
+    Private Sub Label8_Click(sender As Object, e As EventArgs) Handles Label8.Click
+        If Toneindex <> 5 Then
+            Toneindex -= 1
+        Else
+            Toneindex = 5
+        End If
+        ChangeTone()
+    End Sub
+
+    Dim Toneindex As Integer
+    Sub ChangeTone()
+
+        baseimageD = BloodStones.My.Resources.Resource1.M_Adult_Front_
+        baseimageL = BloodStones.My.Resources.Resource1.M_Adult_left_
+        baseimageR = BloodStones.My.Resources.Resource1.M_Adult_right_
+        baseimageU = BloodStones.My.Resources.Resource1.M_Adult_Back_
+        Dim tonecolor As Color
+        If Toneindex = 0 Then
+            tonecolor = Color.White
+        ElseIf Toneindex = 1 Then
+            tonecolor = Color.Tan
+        ElseIf Toneindex = 2 Then
+            tonecolor = Color.Brown
+        ElseIf Toneindex = 3 Then
+            tonecolor = Color.DarkGray
+        ElseIf Toneindex = 4 Then
+            tonecolor = Color.Red
+        ElseIf Toneindex = 5 Then
+            tonecolor = Color.LightBlue
+        End If
+
+
+
+
+        Dim x As Integer
+        Dim y As Integer
+        Dim red As Byte
+        Dim green As Byte
+        Dim blue As Byte
+        For x = 0 To baseimageD.Width - 1
+            For y = 0 To baseimageD.Height - 1
+                red = baseimageD.GetPixel(x, y).R
+                green = baseimageD.GetPixel(x, y).G
+                blue = baseimageD.GetPixel(x, y).B
+                If red < 5 Then
+                    baseimageD.SetPixel(x, y, tonecolor)
+                End If
+            Next
+        Next
+        For x = 0 To baseimageL.Width - 1
+            For y = 0 To baseimageL.Height - 1
+                red = baseimageL.GetPixel(x, y).R
+                green = baseimageL.GetPixel(x, y).G
+                blue = baseimageL.GetPixel(x, y).B
+                If red < 5 Then
+                    baseimageL.SetPixel(x, y, tonecolor)
+                End If
+            Next
+        Next
+        For x = 0 To baseimageR.Width - 1
+            For y = 0 To baseimageR.Height - 1
+                red = baseimageR.GetPixel(x, y).R
+                green = baseimageR.GetPixel(x, y).G
+                blue = baseimageR.GetPixel(x, y).B
+                If red < 5 Then
+                    baseimageR.SetPixel(x, y, tonecolor)
+                End If
+            Next
+        Next
+        For x = 0 To baseimageU.Width - 1
+            For y = 0 To baseimageU.Height - 1
+                red = baseimageU.GetPixel(x, y).R
+                green = baseimageU.GetPixel(x, y).G
+                blue = baseimageU.GetPixel(x, y).B
+                If red < 5 Then
+                    baseimageU.SetPixel(x, y, tonecolor)
+                End If
+            Next
+        Next
+        baseimageL.MakeTransparent()
+        baseimageR.MakeTransparent()
+        baseimageD.MakeTransparent()
+        baseimageU.MakeTransparent()
+
+        PictureBox2.Image = tempPlayerLayers(ImageList1.Images(1), baseimageD, pantsD, ShirtD, HairD)
+    End Sub
 #End Region
 
 End Class
